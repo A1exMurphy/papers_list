@@ -32,6 +32,8 @@ CREATE TABLE "user_details" (
 	"additional_info" TEXT
 );
 
+
+-- Create types for use in posts table to give us string values for set options in columns
 CREATE TYPE SIZE AS ENUM ('small', 'medium', 'large');
 CREATE TYPE STATUS AS ENUM ('pending', 'approved', 'delete');
 
