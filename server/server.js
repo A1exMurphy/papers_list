@@ -14,6 +14,10 @@ const newEventRouter = require('./routes/newEvent.router');
 
 const eventRouter = require('./routes/EventPage.router');
 
+const adminRouter = require('./routes/admin.router')
+
+
+
 
 
 // Express Middleware
@@ -33,7 +37,10 @@ app.use('/api/user', userRouter);
 
 app.use('/api/newevent', newEventRouter);
 
-app.use('/api/eventfeed', eventRouter)
+app.use('/api/eventfeed', eventRouter);
+
+app.use('/api/admin', adminRouter);
+
 
 // Listen Server & Port
 app.listen(PORT, () => {
