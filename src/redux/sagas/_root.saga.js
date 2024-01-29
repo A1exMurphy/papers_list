@@ -3,6 +3,7 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import eventSaga from './landingpage.saga';
+import archivedEventSaga from './adminArchive.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -13,6 +14,7 @@ import eventSaga from './landingpage.saga';
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
+    archivedEventSaga(),
     eventSaga(),
     loginSaga(), // login saga is now registered
     registrationSaga(),
