@@ -15,6 +15,7 @@ const newEventRouter = require('./routes/newEvent.router');
 const eventRouter = require('./routes/EventPage.router');
 
 
+
 // Express Middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -29,6 +30,9 @@ app.use(passport.session());
 
 // Routes
 app.use('/api/user', userRouter);
+
+app.use('/api/newevent', newEventRouter);
+
 app.use('/api/eventfeed', eventRouter)
 
 // Listen Server & Port
