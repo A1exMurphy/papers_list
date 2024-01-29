@@ -3,6 +3,7 @@ import errors from "./errors.reducer";
 import user from "./user.reducer";
 import events from "./landingpage.reducer";
 import archived from "./adminArchive.reducer";
+import selectedEvent from "./landingpage.reducer";
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -13,6 +14,7 @@ import archived from "./adminArchive.reducer";
 const rootReducer = combineReducers({
   archived, // will show all events that are in the archive
   events, // contains all events
+  selectedEvent, // gets info for a single event
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
 });

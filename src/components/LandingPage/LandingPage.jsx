@@ -8,24 +8,24 @@ export default function LandingPage () {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const eventData = useSelector(store => store.events);
+  const eventData = useSelector(store => store.events.events);
   console.log('eventData', eventData);
 
   useEffect(() => {
     dispatch({type: 'FETCH_EVENTS'});
   }, [])
 
-  // const handleEventClick = (selectedEvent) => {
-  //   console.log("handleEventClick selected");
+  const handleEventClick = (selectedEvent) => {
+    console.log("handleEventClick selected");
 
-  //   dispatch({
-  //     type: 'SELECT_EVENT',
-  //     payload: selectedEvent
-  //   })
+    dispatch({
+      type: 'SELECT_EVENT',
+      payload: selectedEvent
+    })
 
-  //   console.log('Payload:', selectedEvent);
-  //   history.push(`/events/${selectedEvent.id}`);
-  // }
+    console.log('Payload:', selectedEvent);
+    history.push(`/events/${selectedEvent.id}`);
+  }
 
   return (
     <>
@@ -35,7 +35,7 @@ export default function LandingPage () {
       <section className="landing-page-highlights-section">
         {eventData && eventData.map(event => {
           return (
-            <div className="highlights-container" key={event.id}>
+            <div className="highlights-container" onClick={() => handleEventClick(event)} key={event.id}>
               <div className="card">
                 <div className="img-box-landing-page">
                   <img src={event.image} alt={event.description} />
