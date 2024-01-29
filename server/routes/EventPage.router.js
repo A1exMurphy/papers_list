@@ -18,9 +18,8 @@ router.get('/', (req, res) => {
  
 
   pool.query(sqlText)
-    .then((dbRes) => {
-      const EventDetails = dbRes.rows[0]
-      res.send(EventDetails)
+    .then((result) => {
+      res.send(result.rows)
     })
     .catch((dbErr) => {
       console.log('GET /api/eventfeed fail:', dbErr)
