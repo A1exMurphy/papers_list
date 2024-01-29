@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
       res.send(EventDetails)
     })
     .catch((dbErr) => {
-      console.log('GET /appointments/:id fail:', dbErr)
+      console.log('GET /api/eventfeed fail:', dbErr)
       res.sendStatus(500)
     })
 });
