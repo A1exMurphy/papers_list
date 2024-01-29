@@ -2,12 +2,6 @@
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL,
-	"is_admin" BOOLEAN
-);
 
 -- DROP TABLE IF EXISTS "user";
 
@@ -18,6 +12,13 @@ CREATE TABLE "user" (
 -- DROP TABLE IF EXISTS "post_tags";
 
 -- DROP TABLE IF EXISTS "tags";
+
+CREATE TABLE "user" (
+    "id" SERIAL PRIMARY KEY,
+    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "password" VARCHAR (1000) NOT NULL,
+	"is_admin" BOOLEAN
+);
 
 CREATE TABLE "user_details" (
 	"id" SERIAL PRIMARY KEY,

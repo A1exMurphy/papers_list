@@ -10,10 +10,10 @@ router.get('/', (req, res) => {
   const sqlText = `
   SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name"
   FROM "posts"
-  INNER JOIN "post_tags"
+  LEFT JOIN "post_tags"
   ON "post_tags"."post_id" = "posts"."id"
-  INNER JOIN "tags" 
-  ON "tags"."id" = "post_tags"."tag_id"
+  LEFT JOIN "tags" 
+  ON "tags"."id" = "post_tags"."tag_id";
   `
  
 
