@@ -11,7 +11,7 @@ CREATE TABLE "user" (
 
 -- DROP TABLE IF EXISTS "user";
 
--- DROP TABLE IF EXISTS "user_details";
+-- DROP TABLE IF EXISTS "user_details" CASCADE;
 
 -- DROP TABLE IF EXISTS "posts";
 
@@ -26,6 +26,8 @@ CREATE TABLE "user_details" (
 	"additional_info" TEXT
 );
 
+
+-- Create types for use in posts table to give us string values for set options in columns
 CREATE TYPE SIZE AS ENUM ('small', 'medium', 'large');
 CREATE TYPE STATUS AS ENUM ('pending', 'approved', 'delete');
 
@@ -38,9 +40,28 @@ CREATE TABLE "posts" (
 	"description" TEXT NOT NULL,
 	"event_size" SIZE,
 	"image" VARCHAR(120) NOT NULL,
-	"admin_approved" STATUS,
-	"is_highlighted_event" BOOLEAN,
+	"admin_approved" STATUS DEFAULT 'pending',
+	"is_highlighted_event" BOOLEAN DEFAULT false,
 	"contact_id" int REFERENCES "user_details"
+);
+
+INSERT INTO "posts" (
+	"host",
+	"event_name",
+	"cost",
+	"time",
+	"description",
+	"event_size",
+	"image"
+)
+	VALUES (
+	'Prime', 
+	'client project', 
+	false, 
+	'14:13', 
+	'we are almost real developers!', 
+	'small', 
+	'some image'
 );
 
 CREATE TABLE "post_tags" (
