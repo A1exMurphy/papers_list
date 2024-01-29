@@ -1,3 +1,5 @@
+import { combineReducers } from "redux";
+
 const events = (state = [], action) => {
   switch (action.type) {
     case "SET_EVENTS":
@@ -7,4 +9,15 @@ const events = (state = [], action) => {
   }
 };
 
-export default events;
+const selectedEvent = (state = [], action) => {
+  if (action.type === 'SELECT_EVENT') {
+    console.log("Selected event is:", action.payload);
+    return action.payload;
+  }
+  return state;
+}
+
+export default combineReducers({
+  events,
+  selectedEvent
+});
