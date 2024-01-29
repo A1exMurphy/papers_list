@@ -5,7 +5,7 @@ function* getEvents() {
   try {
     const response = yield axios({
       method: "GET",
-      url: "/events",
+      url: "/api/eventfeed",
     });
     yield put({
       type: "SET_EVENTS",
