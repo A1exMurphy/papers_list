@@ -45,11 +45,17 @@ CREATE TABLE "posts" (
 
 CREATE TABLE "post_tags" (
 	"id" SERIAL PRIMARY KEY,
-	"post_id" int,
-	"tag_id" int
+	"post_id" int REFERENCES "posts",
+	"tag_id" int REFERENCES "tags"
 );
 
 CREATE TABLE "tags" (
 	"id" SERIAL PRIMARY KEY,
 	"tag_name" VARCHAR(40)
+);
+
+CREATE TABLE "comments" (
+"id" SERIAL PRIMARY KEY,
+"comment" VARCHAR(1000),
+"posts_id" int REFERENCES "posts"
 );
