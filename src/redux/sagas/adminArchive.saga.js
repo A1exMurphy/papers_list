@@ -5,7 +5,7 @@ function* getArchivedEvents() {
   try {
     const response = yield axios({
       method: "GET",
-      url: "/api/eventfeed",
+      url: "/api/admin",
     });
     yield put({
       type: "SET_ARCHIVED",
