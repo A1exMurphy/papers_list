@@ -6,8 +6,24 @@ const router = express.Router();
  * GET route template
  */
 router.get('/:id', (req, res) => {
-  // GET route code here
+    const getSelectedEvent = 
+    `
+    SELECT * FROM "posts"
+        WHERE "id" = $1
+    `
+    postID = [req.params.id]
+   
   
+    pool.query(getSelectedEvent, postID)
+      .then((result) => {
+        res.send(result.rows[0])
+        
+  
+      })
+      .catch((err) => {
+        console.log("GET /api/eventfeed fail:", err);
+        res.sendStatus(500);
+      });
 });
 
 /**
@@ -31,7 +47,7 @@ router.put('/:id', (req, res) => {
         
     WHERE "id" = $8;
     `
-
+//not sure if the happy path is using req.body.id or req.params.id
     newEventValues = [
         req.body.host,
         req.body.event_name,
