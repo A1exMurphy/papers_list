@@ -1,3 +1,7 @@
+.landing-page-highlights-section {
+  transform: translateY(60px);
+  flex-direction: row;
+}
 .landing-title {
   width: auto;
   justify-self: center;
@@ -10,5 +14,11 @@
   position: relative;
 }
 
-/* body {
-} */
+.highlights-container {
+  border: 1px solid black;
+  display: flex;
+  width: 200px;
+  height: 200px;
+  margin-left: 2rem;
+  flex-direction: row;
+}
