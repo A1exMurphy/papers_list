@@ -9,7 +9,11 @@ const passport = require('./strategies/user.strategy');
 
 // Route Includes
 const userRouter = require('./routes/user.router');
+
+const newEventRouter = require('./routes/newEvent.router');
+
 const eventRouter = require('./routes/EventPage.router');
+
 
 
 // Express Middleware
@@ -26,6 +30,9 @@ app.use(passport.session());
 
 // Routes
 app.use('/api/user', userRouter);
+
+app.use('/api/newevent', newEventRouter);
+
 app.use('/api/eventfeed', eventRouter)
 
 // Listen Server & Port
