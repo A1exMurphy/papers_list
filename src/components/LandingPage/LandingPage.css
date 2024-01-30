@@ -21,4 +21,10 @@
   height: 200px;
   margin-left: 2rem;
   flex-direction: row;
+  cursor: pointer;
+}
+
+.create-event-btn {
+  position: absolute;
+  transform: translate(500%, 500%);
 }
