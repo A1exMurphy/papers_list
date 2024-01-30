@@ -20,6 +20,8 @@ const adminRouter = require('./routes/admin.router')
 
 
 
+
+
 // Express Middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -40,6 +42,8 @@ app.use('/api/newevent', newEventRouter);
 app.use('/api/eventfeed', eventRouter);
 
 app.use('/api/admin', adminRouter);
+
+
 
 
 // Listen Server & Port
