@@ -15,6 +15,8 @@ function* getEvents() {
     console.log("Unable to get events from server", error);
   }
 }
+
+
 export default function* eventSaga() {
   yield takeLatest("FETCH_EVENTS", getEvents);
 }
