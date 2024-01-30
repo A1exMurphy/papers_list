@@ -25,6 +25,11 @@ export default function LandingPage() {
     history.push(`/events/${selectedEvent.id}`);
   };
 
+  const handleCreateEvent = () => {
+    console.log("Creating new event");
+    history.push('/newevent');
+  }
+
   return (
     <>
       <div className="titleContainer">
@@ -54,6 +59,20 @@ export default function LandingPage() {
             );
           })}
       </section>
+      <section className="landing-page-events-section">
+        <div className="section-events-title">
+          <h1>Events</h1>
+        </div>
+      </section>
+      <button 
+        className="create-event-btn"
+        onClick={handleCreateEvent}
+        >Create New Event</button>
     </>
+<<<<<<< HEAD
   );
 }
+=======
+  )
+} 
+>>>>>>> a4bd21980460c72a142b35c0ca2ec3bc811f01e6
