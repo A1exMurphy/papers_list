@@ -16,9 +16,10 @@ function* getArchivedEvents() {
   }
 }
 function* deleteFromArchive(action) {
+    // This is a delete in name only. It just moves the event to a "deleted archive"
     try {
         const response = yield axios({
-            method: "DELETE",
+            method: "PUT",
             url: `/api/admin/${action.payload.id}`,
             data: action.payload,
 
