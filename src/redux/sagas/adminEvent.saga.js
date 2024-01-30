@@ -1,11 +1,11 @@
 import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
-function* addNewEvent(action) {
+function* adminAddEvent(action) {
   try {
     const response = yield axios({
       method: "POST",
-      url: "/api/newevent",
+      url: "/api/adminevent",
       data: action.payload
     });
   } catch (error) {
@@ -13,6 +13,7 @@ function* addNewEvent(action) {
   }
 }
 
-export default function* newEventSaga() {
-  yield takeLatest("ADD_EVENT", addNewEvent);
+
+export default function* adminAddEventSaga() {
+  yield takeLatest("ADMIN_ADD_EVENT", adminAddEvent);
 }
