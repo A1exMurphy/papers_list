@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Modal from "../Modal/Modal";
 import './LandingPage.css';
 
 
 export default function LandingPage () {
+  const [openModal, setOpenModal] = useState(false);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -17,14 +19,14 @@ export default function LandingPage () {
 
   const handleEventClick = (selectedEvent) => {
     console.log("handleEventClick selected");
-
+    
     dispatch({
       type: 'SELECT_EVENT',
       payload: selectedEvent
     })
 
     console.log('Payload:', selectedEvent);
-    history.push(`/events/${selectedEvent.id}`);
+    // history.push(`/events/${eventData.id}`);
   }
 
   const handleCreateEvent = () => {
@@ -40,19 +42,22 @@ export default function LandingPage () {
       <section className="landing-page-highlights-section">
         {eventData && eventData.map(event => {
           return (
-            <div className="highlights-container" onClick={() => handleEventClick(event)} key={event.id}>
-              <div className="card">
-                <div className="img-box-landing-page">
-                  <img src={event.image} alt={event.description} />
-                </div>
-                <div className="event-name">
-                  <h3>{event.event_name}</h3>
-                </div>
-                <div className="event-time">
-                  <h5>{event.time}</h5>
+            <div className="app">
+              <div className="highlights-container" onClick={() => {handleEventClick(event); setOpenModal(true);}} key={event.id}>
+              
+                <div className="card">
+                  <div className="img-box-landing-page">
+                    <img src={event.image} alt={event.description} />
+                  </div>
+                  <div className="event-name">
+                    <h3>{event.event_name}</h3>
+                  </div>
+                  <div className="event-time">
+                    <h5>{event.time}</h5>
+                  </div>
                 </div>
               </div>
-            </div>
+          </div>
           )
         })}
       </section>
@@ -61,10 +66,13 @@ export default function LandingPage () {
           <h1>Events</h1>
         </div>
       </section>
+        
       <button 
         className="create-event-btn"
         onClick={handleCreateEvent}
         >Create New Event</button>
+      {openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}
+
     </>
   )
-} 
+}

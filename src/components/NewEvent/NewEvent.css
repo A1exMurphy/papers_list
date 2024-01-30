@@ -28,6 +28,7 @@
     align-items: center;
     transform: translate(200px, 50px);
 }
+
 #event-host-input, #host-label{
     display: flex;
     align-items: center;
