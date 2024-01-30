@@ -27,5 +27,5 @@ function* adminDeleteEvent(action) {
 
 export default function* adminAddEventSaga() {
   yield takeLatest("ADMIN_ADD_EVENT", adminAddEvent);
-  yield takeLatest("ADMIN_DELETE_EVENT", adminDeleteEvent); 
+  yield takeLatest("ADMIN_DELETE_EVENT", adminDeleteEvent);
 }
