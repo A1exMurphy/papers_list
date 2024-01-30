@@ -69,10 +69,6 @@ export default function LandingPage() {
         onClick={handleCreateEvent}
         >Create New Event</button>
     </>
-<<<<<<< HEAD
   );
 }
-=======
-  )
-} 
->>>>>>> a4bd21980460c72a142b35c0ca2ec3bc811f01e6
+
