@@ -55,17 +55,17 @@ export default function NewEvent() {
                     <input
                         id='event-location-input'
                         type='text'
-                        onChange={e => setTitleInput(e.target.value)}
-                        value={titleInput}
+                        onChange={e => setLocationInput(e.target.value)}
+                        value={locationInput}
                     />
                 </div>
                 <div>
-                    <label id='date-label' htmlFor='event-date-input'>Name</label>
+                    <label id='date-label' htmlFor='event-date-input'>Date</label>
                     <input
                         id='event-date-input'
                         type='text'
-                        onChange={e => setTitleInput(e.target.value)}
-                        value={titleInput}
+                        onChange={e => setDateInput(e.target.value)}
+                        value={dateInput}
                     />
                 </div>
                 <div>
@@ -73,8 +73,8 @@ export default function NewEvent() {
                     <input
                         id='event-cost-input'
                         type='text'
-                        onChange={e => setTitleInput(e.target.value)}
-                        value={titleInput}
+                        onChange={e => setCostInput(e.target.value)}
+                        value={costInput}
                     />
                 </div>
                 <button className='submit-btn'>Submit</button>
