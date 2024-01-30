@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import EventPage from '../EventPage/EventPage';
 import NewEvent from '../NewEvent/NewEvent';
+import Modal from '../Modal/Modal';
 
 import './App.css';
 
@@ -50,12 +51,12 @@ function App() {
             <AboutPage />
           </Route>
 
-          <Route
+          {/* <Route
             exact
             path="/events/:id"
           >
-            <EventPage />
-          </Route>
+            <Modal />
+          </Route> */}
 
           <Route 
             exact
