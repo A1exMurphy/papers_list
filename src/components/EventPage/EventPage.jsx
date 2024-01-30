@@ -12,6 +12,10 @@ export default function EventPage() {
     }, [])
 
     return (
-        <h1>{singleEvent.event_name}</h1>
+        <>
+            <h1>{singleEvent.event_name}</h1>
+            <img src={singleEvent.image} />
+            <p>{singleEvent.description}</p>
+        </>
     )
 }

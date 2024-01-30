@@ -9,12 +9,11 @@ const passport = require('./strategies/user.strategy');
 
 // Route Includes
 const userRouter = require('./routes/user.router');
-
 const newEventRouter = require('./routes/newEvent.router');
-
 const eventRouter = require('./routes/EventPage.router');
-
 const adminRouter = require('./routes/admin.router')
+const contactRouter = require('./routes/contactInfo.router')
+
 
 
 
@@ -40,6 +39,10 @@ app.use('/api/newevent', newEventRouter);
 app.use('/api/eventfeed', eventRouter);
 
 app.use('/api/admin', adminRouter);
+
+app.use('/api/contact', contactRouter);
+
+
 
 
 // Listen Server & Port
