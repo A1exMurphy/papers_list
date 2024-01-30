@@ -71,7 +71,7 @@ function LandingPage() {
       {openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}
 
     </>
-  )
-} 
+  );
+}
 
 export default LandingPage;
