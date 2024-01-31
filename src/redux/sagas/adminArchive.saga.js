@@ -82,6 +82,20 @@ function* addTags(action) {
     console.log("Unable to add tags to server", error);
   }
 }
+function* deleteTag(action) {
+  try {
+    const response = yield axios({
+      method: "DELETE",
+      url: `/api/admin/${action.payload.id}`,
+      data: action.payload,
+    });
+    yield put({
+      type: "FETCH_TAGS",
+    });
+  } catch (error) {
+    console.log("Unable to delete tag", error);
+  }
+}
 export default function* archivedEventSaga() {
   yield takeLatest("FETCH_ARCHIVED_EVENTS", getArchivedEvents);
   yield takeLatest("DELETE_FROM_ARCHIVE", deleteFromArchive);
@@ -89,4 +103,6 @@ export default function* archivedEventSaga() {
   yield takeLatest("ADMIN_EDIT_EVENT", adminEditEvent);
   yield takeLatest("FETCH_TAGS", getTags);
   yield takeLatest("ADD_TAGS", addTags);
+  yield takeLatest("DELETE_TAG", deleteTag);
+
 }
