@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import EventPage from '../EventPage/EventPage';
 import NewEvent from '../NewEvent/NewEvent';
 import Modal from '../Modal/Modal';
+import AdminArchive from '../AdminArchive/AdminArchive';
 
 import './App.css';
 
@@ -83,6 +84,13 @@ function App() {
           >
             <InfoPage />
           </ProtectedRoute>
+
+          <Route
+            exact
+            path="/eventarchive"
+          >
+            <AdminArchive/>
+         </Route>
 
           <Route
             exact
