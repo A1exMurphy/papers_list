@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import "./LandingPage.css";
+
 
 import Modal from "../Modal/Modal";
 import './LandingPage.css';
@@ -8,6 +10,7 @@ import './LandingPage.css';
 
 export default function LandingPage () {
   const [openModal, setOpenModal] = useState(false);
+
 
 
 
@@ -22,18 +25,15 @@ export default function LandingPage () {
 
   const handleEventClick = (selectedEvent) => {
     console.log("handleEventClick selected");
-    
+
     dispatch({
       type: "SELECT_EVENT",
       payload: selectedEvent,
     });
 
-
-    console.log('Payload:', selectedEvent);
-    // history.push(`/events/${eventData.id}`);
-  }
+    console.log("Payload:", selectedEvent);
+    history.push(`/events/${selectedEvent.id}`);
   };
-
 
   const handleCreateEvent = () => {
     console.log("Creating new event");
@@ -46,10 +46,14 @@ export default function LandingPage () {
         <h1 className="landing-title">Landing Page</h1>
       </div>
       <section className="landing-page-highlights-section">
-        {eventData && eventData.map(event => {
-          return (
-            <div className="app">
-              <div className="highlights-container" onClick={() => {handleEventClick(event); setOpenModal(true);}} key={event.id}>
+        {eventData &&
+          eventData.map((event) => {
+            return (
+              <div
+                className="highlights-container"
+                onClick={() => handleEventClick(event)}
+                key={event.id}
+              >
                 <div className="card">
                   <div className="img-box-landing-page">
                     <img src={event.image} alt={event.description} />
@@ -62,16 +66,14 @@ export default function LandingPage () {
                   </div>
                 </div>
               </div>
-          </div>
-          )
-        })}
+            );
+          })}
       </section>
       <section className="landing-page-events-section">
         <div className="section-events-title">
           <h1>Events</h1>
         </div>
       </section>
-        
       <button 
         className="create-event-btn"
         onClick={handleCreateEvent}
@@ -79,4 +81,9 @@ export default function LandingPage () {
       {openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}
 
     </>
-  )
+
+  );
+}
+
+export default LandingPage;
+
