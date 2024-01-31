@@ -15,4 +15,5 @@ function* addNewEvent(action) {
 
 export default function* newEventSaga() {
   yield takeLatest("ADD_EVENT", addNewEvent);
+  
 }

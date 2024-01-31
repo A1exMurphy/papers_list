@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import EventPage from '../EventPage/EventPage';
 import NewEvent from '../NewEvent/NewEvent';
 import Modal from '../Modal/Modal';
+import SubmitContactInfo from '../ContactInfo/ContactInfo';
 
 import './App.css';
 
@@ -63,6 +64,13 @@ function App() {
             path="/newevent"
           >
             <NewEvent />
+          </Route>
+
+          <Route 
+            exact
+            path="/contactinfo"
+          >
+            <SubmitContactInfo />
           </Route>
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:5173/user will show the UserPage if the user is logged in.
