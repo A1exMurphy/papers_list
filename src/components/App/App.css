@@ -1,1 +1,16 @@
-*, *::after, *::before { margin: 0; box-sizing: border-box; }
+*, *::after, *::before { 
+    margin: 0; 
+    box-sizing: border-box;
+    font-family: myFont;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url("/public/HvDTrial_Brandon_Grotesque_black-BF64a625c944b08.otf");
+    src: url("/public/HvDTrial_Brandon_Grotesque_black_italic-BF64a625c93406c.otf");
+    src: url("/public/HvDTrial_Brandon_Grotesque_bold-BF64a625c9151d5.otf");
+    src: url("/public/HvDTrial_Brandon_Grotesque_bold_italic-BF64a625c93b0ce.otf");
+    src: url("/public/HvDTrial_Brandon_Grotesque_light-BF64a625c93e709.otf");
+    src: url("/public/HvDTrial_Brandon_Grotesque_light_italic-BF64a625c93ac64.otf");
+
+}
