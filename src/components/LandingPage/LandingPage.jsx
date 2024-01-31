@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./LandingPage.css";
 
+
 function LandingPage() {
   const history = useHistory();
   const dispatch = useDispatch();
