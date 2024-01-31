@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import Header from '../Header/Header';
 
 function Nav() {
   const user = useSelector((store) => store.user);
 
-  return (
+  return ( 
+  <>
+    <Header />
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Paper's List</h2>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
@@ -45,6 +47,7 @@ function Nav() {
         </Link>
       </div>
     </div>
+    </>
   );
 }
 

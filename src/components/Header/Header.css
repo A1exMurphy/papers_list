@@ -1,0 +1,19 @@
+.nav-title {
+  font-family: "Source Sans 3", sans-serif;
+  justify-content: center;
+  display: inline;
+  font-size: 45px;
+  color: #004986;
+  position: fixed;
+  width: auto;
+  margin: 0;
+  padding-top: 5px;
+  padding-left: 40%;
+}
+
+.s {
+  display: inline;
+  font-size: 44px;
+  color: #47a23f;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+}
