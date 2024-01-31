@@ -15,7 +15,7 @@ export default function Modal({ closeModal }) {
         <>
             <div className="modal-background">
                 <div className="modal-container">
-                    <button onClick={() => closeModal(false)}>x</button>
+                    <button onClick={() => {console.log("closeModal"); closeModal(false);}}>x</button>
                     <div className="modal-title">
                         <h1>{singleEvent.event_name}</h1>
                     </div>
