@@ -8,8 +8,7 @@ import "./LandingPage.css";
 import Modal from "../Modal/Modal";
 import './LandingPage.css';
 
-
-function LandingPage () {
+ export default function  LandingPage () {
   const [openModal, setOpenModal] = useState(false);
 
 
