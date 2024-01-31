@@ -14,7 +14,6 @@ function LandingPage () {
 
 
 
-
   const history = useHistory();
   const dispatch = useDispatch();
   const eventData = useSelector((store) => store.events.events);
@@ -86,5 +85,5 @@ function LandingPage () {
   );
 }
 
-export default LandingPage;
+
 
