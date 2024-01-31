@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import "./LandingPage.css";
-
-
-
 import Modal from "../Modal/Modal";
-import './LandingPage.css';
+import "./LandingPage.css";
 
  export default function  LandingPage () {
   const [openModal, setOpenModal] = useState(false);
@@ -31,7 +27,6 @@ import './LandingPage.css';
     });
 
     console.log("Payload:", selectedEvent);
-    history.push(`/events/${selectedEvent.id}`);
   };
 
   const handleCreateEvent = () => {
@@ -50,7 +45,7 @@ import './LandingPage.css';
             return (
               <div
                 className="highlights-container"
-                onClick={() => handleEventClick(event)}
+                onClick={() => {handleEventClick(event); setOpenModal(true)}}
                 key={event.id}
               >
                 <div className="card">
