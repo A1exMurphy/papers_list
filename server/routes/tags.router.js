@@ -9,12 +9,7 @@ const router = express.Router();
 router.get('/:id', (req, res) => {
     const getSelectedEvent = 
     `
-    SELECT * FROM "posts"
-        LEFT JOIN "post_tags"
-            ON "posts"."id"="post_tags"."post_id"
-        LEFT JOIN "tags"
-            ON "post_tags"."tag_id"="tags"."id"
-        WHERE "posts"."id" = $1;
+    SELECT * FROM "tags";
     `
     postID = [req.params.id]
    
@@ -45,7 +40,7 @@ router.post('/', (req, res) => {
     )
 	    VALUES (
             $1
-        );
+    );
     `
 
     newTagValues = [
