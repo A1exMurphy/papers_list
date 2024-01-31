@@ -4,29 +4,35 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Modal.css";
 
 export default function Modal({ closeModal }) {
+  const dispatch = useDispatch();
+  const singleEvent = useSelector((store) => store.selectedEvent.selectedEvent);
 
-    const dispatch = useDispatch();
-    const singleEvent = useSelector(store => store.selectedEvent.selectedEvent);
-
-    useEffect(() => {
-        dispatch({type: 'FETCH_EVENTS'});
-    }, [])
-    return (
-        <>
-            <div className="modal-background">
-                <div className="modal-container">
-                    <button onClick={() => {console.log("closeModal"); closeModal(false);}}>x</button>
-                    <div className="modal-title">
-                        <h1>{singleEvent.event_name}</h1>
-                    </div>
-                    <div className="modal-body">
-                        <p>{singleEvent.description}</p>
-                    </div>
-                    <div className="modal-img">
-                        <img src={singleEvent.image} alt="" />
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+  useEffect(() => {
+    dispatch({ type: "FETCH_EVENTS" });
+  }, []);
+  return (
+    <>
+      <div className="modal-background">
+        <div className="modal-container">
+          <button
+            onClick={() => {
+              console.log("closeModal");
+              closeModal(false);
+            }}
+          >
+            x
+          </button>
+          <div className="modal-title">
+            <h1>{singleEvent.event_name}</h1>
+          </div>
+          <div className="modal-body">
+            <p>{singleEvent.description}</p>
+          </div>
+          <div className="modal-img">
+            <img src={singleEvent.image} alt="" />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
