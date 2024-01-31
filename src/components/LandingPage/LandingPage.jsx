@@ -1,10 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./LandingPage.css";
 
 
-function LandingPage() {
+
+import Modal from "../Modal/Modal";
+import './LandingPage.css';
+
+
+function LandingPage () {
+  const [openModal, setOpenModal] = useState(false);
+
+
+
+
   const history = useHistory();
   const dispatch = useDispatch();
   const eventData = useSelector((store) => store.events.events);
@@ -72,7 +82,9 @@ function LandingPage() {
       {openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}
 
     </>
+
   );
 }
 
 export default LandingPage;
+
