@@ -6,6 +6,9 @@ const router = express.Router();
 /**
  * GET route template
  */
+
+
+
 router.get('/:id', (req, res) => {
     const getSelectedEvent = 
     `

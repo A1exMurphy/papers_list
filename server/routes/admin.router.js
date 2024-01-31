@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-router.get("/", (req, res) => {
+router.get("/events", (req, res) => {
     // GET route code here
     const sqlText = `
     SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
@@ -25,7 +25,28 @@ router.get("/", (req, res) => {
         console.log("GET /api/admin fail:", dbErr);
         res.sendStatus(500);
       });
+});
+
+router.get('/tags', (req, res) => {
+    const SqlText= 
+    `
+    SELECT * FROM "tags";
+    `
+    
+   
+  
+    pool.query(SqlText)
+      .then((result) => {
+        res.send(result.rows)
+        console.log('result', result.rows);
+  
+      })
+      .catch((err) => {
+        console.log("error in GET query", err);
+        res.sendStatus(500);
+      });
   });
+
 
 
 /**
@@ -100,7 +121,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const query = `
-      DELETE FROM "posts"
+      DELETE FROM "tags"
       WHERE "id" = $1;
     `;
     const values = [req.params.id];

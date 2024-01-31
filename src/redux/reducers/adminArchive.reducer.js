@@ -9,18 +9,10 @@ const archived = (state = [], action) => {
   }
 };
 
-const tags = (state = [], action) => {
-  switch (action.type) {
-    case "SET_TAGS":
-      return action.payload;
-    default:
-      return state;
-  }
-};
 
-const archiveReducer = combineReducers({
-  archived,
-  tags,
-});
 
-export default archiveReducer;
+
+
+
+export default archived;
+

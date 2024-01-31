@@ -5,7 +5,7 @@ function* getArchivedEvents() {
   try {
     const response = yield axios({
       method: "GET",
-      url: "/api/admin",
+      url: "/api/admin/events",
     });
     yield put({
       type: "SET_ARCHIVED",
@@ -59,7 +59,7 @@ function* getTags() {
   try {
     const response = yield axios({
       method: "GET",
-      url: "/api/admin",
+      url: "/api/admin/tags",
     });
     yield put({
       type: "SET_TAGS",
