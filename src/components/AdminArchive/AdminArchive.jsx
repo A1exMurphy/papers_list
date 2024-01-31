@@ -21,7 +21,7 @@ export default function AdminArchive({}) {
 
   const deleteTag = (tag) => {
     dispatch({
-      type: "DELETE_FROM_ARCHIVE",
+      type: "DELETE_TAG",
       payload: tag,
     });
   };
