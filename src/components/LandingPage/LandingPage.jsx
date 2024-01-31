@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./LandingPage.css";
+
 
 
 import Modal from "../Modal/Modal";
 import './LandingPage.css';
 
 
-export default function LandingPage () {
+function LandingPage () {
   const [openModal, setOpenModal] = useState(false);
 
 
