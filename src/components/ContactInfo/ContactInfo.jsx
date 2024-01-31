@@ -1,8 +1,14 @@
-
+import { useDispatch } from "react-redux";
 import { useState } from 'react';
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 
 
 export default function SubmitContactInfo() {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+
     let [email, setEmail] = useState('');
     let [phone, setPhone] = useState('');
     let [linkedIn, setLinkedIn] = useState('');
@@ -11,18 +17,19 @@ export default function SubmitContactInfo() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
         const newContact = {
             email: email, 
             phone: phone,
             linkedIn: linkedIn,
             additional_info: additionalInfo,
         }
+        console.log('button is buttoning', newContact)
         
-        dispatchEvent({
+        dispatch({
             type: 'ADD_CONTACT_INFO',
             payload: newContact
         })
+        history.push('/home')
         console.log("Handling submit");
     }
 
@@ -39,14 +46,14 @@ export default function SubmitContactInfo() {
                     <input
                         id='event-name-input'
                         type='text'
-                        onChange={e => setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                         value={email}
                     />
                     <label id='host-label' htmlFor='event-host-input'>Phone</label>
                     <input
                         id='event-host-input'
                         type='text'
-                        onChange={e => setPhone(e.target.value)}
+                        onChange={(e) => setPhone(e.target.value)}
                         value={phone}
                     />
                 </div>
@@ -55,7 +62,7 @@ export default function SubmitContactInfo() {
                     <input
                         id='event-location-input'
                         type='text'
-                        onChange={e => setLinkedIn(e.target.value)}
+                        onChange={(e) => setLinkedIn(e.target.value)}
                         value={linkedIn}
                     />
                 </div>
@@ -64,7 +71,7 @@ export default function SubmitContactInfo() {
                     <input
                         id='event-date-input'
                         type='text'
-                        onChange={e => SetadditionalInfo(e.target.value)}
+                        onChange={(e) => SetadditionalInfo(e.target.value)}
                         value={additionalInfo}
                     />
                 </div>

@@ -8,7 +8,7 @@ const router = express.Router();
  */
 //user submitted inputs POSTed to create new event with pending admin_approved
 router.post('/', (req, res) => {
-    console.log('in POST query')
+    console.log('in POST query for new contact:', req.body)
 
     const insertcontact = 
     `
@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
     contactValues = [
         req.body.email,
         req.body.phone,
-        req.body.linkdIn,
+        req.body.linkedIn,
         req.body.additional_info,
     ]
 
