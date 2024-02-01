@@ -94,9 +94,9 @@ function App() {
             <AdminNewEvent />
           </ProtectedRoute>
 
-          <Route exact path="/eventarchive">
+          <ProtectedRoute exact path="/eventarchive">
             <AdminArchive />
-          </Route>
+          </ProtectedRoute>
 
           <Route exact path="/login">
             {user.id ? (
