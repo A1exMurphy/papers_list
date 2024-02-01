@@ -23,6 +23,7 @@ import NewEvent from '../NewEvent/NewEvent';
 import SubmitContactInfo from '../ContactInfo/ContactInfo';
 import AdminArchive from '../AdminArchive/AdminArchive';
 import AdminNewEvent from "../AdminNewEvent/AdminNewEvent";
+import RemovedEvents from "../RemovedEvents/RemovedEvents";
 
 import "./App.css";
 
@@ -96,6 +97,10 @@ function App() {
 
           <Route exact path="/eventarchive">
             <AdminArchive />
+          </Route>
+
+          <Route exact path="/removedevents">
+            <RemovedEvents />
           </Route>
 
           <Route exact path="/login">
