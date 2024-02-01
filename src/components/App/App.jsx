@@ -91,7 +91,7 @@ function App() {
           <ProtectedRoute
             // admin created event
             exact
-            path="/newevent"
+            path="/adminnewevent"
           >
             <AdminNewEvent />
           </ProtectedRoute>
