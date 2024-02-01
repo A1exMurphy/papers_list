@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./NewEvent.css";
+import "./AdminNewEvent.css";
 
-export default function NewEvent() {
+export default function AdminNewEvent() {
   let [titleInput, setTitleInput] = useState("");
   let [hostInput, setHostInput] = useState("");
   let [locationInput, setLocationInput] = useState("");
