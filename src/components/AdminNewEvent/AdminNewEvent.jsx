@@ -12,7 +12,7 @@ export default function AdminNewEvent() {
   let [descriptionInput, setDescriptionInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [imageInput, setImageInput] = useState("");
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = (e) => {
@@ -31,7 +31,7 @@ export default function AdminNewEvent() {
 
     dispatch({
       type: "ADD_EVENT",
-      payload: newAdminEvent,
+      payload: newAdminEvent
     });
     console.log("Handling submit");
   };
