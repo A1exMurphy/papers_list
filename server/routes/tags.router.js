@@ -33,32 +33,7 @@ router.get('/:id', (req, res) => {
  * PUT route template
  */
 //submit POST request for a new tag
-router.post('/', (req, res) => {
-    console.log('in POST query')
 
-    const insertNewTag = 
-    `
-    INSERT INTO "tags" (
-        "tag_name"
-    )
-	    VALUES (
-            $1
-    );
-    `
-
-    newTagValues = [
-        req.body.tag_name
-    ]
-
-        pool.query(insertNewTag, newTagValues)
-            .then((result) => {
-                res.sendStatus(201)
-            })
-            .catch((err) => {
-                console.log(err, 'error in POST query')
-                res.sendStatus(500)
-            })
-});
 
 
 //initiate DELETE query for selected id
