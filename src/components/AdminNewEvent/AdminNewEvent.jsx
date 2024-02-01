@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./AdminNewEvent.css";
 
 export default function AdminNewEvent() {
   let [hostInput, setHostInput] = useState("");
   let [titleInput, setTitleInput] = useState("");
+  let [locationInput, setLocationInput] = useState('');
   let [costInput, setCostInput] = useState("");
   let [dateInput, setDateInput] = useState("");
   let [descriptionInput, setDescriptionInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [imageInput, setImageInput] = useState("");
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +23,7 @@ export default function AdminNewEvent() {
       event_name: titleInput,
       cost: costInput,
       time: dateInput,
+      location: locationInput,
       description: descriptionInput,
       event_size: eventSizeInput,
       image: imageInput,
@@ -27,13 +31,13 @@ export default function AdminNewEvent() {
 
     dispatch({
       type: "ADD_EVENT",
-      payload: newAdminEvent,
+      payload: newAdminEvent
     });
     console.log("Handling submit");
   };
 
-  const handleDiscard = () => {
-    console.log("Handling discard");
+  const backToArchive = () => {
+    history.push("/eventarchive");
   };
   return (
     <>
@@ -42,7 +46,7 @@ export default function AdminNewEvent() {
       <form onSubmit={handleSubmit}>
         <div>
           <label id="name-label" htmlFor="event-name-input">
-            Name
+            Event Name
           </label>
           <input
             id="event-name-input"
@@ -128,8 +132,8 @@ export default function AdminNewEvent() {
         </div>
         <button className="submit-btn">Submit</button>
       </form>
-      <button onClick={handleDiscard} className="discard-btn">
-        Discard
+      <button onClick={backToArchive} className="discard-btn">
+        Admin Page
       </button>
     </>
   );
