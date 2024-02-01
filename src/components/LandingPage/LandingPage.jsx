@@ -39,7 +39,6 @@ import "./LandingPage.css";
       <div className="titleContainer">
         <h1 className="landing-title">Landing Page</h1>
       </div>
-      <section className="landing-page-highlights-section">
         {eventData &&
           eventData.map((event) => {
             return (
@@ -62,17 +61,14 @@ import "./LandingPage.css";
               </div>
             );
           })}
-      </section>
-      <section className="landing-page-events-section">
         <div className="section-events-title">
           <h1>Events</h1>
         </div>
-      </section>
       <button 
         className="create-event-btn"
         onClick={handleCreateEvent}
         >Create New Event</button>
-      {openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}
+      <main>{openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}</main>
 
     </>
 
