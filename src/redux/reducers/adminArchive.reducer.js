@@ -9,10 +9,20 @@ const archived = (state = [], action) => {
   }
 };
 
+const removedEvents = (state = [], action) => {
+  switch (action.type) {
+    case "SET_REMOVED_EVENTS":
+      return action.payload;
+    default:
+      return state;
+  }
+}
 
 
+const archive = combineReducers({
+  archived,
+  removedEvents
+});
 
-
-
-export default archived;
+export default archive;
 
