@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import "./AdminNewEvent.css";
 
 export default function AdminNewEvent() {
@@ -7,11 +8,12 @@ export default function AdminNewEvent() {
   let [locationInput, setLocationInput] = useState("");
   let [dateInput, setDateInput] = useState("");
   let [costInput, setCostInput] = useState("");
+  const dispatch = useDispatch;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatchEvent({
+    dispatch({
       type: "ADD_EVENT",
       payload: {
         title: titleInput,
