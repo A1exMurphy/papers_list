@@ -5,6 +5,9 @@ import Modal from "../Modal/Modal";
 import Container from "postcss/lib/container";
 import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+
 import "./LandingPage.css";
 
 export default function LandingPage() {
@@ -37,6 +40,7 @@ export default function LandingPage() {
 
   return (
     <>
+    <section>
       <div className="titleContainer">
         <h1 className="landing-title">Highlighted Events</h1>
       </div>
@@ -55,13 +59,14 @@ export default function LandingPage() {
                   <img className="card-img" src={event.image} alt={event.description} />
                   <div className="card-content">
                     <h3>{event.event_name}</h3>
-                    <h5>{event.event_size} Event</h5>
+                    {event.cost === true ? <h5>Paid Event</h5> : <h5>Free Event</h5>}
                   </div>
                 </div>
               </div>
             );
           })}
       </div>
+      </section>
         <div className="section-events-title">
           <h1>Events</h1>
         </div>
