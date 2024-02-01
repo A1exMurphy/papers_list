@@ -25,6 +25,7 @@ import Modal from "../Modal/Modal";
 import SubmitContactInfo from "../ContactInfo/ContactInfo";
 import AdminArchive from "../AdminArchive/AdminArchive";
 import AdminNewEvent from "../AdminNewEvent/AdminNewEvent";
+import EditTags from "../EditTag/EditTag";
 
 import "./App.css";
 
@@ -98,6 +99,10 @@ function App() {
 
           <Route exact path="/eventarchive">
             <AdminArchive />
+          </Route>
+
+          <Route exact path="/edit_tag/:id">
+           <EditTags/>
           </Route>
 
           <Route exact path="/login">

@@ -77,7 +77,7 @@ router.get('/:id', (req, res) => {
  * PUT route template
  */
 //submit PUT request for selected event with new or existing values
-router.put('/:id', (req, res) => {
+router.put('/event/:id', (req, res) => {
     console.log('in PUT query')
 
     const insertNewEvent = 
@@ -163,6 +163,56 @@ router.post('/', (req, res) => {
                 res.sendStatus(500)
             })
 });
+
+router.put('/tags/:id', (req, res) => {
+    console.log('in PUT query')
+
+    const insertNewTag = 
+    `
+    UPDATE "tags" 
+	 SET
+    "tag_name"=$1
+    WHERE "id" = $2;
+    `
+//not sure if the happy path is using req.body.id or req.params.id
+    newTagValues = [
+        req.body.tag_name,
+        req.body.id
+    ]
+
+        pool.query(insertNewTag, newTagValues)
+            .then((result) => {
+                res.sendStatus(201)
+            })
+            .catch((err) => {
+                console.log(err, 'error in PUT query')
+                res.sendStatus(500)
+            })
+});
+
+router.get('/tag/:id', (req, res) => {
+    const getSelectedTag = 
+    `
+    SELECT * FROM "tags"
+        WHERE "id" = $1
+    `
+    TagID = [req.params.id]
+    console.log('params',req.params.id);
+   
+  
+    pool.query(getSelectedTag, TagID)
+      .then((result) => {
+        res.send(result.rows[0])
+      })
+      .catch((err) => {
+        console.log("GET /api/admin/tag fail:", err);
+        res.sendStatus(500);
+      });
+});
+
+
+
+
 
   
 

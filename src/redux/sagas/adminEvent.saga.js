@@ -5,7 +5,7 @@ function* adminAddEvent(action) {
   try {
     const response = yield axios({
       method: "POST",
-      url: "/api/adminevent",
+      url: "/api/adminevent/event",
       data: action.payload,
     });
   } catch (error) {

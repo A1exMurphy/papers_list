@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import "./AdminArchive.css";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -19,12 +19,18 @@ const style = {
     p: 4,
 };
 
-export default function AdminArchive({}) {
+export default function AdminArchive() {
+
   useEffect(() => {
     dispatch({ type: "FETCH_ARCHIVED_EVENTS" });
-    dispatch({ type: "FETCH_TAGS" });
+      dispatch({ type: "FETCH_TAGS" });
+
     window.scrollTo(0, 0);
   }, []);
+    
+    
+   
+    
 
     let [tagName, setTagName] = useState('');
 
@@ -36,11 +42,14 @@ export default function AdminArchive({}) {
     
 
   const events = useSelector((store) => store.archived);
-  const tags = useSelector((store) => store.tags);
+    const tags = useSelector((store) => store.tags);
+   
   console.log("events", events);
 
   const history = useHistory();
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    
+    
 
   const deleteTag = (tag) => {
     dispatch({
@@ -48,6 +57,8 @@ export default function AdminArchive({}) {
       payload: tag,
     });
   };
+    
+    
     
     const newTag = (event) => {
         event.preventDefault();
@@ -59,8 +70,6 @@ export default function AdminArchive({}) {
         });
         setTagName('')
         setOpen(false)
-      
-
     };
 
 
@@ -123,7 +132,7 @@ export default function AdminArchive({}) {
                 <td>{tag.tag_name}</td>
                 <td>
                   <button onClick={() => deleteTag(tag)}>delete</button>
-                  <button>edit</button>
+                        <button onClick={() => { history.push(`/edit_tag/${tag.id}`) }}>edit</button>
                 </td>
               </tr>
             );
@@ -131,7 +140,7 @@ export default function AdminArchive({}) {
         </tbody>
           </table>
         
-          <button onClick={handleOpen} >Add Tag</button>
+          <button onClick={handleOpen}>Add Tag</button>
          
           
     </div>
