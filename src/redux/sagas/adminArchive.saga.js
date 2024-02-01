@@ -70,13 +70,15 @@ function* getTags() {
   }
 }
 function* addTags(action) {
+  console.log('action', action.payload);
   try {
     const response = yield axios({
       method: "POST",
-      url: `/api/admin/${action.payload.id}`,
+      url: `/api/admin`,
+      data: action.payload
     });
     yield put({
-      type: "FETCH_TAGS",
+      type: "FETCH_TAGS"
     });
   } catch (error) {
     console.log("Unable to add tags to server", error);

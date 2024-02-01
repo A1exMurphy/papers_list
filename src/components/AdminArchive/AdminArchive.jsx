@@ -10,7 +10,7 @@ export default function AdminArchive({}) {
     window.scrollTo(0, 0);
   }, []);
 
-  let [tagId, setTagId] = useState(0);
+  let [tagName, setTagName] = useState('');
 
   const events = useSelector((store) => store.archived);
   const tags = useSelector((store) => store.tags);
@@ -25,6 +25,21 @@ export default function AdminArchive({}) {
       payload: tag,
     });
   };
+    
+    const newTag = (event) => {
+        event.preventDefault();
+
+        dispatch({
+            type: "ADD_TAGS", payload: {
+              tag_name: tagName
+            }
+        });
+        setTagName('')
+      
+
+    };
+
+
 
   return (
     <div>
@@ -67,8 +82,15 @@ export default function AdminArchive({}) {
             );
           })}
         </tbody>
-      </table>
-      <button>Add Tag</button>
+          </table>
+          <input
+              type="text"
+              value={tagName}
+              placeholder="Zip"
+              onChange={(event) => setTagName(event.target.value)}
+          />
+          <button onClick={newTag} >Add Tag</button>
+          
     </div>
   );
 }
