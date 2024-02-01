@@ -1,17 +1,18 @@
 .nav-title {
   font-family: var(--bgrotreg);
+  position: fixed;
+  width: auto;
   justify-content: center;
   display: inline;
   font-size: 45px;
   color: #004986;
-  position: fixed;
-  width: auto;
   margin: 0;
   padding-top: 5px;
   padding-left: 40%;
 }
 
 .s {
+  font-family: "Source Sans 3", sans-serif;
   display: inline;
   font-size: 44px;
   color: #47a23f;

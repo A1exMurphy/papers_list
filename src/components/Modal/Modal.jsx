@@ -4,9 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Modal.css";
 
 export default function Modal({ closeModal }) {
-
-    const dispatch = useDispatch();
-    const singleEvent = useSelector(store => store.selectedEvent.selectedEvent);
+  const dispatch = useDispatch();
+  const singleEvent = useSelector((store) => store.selectedEvent.selectedEvent);
 
     useEffect(() => {
         dispatch({type: 'FETCH_EVENTS'});
@@ -30,3 +29,4 @@ export default function Modal({ closeModal }) {
         </>
     )
 }
+
