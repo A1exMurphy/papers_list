@@ -52,37 +52,6 @@ CREATE TABLE "posts" (
 	"remove_event" BOOLEAN DEFAULT false
 );
 
-
-INSERT INTO "posts" (
-	"host",
-	"event_name",
-	"cost",
-	"time",
-	"description",
-	"event_size",
-	"image"
-)
-	VALUES (
-	'Prime', 
-	'client project', 
-	false, 
-	'14:13', 
-	'we are almost real developers!', 
-	'small', 
-	'some image'
-);
-
-UPDATE "posts" 
-	SET
-	"host"='PDA',
-	"event_name"='final project',
-	"cost"=true,
-	"time"='0216',
-	"description"='5 months of work!',
-	"event_size"='large',
-	"image"='green swirly'
-        
-    WHERE "id" = 1;
     
 --UPDATE "posts" 
 --	SET
