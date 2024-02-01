@@ -1,0 +1,40 @@
+.flex-those-events {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.landing-title {
+  text-align: center;
+  font-family: var(--bgrotbold);
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5 {
+  text-transform: capitalize;
+}
+
+.card {
+  border: 1px solid black;
+  width: 325px;
+  height: 325px;
+  background-color: rgb(150, 150, 150);
+  font-family: var(--srcsansreg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+
+.card-img {
+  width: auto;
+  height: 80%;
+  overflow-y: hidden;
+}
+
+.card-content {
+  padding: 15px;
+}
