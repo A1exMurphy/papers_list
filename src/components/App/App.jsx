@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import NewEvent from '../NewEvent/NewEvent';
 import SubmitContactInfo from '../ContactInfo/ContactInfo';
 import AdminArchive from '../AdminArchive/AdminArchive';
+import AdminNewEvent from "../AdminNewEvent/AdminNewEvent";
 
 import "./App.css";
 
