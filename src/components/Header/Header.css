@@ -1,5 +1,5 @@
 .nav-title {
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--bgrotreg);
   justify-content: center;
   display: inline;
   font-size: 45px;
@@ -16,4 +16,5 @@
   font-size: 44px;
   color: #47a23f;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+  font-family: var(--bgrotreg);
 }

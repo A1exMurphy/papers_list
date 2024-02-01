@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './NewEvent.css';
 
 export default function NewEvent() {
@@ -8,12 +9,12 @@ export default function NewEvent() {
     let [locationInput, setLocationInput] = useState('');
     let [dateInput, setDateInput] = useState('');
     let [costInput, setCostInput] = useState('');
-
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatchEvent({
+        dispatch({
             type: 'ADD_EVENT',
             payload: {
                 title: titleInput, 
