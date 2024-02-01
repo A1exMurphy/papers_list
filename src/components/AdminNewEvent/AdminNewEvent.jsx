@@ -3,25 +3,31 @@ import { useDispatch } from "react-redux";
 import "./AdminNewEvent.css";
 
 export default function AdminNewEvent() {
-  let [titleInput, setTitleInput] = useState("");
   let [hostInput, setHostInput] = useState("");
-  let [locationInput, setLocationInput] = useState("");
-  let [dateInput, setDateInput] = useState("");
+  let [titleInput, setTitleInput] = useState("");
   let [costInput, setCostInput] = useState("");
+  let [dateInput, setDateInput] = useState("");
+  let [descriptionInput, setDescriptionInput] = useState("");
+  let [eventSizeInput, setEventSizeInput] = useState("");
+  let [imageInput, setImageInput] = useState("");
   const dispatch = useDispatch;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const newAdminEvent = {
+      host: hostInput,
+      event_name: titleInput,
+      cost: costInput,
+      time: dateInput,
+      description: descriptionInput,
+      event_size: eventSizeInput,
+      image: imageInput,
+    };
+
     dispatch({
       type: "ADD_EVENT",
-      payload: {
-        title: titleInput,
-        host: hostInput,
-        date: dateInput,
-        cost: costInput,
-        location: locationInput,
-      },
+      payload: newAdminEvent,
     });
     console.log("Handling submit");
   };
@@ -31,7 +37,7 @@ export default function AdminNewEvent() {
   };
   return (
     <>
-      <h1 id="pg-title-create">Create Event</h1>
+      <h1 id="pg-title-create">Admin Create Event</h1>
 
       <form onSubmit={handleSubmit}>
         <div>
@@ -85,6 +91,39 @@ export default function AdminNewEvent() {
             type="text"
             onChange={(e) => setCostInput(e.target.value)}
             value={costInput}
+          />
+        </div>
+        <div>
+          <label id="description-label" htmlFor="event-description-input">
+            Description
+          </label>
+          <input
+            id="event-description-input"
+            type="text"
+            onChange={(e) => setDescriptionInput(e.target.value)}
+            value={descriptionInput}
+          />
+        </div>
+        <div>
+          <label id="size-label" htmlFor="event-size-input">
+            Event Size
+          </label>
+          <input
+            id="event-size-input"
+            type="text"
+            onChange={(e) => setEventSizeInput(e.target.value)}
+            value={eventSizeInput}
+          />
+        </div>
+        <div>
+          <label id="image-label" htmlFor="event-image-input">
+            Image
+          </label>
+          <input
+            id="event-image-input"
+            type="text"
+            onChange={(e) => setImageInput(e.target.value)}
+            value={imageInput}
           />
         </div>
         <button className="submit-btn">Submit</button>

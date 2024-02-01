@@ -39,7 +39,24 @@
     align-items: center;
     transform: translate(200px, 50px);
   }
-  
+  #event-description-input,
+  #description-label {
+    display: flex;
+    align-items: center;
+    transform: translate(200px, 50px);
+  }
+  #event-size-input,
+  #size-label {
+    display: flex;
+    align-items: center;
+    transform: translate(200px, 50px);
+  }
+  #event-image-input,
+  #image-label{
+    display: flex;
+    align-items: center;
+    transform: translate(200px, 50px);
+  }
   .discard-btn {
     position: relative;
     transform: translate(100px, -122px);
