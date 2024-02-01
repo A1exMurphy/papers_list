@@ -94,7 +94,7 @@ router.put('/:id', (req, res) => {
         
     WHERE "id" = $8;
     `
-//not sur if the happy path is using req.body.id or req.params.id
+//not sure if the happy path is using req.body.id or req.params.id
     newEventValues = [
         req.body.host,
         req.body.event_name,
