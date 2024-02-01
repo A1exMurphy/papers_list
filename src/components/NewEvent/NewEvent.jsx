@@ -1,4 +1,5 @@
 
+
 import { useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
@@ -18,8 +19,9 @@ export default function NewEvent() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
         const newEvent = {
             event_name: titleInput, 
@@ -131,3 +133,4 @@ export default function NewEvent() {
         </>
     )
 }
+
