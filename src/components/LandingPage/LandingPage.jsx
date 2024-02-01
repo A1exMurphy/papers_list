@@ -4,10 +4,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Modal from "../Modal/Modal";
 import "./LandingPage.css";
 
- export default function  LandingPage () {
+export default function LandingPage() {
   const [openModal, setOpenModal] = useState(false);
-
-
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -31,8 +29,8 @@ import "./LandingPage.css";
 
   const handleCreateEvent = () => {
     console.log("Creating new event");
-    history.push('/newevent');
-  }
+    history.push("/newevent");
+  };
 
   return (
     <>
@@ -44,7 +42,10 @@ import "./LandingPage.css";
             return (
               <div
                 className="highlights-container"
-                onClick={() => {handleEventClick(event); setOpenModal(true)}}
+                onClick={() => {
+                  handleEventClick(event);
+                  setOpenModal(true);
+                }}
                 key={event.id}
               >
                 <div className="card">
@@ -71,9 +72,5 @@ import "./LandingPage.css";
       <main>{openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}</main>
 
     </>
-
   );
 }
-
-
-
