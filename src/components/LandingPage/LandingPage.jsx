@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Modal from "../Modal/Modal";
+import Container from "postcss/lib/container";
+import { Button } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+
 import "./LandingPage.css";
 
 export default function LandingPage() {
@@ -34,14 +40,15 @@ export default function LandingPage() {
 
   return (
     <>
+    <section>
       <div className="titleContainer">
-        <h1 className="landing-title">Landing Page</h1>
+        <h1 className="landing-title">Highlighted Events</h1>
       </div>
+      <div className="flex-those-events">
         {eventData &&
           eventData.map((event) => {
             return (
               <div
-                className="highlights-container"
                 onClick={() => {
                   handleEventClick(event);
                   setOpenModal(true);
@@ -49,26 +56,25 @@ export default function LandingPage() {
                 key={event.id}
               >
                 <div className="card">
-                  <div className="img-box-landing-page">
-                    <img src={event.image} alt={event.description} />
-                  </div>
-                  <div className="event-name">
+                  <img className="card-img" src={event.image} alt={event.description} />
+                  <div className="card-content">
                     <h3>{event.event_name}</h3>
-                  </div>
-                  <div className="event-time">
-                    <h5>{event.time}</h5>
+                    {event.cost === true ? <h5>Paid Event</h5> : <h5>Free Event</h5>}
                   </div>
                 </div>
               </div>
             );
           })}
+      </div>
+      </section>
         <div className="section-events-title">
           <h1>Events</h1>
         </div>
-      <button 
+      <Button
+        variant='contained'
         className="create-event-btn"
         onClick={handleCreateEvent}
-        >Create New Event</button>
+        >Create New Event</Button>
       <main>{openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}</main>
 
     </>

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./NewEvent.css";
 
+
 export default function NewEvent() {
   let [titleInput, setTitleInput] = useState("");
   let [hostInput, setHostInput] = useState("");

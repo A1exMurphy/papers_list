@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-
+import { Button } from "@mui/base/Button";
 import Nav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 
