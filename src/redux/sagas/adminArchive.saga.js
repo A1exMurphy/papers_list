@@ -44,6 +44,20 @@ function* restoreFromDeleted(action) {
     console.log("Unable to delete event from archive", error);
   }
 }
+function* getRemovedEvents() {
+  try {
+    const response = yield axios({
+      method: "GET",
+      url: "/api/admin/removedevents",
+    });
+    yield put({
+      type: "SET_REMOVED_EVENTS",
+      payload: response.data,
+    });
+  } catch (error) {
+    console.log("Unable to get removed events from server", error);
+  }
+}
 function* adminEditEvent(action) {
   try {
     const response = yield axios({
@@ -102,6 +116,7 @@ export default function* archivedEventSaga() {
   yield takeLatest("FETCH_ARCHIVED_EVENTS", getArchivedEvents);
   yield takeLatest("DELETE_FROM_ARCHIVE", deleteFromArchive);
   yield takeLatest("RESTORE_FROM_DELETED", restoreFromDeleted);
+  yield takeLatest("FETCH_REMOVED_EVENTS", getRemovedEvents);
   yield takeLatest("ADMIN_EDIT_EVENT", adminEditEvent);
   yield takeLatest("FETCH_TAGS", getTags);
   yield takeLatest("ADD_TAGS", addTags);
