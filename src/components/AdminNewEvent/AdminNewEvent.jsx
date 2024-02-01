@@ -39,6 +39,14 @@ export default function AdminNewEvent() {
   const backToArchive = () => {
     history.push("/eventarchive");
   };
+
+  const removeEventFromActive = () => {
+    dispatch({
+      type: "REMOVE_EVENT"
+    })
+
+    history.push("/eventarchive");
+  }
   return (
     <>
       <h1 id="pg-title-create">Admin Create Event</h1>
@@ -134,6 +142,9 @@ export default function AdminNewEvent() {
       </form>
       <button onClick={backToArchive} className="discard-btn">
         Admin Page
+      </button>
+      <button onClick={removeEventFromActive}>
+        Remove Event
       </button>
     </>
   );

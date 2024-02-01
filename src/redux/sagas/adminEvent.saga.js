@@ -13,6 +13,18 @@ function* adminAddEvent(action) {
   }
 }
 
+function* adminRemoveEvent(action) {
+  try {
+    const response = yield axios({
+      method: "PUT",
+      url: `/api/admin/${action.payload.id}`,
+      data: action.payload,
+    });
+  } catch (error) {
+    console.log("Unable to send event to deleted table", error);
+  }
+}
+
 function* adminDeleteEvent(action) {
   try {
     const response = yield axios({
@@ -27,5 +39,6 @@ function* adminDeleteEvent(action) {
 
 export default function* adminAddEventSaga() {
   yield takeLatest("ADMIN_ADD_EVENT", adminAddEvent);
+  yield takeLatest("REMOVE_EVENT", adminRemoveEvent);
   yield takeLatest("ADMIN_DELETE_EVENT", adminDeleteEvent);
 }
