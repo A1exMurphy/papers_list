@@ -116,6 +116,54 @@ router.put('/:id', (req, res) => {
             })
 });
 
+//submit PUT query to set "remove_event"=true
+router.put('/remove/:id', (req, res) => {
+  console.log('in PUT query')
+
+  const removeEvent = 
+  `
+  UPDATE "posts" 
+  	SET
+  	"remove_event"=true
+          
+    WHERE "id" = $1;
+  `
+  postID = [req.params.id]
+
+      pool.query(removeEvent, postID)
+          .then((result) => {
+              res.sendStatus(201)
+          })
+          .catch((err) => {
+              console.log(err, 'error in PUT query')
+              res.sendStatus(500)
+          })
+});
+
+//submit PUT query to set "remove_event"=falst
+router.put('/restore/:id', (req, res) => {
+  console.log('in PUT query')
+
+  const removeEvent = 
+  `
+  UPDATE "posts" 
+  	SET
+  	"remove_event"=false
+          
+    WHERE "id" = $1;
+  `
+  postID = [req.params.id]
+
+      pool.query(removeEvent, postID)
+          .then((result) => {
+              res.sendStatus(201)
+          })
+          .catch((err) => {
+              console.log(err, 'error in PUT query')
+              res.sendStatus(500)
+          })
+});
+
 
 //initiate DELETE query for selected id
 

@@ -17,7 +17,7 @@ function* adminRemoveEvent(action) {
   try {
     const response = yield axios({
       method: "PUT",
-      url: `/api/admin/${action.payload.id}`,
+      url: `/api/admin/remove/${action.payload.id}`,
       data: action.payload,
     });
   } catch (error) {
