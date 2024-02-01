@@ -36,3 +36,12 @@ th {
 td {
     color: black;
 }
+
+#modal-modal-title {
+    text-align: center;
+}
+
+#modal-modal-description {
+    text-align: center;
+}
+
