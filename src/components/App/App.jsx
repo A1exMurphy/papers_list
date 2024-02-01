@@ -19,9 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import EventPage from '../EventPage/EventPage';
 import NewEvent from '../NewEvent/NewEvent';
-import Modal from '../Modal/Modal';
 import SubmitContactInfo from '../ContactInfo/ContactInfo';
 import AdminArchive from '../AdminArchive/AdminArchive';
 
