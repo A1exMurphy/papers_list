@@ -3,7 +3,7 @@ import errors from "./errors.reducer";
 import user from "./user.reducer";
 import events from "./landingpage.reducer";
 import selectedEvent from "./landingpage.reducer";
-import archived from "./adminArchive.reducer";
+import archive from "./adminArchive.reducer";
 import tags from "./adminTag.reducer";
 
 // rootReducer is the primary reducer for our entire project
@@ -13,7 +13,7 @@ import tags from "./adminTag.reducer";
 // Lets make a bigger object for our store, with the objects from our reducers.
 // This is what we get when we use 'state' inside of 'mapStateToProps'
 const rootReducer = combineReducers({
-  archived, // will show all events and tags that are in the archive
+  archive, // will show all events and tags that are in the archive
   events, // contains all events
   selectedEvent, // gets info for a single event
   errors, // contains registrationMessage and loginMessage

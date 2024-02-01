@@ -73,6 +73,26 @@ router.get('/:id', (req, res) => {
       });
 });
 
+router.get('/removedevents', (req, res) => {
+  const getRemovedEvents = 
+  `
+  SELECT * FROM "posts"
+      WHERE "remove_event" = true;
+  `
+ 
+
+  pool.query(getRemovedEvents)
+    .then((result) => {
+      res.send(result.rows[0])
+      
+
+    })
+    .catch((err) => {
+      console.log("GET /removedevents fail:", err);
+      res.sendStatus(500);
+    });
+});
+
 /**
  * PUT route template
  */
