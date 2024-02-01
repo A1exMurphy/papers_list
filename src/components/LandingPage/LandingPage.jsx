@@ -37,7 +37,6 @@ export default function LandingPage() {
       <div className="titleContainer">
         <h1 className="landing-title">Landing Page</h1>
       </div>
-      <section className="landing-page-highlights-section">
         {eventData &&
           eventData.map((event) => {
             return (
@@ -63,16 +62,15 @@ export default function LandingPage() {
               </div>
             );
           })}
-      </section>
-      <section className="landing-page-events-section">
         <div className="section-events-title">
           <h1>Events</h1>
         </div>
-      </section>
-      <button className="create-event-btn" onClick={handleCreateEvent}>
-        Create New Event
-      </button>
-      {openModal === true ? <Modal closeModal={setOpenModal} /> : <></>}
+      <button 
+        className="create-event-btn"
+        onClick={handleCreateEvent}
+        >Create New Event</button>
+      <main>{openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}</main>
+
     </>
   );
 }
