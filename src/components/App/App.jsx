@@ -13,17 +13,15 @@ import Footer from "../Footer/Footer";
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-import AboutPage from "../AboutPage/AboutPage";
-import EventFeed from "../EventFeed/EventFeed";
-import InfoPage from "../InfoPage/InfoPage";
-import LandingPage from "../LandingPage/LandingPage";
-import LoginPage from "../LoginPage/LoginPage";
-import RegisterPage from "../RegisterPage/RegisterPage";
-import EventPage from "../EventPage/EventPage";
-import NewEvent from "../NewEvent/NewEvent";
-import Modal from "../Modal/Modal";
-import SubmitContactInfo from "../ContactInfo/ContactInfo";
-import AdminArchive from "../AdminArchive/AdminArchive";
+import AboutPage from '../AboutPage/AboutPage';
+import EventFeed from '../EventFeed/EventFeed';
+import InfoPage from '../InfoPage/InfoPage';
+import LandingPage from '../LandingPage/LandingPage';
+import LoginPage from '../LoginPage/LoginPage';
+import RegisterPage from '../RegisterPage/RegisterPage';
+import NewEvent from '../NewEvent/NewEvent';
+import SubmitContactInfo from '../ContactInfo/ContactInfo';
+import AdminArchive from '../AdminArchive/AdminArchive';
 import AdminNewEvent from "../AdminNewEvent/AdminNewEvent";
 
 import "./App.css";

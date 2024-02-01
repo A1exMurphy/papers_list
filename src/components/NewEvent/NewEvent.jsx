@@ -14,6 +14,7 @@ export default function NewEvent() {
     let [image, setImage] = useState('');
     let [eventSize, setEventSize] = useState('');
     let [costInput, setCostInput] = useState('');
+    let [errorMessage, setErrorMessage] = useState('');
   
     const dispatch = useDispatch();
     const history = useHistory();
@@ -40,6 +41,7 @@ export default function NewEvent() {
             payload: newEvent
         })
         console.log("Handling submit");
+        history.push("/");
     }
 
     const handleDiscard = (e) => {
@@ -52,6 +54,9 @@ export default function NewEvent() {
             <h1 id='pg-title-create'>Create Event</h1>
 
             <form onSubmit={handleSubmit}>
+                {errorMessage && (
+                    <p className='error'>{errorMessage}</p>
+                )}
                 <div>
                     <label id='name-label' htmlFor='event-name-input'>Name</label>
                     <input
