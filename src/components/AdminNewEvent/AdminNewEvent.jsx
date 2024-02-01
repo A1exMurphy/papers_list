@@ -6,7 +6,7 @@ import "./AdminNewEvent.css";
 export default function AdminNewEvent() {
   let [hostInput, setHostInput] = useState("");
   let [titleInput, setTitleInput] = useState("");
-  let [locationInput, setLocationInput] = useState('');
+  let [locationInput, setLocationInput] = useState("");
   let [costInput, setCostInput] = useState("");
   let [dateInput, setDateInput] = useState("");
   let [descriptionInput, setDescriptionInput] = useState("");
@@ -31,12 +31,12 @@ export default function AdminNewEvent() {
 
     dispatch({
       type: "ADD_EVENT",
-      payload: newAdminEvent
+      payload: newAdminEvent,
     });
     console.log("Handling submit");
   };
 
-  const backToArchive = () => {
+  const backToArchive = (e) => {
     history.push("/eventarchive");
   };
   return (
