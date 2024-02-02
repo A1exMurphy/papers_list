@@ -13,7 +13,7 @@
 .flex-those-events {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 1rem;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -112,8 +112,6 @@
   position: absolute;
   justify-content: center;
   align-items: center;
-  /* display: flex;
-  flex-wrap: wrap; */
 }
 
 /* General Selectors */

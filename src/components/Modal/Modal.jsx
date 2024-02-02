@@ -6,6 +6,7 @@ import "./Modal.css";
 export default function Modal({ closeModal }) {
   const dispatch = useDispatch();
   const singleEvent = useSelector((store) => store.selectedEvent.selectedEvent);
+  const tags = useSelector((store) => store.tags);
 
     useEffect(() => {
         dispatch({type: 'FETCH_EVENTS'});
@@ -14,7 +15,7 @@ export default function Modal({ closeModal }) {
         <>
             <div className="modal-background">
                 <div className="modal-container">
-                    <button type="close" onClick={() => {console.log("closeModal"); closeModal(false);}}>x</button>
+                    <button className="close-btn" type="close" onClick={() => {console.log("closeModal"); closeModal(false);}}>x</button>
                     <div className="modal-title">
                         <h1>{singleEvent.event_name}</h1>
                     </div>
