@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import './RemovedEvents.css'
 
 
 
@@ -16,18 +17,32 @@ export default function RemovedEvents() {
   return (
     <div>
       <h2>Removed Events</h2>
-        <div>
+      <table>
+        <thead>
+            <tr>
+              <th>Host</th>
+              <th>Event Name</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+        <tbody>
           {removedEvents &&
             removedEvents.map((event) => {
               return (
-                <div key={event.id}>
-                  <h3>{event.event_name}</h3>
-                </div>
+                  <tr className='removedEventsTable' key={event.id}>
+                    <td>{event.host}</td>
+                    <td>{event.event_name}</td>
+                    <td>{event.description}</td>
+                    <td>{event.time}</td>
+                    <td><button>Delete</button></td>
+                  </tr>
               )
             })
           }
-        </div>
-      <button>Delete</button>
+        </tbody>
+      </table>
     </div>
   );
 }
