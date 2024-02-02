@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./AdminNewEvent.css";
 import {
   TextField,
@@ -9,11 +10,23 @@ import {
   FormControl,
   FormLabel,
 } from "@mui/material";
+import Button from "@mui/material/Button";
 import UploadButton from "../UploadButton/UploadButton";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import AddIcon from "@mui/icons-material/Add";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#004986",
+    },
+  },
+});
 
 export default function AdminNewEvent() {
   let [hostInput, setHostInput] = useState("");
@@ -26,6 +39,7 @@ export default function AdminNewEvent() {
   let [imageInput, setImageInput] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector((store) => store.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,12 +54,21 @@ export default function AdminNewEvent() {
       event_size: eventSizeInput,
       image: imageInput,
     };
+    setHostInput("");
+    setTitleInput("");
+    setLocationInput("");
+    setCostInput("");
+    setDateInput("");
+    setDescriptionInput("");
+    setEventSizeInput("");
 
     dispatch({
       type: "ADD_EVENT",
       payload: newAdminEvent,
     });
     console.log("Handling submit");
+
+    history.push("/eventarchive");
   };
 
   const backToArchive = (e) => {
@@ -70,6 +93,7 @@ export default function AdminNewEvent() {
               />
               <TextField
                 id="event-description-input"
+                helperText="Brief description of event"
                 type="text"
                 variant="filled"
                 label="Description"
@@ -90,16 +114,17 @@ export default function AdminNewEvent() {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-            <TextField
-              id="event-name-input"
-              type="text"
-              variant="filled"
-              label="Event Name"
-              onChange={(e) => setTitleInput(e.target.value)}
-              value={titleInput}
-              fullWidth
-              required
-            />
+              <TextField
+                id="event-name-input"
+                helperText="Name of your event"
+                type="text"
+                variant="filled"
+                label="Event Name"
+                onChange={(e) => setTitleInput(e.target.value)}
+                value={titleInput}
+                fullWidth
+                required
+              />
             </Stack>
             <Stack
               spacing={2}
@@ -109,8 +134,9 @@ export default function AdminNewEvent() {
             >
               <TextField
                 type="text"
+                helperText="Organization / Person hosting"
                 variant="filled"
-                label="Host"
+                label="Hosted By"
                 size="small"
                 id="event-host-input"
                 onChange={(e) => setHostInput(e.target.value)}
@@ -118,15 +144,14 @@ export default function AdminNewEvent() {
                 sx={{ width: 200 }}
                 required
               />
-
               <TextField
-                type="text"
+                type="date"
+                helperText="Date of event"
                 variant="filled"
-                label="Location"
                 size="small"
-                id="event-location-input"
-                onChange={(e) => setLocationInput(e.target.value)}
-                value={locationInput}
+                id="event-date-input"
+                onChange={(e) => setDateInput(e.target.value)}
+                value={dateInput}
                 sx={{ width: 190 }}
                 required
               />
@@ -139,13 +164,15 @@ export default function AdminNewEvent() {
               divider={<Divider orientation="vertical" flexItem />}
             >
               <TextField
-                type="date"
+                helperText="Where the event will be held (e.g. Merriot Hotel Minneapolis, MN)"
+                type="text"
                 variant="filled"
+                label="Location"
                 size="small"
-                id="event-date-input"
-                onChange={(e) => setDateInput(e.target.value)}
-                value={dateInput}
-                sx={{ width: 190 }}
+                id="event-location-input"
+                onChange={(e) => setLocationInput(e.target.value)}
+                value={locationInput}
+                fullWidth
                 required
               />
             </Stack>
@@ -165,7 +192,7 @@ export default function AdminNewEvent() {
                     id="event-size-input"
                     onChange={(e) => setEventSizeInput(e.target.value)}
                     value={eventSizeInput}
-                    fullWidth
+                    sx={{ width: 200 }}
                   >
                     <MenuItem value={"small"}>Small (5 - 25 people)</MenuItem>
                     <MenuItem value={"medium"}>
@@ -183,20 +210,37 @@ export default function AdminNewEvent() {
                     id="event-cost-input"
                     onChange={(e) => setCostInput(e.target.value)}
                     value={costInput}
-                    sx={{ width: 190 }}
+                    sx={{ width: 200 }}
                     required
                   >
                     <MenuItem value={true}>Yes</MenuItem>
-                    <MenuItem value={false}>No</MenuItem>
+                    <MenuItem value={false}>Free</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
             </Stack>
-
-            <button className="submit-btn">Submit</button>
-            <button onClick={backToArchive} className="discard-btn">
-              Admin Page
-            </button>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
+            >
+              <ThemeProvider theme={theme}>
+                <Button
+                  variant="contained"
+                  onClick={backToArchive}
+                  className="discard-btn"
+                  sx={{ width: 210 }}
+                >
+                  <ArrowBackIcon />
+                  Back to Archive
+                </Button>
+                <Button type="submit" variant="contained" sx={{ width: 210 }}>
+                  <AddIcon />
+                  Create Event
+                </Button>
+              </ThemeProvider>
+            </Stack>
           </FormControl>
         </form>
       </div>
