@@ -48,7 +48,7 @@ function* getRemovedEvents() {
   try {
     const response = yield axios({
       method: "GET",
-      url: "/api/admin/removedevents",
+      url: "/api/admin/removedevents"
     });
     yield put({
       type: "SET_REMOVED_EVENTS",
@@ -62,7 +62,7 @@ function* adminEditEvent(action) {
   try {
     const response = yield axios({
       method: "PUT",
-      url: `/api/admin/${action.payload.id}`,
+      url: `/api/admin/event/${action.payload.id}`,
       data: action.payload,
     });
   } catch (error) {

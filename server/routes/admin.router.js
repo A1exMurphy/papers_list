@@ -52,7 +52,7 @@ router.get('/tags', (req, res) => {
 /**
  * GET route template
  */
-router.get('/:id', (req, res) => {
+router.get('/event/:id', (req, res) => {
     const getSelectedEvent = 
     `
     SELECT * FROM "posts"
@@ -74,16 +74,17 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/removedevents', (req, res) => {
+  console.log('running removed events GET')
   const getRemovedEvents = 
   `
   SELECT * FROM "posts"
       WHERE "remove_event" = true;
   `
  
-
   pool.query(getRemovedEvents)
-    .then((result) => {
-      res.send(result.rows[0])
+  .then((result) => {
+      console.log(result.rows, 'results of removed events query')
+      res.send(result.rows)
       
 
     })
