@@ -38,6 +38,10 @@ function Nav() {
               <Link className="navLink" to="/eventarchive">
                 Archive
               </Link>
+
+              <Link className="navLink" to="/removedevents">
+                Removed Events
+              </Link>
             </>
           )}
 

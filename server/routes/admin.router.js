@@ -44,8 +44,10 @@ router.get("/tags", (req, res) => {
 /**
  * GET route template
  */
-router.get("/:id", (req, res) => {
-  const getSelectedEvent = `
+
+router.get('/event/:id', (req, res) => {
+    const getSelectedEvent = 
+    `
     SELECT * FROM "posts"
         WHERE "id" = $1
     `;
@@ -58,6 +60,27 @@ router.get("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log("GET /api/eventfeed fail:", err);
+      res.sendStatus(500);
+    });
+});
+
+router.get('/removedevents', (req, res) => {
+  console.log('running removed events GET')
+  const getRemovedEvents = 
+  `
+  SELECT * FROM "posts"
+      WHERE "remove_event" = true;
+  `
+ 
+  pool.query(getRemovedEvents)
+  .then((result) => {
+      console.log(result.rows, 'results of removed events query')
+      res.send(result.rows)
+      
+
+    })
+    .catch((err) => {
+      console.log("GET /removedevents fail:", err);
       res.sendStatus(500);
     });
 });
@@ -107,6 +130,54 @@ router.put('/event/:id', (req, res) => {
     });
 });
 
+
+//submit PUT query to set "remove_event"=true
+router.put('/remove/:id', (req, res) => {
+  console.log('in PUT query')
+
+  const removeEvent = 
+  `
+  UPDATE "posts" 
+  	SET
+  	"remove_event"=true
+          
+    WHERE "id" = $1;
+  `
+  postID = [req.params.id]
+
+      pool.query(removeEvent, postID)
+          .then((result) => {
+              res.sendStatus(201)
+          })
+          .catch((err) => {
+              console.log(err, 'error in PUT query')
+              res.sendStatus(500)
+          })
+});
+
+//submit PUT query to set "remove_event"=falst
+router.put('/restore/:id', (req, res) => {
+  console.log('in PUT query')
+
+  const removeEvent = 
+  `
+  UPDATE "posts" 
+  	SET
+  	"remove_event"=false
+          
+    WHERE "id" = $1;
+  `
+  postID = [req.params.id]
+
+      pool.query(removeEvent, postID)
+          .then((result) => {
+              res.sendStatus(201)
+          })
+          .catch((err) => {
+              console.log(err, 'error in PUT query')
+              res.sendStatus(500)
+          })
+});
 //initiate DELETE query for selected id
 
 router.delete("/:id", (req, res) => {

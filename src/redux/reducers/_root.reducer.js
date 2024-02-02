@@ -4,7 +4,8 @@ import user from "./user.reducer";
 import events from "./landingpage.reducer";
 import selectedEvent from "./landingpage.reducer";
 import archived from "./adminArchive.reducer";
-import tags from "./adminTag.reducer";  
+import tags from "./adminTag.reducer";
+import removedEvents from "./removedEvents.reducer";
 import editTag from "./editTag.reducer";
 
 
@@ -20,9 +21,9 @@ const rootReducer = combineReducers({
   selectedEvent, // gets info for a single event
   errors, // contains registrationMessage and loginMessage
   user,
+  removedEvents,
   tags,// will have an id and username if someone is logged in
   editTag
-
 });
 
 export default rootReducer;
