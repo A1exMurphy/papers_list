@@ -110,7 +110,11 @@ export default function AdminArchive() {
         <thead>
           <tr>
             <th>Host</th>
-            <th>Event Name</th>
+                      <th>Event Name</th>
+                      <th>Status</th>
+                      <th>Featured</th>
+
+
           </tr>
         </thead>
         <tbody>
@@ -118,7 +122,10 @@ export default function AdminArchive() {
             return (
               <tr key={event.id}>
                 <td>{event.host}</td>
-                <td>{event.event_name}</td>
+                    <td>{event.event_name}</td>
+                    <td>{event.admin_approved}</td>
+                    <td>{event.is_highlighted_event}</td>
+
               </tr>
             );
           })}
