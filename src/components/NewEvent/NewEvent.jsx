@@ -1,8 +1,31 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import "./NewEvent.css";
+import "../AdminNewEvent/AdminNewEvent.css";
+import {
+  TextField,
+  Stack,
+  Divider,
+  FormControl,
+  FormLabel,
+} from "@mui/material";
+import Button from "@mui/material/Button";
+import UploadButton from "../UploadButton/UploadButton";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import AddIcon from "@mui/icons-material/Add";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#004986",
+    },
+  },
+});
 
 export default function NewEvent() {
   let [titleInput, setTitleInput] = useState("");
@@ -10,8 +33,8 @@ export default function NewEvent() {
   let [locationInput, setLocationInput] = useState("");
   let [dateInput, setDateInput] = useState("");
   let [descriptionInput, setDescriptionInput] = useState("");
-  let [image, setImage] = useState("");
-  let [eventSize, setEventSize] = useState("");
+  let [imageInput, setImageInput] = useState("");
+  let [eventSizeInput, setEventSizeInput] = useState("");
   let [costInput, setCostInput] = useState("");
   let [errorMessage, setErrorMessage] = useState("");
 
@@ -28,9 +51,17 @@ export default function NewEvent() {
       cost: costInput,
       location: locationInput,
       description: descriptionInput,
-      image: image,
-      event_size: eventSize,
+      image: imageInput,
+      event_size: eventSizeInput,
     };
+
+    setHostInput("");
+    setTitleInput("");
+    setLocationInput("");
+    setCostInput("");
+    setDateInput("");
+    setDescriptionInput("");
+    setEventSizeInput("");
 
     console.log(newEvent);
 
@@ -39,7 +70,7 @@ export default function NewEvent() {
       payload: newEvent,
     });
     console.log("Handling submit");
-    history.push("/");
+    history.push("/contactinfo");
   };
 
   const handleDiscard = (e) => {
@@ -49,101 +80,172 @@ export default function NewEvent() {
   };
   return (
     <>
-      <h1 id="pg-title-create">Create Event</h1>
-
-      <form onSubmit={handleSubmit}>
-        {errorMessage && <p className="error">{errorMessage}</p>}
-        <div>
-          <label id="name-label" htmlFor="event-name-input">
-            Name
-          </label>
-          <input
-            id="event-name-input"
-            type="text"
-            onChange={(e) => setTitleInput(e.target.value)}
-            value={titleInput}
-          />
-          <label id="host-label" htmlFor="event-host-input">
-            Host
-          </label>
-          <input
-            id="event-host-input"
-            type="text"
-            onChange={(e) => setHostInput(e.target.value)}
-            value={hostInput}
-          />
-        </div>
-        <div>
-          <label id="location-label" htmlFor="event-location-input">
-            Location
-          </label>
-          <input
-            id="event-location-input"
-            type="text"
-            onChange={(e) => setLocationInput(e.target.value)}
-            value={locationInput}
-          />
-        </div>
-        <div>
-          <label id="date-label" htmlFor="event-date-input">
-            Date
-          </label>
-          <input
-            id="event-date-input"
-            type="text"
-            onChange={(e) => setDateInput(e.target.value)}
-            value={dateInput}
-          />
-        </div>
-        <div>
-          <label id="cost-label" htmlFor="event-cost-input">
-            Cost
-          </label>
-          <input
-            id="event-cost-input"
-            type="text"
-            onChange={(e) => setCostInput(e.target.value)}
-            value={costInput}
-          />
-        </div>
-        <div>
-          <label id="description-label" htmlFor="description-input">
-            Description
-          </label>
-          <input
-            id="description-input"
-            type="text"
-            onChange={(e) => setDescriptionInput(e.target.value)}
-            value={descriptionInput}
-          />
-        </div>
-        <div>
-          <label id="image-label" htmlFor="image-input">
-            Image
-          </label>
-          <input
-            id="image-input"
-            type="text"
-            onChange={(e) => setImage(e.target.value)}
-            value={image}
-          />
-        </div>
-        <div>
-          <label id="event-size-label" htmlFor="size-input">
-            Event Size
-          </label>
-          <input
-            id="size-input"
-            type="text"
-            onChange={(e) => setEventSize(e.target.value)}
-            value={eventSize}
-          />
-        </div>
-        <button className="submit-btn">Submit</button>
-      </form>
-      <button onClick={handleDiscard} className="discard-btn">
-        Discard
-      </button>
+      <h1 className="admin-event">Create Event</h1>
+      <div className="event-form">
+        <form onSubmit={handleSubmit}>
+          {errorMessage && <p className="error">{errorMessage}</p>}
+          <FormControl>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
+            >
+              <UploadButton
+                id="event-image-input"
+                onChange={(e) => setImageInput(e.target.value)}
+                value={imageInput}
+              />
+              <TextField
+                id="event-description-input"
+                helperText="Brief description of event"
+                type="text"
+                variant="filled"
+                label="Description"
+                onChange={(e) => setDescriptionInput(e.target.value)}
+                value={descriptionInput}
+                sx={{
+                  marginBottom: 4,
+                }}
+                multiline
+                minRows={8}
+                fullWidth
+                required
+              />
+            </Stack>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
+            >
+              <TextField
+                id="event-name-input"
+                helperText="Name of your event"
+                type="text"
+                variant="filled"
+                label="Event Name"
+                onChange={(e) => setTitleInput(e.target.value)}
+                value={titleInput}
+                fullWidth
+                required
+              />
+            </Stack>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
+            >
+              <TextField
+                type="text"
+                helperText="Organization / Person hosting"
+                variant="filled"
+                label="Hosted By"
+                size="small"
+                id="event-host-input"
+                onChange={(e) => setHostInput(e.target.value)}
+                value={hostInput}
+                sx={{ width: 200 }}
+                required
+              />
+              <TextField
+                type="date"
+                helperText="Date of event"
+                variant="filled"
+                size="small"
+                id="event-date-input"
+                onChange={(e) => setDateInput(e.target.value)}
+                value={dateInput}
+                sx={{ width: 190 }}
+                required
+              />
+            </Stack>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
+            >
+              <TextField
+                helperText="Where the event will be held (e.g. Merriot Hotel Minneapolis, MN)"
+                type="text"
+                variant="filled"
+                label="Location"
+                size="small"
+                id="event-location-input"
+                onChange={(e) => setLocationInput(e.target.value)}
+                value={locationInput}
+                fullWidth
+                required
+              />
+            </Stack>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
+            >
+              <Box sx={{ midWidth: 120 }}>
+                <FormControl sx={{ width: 200 }}>
+                  <InputLabel id="event-size-input-label">
+                    Event Size
+                  </InputLabel>
+                  <Select
+                    label="Event Size"
+                    id="event-size-input"
+                    onChange={(e) => setEventSizeInput(e.target.value)}
+                    value={eventSizeInput}
+                    sx={{ width: 200 }}
+                  >
+                    <MenuItem value={"small"}>Small (5 - 25 people)</MenuItem>
+                    <MenuItem value={"medium"}>
+                      Medium (26 - 100 people)
+                    </MenuItem>
+                    <MenuItem value={"large"}>Large (100+ people)</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+              <Box sx={{ midWidth: 120 }}>
+                <FormControl sx={{ width: 120 }}>
+                  <InputLabel id="event-cost-input-label">Cost</InputLabel>
+                  <Select
+                    label="Cost"
+                    id="event-cost-input"
+                    onChange={(e) => setCostInput(e.target.value)}
+                    value={costInput}
+                    sx={{ width: 200 }}
+                    required
+                  >
+                    <MenuItem value={true}>Yes</MenuItem>
+                    <MenuItem value={false}>Free</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+            </Stack>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
+            >
+              <ThemeProvider theme={theme}>
+                <Button
+                  onClick={handleDiscard}
+                  variant="contained"
+                  sx={{ width: 210 }}
+                >
+                  Discard
+                </Button>
+                <Button type="submit" variant="contained" sx={{ width: 210 }}>
+                <AddIcon />
+                  Submit Request
+                </Button>
+              </ThemeProvider>
+            </Stack>
+          </FormControl>
+        </form>
+      </div>
     </>
   );
 }

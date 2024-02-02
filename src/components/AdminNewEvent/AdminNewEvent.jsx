@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./AdminNewEvent.css";
 import {
   TextField,
@@ -39,7 +38,7 @@ export default function AdminNewEvent() {
   let [imageInput, setImageInput] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = useSelector((store) => store.user);
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
