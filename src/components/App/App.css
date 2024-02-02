@@ -31,10 +31,6 @@
     --srcsansvarfntwgt: SourceSans3VariableFontWeight;
 }
 
-h1 {
-    font-family: var(--srcsansitvarfntwgt);
-}
-
 *, *::after, *::before { 
     margin: 0; 
     box-sizing: border-box;
