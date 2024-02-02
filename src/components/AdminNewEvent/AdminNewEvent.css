@@ -1,4 +1,11 @@
+.event-form {
+  display: flex;
+  justify-content: center;
+}
+
 .admin-event {
+  display: flex;
+  justify-content: center;
   font-family: "Source Sans 3", sans-serif;
   color: #004986;
   font-size: 45px;
