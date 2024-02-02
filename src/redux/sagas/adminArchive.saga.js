@@ -1,6 +1,7 @@
 import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
+
 function* getArchivedEvents() {
   try {
     const response = yield axios({
@@ -154,7 +155,7 @@ function* StatusChange(action) {
  
 
     yield put({
-      type: "FETCH_TAGS"
+      type: "FETCH_ARCHIVED_EVENTS"
     })
   } catch (err) {
     console.log('submitStatusChange failed.', err)
@@ -172,5 +173,4 @@ export default function* archivedEventSaga() {
   yield takeLatest("SUBMIT_EDIT_TAG", SubmitEditTag);
   yield takeLatest("FETCH_TAG_TO_EDIT", fetchTagDetails);
   yield takeLatest("STATUS_CHANGE", StatusChange);
-
 }

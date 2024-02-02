@@ -203,7 +203,7 @@ router.put('/status/:id', (req, res) => {
   
     const sqlText = `
     UPDATE "posts"
-     SET "is_highlighted_event" = NOT "status"
+     SET "is_highlighted_event" = NOT "is_highlighted_event"
      WHERE "id" = ${req.params.id};
       `
     
