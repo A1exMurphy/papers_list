@@ -14,10 +14,21 @@
     --parademibold: Paralucent W00 Demi Bold;
     --srcsansblack: SourceSans3Black;
     --srcsansboldit: SourceSans3BoldItalic;
-}
-
-h1 {
-    font-family: var(--parademibold);
+    --srcsansbold: SourceSans3Bold;
+    --srcsansxbold: SourceSans3ExtraBold;
+    --srcsansxboldit: SourceSans3ExtraBoldItalic;
+    --srcsansxlight: SourceSans3ExtraLight;
+    --srcsansxlightit: SourceSans3ExtraLightItalic;
+    --srcsansitvarfntwgt: SourceSans3ItalicVariableFontWeight;
+    --srcsansit: SourceSans3Italic;
+    --srcsanslight: SourceSans3Light;
+    --srcsanslightit: SourceSans3LightItalic;
+    --srcsansmed: SourceSans3Medium;
+    --srcsansmedit: SourceSans3MediumItalic;
+    --srcsansreg: SourceSans3Regular;
+    --srcsanssemibold: SourceSans3SemiBold;
+    --srcsanssemiboldit: SourceSans3SemiBoldItalic;
+    --srcsansvarfntwgt: SourceSans3VariableFontWeight;
 }
 
 *, *::after, *::before { 

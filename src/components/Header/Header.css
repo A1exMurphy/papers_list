@@ -1,6 +1,6 @@
 .nav-title {
   font-family: var(--bgrotreg);
-  position: fixed;
+  position: absolute;
   width: auto;
   justify-content: center;
   display: inline;

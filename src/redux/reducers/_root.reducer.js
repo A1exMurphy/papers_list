@@ -6,6 +6,8 @@ import selectedEvent from "./landingpage.reducer";
 import archived from "./adminArchive.reducer";
 import tags from "./adminTag.reducer";
 import removedEvents from "./removedEvents.reducer";
+import editTag from "./editTag.reducer";
+
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +22,8 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user,
   removedEvents,
-  tags// will have an id and username if someone is logged in
+  tags,// will have an id and username if someone is logged in
+  editTag
 });
 
 export default rootReducer;

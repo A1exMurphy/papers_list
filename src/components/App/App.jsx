@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-
+import { Button } from "@mui/base/Button";
 import Nav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 
@@ -24,6 +24,8 @@ import SubmitContactInfo from '../ContactInfo/ContactInfo';
 import AdminArchive from '../AdminArchive/AdminArchive';
 import AdminNewEvent from "../AdminNewEvent/AdminNewEvent";
 import RemovedEvents from "../RemovedEvents/RemovedEvents";
+import EditTags from "../EditTag/EditTag";
+
 
 import "./App.css";
 
@@ -95,8 +97,12 @@ function App() {
             <AdminNewEvent />
           </ProtectedRoute>
 
-          <Route exact path="/eventarchive">
+          <ProtectedRoute exact path="/eventarchive">
             <AdminArchive />
+          </ProtectedRoute>
+
+          <Route exact path="/edit_tag/:id">
+           <EditTags/>
           </Route>
 
           <Route exact path="/removedevents">
