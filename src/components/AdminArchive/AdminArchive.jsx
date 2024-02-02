@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import "./AdminArchive.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -19,12 +19,18 @@ const style = {
   p: 4,
 };
 
-export default function AdminArchive({}) {
+export default function AdminArchive() {
+
   useEffect(() => {
     dispatch({ type: "FETCH_ARCHIVED_EVENTS" });
-    dispatch({ type: "FETCH_TAGS" });
+      dispatch({ type: "FETCH_TAGS" });
+
     window.scrollTo(0, 0);
   }, []);
+    
+    
+   
+    
 
   let [tagName, setTagName] = useState("");
 
@@ -35,11 +41,14 @@ export default function AdminArchive({}) {
   const handleClose = () => setOpen(false);
 
   const events = useSelector((store) => store.archived);
-  const tags = useSelector((store) => store.tags);
+    const tags = useSelector((store) => store.tags);
+   
   console.log("events", events);
 
   const history = useHistory();
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    
+    
 
   const deleteTag = (tag) => {
     dispatch({
@@ -48,18 +57,22 @@ export default function AdminArchive({}) {
     });
   };
 
-  const newTag = (event) => {
-    event.preventDefault();
+    
+    
+    
+    const newTag = (event) => {
+        event.preventDefault();
 
-    dispatch({
-      type: "ADD_TAGS",
-      payload: {
-        tag_name: tagName,
-      },
-    });
-    setTagName("");
-    setOpen(false);
-  };
+        dispatch({
+            type: "ADD_TAGS", payload: {
+              tag_name: tagName
+            }
+        });
+        setTagName('')
+        setOpen(false)
+    };
+
+  
   const adminCreateEvent = () => {
     console.log("Creating new event");
     history.push("/adminnewevent");
@@ -126,16 +139,18 @@ export default function AdminArchive({}) {
                 <td>{tag.tag_name}</td>
                 <td>
                   <button onClick={() => deleteTag(tag)}>delete</button>
-                  <button>edit</button>
+                        <button onClick={() => { history.push(`/edit_tag/${tag.id}`) }}>edit</button>
                 </td>
               </tr>
             );
           })}
         </tbody>
+
       </table>
 
       <button onClick={handleOpen}>Add Tag</button>
       <button onClick={adminCreateEvent}>Create New Event</button>
+
     </div>
   );
 }

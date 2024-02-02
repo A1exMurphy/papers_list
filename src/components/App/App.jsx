@@ -23,6 +23,7 @@ import NewEvent from '../NewEvent/NewEvent';
 import SubmitContactInfo from '../ContactInfo/ContactInfo';
 import AdminArchive from '../AdminArchive/AdminArchive';
 import AdminNewEvent from "../AdminNewEvent/AdminNewEvent";
+import EditTags from "../EditTag/EditTag";
 
 import "./App.css";
 
@@ -97,6 +98,10 @@ function App() {
           <ProtectedRoute exact path="/eventarchive">
             <AdminArchive />
           </ProtectedRoute>
+
+          <Route exact path="/edit_tag/:id">
+           <EditTags/>
+          </Route>
 
           <Route exact path="/login">
             {user.id ? (
