@@ -9,6 +9,8 @@ export default function EditTags() {
 
     const dispatch = useDispatch()
 
+    const history = useHistory()
+
     const params = useParams()
 
     console.log('params', params.id);
@@ -36,6 +38,7 @@ export default function EditTags() {
             payload: EditTag
 
         })
+history.push("/eventarchive")
     }
 
     return (
@@ -44,11 +47,11 @@ export default function EditTags() {
             <input
                 className="input"
                 id="outlined-controlled"
-                label="First Name"
-                type="text"
+                type='onSubmit'
                 value={EditTag.tag_name || ''}
                 onChange={(e) => handleTagNameChange(e.target.value)}
                 />
+                <button onClick={applyEdits}>Submit</button>
             </form>
         </div>
     )

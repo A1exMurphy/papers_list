@@ -5,6 +5,6 @@ const editTag = (state = {}, action) => {
         const tagName = action.payload
         return { ...state, tag_name: tagName }
     }
-    return state
+    return state;
 }
 export default editTag

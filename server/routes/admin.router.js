@@ -166,21 +166,18 @@ router.post('/', (req, res) => {
 
 router.put('/tags/:id', (req, res) => {
     console.log('in PUT query')
-
+const idToUpdate = req.params.id
     const insertNewTag = 
     `
     UPDATE "tags" 
 	 SET
-    "tag_name"=$1
+    "tag_name" = $1
     WHERE "id" = $2;
     `
 //not sure if the happy path is using req.body.id or req.params.id
-    newTagValues = [
-        req.body.tag_name,
-        req.body.id
-    ]
+    
 
-        pool.query(insertNewTag, newTagValues)
+        pool.query(insertNewTag, [req.body.tag_name, idToUpdate])
             .then((result) => {
                 res.sendStatus(201)
             })

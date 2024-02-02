@@ -126,7 +126,7 @@ function* SubmitEditTag(action) {
 const editedTag = action.payload
     const response = yield axios({
       method: "PUT",
-      url: `/api/admin/tags/${editedTag}`,
+      url: `/api/admin/tags/${editedTag.id}`,
        data: {
         tag_name: editedTag.tag_name
     }
