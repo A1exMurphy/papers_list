@@ -7,7 +7,6 @@ import {
   Stack,
   Divider,
   FormControl,
-  FormLabel,
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import UploadButton from "../UploadButton/UploadButton";
@@ -16,7 +15,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import AddIcon from "@mui/icons-material/Add";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
