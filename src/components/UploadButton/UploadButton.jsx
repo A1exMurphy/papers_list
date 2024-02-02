@@ -18,8 +18,7 @@ export default function UploadButton() {
         fullWidth
         color="primary"
         sx={{ 
-            height: 150, 
-            width: 150
+            height: 220, 
         }}
         startIcon={<AddPhotoAlternateIcon />}
       >
