@@ -68,20 +68,39 @@ export default function AdminNewEvent() {
                 onChange={(e) => setImageInput(e.target.value)}
                 value={imageInput}
               />
+              <TextField
+                id="event-description-input"
+                type="text"
+                variant="filled"
+                label="Description"
+                onChange={(e) => setDescriptionInput(e.target.value)}
+                value={descriptionInput}
+                sx={{
+                  marginBottom: 4,
+                }}
+                multiline
+                minRows={8}
+                fullWidth
+                required
+              />
             </Stack>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
+            >
             <TextField
+              id="event-name-input"
               type="text"
               variant="filled"
-              placeholder="Event Name"
-              size="small"
-              id="event-name-input"
+              label="Event Name"
               onChange={(e) => setTitleInput(e.target.value)}
               value={titleInput}
-              sx={{ marginBottom: 4 }}
               fullWidth
               required
             />
-
+            </Stack>
             <Stack
               spacing={2}
               direction="row"
@@ -91,23 +110,24 @@ export default function AdminNewEvent() {
               <TextField
                 type="text"
                 variant="filled"
-                placeholder="Host"
+                label="Host"
                 size="small"
                 id="event-host-input"
                 onChange={(e) => setHostInput(e.target.value)}
                 value={hostInput}
+                sx={{ width: 200 }}
                 required
               />
 
               <TextField
                 type="text"
                 variant="filled"
-                placeholder="Location"
+                label="Location"
                 size="small"
                 id="event-location-input"
                 onChange={(e) => setLocationInput(e.target.value)}
                 value={locationInput}
-                sx={{ width: 200 }}
+                sx={{ width: 190 }}
                 required
               />
             </Stack>
@@ -121,7 +141,6 @@ export default function AdminNewEvent() {
               <TextField
                 type="date"
                 variant="filled"
-                placeholder="Date"
                 size="small"
                 id="event-date-input"
                 onChange={(e) => setDateInput(e.target.value)}
@@ -173,23 +192,7 @@ export default function AdminNewEvent() {
                 </FormControl>
               </Box>
             </Stack>
-            <Stack
-              spacing={2}
-              direction="row"
-              sx={{ marginBottom: 4 }}
-              divider={<Divider orientation="vertical" flexItem />}
-            >
-              <TextField
-                type="text"
-                variant="filled"
-                placeholder="Description"
-                id="event-description-input"
-                onChange={(e) => setDescriptionInput(e.target.value)}
-                value={descriptionInput}
-                fullWidth
-                required
-              />
-            </Stack>
+
             <button className="submit-btn">Submit</button>
             <button onClick={backToArchive} className="discard-btn">
               Admin Page
