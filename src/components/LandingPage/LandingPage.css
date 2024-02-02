@@ -1,3 +1,5 @@
+/* Variables */
+
 :root {
   --greenish: #47a23f;
   --navy: #012a4d;
@@ -6,6 +8,7 @@
   --orange: #ea733d;
 }
 
+/* 👇 Class Selectors */
 
 .flex-those-events {
   display: flex;
@@ -23,9 +26,6 @@
   font-size: 35px;
 }
 
-h1, h2, h3, h4, h5 {
-  text-transform: capitalize;
-}
 
 .card {
   width: 500px;
@@ -37,6 +37,11 @@ h1, h2, h3, h4, h5 {
   flex-direction: column;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
   border-radius: 8px;
+  transition: 90ms ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.1);
 }
 
 .card-img {
@@ -52,14 +57,67 @@ h1, h2, h3, h4, h5 {
   color: white
 }
 
-.section-events-title {
+.section-events-title h1{
   text-align: center;
-  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+  font-size: 40px;
+  color: var(--navy);
+  font-family: var(--bgrotbold);
+  position: absolute;
+  transform: translateX(39rem);
 }
 
-section {
+.event-section-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  transform: translateY(120px);
+}
+
+.gallery-card {
+  width: 300px;
+  height: 500px;
+  background-color: var(--greenish);
+  font-family: var(--srcsansreg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  transition: 90ms ease-in-out;
+}
+
+.gallery-card:hover {
+  transform: scale(1.1);
+}
+
+.gallery-card-img {
+  width: auto;
+  height: 80%;
+  overflow-y: hidden;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.highlights-section {
   background-color: var(--navy);
   margin: 0;
   padding: 50px;
+}
 
+.gallery-section {
+  background-color: white;
+  margin: 0;
+  padding: 50px;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+
+/* General Selectors */
+
+h1, h2, h3, h4, h5 {
+  text-transform: capitalize;
 }

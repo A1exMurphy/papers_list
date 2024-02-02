@@ -40,7 +40,7 @@ export default function LandingPage() {
 
   return (
     <>
-    <section>
+    <section className="highlights-section">
       <div className="titleContainer">
         <h1 className="landing-title">Highlighted Events</h1>
       </div>
@@ -48,28 +48,50 @@ export default function LandingPage() {
         {eventData &&
           eventData.map((event) => {
             return (
-              <div
+             <div
                 onClick={() => {
                   handleEventClick(event);
                   setOpenModal(true);
                 }}
                 key={event.id}
               >
-                <div className="card">
+              {event.is_highlighted_event ? <div className="card">
                   <img className="card-img" src={event.image} alt={event.description} />
                   <div className="card-content">
                     <h3>{event.event_name}</h3>
                     {event.cost === true ? <h5>Paid Event</h5> : <h5>Free Event</h5>}
                   </div>
                 </div>
+                : <></>}
               </div>
             );
           })}
       </div>
       </section>
+      <section className="gallery-section">
         <div className="section-events-title">
           <h1>Events</h1>
         </div>
+        <div className="event-section-container">
+          {eventData && eventData.map((event) => {
+            return (
+              <div
+                onClick={() => {
+                  handleEventClick(event);
+                  setOpenModal(true);
+                }}>
+              <div className="gallery-card">
+                <img className="gallery-card-img" src={event.image} alt="" />
+                <div className="gallery-card-content">
+                  <h3>{event.event_name}</h3>
+                  {event.cost ? <h5>Free Event</h5> : <h5>Paid Event</h5>}
+                </div>
+              </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
       <Button
         variant='contained'
         className="create-event-btn"
