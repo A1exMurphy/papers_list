@@ -138,6 +138,29 @@ const editedTag = action.payload
     console.log("Unable to delete tag", error);
   }
 }
+
+function* StatusChange(action) {
+   
+  try {
+    console.log(action.payload)
+      const editedStatus = action.payload
+      
+
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/admin/status/${editedStatus}`,
+    })
+      
+ 
+
+    yield put({
+      type: "FETCH_TAGS"
+    })
+  } catch (err) {
+    console.log('submitStatusChange failed.', err)
+  }
+
+}
 export default function* archivedEventSaga() {
   yield takeLatest("FETCH_ARCHIVED_EVENTS", getArchivedEvents);
   yield takeLatest("DELETE_FROM_ARCHIVE", deleteFromArchive);
@@ -148,5 +171,6 @@ export default function* archivedEventSaga() {
   yield takeLatest("DELETE_TAG", deleteTag);
   yield takeLatest("SUBMIT_EDIT_TAG", SubmitEditTag);
   yield takeLatest("FETCH_TAG_TO_EDIT", fetchTagDetails);
+  yield takeLatest("STATUS_CHANGE", StatusChange);
 
 }
