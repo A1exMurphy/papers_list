@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import MuiSelect from "../MuiSelect/MuiSelect";
 import "./Modal.css";
 
 export default function Modal({ closeModal }) {
@@ -25,6 +26,7 @@ export default function Modal({ closeModal }) {
                     <div className="modal-img">
                         <img src={singleEvent.image} alt="" />
                     </div>
+                    <MuiSelect />
                 </div>
             </div>
         </>
