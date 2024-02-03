@@ -23,6 +23,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { styled } from '@mui/material/styles';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 
 
 
@@ -161,7 +162,7 @@ export default function AdminArchive() {
                             <StyledTableCell>Host</StyledTableCell>
                             <StyledTableCell>Event Name</StyledTableCell>
                             <StyledTableCell>Status</StyledTableCell>
-                            <StyledTableCell>Featured</StyledTableCell>
+                            <StyledTableCell>Featured / Review</StyledTableCell>
 
 
                         </TableRow>
@@ -169,15 +170,15 @@ export default function AdminArchive() {
                     <TableBody>
                         {events.map((event) => {
                             return (
-                                <tr key={event.id}>
+                                <TableRow key={event.id}>
                                     <StyledTableCell>{event.host}</StyledTableCell>
                                     <StyledTableCell>{event.event_name}</StyledTableCell>
                                     <StyledTableCell>{event.admin_approved}</StyledTableCell>
                                     <StyledTableCell><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
                                     </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
-                                    </Button></StyledTableCell>
+                                    </Button> <Button> <RateReviewIcon></RateReviewIcon></Button></StyledTableCell>
 
-                                </tr>
+                                </TableRow>
                             );
                         })}
                        
@@ -216,7 +217,8 @@ export default function AdminArchive() {
                         })}
                     </TableBody>
                     </Table>
-                    </TableContainer>
+                </TableContainer>
+                
             </div>
                  <div className="AddTag">
                 <Button variant="contained" sx={{ width: 315 }} onClick={handleOpen}> + Add Tag</Button>
