@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import UploadButton from "../UploadButton/UploadButton";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
+import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
@@ -28,6 +29,16 @@ const theme = createTheme({
     },
   },
 });
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 
 export default function AdminNewEvent() {
   let [hostInput, setHostInput] = useState("");
@@ -102,10 +113,12 @@ export default function AdminNewEvent() {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-              <input
+              <TextField
                 id="event-image-input"
                 type="file"
                 onChange={(e) => setImageInput(e.target.files[0])}
+                sx= {{ 
+                  width: 230 }}
               />
               <TextField
                 id="event-description-input"
@@ -117,10 +130,10 @@ export default function AdminNewEvent() {
                 value={descriptionInput}
                 sx={{
                   marginBottom: 4,
+                  width: 230
                 }}
                 multiline
                 minRows={8}
-                fullWidth
                 required
               />
             </Stack>
@@ -157,7 +170,7 @@ export default function AdminNewEvent() {
                 id="event-host-input"
                 onChange={(e) => setHostInput(e.target.value)}
                 value={hostInput}
-                sx={{ width: 200 }}
+                sx={{ width: 230 }}
                 required
               />
               <TextField
@@ -168,7 +181,7 @@ export default function AdminNewEvent() {
                 id="event-date-input"
                 onChange={(e) => setDateInput(e.target.value)}
                 value={dateInput}
-                sx={{ width: 190 }}
+                sx={{ width: 230 }}
                 required
               />
             </Stack>
@@ -187,7 +200,7 @@ export default function AdminNewEvent() {
                 id="event-location-input"
                 onChange={(e) => setLocationInput(e.target.value)}
                 value={locationInput}
-                sx={{ width: 200 }}
+                sx={{ width: 230 }}
                 required
               />
               <Box sx={{ midWidth: 120 }}>
@@ -195,11 +208,13 @@ export default function AdminNewEvent() {
                   <InputLabel id="tag-input-label">Tags</InputLabel>
                   <Select
                     multiple
-                    label="Tag"
+                    input={<OutlinedInput label="Tag" />}
                     id="event-tag-input"
                     onChange={(e) => setTagInput(e.target.value)}
                     value={tagInput}
-                    sx={{ width: 200 }}
+                    sx={{ width: 230 }}
+                    renderValue={(selected) => selected.join(', ')}
+                    MenuProps={MenuProps}
                   >
                     {tagData &&
                       tagData.map((tag) => {
@@ -226,8 +241,8 @@ export default function AdminNewEvent() {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-              <Box sx={{ midWidth: 120 }}>
-                <FormControl sx={{ width: 200 }}>
+              <Box sx={{ midWidth: 230 }}>
+                <FormControl sx={{ width: 230 }}>
                   <InputLabel id="event-size-input-label">
                     Event Size
                   </InputLabel>
@@ -236,7 +251,7 @@ export default function AdminNewEvent() {
                     id="event-size-input"
                     onChange={(e) => setEventSizeInput(e.target.value)}
                     value={eventSizeInput}
-                    sx={{ width: 200 }}
+                    sx={{ width: 230 }}
                   >
                     <MenuItem value={"small"}>Small (5 - 25 people)</MenuItem>
                     <MenuItem value={"medium"}>
@@ -254,7 +269,7 @@ export default function AdminNewEvent() {
                     id="event-cost-input"
                     onChange={(e) => setCostInput(e.target.value)}
                     value={costInput}
-                    sx={{ width: 200 }}
+                    sx={{ width: 230 }}
                     required
                   >
                     <MenuItem value={true}>Yes</MenuItem>
@@ -274,12 +289,12 @@ export default function AdminNewEvent() {
                   variant="contained"
                   onClick={backToArchive}
                   className="discard-btn"
-                  sx={{ width: 210 }}
+                  sx={{ width: 240 }}
                 >
                   <ArrowBackIcon />
                   Back to Archive
                 </Button>
-                <Button type="submit" variant="contained" sx={{ width: 210 }}>
+                <Button type="submit" variant="contained" sx={{ width: 240 }}>
                   <AddIcon />
                   Create Event
                 </Button>

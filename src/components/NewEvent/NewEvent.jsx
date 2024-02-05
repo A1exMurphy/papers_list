@@ -17,6 +17,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import AddIcon from "@mui/icons-material/Add";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -26,6 +27,16 @@ const theme = createTheme({
     },
   },
 });
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 
 export default function NewEvent() {
   let [titleInput, setTitleInput] = useState("");
@@ -77,7 +88,7 @@ export default function NewEvent() {
     history.push("/contactinfo");
   };
 
-  const handleDiscard = (e) => {
+  const handleBackHome = (e) => {
     history.push("/");
   };
   return (
@@ -93,10 +104,13 @@ export default function NewEvent() {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-              <input
+              <TextField
                 id="event-image-input"
                 type="file"
                 onChange={(e) => setImageInput(e.target.files[0])}
+                sx={{
+                  width: 230,
+                }}
               />
               <TextField
                 id="event-description-input"
@@ -108,10 +122,10 @@ export default function NewEvent() {
                 value={descriptionInput}
                 sx={{
                   marginBottom: 4,
+                  width: 230,
                 }}
                 multiline
                 minRows={8}
-                fullWidth
                 required
               />
             </Stack>
@@ -148,7 +162,7 @@ export default function NewEvent() {
                 id="event-host-input"
                 onChange={(e) => setHostInput(e.target.value)}
                 value={hostInput}
-                sx={{ width: 200 }}
+                sx={{ width: 230 }}
                 required
               />
               <TextField
@@ -159,7 +173,7 @@ export default function NewEvent() {
                 id="event-date-input"
                 onChange={(e) => setDateInput(e.target.value)}
                 value={dateInput}
-                sx={{ width: 190 }}
+                sx={{ width: 230 }}
                 required
               />
             </Stack>
@@ -178,7 +192,7 @@ export default function NewEvent() {
                 id="event-location-input"
                 onChange={(e) => setLocationInput(e.target.value)}
                 value={locationInput}
-                sx={{ width: 200 }}
+                sx={{ width: 230 }}
                 required
               />
               <Box sx={{ midWidth: 120 }}>
@@ -190,7 +204,9 @@ export default function NewEvent() {
                     id="event-size-input"
                     onChange={(e) => setTagInput(e.target.value)}
                     value={tagInput}
-                    sx={{ width: 200 }}
+                    sx={{ width: 230 }}
+                    renderValue={(selected) => selected.join(", ")}
+                    MenuProps={MenuProps}
                   >
                     {tagData &&
                       tagData.map((tag) => {
@@ -213,8 +229,8 @@ export default function NewEvent() {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-              <Box sx={{ midWidth: 120 }}>
-                <FormControl sx={{ width: 200 }}>
+              <Box sx={{ midWidth: 230 }}>
+                <FormControl sx={{ width: 230 }}>
                   <InputLabel id="event-size-input-label">
                     Event Size
                   </InputLabel>
@@ -223,7 +239,7 @@ export default function NewEvent() {
                     id="event-size-input"
                     onChange={(e) => setEventSizeInput(e.target.value)}
                     value={eventSizeInput}
-                    sx={{ width: 200 }}
+                    sx={{ width: 230 }}
                   >
                     <MenuItem value={"small"}>Small (5 - 25 people)</MenuItem>
                     <MenuItem value={"medium"}>
@@ -241,7 +257,7 @@ export default function NewEvent() {
                     id="event-cost-input"
                     onChange={(e) => setCostInput(e.target.value)}
                     value={costInput}
-                    sx={{ width: 200 }}
+                    sx={{ width: 230 }}
                     required
                   >
                     <MenuItem value={true}>Yes</MenuItem>
@@ -258,13 +274,14 @@ export default function NewEvent() {
             >
               <ThemeProvider theme={theme}>
                 <Button
-                  onClick={handleDiscard}
+                  onClick={handleBackHome}
                   variant="contained"
-                  sx={{ width: 210 }}
+                  sx={{ width: 240 }}
                 >
-                  Discard
+                  <ArrowBackIcon />
+                  Back Home
                 </Button>
-                <Button type="submit" variant="contained" sx={{ width: 210 }}>
+                <Button type="submit" variant="contained" sx={{ width: 240 }}>
                   <AddIcon />
                   Submit Request
                 </Button>
