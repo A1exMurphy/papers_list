@@ -54,7 +54,7 @@
 
 .card-content {
   padding: 15px;
-  color: white
+  color: var(--orange)
 }
 
 .section-events-title h1{
@@ -99,6 +99,45 @@
   object-fit: cover;
 }
 
+/* create Stick-it note visualization */
+/* .card-post-it {
+  width: 300px;
+height:300px;
+position:relative;
+background:#ffa;
+overflow:hidden;
+margin:30px auto;
+padding:20px;
+border-radius:0 0 0 30px/45px;
+font-family: var(--srcsansreg);
+line-height:1.7em;
+font-size:19px;
+-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+
+color:var(--orange);
+}
+
+.card-post-it li {
+  cursor:pointer; 
+}
+
+.card-post-it:before {
+  content:"";
+display:block;
+position:absolute;
+width:20px;
+height:25px;
+background:#ffa;
+box-shadow:
+ 3px -2px 10px rgba(0,0,0,0.2),
+ inset 15px -15px 15px rgba(0,0,0,0.3);
+left:0;
+bottom:0;
+z-index:2;
+transform:skewX(25deg);
+} */
+/* end of Stick-it visual */
+
 .highlights-section {
   background-color: var(--navy);
   margin: 0;
@@ -106,7 +145,7 @@
 }
 
 .gallery-section {
-  background-color: white;
+  background: transparent;
   margin: 0;
   padding: 50px;
   position: absolute;

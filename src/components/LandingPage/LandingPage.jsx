@@ -55,7 +55,7 @@ export default function LandingPage() {
                 }}
                 key={event.id}
               >
-              {event.is_highlighted_event ? <div className="card">
+              {event.is_highlighted_event ? <div className="card card-post-it">
                   <img className="card-img" src={event.image} alt={event.description} />
                   <div className="card-content">
                     <h3>{event.event_name}</h3>
@@ -80,7 +80,7 @@ export default function LandingPage() {
                   handleEventClick(event);
                   setOpenModal(true);
                 }}>
-              <div className="gallery-card">
+              <div className="gallery-card card-post-it">
                 <img className="gallery-card-img" src={event.image} alt="" />
                 <div className="gallery-card-content">
                   <h3>{event.event_name}</h3>
