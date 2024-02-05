@@ -3,9 +3,13 @@ import axios from "axios";
 
 function* addNewEvent(action) {
   try {
+    const headers = {
+      'content-type': 'multipart/form-data'
+    }
     const response = yield axios({
       method: "POST",
       url: "/api/newevent",
+      headers: headers,
       data: action.payload
     });
   } catch (error) {

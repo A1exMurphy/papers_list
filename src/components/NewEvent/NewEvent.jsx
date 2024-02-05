@@ -181,7 +181,7 @@ export default function NewEvent() {
               />
                <Box sx={{ midWidth: 120 }}>
                 <FormControl sx={{ width: 200 }}>
-                  <InputLabel id="event-size-input-label">
+                  <InputLabel id="tag-input-label">
                     Tags
                   </InputLabel>
                   <Select
