@@ -1,21 +1,18 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const cloudinaryUpload = require("../modules/cloudinary.config");
 
-/**
- * GET route template
- */
-router.get('/', (req, res) => {
-  // GET route code here
-  
-});
 
 /**
  * POST route template
  */
 //user submitted inputs POSTed to create new event with pending admin_approved
-router.post('/', (req, res) => {
+router.post('/', cloudinaryUpload.single("file"), async (req, res) => {
     console.log('in POST query')
+    const fileUrl = req.file.path;
+
+    // const userId = req.user.id; < -- Logged in user?
 
     const insertNewEvent = 
     `
@@ -37,7 +34,8 @@ router.post('/', (req, res) => {
         req.body.time,
         req.body.description,
         req.body.event_size,
-        req.body.image
+        fileUrl,
+        // userId
     ]
 
         pool.query(insertNewEvent, newEventValues)
