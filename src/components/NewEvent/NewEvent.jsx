@@ -34,6 +34,7 @@ export default function NewEvent() {
   let [imageInput, setImageInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [costInput, setCostInput] = useState("");
+  let [tagInput, setTagInput] = useState("");
   let [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ export default function NewEvent() {
     setDateInput("");
     setDescriptionInput("");
     setEventSizeInput("");
+    setTagInput("");
 
     console.log(newEvent);
 
@@ -174,9 +176,29 @@ export default function NewEvent() {
                 id="event-location-input"
                 onChange={(e) => setLocationInput(e.target.value)}
                 value={locationInput}
-                fullWidth
+                sx={{ width: 200 }}
                 required
               />
+               <Box sx={{ midWidth: 120 }}>
+                <FormControl sx={{ width: 200 }}>
+                  <InputLabel id="event-size-input-label">
+                    Tags
+                  </InputLabel>
+                  <Select
+                    label="Event Size"
+                    id="event-size-input"
+                    onChange={(e) => setTagInput(e.target.value)}
+                    value={tagInput}
+                    sx={{ width: 200 }}
+                  >
+                    <MenuItem value={"small"}>Small (5 - 25 people)</MenuItem>
+                    <MenuItem value={"medium"}>
+                      Medium (26 - 100 people)
+                    </MenuItem>
+                    <MenuItem value={"large"}>Large (100+ people)</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
             </Stack>
             <Stack
               spacing={2}
