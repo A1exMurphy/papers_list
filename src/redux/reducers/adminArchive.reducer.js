@@ -1,4 +1,3 @@
-import { combineReducers } from "redux";
 
 const archived = (state = [], action) => {
   switch (action.type) {
@@ -8,10 +7,6 @@ const archived = (state = [], action) => {
       return state;
   }
 };
-
-
-
-
 
 
 export default archived;

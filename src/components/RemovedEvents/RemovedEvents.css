@@ -45,33 +45,3 @@ td {
     text-align: center;
 }
 
-.star{
-    color: rgb(200, 200, 4);
-}
-
-.EventsTable {
-   width: 55%;
-    margin-top: 5%;
-    margin-left: 1%;
-}
-
-.TagsTable {
-    width: 40%;
-    float: right;
-    margin: 20px;
-    margin-top: -8.8%;
-}
-
-.AddTag {
-    float: right;
-    margin-top: 0%;
-    margin-left: 50%;
-    margin-right: 20%;
- 
-   
-}
-
-.CreateEvent {
-    margin-top: 1%;
-    margin-left: 1%;
-}
