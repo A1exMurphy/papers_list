@@ -69,9 +69,10 @@
 
 .event-section-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 2rem;
   transform: translateY(120px);
+  flex-wrap: wrap;
 }
 
 .gallery-card {
@@ -85,6 +86,8 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
   border-radius: 8px;
   transition: 90ms ease-in-out;
+  flex-basis: 25%;
+  color: white;
 }
 
 .gallery-card:hover {
@@ -151,6 +154,13 @@ transform:skewX(25deg);
   position: absolute;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.gallery-card-content {
+  padding-left: 8px;
+  padding-top: 1px;
 }
 
 /* General Selectors */

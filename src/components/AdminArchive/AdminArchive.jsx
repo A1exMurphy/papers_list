@@ -10,6 +10,20 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { styled } from '@mui/material/styles';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 
 
 
@@ -93,6 +107,25 @@ export default function AdminArchive() {
         history.push("/adminnewevent");
     };
 
+    const StyledTableCell = styled(TableCell)(({ theme }) => ({
+        [`&.${tableCellClasses.head}`]: {
+            backgroundColor: theme.palette.common.black,
+            color: theme.palette.common.white,
+        },
+        [`&.${tableCellClasses.body}`]: {
+            fontSize: 14,
+        },
+    }));
+    const StyledTableRow = styled(TableRow)(({ theme }) => ({
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.action.hover,
+        },
+        // hide last border
+        '&:last-child td, &:last-child th': {
+
+        },
+    }));
+
     return (
         <div>
             <Modal
@@ -121,68 +154,71 @@ export default function AdminArchive() {
                     </Typography>
                 </Box>
             </Modal>
+
             <div className="EventsTable events-post-it">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Host</th>
-                            <th>Event Name</th>
-                            <th>Status</th>
-                            <th>Featured</th>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell>Host</StyledTableCell>
+                            <StyledTableCell>Event Name</StyledTableCell>
+                            <StyledTableCell>Status</StyledTableCell>
+                            <StyledTableCell>Featured / Review</StyledTableCell>
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {events.map((event) => {
                             return (
-                                <tr key={event.id}>
-                                    <td>{event.host}</td>
-                                    <td>{event.event_name}</td>
-                                    <td>{event.admin_approved}</td>
-                                    <td><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
+                                <TableRow key={event.id}>
+                                    <StyledTableCell>{event.host}</StyledTableCell>
+                                    <StyledTableCell>{event.event_name}</StyledTableCell>
+                                    <StyledTableCell>{event.admin_approved}</StyledTableCell>
+                                    <StyledTableCell><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
                                     </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
-                                    </Button></td>
+                                    </Button> <Button> <RateReviewIcon></RateReviewIcon></Button></StyledTableCell>
 
-                                </tr>
+                                </TableRow>
                             );
                         })}
-                    </tbody>
-                </table>
-            </div>
+                       
 
+                    </TableBody>
+                    </Table>
+                </TableContainer>
+            </div>
+           
             <div className="TagsTable events-post-it">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Tag Name</th>
-                            <th>Delete/Edit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell>Tag Name</StyledTableCell>
+                            <StyledTableCell>Delete/Edit</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {tags.map((tag) => {
                             return (
-                                <>
-                                <tr key={tag.id}>
-                                    <td>{tag.tag_name}</td>
-                                    <td>
-                                          <span> <Button onClick={() => deleteTag(tag)}><DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon></Button></span>
+                              
+                                <TableRow key={tag.id}>
+                                    <StyledTableCell>{tag.tag_name}</StyledTableCell>
+                                    <StyledTableCell>
+                                           <Button onClick={() => deleteTag(tag)}><DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon></Button>
                                        
                                         
-                                        <span> <Button onClick={() => { history.push(`/edit_tag/${tag.id}`) }}><EditOutlinedIcon></EditOutlinedIcon></Button> </span> 
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                      
-                                    </tr>
+                                         <Button onClick={() => { history.push(`/edit_tag/${tag.id}`) }}><EditOutlinedIcon></EditOutlinedIcon></Button> 
+                                    </StyledTableCell>
+                                    </TableRow>
                                   
-                                </>
-
+                              
                             );
                         })}
-                    </tbody>
-
-                </table>
+                    </TableBody>
+                    </Table>
+                </TableContainer>
+                
             </div>
                  <div className="AddTag">
                 <Button variant="contained" sx={{ width: 315 }} onClick={handleOpen}> + Add Tag</Button>

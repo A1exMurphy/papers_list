@@ -84,7 +84,7 @@ export default function LandingPage() {
                 <img className="gallery-card-img" src={event.image} alt="" />
                 <div className="gallery-card-content">
                   <h3>{event.event_name}</h3>
-                  {event.cost ? <h5>Free Event</h5> : <h5>Paid Event</h5>}
+                  {event.cost === true ? <h5>Paid Event</h5> : <h5>Free Event</h5>}
                 </div>
               </div>
               </div>
