@@ -285,7 +285,7 @@ router.put('/status/:id', (req, res) => {
         res.sendStatus(200);
     })
     .catch((dbError)=>{
-        console.log('PUT /koalas:id failed', dbError)
+        console.log('PUT /status:id failed', dbError)
         res.sendStatus(500);
     })
   });
