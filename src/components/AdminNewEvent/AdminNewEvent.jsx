@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./AdminNewEvent.css";
 import {
@@ -8,6 +8,7 @@ import {
   Divider,
   FormControl,
   FormLabel,
+  ListItemText,
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import UploadButton from "../UploadButton/UploadButton";
@@ -15,6 +16,7 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import Checkbox from "@mui/material/Checkbox";
 import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -36,23 +38,30 @@ export default function AdminNewEvent() {
   let [descriptionInput, setDescriptionInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [imageInput, setImageInput] = useState("");
+  let [tagInput, setTagInput] = useState([]);
+  const tagData = useSelector((store) => store.tags);
+  console.log("tagdata", tagData);
+
+  useEffect(() => {
+    dispatch({ type: "FETCH_TAGS" });
+  }, []);
+
   const dispatch = useDispatch();
   const history = useHistory();
- 
+  const eventForm = new FormData();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newAdminEvent = {
-      host: hostInput,
-      event_name: titleInput,
-      cost: costInput,
-      time: dateInput,
-      location: locationInput,
-      description: descriptionInput,
-      event_size: eventSizeInput,
-      image: imageInput,
-    };
+    eventForm.append("event_name", titleInput);
+    eventForm.append("host", hostInput);
+    eventForm.append("time", dateInput);
+    eventForm.append("cost", costInput);
+    eventForm.append("location", locationInput);
+    eventForm.append("description", descriptionInput);
+    eventForm.append("event_size", eventSizeInput);
+    eventForm.append("image", imageInput);
+
     setHostInput("");
     setTitleInput("");
     setLocationInput("");
@@ -63,7 +72,7 @@ export default function AdminNewEvent() {
 
     dispatch({
       type: "ADD_EVENT",
-      payload: newAdminEvent,
+      payload: eventForm,
     });
     console.log("Handling submit");
 
@@ -76,11 +85,11 @@ export default function AdminNewEvent() {
 
   const removeEventFromActive = () => {
     dispatch({
-      type: "REMOVE_EVENT"
-    })
+      type: "REMOVE_EVENT",
+    });
 
     history.push("/eventarchive");
-  }
+  };
   return (
     <>
       <h1 className="admin-event">Admin Create Event</h1>
@@ -93,10 +102,10 @@ export default function AdminNewEvent() {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-              <UploadButton
+              <input
                 id="event-image-input"
-                onChange={(e) => setImageInput(e.target.value)}
-                value={imageInput}
+                type="file"
+                onChange={(e) => setImageInput(e.target.files[0])}
               />
               <TextField
                 id="event-description-input"
@@ -163,103 +172,6 @@ export default function AdminNewEvent() {
                 required
               />
             </Stack>
-
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label id="name-label" htmlFor="event-name-input">
-            Event Name
-          </label>
-          <input
-            id="event-name-input"
-            type="text"
-            onChange={(e) => setTitleInput(e.target.value)}
-            value={titleInput}
-          />
-          <label id="host-label" htmlFor="event-host-input">
-            Host
-          </label>
-          <input
-            id="event-host-input"
-            type="text"
-            onChange={(e) => setHostInput(e.target.value)}
-            value={hostInput}
-          />
-        </div>
-        <div>
-          <label id="location-label" htmlFor="event-location-input">
-            Location
-          </label>
-          <input
-            id="event-location-input"
-            type="text"
-            onChange={(e) => setLocationInput(e.target.value)}
-            value={locationInput}
-          />
-        </div>
-        <div>
-          <label id="date-label" htmlFor="event-date-input">
-            Date
-          </label>
-          <input
-            id="event-date-input"
-            type="text"
-            onChange={(e) => setDateInput(e.target.value)}
-            value={dateInput}
-          />
-        </div>
-        <div>
-          <label id="cost-label" htmlFor="event-cost-input">
-            Cost
-          </label>
-          <input
-            id="event-cost-input"
-            type="text"
-            onChange={(e) => setCostInput(e.target.value)}
-            value={costInput}
-          />
-        </div>
-        <div>
-          <label id="description-label" htmlFor="event-description-input">
-            Description
-          </label>
-          <input
-            id="event-description-input"
-            type="text"
-            onChange={(e) => setDescriptionInput(e.target.value)}
-            value={descriptionInput}
-          />
-        </div>
-        <div>
-          <label id="size-label" htmlFor="event-size-input">
-            Event Size
-          </label>
-          <input
-            id="event-size-input"
-            type="text"
-            onChange={(e) => setEventSizeInput(e.target.value)}
-            value={eventSizeInput}
-          />
-        </div>
-        <div>
-          <label id="image-label" htmlFor="event-image-input">
-            Image
-          </label>
-          <input
-            id="event-image-input"
-            type="text"
-            onChange={(e) => setImageInput(e.target.value)}
-            value={imageInput}
-          />
-        </div>
-        <button className="submit-btn">Submit</button>
-      </form>
-      <button onClick={backToArchive} className="discard-btn">
-        Admin Page
-      </button>
-      <button onClick={removeEventFromActive}>
-        Remove Event
-      </button>
             <Stack
               spacing={2}
               direction="row"
@@ -275,9 +187,38 @@ export default function AdminNewEvent() {
                 id="event-location-input"
                 onChange={(e) => setLocationInput(e.target.value)}
                 value={locationInput}
-                fullWidth
+                sx={{ width: 200 }}
                 required
               />
+              <Box sx={{ midWidth: 120 }}>
+                <FormControl sx={{ width: 200 }}>
+                  <InputLabel id="tag-input-label">Tags</InputLabel>
+                  <Select
+                    multiple
+                    label="Tag"
+                    id="event-tag-input"
+                    onChange={(e) => setTagInput(e.target.value)}
+                    value={tagInput}
+                    sx={{ width: 200 }}
+                  >
+                    {tagData &&
+                      tagData.map((tag) => {
+                        return (
+                          <MenuItem key={tag.id} value={tag.tag_name}>
+                            <Checkbox
+                              checked={tagInput.indexOf(tag.tag_name) > -1}
+                            />
+                            <ListItemText primary={tag.tag_name} />
+                          </MenuItem>
+                          // <MenuItem value={"medium"}>
+                          //   Medium (26 - 100 people)
+                          // </MenuItem>
+                          // <MenuItem value={"large"}>Large (100+ people)</MenuItem>
+                        );
+                      })}
+                  </Select>
+                </FormControl>
+              </Box>
             </Stack>
             <Stack
               spacing={2}

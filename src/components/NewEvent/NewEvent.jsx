@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "../AdminNewEvent/AdminNewEvent.css";
 import {
@@ -7,6 +7,7 @@ import {
   Stack,
   Divider,
   FormControl,
+  ListItemText,
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import UploadButton from "../UploadButton/UploadButton";
@@ -14,6 +15,7 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import Checkbox from "@mui/material/Checkbox";
 import AddIcon from "@mui/icons-material/Add";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -34,25 +36,29 @@ export default function NewEvent() {
   let [imageInput, setImageInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [costInput, setCostInput] = useState("");
-  let [tagInput, setTagInput] = useState("");
+  let [tagInput, setTagInput] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
+  const tagData = useSelector((store) => store.tags);
+
+  useEffect(() => {
+    dispatch({ type: "FETCH_TAGS" });
+  }, []);
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const eventForm = new FormData();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newEvent = {
-      event_name: titleInput,
-      host: hostInput,
-      time: dateInput,
-      cost: costInput,
-      location: locationInput,
-      description: descriptionInput,
-      image: imageInput,
-      event_size: eventSizeInput,
-    };
+    eventForm.append("event_name", titleInput);
+    eventForm.append("host", hostInput);
+    eventForm.append("time", dateInput);
+    eventForm.append("cost", costInput);
+    eventForm.append("location", locationInput);
+    eventForm.append("description", descriptionInput);
+    eventForm.append("event_size", eventSizeInput);
+    eventForm.append("image", imageInput);
 
     setHostInput("");
     setTitleInput("");
@@ -63,19 +69,15 @@ export default function NewEvent() {
     setEventSizeInput("");
     setTagInput("");
 
-    console.log(newEvent);
-
     dispatch({
       type: "ADD_EVENT",
-      payload: newEvent,
+      payload: eventForm,
     });
-    console.log("Handling submit");
+
     history.push("/contactinfo");
   };
 
   const handleDiscard = (e) => {
-    console.log("Handling discard");
-
     history.push("/");
   };
   return (
@@ -91,10 +93,10 @@ export default function NewEvent() {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-              <UploadButton
+              <input
                 id="event-image-input"
-                onChange={(e) => setImageInput(e.target.value)}
-                value={imageInput}
+                type="file"
+                onChange={(e) => setImageInput(e.target.files[0])}
               />
               <TextField
                 id="event-description-input"
@@ -179,23 +181,28 @@ export default function NewEvent() {
                 sx={{ width: 200 }}
                 required
               />
-               <Box sx={{ midWidth: 120 }}>
+              <Box sx={{ midWidth: 120 }}>
                 <FormControl sx={{ width: 200 }}>
-                  <InputLabel id="tag-input-label">
-                    Tags
-                  </InputLabel>
+                  <InputLabel id="tag-input-label">Tags</InputLabel>
                   <Select
+                    multiple
                     label="Event Size"
                     id="event-size-input"
                     onChange={(e) => setTagInput(e.target.value)}
                     value={tagInput}
                     sx={{ width: 200 }}
                   >
-                    <MenuItem value={"small"}>Small (5 - 25 people)</MenuItem>
-                    <MenuItem value={"medium"}>
-                      Medium (26 - 100 people)
-                    </MenuItem>
-                    <MenuItem value={"large"}>Large (100+ people)</MenuItem>
+                    {tagData &&
+                      tagData.map((tag) => {
+                        return (
+                          <MenuItem key={tag.id} value={tag.tag_name}>
+                            <Checkbox
+                              checked={tagInput.indexOf(tag.tag_name) > -1}
+                            />
+                            <ListItemText primary={tag.tag_name} />
+                          </MenuItem>
+                        );
+                      })}
                   </Select>
                 </FormControl>
               </Box>
@@ -258,7 +265,7 @@ export default function NewEvent() {
                   Discard
                 </Button>
                 <Button type="submit" variant="contained" sx={{ width: 210 }}>
-                <AddIcon />
+                  <AddIcon />
                   Submit Request
                 </Button>
               </ThemeProvider>
