@@ -9,6 +9,7 @@ export default function Modal({ closeModal }) {
   const singleEvent = useSelector((store) => store.selectedEvent.selectedEvent);
   const tags = useSelector((store) => store.tags);
 
+
     useEffect(() => {
         dispatch({type: 'FETCH_EVENTS'});
     }, [])
@@ -32,4 +33,3 @@ export default function Modal({ closeModal }) {
         </>
     )
 }
-
