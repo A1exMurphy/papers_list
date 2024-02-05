@@ -1,3 +1,4 @@
+
 body {
     background:#fff;
     background-image:linear-gradient(90deg,
@@ -17,16 +18,13 @@ table {
     text-align: left;
 }
 
-@import "compass/css3";
-
-@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
-
 * {
 	box-sizing:border-box;
 }
 
-.post-it {
- 	width:250px;
+/* create Stick-it note visualization */
+.removed-post-it {
+ 	width: 90%;
   height:240px;
   position:relative;
   background:#ffa;
@@ -34,11 +32,10 @@ table {
   margin:30px auto;
   padding:20px;
   border-radius:0 0 0 30px/45px;
-  box-shadow:
+  /* box-shadow:
     inset 0 -40px 40px rgba(0,0,0,0.2),
     inset 0 25px 10px rgba(0,0,0,0.2),
-    0 5px 6px 5px rgba(0,0,0,0.2);
-  /* font-family: 'Permanent Marker', cursive; */
+    0 5px 6px 5px rgba(0,0,0,0.2); */
   font-family: var(--srcsansreg);
   line-height:1.7em;
   font-size:19px;
@@ -47,11 +44,11 @@ table {
   color:#130d6b;
 }
 
-.post-it li {
+.removed-post-it li {
  	cursor:pointer; 
 }
 
-.post-it:before {
+.removed-post-it:before {
  	content:"";
   display:block;
   position:absolute;
@@ -79,6 +76,8 @@ table {
   left:10%;
 } */
 
+/* end of Stick-it visual */
+
 .done {
  	text-decoration:line-through; 
 }
@@ -88,10 +87,10 @@ h1 {
   position:relative;
 }
 
+/* visualized table inputs as writing on notebook paper */
 
-
-.removedTable {
-        /* background:#fff;
+/* .removedTable {
+        background:#fff;
     position: absolute;
     transform: translate(0px, 15px);
     background-image:linear-gradient(90deg,
@@ -103,8 +102,10 @@ h1 {
         linear-gradient(#eee .1em,
             transparent .1em
             );
-        background-size: 100% 2em; */
-}
+        background-size: 100% 2em;
+} */
+
+/* end table on notebook visual */
 
 table,
 th,

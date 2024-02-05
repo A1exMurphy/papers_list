@@ -121,7 +121,7 @@ export default function AdminArchive() {
                     </Typography>
                 </Box>
             </Modal>
-            <div className="EventsTable">
+            <div className="EventsTable events-post-it">
                 <table>
                     <thead>
                         <tr>
@@ -151,7 +151,7 @@ export default function AdminArchive() {
                 </table>
             </div>
 
-            <div className="TagsTable">
+            <div className="TagsTable events-post-it">
                 <table>
                     <thead>
                         <tr>
