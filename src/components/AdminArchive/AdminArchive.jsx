@@ -10,12 +10,6 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -107,24 +101,24 @@ export default function AdminArchive() {
         history.push("/adminnewevent");
     };
 
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
-        [`&.${tableCellClasses.head}`]: {
-            backgroundColor: theme.palette.common.black,
-            color: theme.palette.common.white,
-        },
-        [`&.${tableCellClasses.body}`]: {
-            fontSize: 14,
-        },
-    }));
-    const StyledTableRow = styled(TableRow)(({ theme }) => ({
-        '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.action.hover,
-        },
-        // hide last border
-        '&:last-child td, &:last-child th': {
+    // const td = styled(td)(({ theme }) => ({
+    //     [`&.${tableCellClasses.head}`]: {
+    //         backgroundColor: theme.palette.common.black,
+    //         color: theme.palette.common.white,
+    //     },
+    //     [`&.${tableCellClasses.body}`]: {
+    //         fontSize: 14,
+    //     },
+    // }));
+    // const StyledTableRow = styled(tr)(({ theme }) => ({
+    //     '&:nth-of-type(odd)': {
+    //         backgroundColor: theme.palette.action.hover,
+    //     },
+    //     // hide last border
+    //     '&:last-child td, &:last-child th': {
 
-        },
-    }));
+    //     },
+    // }));
 
     return (
         <div>
@@ -156,68 +150,68 @@ export default function AdminArchive() {
             </Modal>
 
             <div className="EventsTable events-post-it">
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Host</StyledTableCell>
-                            <StyledTableCell>Event Name</StyledTableCell>
-                            <StyledTableCell>Status</StyledTableCell>
-                            <StyledTableCell>Featured / Review</StyledTableCell>
+               
+                    <table>
+                    <thead>
+                        <tr>
+                            <td>Host</td>
+                            <td>Event Name</td>
+                            <td>Status</td>
+                            <td>Featured / Review</td>
 
 
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
+                        </tr>
+                    </thead>
+                  
                         {events.map((event) => {
                             return (
-                                <TableRow key={event.id}>
-                                    <StyledTableCell>{event.host}</StyledTableCell>
-                                    <StyledTableCell>{event.event_name}</StyledTableCell>
-                                    <StyledTableCell>{event.admin_approved}</StyledTableCell>
-                                    <StyledTableCell><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
+                                <tr key={event.id}>
+                                    <td>{event.host}</td>
+                                    <td>{event.event_name}</td>
+                                    <td>{event.admin_approved}</td>
+                                    <td><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
                                     </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
-                                    </Button> <Button onClick={() => { history.push(`/edit_event/${event.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></StyledTableCell>
+                                    </Button> <Button onClick={() => { history.push(`/edit_event/${event.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
 
-                                </TableRow>
+                                </tr>
                             );
                         })}
                        
 
-                    </TableBody>
-                    </Table>
-                </TableContainer>
+                    </table>
+                   
+                
             </div>
            
             <div className="TagsTable events-post-it">
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Tag Name</StyledTableCell>
-                            <StyledTableCell>Delete/Edit</StyledTableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
+             
+              
+                    <thead>
+                        <tr>
+                            <td>Tag Name</td>
+                            <td>Delete/Edit</td>
+                        </tr>
+                    </thead>
+                    <table>
                         {tags.map((tag) => {
                             return (
                               
-                                <TableRow key={tag.id}>
-                                    <StyledTableCell>{tag.tag_name}</StyledTableCell>
-                                    <StyledTableCell>
+                                <tr key={tag.id}>
+                                    <td>{tag.tag_name}</td>
+                                    <td>
                                            <Button onClick={() => deleteTag(tag)}><DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon></Button>
                                        
                                         
                                          <Button onClick={() => { history.push(`/edit_tag/${tag.id}`) }}><EditOutlinedIcon></EditOutlinedIcon></Button> 
-                                    </StyledTableCell>
-                                    </TableRow>
+                                    </td>
+                                    </tr>
                                   
                               
                             );
                         })}
-                    </TableBody>
-                    </Table>
-                </TableContainer>
+                    </table>
+            
+              
                 
             </div>
                  <div className="AddTag">
