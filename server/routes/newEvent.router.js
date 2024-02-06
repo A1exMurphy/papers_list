@@ -24,17 +24,19 @@ router.post('/event', cloudinaryUpload.single("image"), async (req, res) => {
             "event_name",
             "cost",
             "time",
+            "location",
             "description",
             "event_size",
             "image"
         )
-            VALUES ($1, $2, $3, $4, $5, $6, $7)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     `
     newEventValues = [
         req.body.host,
         req.body.event_name,
         req.body.cost,
         req.body.time,
+        req.body.location,
         req.body.description,
         req.body.event_size,
         fileUrl,
