@@ -177,7 +177,7 @@ export default function AdminArchive() {
                                     <StyledTableCell>{event.admin_approved}</StyledTableCell>
                                     <StyledTableCell><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
                                     </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
-                                    </Button> <Button> <RateReviewIcon></RateReviewIcon></Button></StyledTableCell>
+                                    </Button> <Button onClick={() => { history.push(`/edit_event/${event.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></StyledTableCell>
 
                                 </TableRow>
                             );

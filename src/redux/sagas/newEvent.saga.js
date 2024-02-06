@@ -8,7 +8,7 @@ function* addNewEvent(action) {
     }
     const response = yield axios({
       method: "POST",
-      url: "/api/newevent",
+      url: "/api/newevent/event",
       headers: headers,
       data: action.payload
     });

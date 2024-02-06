@@ -226,7 +226,7 @@ router.post("/", (req, res) => {
 });
 
 router.put('/tags/:id', (req, res) => {
-    console.log('in PUT query')
+    console.log('in PUTter query')
 const idToUpdate = req.params.id
     const insertNewTag = 
     `
@@ -239,7 +239,8 @@ const idToUpdate = req.params.id
     
 
         pool.query(insertNewTag, [req.body.tag_name, idToUpdate])
-            .then((result) => {
+          .then((result) => {
+              console.log("sdasinasndaisudnuasdui");
                 res.sendStatus(201)
             })
             .catch((err) => {
@@ -270,15 +271,11 @@ router.get('/tag/:id', (req, res) => {
 
 router.put('/status/:id', (req, res) => {
   
- 
-  
     const sqlText = `
     UPDATE "posts"
      SET "is_highlighted_event" = NOT "is_highlighted_event"
      WHERE "id" = ${req.params.id};
       `
-    
-   
   
     pool.query(sqlText)
     .then((dbResult) =>{
@@ -288,7 +285,41 @@ router.put('/status/:id', (req, res) => {
         console.log('PUT /status:id failed', dbError)
         res.sendStatus(500);
     })
-  });
+});
+  
+
+router.put('/events/:id', (req, res) => {
+  console.log('in PUTttttttttte query')
+const idToUpdate = req.params.id
+  let insertNewTag =
+    `
+  UPDATE "posts" 
+ SET
+  "host" = $1,
+  "event_name" = $2,
+  "cost" = $3,
+  "time" = $4,
+  "date" = $5,
+"description" = $6,
+"event_size" = $7,
+"image" = $8,
+"admin_approved" = $9
+  WHERE "id" = $10;
+  `;
+//not sure if the happy path is using req.body.id or req.params.id
+  
+
+  pool.query(insertNewTag, [req.body.host, req.body.event_name, req.body.cost, req.body.time, req.body.date, req.body.description, req.body.event_size, req.body.image, req.body.admin_approved, idToUpdate])
+        
+          .then((result) => {
+            res.sendStatus(201)
+            console.log("body", req.body);
+          })
+          .catch((err) => {
+              console.log(err, 'error in PUT query')
+              res.sendStatus(500)
+          })
+});
 
 
 
