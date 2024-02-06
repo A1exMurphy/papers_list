@@ -8,6 +8,7 @@ import tags from "./adminTag.reducer";
 import removedEvents from "./removedEvents.reducer";
 import editTag from "./editTag.reducer";
 import editEvent from "./editEvent.reducer";
+import newEvent from "./newEvent.reducer";
 
 
 // rootReducer is the primary reducer for our entire project
@@ -17,6 +18,7 @@ import editEvent from "./editEvent.reducer";
 // Lets make a bigger object for our store, with the objects from our reducers.
 // This is what we get when we use 'state' inside of 'mapStateToProps'
 const rootReducer = combineReducers({
+  newEvent,
   archived, // will show all events and tags that are in the archive
   events, // contains all events
   selectedEvent, // gets info for a single event

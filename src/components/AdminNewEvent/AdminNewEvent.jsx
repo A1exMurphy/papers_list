@@ -14,7 +14,7 @@ import Button from "@mui/material/Button";
 import UploadButton from "../UploadButton/UploadButton";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from '@mui/material/OutlinedInput';
+import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
@@ -117,8 +117,9 @@ export default function AdminNewEvent() {
                 id="event-image-input"
                 type="file"
                 onChange={(e) => setImageInput(e.target.files[0])}
-                sx= {{ 
-                  width: 230 }}
+                sx={{
+                  width: 230,
+                }}
               />
               <TextField
                 id="event-description-input"
@@ -130,7 +131,7 @@ export default function AdminNewEvent() {
                 value={descriptionInput}
                 sx={{
                   marginBottom: 4,
-                  width: 230
+                  width: 230,
                 }}
                 multiline
                 minRows={8}
@@ -213,7 +214,7 @@ export default function AdminNewEvent() {
                     onChange={(e) => setTagInput(e.target.value)}
                     value={tagInput}
                     sx={{ width: 230 }}
-                    renderValue={(selected) => selected.join(', ')}
+                    renderValue={(selected) => selected.join(", ")}
                     MenuProps={MenuProps}
                   >
                     {tagData &&
@@ -225,10 +226,6 @@ export default function AdminNewEvent() {
                             />
                             <ListItemText primary={tag.tag_name} />
                           </MenuItem>
-                          // <MenuItem value={"medium"}>
-                          //   Medium (26 - 100 people)
-                          // </MenuItem>
-                          // <MenuItem value={"large"}>Large (100+ people)</MenuItem>
                         );
                       })}
                   </Select>
