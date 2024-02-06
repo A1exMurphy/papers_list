@@ -55,7 +55,7 @@ main {
 
 .modal-img {
     height: 60vh;
-    width: 450px;
+    width: 540px;
     overflow: hidden;
     margin-left: 2em;
     transform: translateY(100px);
@@ -64,7 +64,7 @@ main {
 }
 
 .modal-img img {
-    object-fit: fill;
+    object-fit: cover;
     height: 100%;
     width: 100%;
 }
@@ -88,10 +88,10 @@ main {
 .modal-body {
     position: absolute;
     display: flex;
-    height: 54vh;
+    height: 54.5vh;
     width: 60vw;
     border: 1px solid white;
-    transform: translate(500px, 150px);
+    transform: translate(600px, 150px);
 }
 
 .modal-body p {
@@ -101,17 +101,16 @@ main {
 
 .modal-event-size {
     position: absolute;
-    transform: translate(530px, 111px);
+    transform: translate(630px, 115px);
     color: white;
     font-size: 20px;
-    border-right: 1px solid white;
     height: 20px;
     margin-left: .4rem;
-    font-family: var(--srcsansmedbold);
+    font-family: var(--srcsansmed);
 }
 
 .medium-event {
-    padding-right: 0.6rem;
+    padding-right: 2rem;
 }
 
 .small-event {
@@ -131,18 +130,18 @@ main {
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
-    transform: translateX(-40px);
+    transform: translate(-9rem, 26px);
     position: absolute;
     z-index: 1;
     opacity: 0;
-    font-family: var(--srcsansmedbold);
+    font-family: var(--srcsansmed);
     font-size: medium;
     transition: opacity 0.2s ease-in-out;
 }
 
 .people-alt-icon {
     position: absolute;
-    transform: translate(500px, 109.2px);
+    transform: translate(600px, 115px);
     color: white;
 }
 
@@ -153,14 +152,43 @@ main {
 
 .modal-event-cost {
     color: white;
-    transform: translate(620.5px, 111px);
+    transform: translate(770px, 119px);
     font-size: 20px;
-    border-right: 1px solid white;
     height: 20px;
-    font-size: medium;
-    font-family: var(--srcsansmedbold);
+    position: absolute;
+    width: 100px;
+    font-family: var(--srcsansmed);
 }
 
 .paid {
     font-size: medium;
+    position: absolute;
+}
+
+.free {
+    padding-right: .5rem;
+    position: absolute;
+}
+
+.modal-date {
+    color: white;
+    display: flex;
+    transform: translate(900px, 118px);
+    font-family: var(--srcsansmed);
+    position: absolute;
+}
+
+.modal-host {
+    color: white;
+    display: flex;
+    transform: translate(1020px, 115px);
+    font-family: var(--srcsansmed);
+    position: absolute;
+}
+
+.paid-icon {
+    color: white;
+    display: flex;
+    position: absolute;
+    transform: translate(735px, 115px);
 }

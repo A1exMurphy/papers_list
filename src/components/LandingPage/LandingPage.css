@@ -124,6 +124,12 @@
   padding-top: 1px;
 }
 
+.create-event-btn {
+  display: flex;
+  justify-content: flex-start;
+  transform: translate(5px,-550px);
+}
+
 /* General Selectors */
 
 h1, h2, h3, h4, h5 {
