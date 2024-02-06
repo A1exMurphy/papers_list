@@ -14,7 +14,7 @@ const eventRouter = require('./routes/EventPage.router');
 const adminRouter = require('./routes/admin.router');
 const contactRouter = require('./routes/contactInfo.router');
 const tagsRouter = require('./routes/tags.router');
-const upload = require('./modules/cloudinary.config');
+
 
 
 
@@ -40,7 +40,7 @@ app.use('/api/eventfeed', eventRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/contact', contactRouter);
 app.use('/api/tags', tagsRouter);
-app.use('api/upload', uploadRouter);
+
 
 
 

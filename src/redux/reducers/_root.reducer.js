@@ -7,6 +7,7 @@ import archived from "./adminArchive.reducer";
 import tags from "./adminTag.reducer";
 import removedEvents from "./removedEvents.reducer";
 import editTag from "./editTag.reducer";
+import editEvent from "./editEvent.reducer";
 
 
 // rootReducer is the primary reducer for our entire project
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
   user,
   removedEvents,
   tags,// will have an id and username if someone is logged in
-  editTag
+  editTag,
+  editEvent
 });
 
 export default rootReducer;
