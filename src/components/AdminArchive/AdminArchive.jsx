@@ -58,8 +58,6 @@ export default function AdminArchive() {
     const events = useSelector((store) => store.archived);
     const tags = useSelector((store) => store.tags);
 
-    // console.log("events", events);
-
     const history = useHistory();
     const dispatch = useDispatch();
 

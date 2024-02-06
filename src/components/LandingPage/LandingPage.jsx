@@ -40,6 +40,10 @@ export default function LandingPage() {
 
   return (
     <>
+    <Button
+        variant='contained'
+        onClick={handleCreateEvent}
+        >Create New Event</Button>
     <section className="highlights-section">
       <div className="titleContainer">
         <h1 className="landing-title">Highlighted Events</h1>
@@ -93,10 +97,7 @@ export default function LandingPage() {
         </div>
       </section>
       <div className="create-event-btn">
-      <Button
-        variant='contained'
-        onClick={handleCreateEvent}
-        >Create New Event</Button>
+      
       </div>
       <main>{openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}</main>
 

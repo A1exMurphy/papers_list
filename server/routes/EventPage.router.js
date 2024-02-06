@@ -31,7 +31,7 @@ const eventsArry = []
       INNER JOIN "tags" 
       ON "tags"."id" = "post_tags"."tag_id"
       WHERE "posts"."is_highlighted_event" = true;`
-      console.log('eventarray', eventsArry);
+      // console.log('eventarray', eventsArry);
     
       
       pool.query(sqlText)

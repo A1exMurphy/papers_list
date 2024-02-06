@@ -22,11 +22,13 @@ router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
             "event_name",
             "cost",
             "time",
+            "location",
             "description",
             "event_size",
             "image"
         )
-            VALUES ($1, $2, $3, $4, $5, $6, $7)
+
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
 
             RETURNING "id"
     `;

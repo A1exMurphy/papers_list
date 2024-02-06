@@ -86,10 +86,10 @@ export default function EditEvent() {
     });
   };
 
-  const handleDateChange = (date) => {
+  const handleLocationChange = (location) => {
     dispatch({
-      type: "CHANGE_DATE",
-      payload: date,
+      type: "CHANGE_LOCATION",
+      payload: location,
     });
   };
 
@@ -219,7 +219,7 @@ const removeEvent = (e) => {
                 variant="filled"
                 size="small"
                 id="event-date-input"
-                onChange={(e) => handleDateChange(e.target.value)}
+                onChange={(e) => handleLocationChange(e.target.value)}
                 value={editEvent.date || ""}
                 sx={{ width: 230 }}
                 required
