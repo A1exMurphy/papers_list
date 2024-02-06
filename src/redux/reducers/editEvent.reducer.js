@@ -17,9 +17,9 @@ const editEvent = (state = {}, action) => {
         const Time = action.payload
           return { ...state, time: Time }
     }
-    else if (action.type === 'CHANGE_DATE') {
-        const Date = action.payload
-          return { ...state, date: Date }
+    else if (action.type === 'CHANGE_LOCATION') {
+        const location = action.payload
+          return { ...state, location: location }
   
       }
       else if (action.type === 'CHANGE_DESCRIPTION') {

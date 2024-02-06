@@ -50,6 +50,7 @@ export default function EditEvent() {
   const editEvent = useSelector((store) => store.editEvent);
   const eventForm = new FormData();
 
+
   useEffect(() => {
     dispatch({
       type: "FETCH_EVENT_TO_EDIT",
@@ -280,6 +281,7 @@ export default function EditEvent() {
                   <Select
                     label="Event Size"
                     id="event-size-input"
+
                     onChange={(e) => handleEventSizeChange(e.target.value)}
                     value={editEvent.event_size || ""}
                     sx={{ width: 230 }}

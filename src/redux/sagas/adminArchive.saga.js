@@ -215,7 +215,7 @@ function* submitEventEdit(action) {
           event_name: editedEvent.event_name,
           cost: editedEvent.cost,
           time: editedEvent.time,
-          date: editedEvent.date,
+          location: editedEvent.location,
           description: editedEvent.description,
           event_size: editedEvent.event_size,
           image: editedEvent.image,
