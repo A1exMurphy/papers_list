@@ -44,8 +44,10 @@ router.get("/tags", (req, res) => {
 /**
  * GET route template
  */
-router.get("/:id", (req, res) => {
-  const getSelectedEvent = `
+
+router.get('/event/:id', (req, res) => {
+    const getSelectedEvent = 
+    `
     SELECT * FROM "posts"
         WHERE "id" = $1
     `;
@@ -58,6 +60,27 @@ router.get("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log("GET /api/eventfeed fail:", err);
+      res.sendStatus(500);
+    });
+});
+
+router.get('/removedevents', (req, res) => {
+  console.log('running removed events GET')
+  const getRemovedEvents = 
+  `
+  SELECT * FROM "posts"
+      WHERE "remove_event" = true;
+  `
+ 
+  pool.query(getRemovedEvents)
+  .then((result) => {
+      console.log(result.rows, 'results of removed events query')
+      res.send(result.rows)
+      
+
+    })
+    .catch((err) => {
+      console.log("GET /removedevents fail:", err);
       res.sendStatus(500);
     });
 });
@@ -107,6 +130,54 @@ router.put('/event/:id', (req, res) => {
     });
 });
 
+
+//submit PUT query to set "remove_event"=true
+router.put('/remove/:id', (req, res) => {
+  console.log('in PUT query')
+
+  const removeEvent = 
+  `
+  UPDATE "posts" 
+  	SET
+  	"remove_event"=true
+          
+    WHERE "id" = $1;
+  `
+  postID = [req.params.id]
+
+      pool.query(removeEvent, postID)
+          .then((result) => {
+              res.sendStatus(201)
+          })
+          .catch((err) => {
+              console.log(err, 'error in PUT query')
+              res.sendStatus(500)
+          })
+});
+
+//submit PUT query to set "remove_event"=falst
+router.put('/restore/:id', (req, res) => {
+  console.log('in PUT query')
+
+  const removeEvent = 
+  `
+  UPDATE "posts" 
+  	SET
+  	"remove_event"=false
+          
+    WHERE "id" = $1;
+  `
+  postID = [req.params.id]
+
+      pool.query(removeEvent, postID)
+          .then((result) => {
+              res.sendStatus(201)
+          })
+          .catch((err) => {
+              console.log(err, 'error in PUT query')
+              res.sendStatus(500)
+          })
+});
 //initiate DELETE query for selected id
 
 router.delete("/:id", (req, res) => {
@@ -155,7 +226,7 @@ router.post("/", (req, res) => {
 });
 
 router.put('/tags/:id', (req, res) => {
-    console.log('in PUT query')
+    console.log('in PUTter query')
 const idToUpdate = req.params.id
     const insertNewTag = 
     `
@@ -168,7 +239,8 @@ const idToUpdate = req.params.id
     
 
         pool.query(insertNewTag, [req.body.tag_name, idToUpdate])
-            .then((result) => {
+          .then((result) => {
+              console.log("sdasinasndaisudnuasdui");
                 res.sendStatus(201)
             })
             .catch((err) => {
@@ -199,25 +271,55 @@ router.get('/tag/:id', (req, res) => {
 
 router.put('/status/:id', (req, res) => {
   
- 
-  
     const sqlText = `
     UPDATE "posts"
-     SET "is_highlighted_event" = NOT "status"
+     SET "is_highlighted_event" = NOT "is_highlighted_event"
      WHERE "id" = ${req.params.id};
       `
-    
-   
   
     pool.query(sqlText)
     .then((dbResult) =>{
         res.sendStatus(200);
     })
     .catch((dbError)=>{
-        console.log('PUT /koalas:id failed', dbError)
+        console.log('PUT /status:id failed', dbError)
         res.sendStatus(500);
     })
-  });
+});
+  
+
+router.put('/events/:id', (req, res) => {
+  console.log('in PUTttttttttte query')
+const idToUpdate = req.params.id
+  let insertNewTag =
+    `
+  UPDATE "posts" 
+ SET
+  "host" = $1,
+  "event_name" = $2,
+  "cost" = $3,
+  "time" = $4,
+  "date" = $5,
+"description" = $6,
+"event_size" = $7,
+"image" = $8,
+"admin_approved" = $9
+  WHERE "id" = $10;
+  `;
+//not sure if the happy path is using req.body.id or req.params.id
+  
+
+  pool.query(insertNewTag, [req.body.host, req.body.event_name, req.body.cost, req.body.time, req.body.date, req.body.description, req.body.event_size, req.body.image, req.body.admin_approved, idToUpdate])
+        
+          .then((result) => {
+            res.sendStatus(201)
+            console.log("body", req.body);
+          })
+          .catch((err) => {
+              console.log(err, 'error in PUT query')
+              res.sendStatus(500)
+          })
+});
 
 
 

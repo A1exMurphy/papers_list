@@ -23,7 +23,11 @@ import NewEvent from '../NewEvent/NewEvent';
 import SubmitContactInfo from '../ContactInfo/ContactInfo';
 import AdminArchive from '../AdminArchive/AdminArchive';
 import AdminNewEvent from "../AdminNewEvent/AdminNewEvent";
+import RemovedEvents from "../RemovedEvents/RemovedEvents";
 import EditTags from "../EditTag/EditTag";
+import EditEvent from "../EditEvent/eventEdit";
+
+
 
 import "./App.css";
 
@@ -101,6 +105,13 @@ function App() {
 
           <Route exact path="/edit_tag/:id">
            <EditTags/>
+          </Route>
+          <Route exact path="/edit_event/:id">
+<EditEvent/>
+          </Route>
+
+          <Route exact path="/removedevents">
+            <RemovedEvents />
           </Route>
 
           <Route exact path="/login">

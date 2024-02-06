@@ -3,13 +3,41 @@ import axios from "axios";
 
 function* adminAddEvent(action) {
   try {
+    const headers = {
+      'content-type': 'multipart/form-data'
+    }
     const response = yield axios({
       method: "POST",
       url: "/api/adminevent/event",
-      data: action.payload,
+      headers: headers,
+      data: action.payload
     });
   } catch (error) {
     console.log("Unable to post new events to server", error);
+  }
+}
+
+function* adminRemoveEvent(action) {
+  try {
+    const response = yield axios({
+      method: "PUT",
+      url: `/api/admin/remove/${action.payload.id}`,
+      data: action.payload,
+    });
+  } catch (error) {
+    console.log("Unable to send event to deleted table", error);
+  }
+}
+//sagas 👇👆 that handle toggling an event from active/inactive
+function* adminRestoreEvent(action) {
+  try {
+    const response = yield axios({
+      method: "PUT",
+      url: `/api/admin/restore/${action.payload.id}`,
+      data: action.payload,
+    });
+  } catch (error) {
+    console.log("Unable to send event to deleted table", error);
   }
 }
 
@@ -27,5 +55,7 @@ function* adminDeleteEvent(action) {
 
 export default function* adminAddEventSaga() {
   yield takeLatest("ADMIN_ADD_EVENT", adminAddEvent);
+  yield takeLatest("REMOVE_EVENT", adminRemoveEvent);
+  yield takeLatest("RESTORE_EVENT", adminRestoreEvent);
   yield takeLatest("ADMIN_DELETE_EVENT", adminDeleteEvent);
 }

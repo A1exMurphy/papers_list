@@ -1,5 +1,6 @@
-import { put, takeLatest } from "redux-saga/effects";
+import { put, take, takeLatest } from "redux-saga/effects";
 import axios from "axios";
+
 
 function* getArchivedEvents() {
   try {
@@ -44,11 +45,25 @@ function* restoreFromDeleted(action) {
     console.log("Unable to delete event from archive", error);
   }
 }
+function* getRemovedEvents() {
+  try {
+    const response = yield axios({
+      method: "GET",
+      url: "/api/admin/removedevents"
+    });
+    yield put({
+      type: "SET_REMOVED_EVENTS",
+      payload: response.data,
+    });
+  } catch (error) {
+    console.log("Unable to get removed events from server", error);
+  }
+}
 function* adminEditEvent(action) {
   try {
     const response = yield axios({
       method: "PUT",
-      url: `/api/admin/${action.payload.id}`,
+      url: `/api/admin/event/${action.payload.id}`,
       data: action.payload,
     });
   } catch (error) {
@@ -154,10 +169,67 @@ function* StatusChange(action) {
  
 
     yield put({
-      type: "FETCH_TAGS"
+      type: "FETCH_ARCHIVED_EVENTS"
     })
   } catch (err) {
     console.log('submitStatusChange failed.', err)
+  }
+
+}
+
+function* fetchEventDetails(action) {
+  console.log('eventsssss',action.payload);
+  try {
+      const EventId = action.payload
+     
+    const response = yield axios({
+      method: 'GET',
+      url: `/api/admin/event/${EventId}`
+    })
+
+    const eventToEdit = response.data
+    console.log("response.data", response.data);
+    
+    yield put({
+      type: 'SET_EVENT_TO_EDIT',
+      payload: eventToEdit
+    })
+  } catch (err) {
+    console.log('shoot. fetchEventsDetails did not work. :(', err)
+  }
+  
+
+}
+
+function* submitEventEdit(action) {
+   console.log('sumbitted');
+  try {
+    console.log("actionnnnnnn", action.payload)
+    const editedEvent = action.payload
+
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/admin/events/${editedEvent.id}`,
+      data: {
+          host: editedEvent.host,
+          event_name: editedEvent.event_name,
+          cost: editedEvent.cost,
+          time: editedEvent.time,
+          date: editedEvent.date,
+          description: editedEvent.description,
+          event_size: editedEvent.event_size,
+          image: editedEvent.image,
+          admin_approved: editedEvent.admin_approved,
+      }
+    })
+      
+ 
+
+    yield put({
+      type: "FETCH_ARCHIVED_EVENTS"
+    })
+  } catch (err) {
+    console.log('submitEventEdit failed.', err)
   }
 
 }
@@ -165,6 +237,7 @@ export default function* archivedEventSaga() {
   yield takeLatest("FETCH_ARCHIVED_EVENTS", getArchivedEvents);
   yield takeLatest("DELETE_FROM_ARCHIVE", deleteFromArchive);
   yield takeLatest("RESTORE_FROM_DELETED", restoreFromDeleted);
+  yield takeLatest("FETCH_REMOVED_EVENTS", getRemovedEvents);
   yield takeLatest("ADMIN_EDIT_EVENT", adminEditEvent);
   yield takeLatest("FETCH_TAGS", getTags);
   yield takeLatest("ADD_TAGS", addTags);
@@ -172,5 +245,6 @@ export default function* archivedEventSaga() {
   yield takeLatest("SUBMIT_EDIT_TAG", SubmitEditTag);
   yield takeLatest("FETCH_TAG_TO_EDIT", fetchTagDetails);
   yield takeLatest("STATUS_CHANGE", StatusChange);
-
+  yield takeLatest("FETCH_EVENT_TO_EDIT", fetchEventDetails);
+  yield takeLatest("SUBMIT_EVENT_EDIT", submitEventEdit)
 }

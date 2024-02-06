@@ -17,6 +17,7 @@
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.0.0",
     "cookie-session": "^2.0.0",
+    "multer-storage-cloudinary": "^4.0.0",
     "daisyui": "^4.6.1",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
