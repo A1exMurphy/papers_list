@@ -115,7 +115,7 @@ function* deleteTag(action) {
 }
 
 function* fetchTagDetails(action) {
-  console.log(action.payload);
+  
   try {
       const TagId = action.payload
       console.log("TagId",TagId );
