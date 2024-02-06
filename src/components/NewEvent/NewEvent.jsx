@@ -58,7 +58,7 @@ export default function NewEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const eventForm = new FormData();
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -79,6 +79,8 @@ export default function NewEvent() {
     setDescriptionInput("");
     setEventSizeInput("");
     setTagInput("");
+
+    console.log("Event form data:", eventForm);
 
     dispatch({
       type: "ADD_EVENT",
