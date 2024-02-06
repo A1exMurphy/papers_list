@@ -52,7 +52,7 @@ td {
 /* create Stick-it note visualization */
 .events-post-it {
     width: 90%;
- height:240px;
+ height: fit-content;
  position:relative;
  background:#ffa;
  overflow:hidden;

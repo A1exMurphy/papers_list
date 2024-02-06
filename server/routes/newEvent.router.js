@@ -24,17 +24,19 @@ router.post('/event', cloudinaryUpload.single("image"), async (req, res) => {
             "event_name",
             "cost",
             "time",
+            "location",
             "description",
             "event_size",
             "image"
         )
-            VALUES ($1, $2, $3, $4, $5, $6, $7)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     `
     newEventValues = [
         req.body.host,
         req.body.event_name,
         req.body.cost,
         req.body.time,
+        req.body.location,
         req.body.description,
         req.body.event_size,
         fileUrl,
@@ -51,40 +53,6 @@ router.post('/event', cloudinaryUpload.single("image"), async (req, res) => {
             })
 });
 
-router.post('/', (req, res) => {
-    console.log('in POST query')
-  
 
-    // const userId = req.user.id; < -- Logged in user?
-
-    const insertNewEvent = 
-    `
-        INSERT INTO "post_tags" (
-            "post_id",
-            "tag_id",
-          
-        )
-            VALUES ($1, $2, $3, $)
-    `
-    newEventValues = [
-        req.body.host,
-        req.body.event_name,
-        req.body.cost,
-        req.body.time,
-        req.body.description,
-        req.body.event_size,
-        fileUrl,
-        // userId
-    ]
-
-        pool.query(insertNewEvent, newEventValues)
-            .then((result) => {
-                res.sendStatus(201)
-            })
-            .catch((err) => {
-                console.log(err, 'error in POST query')
-                res.sendStatus(500)
-            })
-});
 
 module.exports = router;
