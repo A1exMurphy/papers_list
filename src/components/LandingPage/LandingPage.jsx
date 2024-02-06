@@ -92,11 +92,12 @@ export default function LandingPage() {
           })}
         </div>
       </section>
+      <div className="create-event-btn">
       <Button
         variant='contained'
-        className="create-event-btn"
         onClick={handleCreateEvent}
         >Create New Event</Button>
+      </div>
       <main>{openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}</main>
 
     </>

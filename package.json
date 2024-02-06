@@ -15,9 +15,7 @@
     "@mui/styled-engine-sc": "^6.0.0-alpha.14",
     "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",
-
-   "cloudinary": "^1.41.0",
-
+    "cloudinary": "^2.0.0",
     "cookie-session": "^2.0.0",
     "multer-storage-cloudinary": "^4.0.0",
     "daisyui": "^4.6.1",

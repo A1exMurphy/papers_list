@@ -37,10 +37,19 @@ export default function Modal({ closeModal }) {
                         {/* Below is the code for the tooltips, the code above
                         is for the display next to the icon on the modal */}
                         
-                        {singleEvent.event_size === "small" ? <span className="tooltip-text">Small Event</span> : singleEvent.event_size === "medium" ? <span className="tooltip-text">Medium Event</span> : <span className="tooltip-text">Large Event</span>}
+                        {singleEvent.event_size === "small" ? <span className="tooltip">Small Event</span> : singleEvent.event_size === "medium" ? <span className="tooltip-text">Medium Event</span> : <span className="tooltip-text">Large Event</span>}
+                    </div>
+                    <div className="paid-icon">
+                        <PaidIcon />
                     </div>
                     <div className="modal-event-cost">
                         {singleEvent.cost === true ? <span className="paid">Paid Event</span> : <span className="free">Free Event</span>}
+                    </div>
+                    <div className="modal-date">
+                        <span>{singleEvent.time}</span>
+                    </div>
+                    <div className="modal-host">
+                        <span>Hosted by {singleEvent.host}</span>
                     </div>
                 </div>
             </div>
