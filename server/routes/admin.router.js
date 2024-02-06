@@ -299,7 +299,7 @@ const idToUpdate = req.params.id
   "event_name" = $2,
   "cost" = $3,
   "time" = $4,
-  "date" = $5,
+  "location" = $5,
 "description" = $6,
 "event_size" = $7,
 "image" = $8,
@@ -309,7 +309,7 @@ const idToUpdate = req.params.id
 //not sure if the happy path is using req.body.id or req.params.id
   
 
-  pool.query(insertNewTag, [req.body.host, req.body.event_name, req.body.cost, req.body.time, req.body.date, req.body.description, req.body.event_size, req.body.image, req.body.admin_approved, idToUpdate])
+  pool.query(insertNewTag, [req.body.host, req.body.event_name, req.body.cost, req.body.time, req.body.location, req.body.description, req.body.event_size, req.body.image, req.body.admin_approved, idToUpdate])
         
           .then((result) => {
             res.sendStatus(201)

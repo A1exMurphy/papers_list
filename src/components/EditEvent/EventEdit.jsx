@@ -46,10 +46,10 @@ export default function EditEvent() {
         })
     }
 
-    const handleDateChange = (date) => {
+    const handleLocationChange = (location) => {
         dispatch({
-            type: 'CHANGE_DATE',
-            payload: date
+            type: 'CHANGE_LOCATION',
+            payload: location
         })
     }
 
@@ -144,7 +144,7 @@ export default function EditEvent() {
                     label="Address"
                     type="text"
                     value={editEvent.date || ''}
-                    onChange={(e) => handleDateChange(e.target.value)}
+                    onChange={(e) => handleLocationChange(e.target.value)}
                 />
                 <br />
                 <br />
