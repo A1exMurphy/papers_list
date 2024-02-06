@@ -11,7 +11,7 @@ const cloudinaryUpload = require("../modules/cloudinary.config");
  * POST route template
  */
 //user submitted inputs POSTed to create new event with pending admin_approved
-router.post('/', cloudinaryUpload.single("image"), async (req, res) => {
+router.post('/event', cloudinaryUpload.single("image"), async (req, res) => {
     console.log('in POST query')
     const fileUrl = req.file.path;
 
