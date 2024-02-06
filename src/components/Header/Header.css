@@ -1,21 +1,15 @@
+.header {
+  display: flex;
+  justify-content: center;
+}
 .nav-title {
+  display: flex;
+  justify-content: center;
   font-family: var(--bgrotreg);
   position: absolute;
-  width: auto;
-  justify-content: center;
-  display: inline;
-  font-size: 45px;
+  font-size: 55px;
   color: #004986;
-  margin: 0;
-  padding-top: 5px;
-  padding-left: 40%;
+  letter-spacing:  -1px;
+  word-spacing: 10px;
 }
 
-.s {
-  font-family: "Source Sans 3", sans-serif;
-  display: inline;
-  font-size: 44px;
-  color: #47a23f;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
-  font-family: var(--bgrotreg);
-}

@@ -1,6 +1,9 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+    rejectUnauthenticated,
+  } = require("../modules/authentication-middleware");
 const cloudinaryUpload = require("../modules/cloudinary.config");
 
 
@@ -8,7 +11,7 @@ const cloudinaryUpload = require("../modules/cloudinary.config");
  * POST route template
  */
 //user submitted inputs POSTed to create new event with pending admin_approved
-router.post('/', cloudinaryUpload.single("file"), async (req, res) => {
+router.post('/', cloudinaryUpload.single("image"), async (req, res) => {
     console.log('in POST query')
     const fileUrl = req.file.path;
 

@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <Link to="/home">
+      <div className="header">
       <h2 className="nav-title">
-        Paper'
-        <div className="s">S</div> List
+        Paper's List
       </h2>
+      </div>
     </Link>
   );
 }

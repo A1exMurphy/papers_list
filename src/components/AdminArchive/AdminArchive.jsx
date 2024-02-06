@@ -154,7 +154,8 @@ export default function AdminArchive() {
                     </Typography>
                 </Box>
             </Modal>
-            <div className="EventsTable">
+
+            <div className="EventsTable events-post-it">
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                     <TableHead>
@@ -187,9 +188,8 @@ export default function AdminArchive() {
                     </Table>
                 </TableContainer>
             </div>
-
            
-            <div className="TagsTable">
+            <div className="TagsTable events-post-it">
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                     <TableHead>
