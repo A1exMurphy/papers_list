@@ -54,17 +54,14 @@
 
 .card-content {
   padding: 15px;
-  color: var(--orange)
+  color: white;
 }
 
 .section-events-title h1{
   text-align: center;
-  padding-bottom: 2.5rem;
   font-size: 40px;
   color: var(--navy);
   font-family: var(--bgrotbold);
-  position: absolute;
-  transform: translateX(39rem);
 }
 
 .event-section-container {
@@ -165,6 +162,7 @@ transform:skewX(25deg);
 
 .create-event-btn {
   display: flex;
+  width: 200px;
   justify-content: flex-start;
   transform: translate(5px,-550px);
 }

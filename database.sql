@@ -83,3 +83,11 @@ CREATE TABLE "comments" (
 "comment" VARCHAR(1000),
 "posts_id" int REFERENCES "posts"
 );
+
+ INSERT INTO "tags" ("tag_name")
+ 	VALUES
+ 	('Tech'),
+ 	('Women Only'),
+ 	('College'),
+ 	('Business'),
+ 	('Leadership');
