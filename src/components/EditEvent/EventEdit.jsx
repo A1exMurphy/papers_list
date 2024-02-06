@@ -123,7 +123,11 @@ export default function EditEvent() {
   const backToArchive = (e) => {
     history.push("/eventarchive");
   };
-
+const removeEvent = (e) => {
+    dispatch({
+    type: "SET_REMOVED_EVENTS"
+});
+}
   const applyEdits = (e) => {
     e.preventDefault();
 
@@ -330,19 +334,28 @@ export default function EditEvent() {
                   variant="contained"
                   onClick={backToArchive}
                   className="discard-btn"
-                  sx={{ width: 240 }}
+                  sx={{ width: 155 }}
                 >
                   <ArrowBackIcon />
-                  Back to Archive
+                  Back
                 </Button>
+                <Button
+                variant="contained"
+                type="onSubmit"
+                onClick={applyEdits}
+                sx={{ width: 155 }}
+
+              >
+                delete
+              </Button>
               <Button
                 variant="contained"
                 type="onSubmit"
                 onClick={applyEdits}
-                sx={{ width: 240 }}
+                sx={{ width: 155 }}
 
               >
-                Submit
+                Apply Changes
               </Button>
             </ThemeProvider>
             </Stack>
