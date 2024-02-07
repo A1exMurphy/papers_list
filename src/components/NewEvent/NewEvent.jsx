@@ -125,6 +125,8 @@ export default function NewEvent() {
                 sx={{
                   marginBottom: 4,
                   width: 230,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis"
                 }}
                 multiline
                 minRows={8}

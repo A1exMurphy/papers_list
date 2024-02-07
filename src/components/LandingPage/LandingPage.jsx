@@ -8,13 +8,14 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import AddIcon from "@mui/icons-material/Add";
 import "./LandingPage.css";
+import { Add } from "@mui/icons-material";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#004986",
+      main: "#ea733d",
     },
   },
 });
@@ -51,6 +52,7 @@ export default function LandingPage() {
     <>
       <ThemeProvider theme={theme}>
         <Button variant="contained" onClick={handleCreateEvent}>
+          <AddIcon />
           Create New Event
         </Button>
       </ThemeProvider>
