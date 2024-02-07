@@ -7,8 +7,17 @@ import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import "./LandingPage.css";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#004986",
+    },
+  },
+});
 
 export default function LandingPage() {
   const [openModal, setOpenModal] = useState(false);
@@ -40,67 +49,88 @@ export default function LandingPage() {
 
   return (
     <>
-    <Button
-        variant='contained'
-        onClick={handleCreateEvent}
-        >Create New Event</Button>
-    <section className="highlights-section">
-      <div className="titleContainer">
-        <h1 className="landing-title">Highlighted Events</h1>
-      </div>
-      <div className="flex-those-events">
-        {eventData &&
-          eventData.map((event) => {
-            return (
-             <div
-                onClick={() => {
-                  handleEventClick(event);
-                  setOpenModal(true);
-                }}
-                key={event.id}
-              >
-              {event.is_highlighted_event ? <div className="card card-post-it">
-                  <img className="card-img" src={event.image} alt={event.description} />
-                  <div className="card-content">
-                    <h3>{event.event_name}</h3>
-                    {event.cost === true ? <h5>Paid Event</h5> : <h5>Free Event</h5>}
-                  </div>
+      <ThemeProvider theme={theme}>
+        <Button variant="contained" onClick={handleCreateEvent}>
+          Create New Event
+        </Button>
+      </ThemeProvider>
+      <section className="highlights-section">
+        <div className="titleContainer">
+          <h1 className="landing-title">Highlighted Events</h1>
+        </div>
+        <div className="flex-those-events">
+          {eventData &&
+            eventData.map((event) => {
+              return (
+                <div
+                  onClick={() => {
+                    handleEventClick(event);
+                    setOpenModal(true);
+                  }}
+                  key={event.id}
+                >
+                  {event.is_highlighted_event ? (
+                    <div className="card card-post-it">
+                      <img
+                        className="card-img"
+                        src={event.image}
+                        alt={event.description}
+                      />
+                      <div className="card-content">
+                        <h3>{event.event_name}</h3>
+                        {event.cost === true ? (
+                          <h5>Paid Event</h5>
+                        ) : (
+                          <h5>Free Event</h5>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
                 </div>
-                : <></>}
-              </div>
-            );
-          })}
-      </div>
+              );
+            })}
+        </div>
       </section>
       <section className="gallery-section">
         <div className="section-events-title">
           <h1>Events</h1>
         </div>
         <div className="event-section-container">
-          {eventData && eventData.map((event) => {
-            return (
-              <div
-                onClick={() => {
-                  handleEventClick(event);
-                  setOpenModal(true);
-                }}>
-              <div className="gallery-card card-post-it">
-                <img className="gallery-card-img" src={event.image} alt="" />
-                <div className="gallery-card-content">
-                  <h3>{event.event_name}</h3>
-                  {event.cost === true ? <h5>Paid Event</h5> : <h5>Free Event</h5>}
+          {eventData &&
+            eventData.map((event) => {
+              return (
+                <div
+                  onClick={() => {
+                    handleEventClick(event);
+                    setOpenModal(true);
+                  }}
+                >
+                  <div className="gallery-card card-post-it">
+                    <img
+                      className="gallery-card-img"
+                      src={event.image}
+                      alt=""
+                    />
+                    <div className="gallery-card-content">
+                      <h3>{event.event_name}</h3>
+                      {event.cost === true ? (
+                        <h5>Paid Event</h5>
+                      ) : (
+                        <h5>Free Event</h5>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </section>
-      <div className="create-event-btn">
-      
-      </div>
-      <main>{openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}</main>
-
+      <div className="create-event-btn"></div>
+      <main>
+        {openModal === true ? <Modal closeModal={setOpenModal} /> : <></>}
+      </main>
     </>
   );
 }
