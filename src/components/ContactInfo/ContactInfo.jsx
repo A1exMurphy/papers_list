@@ -57,9 +57,12 @@ export default function SubmitContactInfo() {
   let [email, setEmail] = useState("");
   let [phone, setPhone] = useState("");
   let [linkedIn, setLinkedIn] = useState("");
-  let [additionalInfo, SetadditionalInfo] = useState("");
+
+  let [additionalInfo, setAdditionalInfo] = useState("");
+
   
   const [open, setOpen] = useState(false);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -187,7 +190,7 @@ export default function SubmitContactInfo() {
                 sx={{
                   marginBottom: 4,
                 }}
-                onChange={(e) => SetadditionalInfo(e.target.value)}
+                onChange={(e) => setAdditionalInfo(e.target.value)}
                 value={additionalInfo}
                 fullWidth
                 multiline
