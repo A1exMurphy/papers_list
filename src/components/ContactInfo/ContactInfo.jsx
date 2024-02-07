@@ -157,6 +157,7 @@ export default function SubmitContactInfo() {
                   Discard
                 </Button>
                 <Button
+                type="submit"
                   className="submit-btn"
                   variant="contained"
                   sx={{ width: 240 }}
