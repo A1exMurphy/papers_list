@@ -100,7 +100,7 @@ export default function SubmitContactInfo() {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title"> 
+          <DialogTitle id="alert-dialog-title">
             {"Are you sure you want submit this?"}
             {/* had to change some spelling */}
           </DialogTitle>
