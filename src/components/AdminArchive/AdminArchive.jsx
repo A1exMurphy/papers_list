@@ -36,7 +36,6 @@ const style = {
 export default function AdminArchive() {
 
     useEffect(() => {
-        dispatch({ type: "FETCH_ARCHIVED_EVENTS" });
         dispatch({ type: "FETCH_TAGS" });
 
         window.scrollTo(0, 0);
@@ -55,7 +54,6 @@ export default function AdminArchive() {
 
     const handleClose = () => setOpen(false);
 
-    const events = useSelector((store) => store.archived);
     const tags = useSelector((store) => store.tags);
 
     const history = useHistory();
@@ -147,9 +145,9 @@ export default function AdminArchive() {
                 </Box>
             </Modal>
 
-            <>
-            <AdminTables events={events}/>
-            </>
+
+            <AdminTables />
+
            
             <div className="TagsTable events-post-it">
              

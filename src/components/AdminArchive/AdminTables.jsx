@@ -1,12 +1,38 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import "./AdminArchive.css";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import Paper from '@mui/material/Paper';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { styled } from '@mui/material/styles';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 
 
+export default function AdminTables() {
+    useEffect(() => {
+        dispatch({ type: "FETCH_ARCHIVED_EVENTS" });
+    }, []);
 
-export default function AdminTables(events) {
+    const events = useSelector((store) => store.archived);
+    const dispatch = useDispatch();
+
+
 
 return (
-    <div className="EventsTable events-post-it">
-               
-                    <table>
+               <>
+                    <table className="EventsTable events-post-it">
                     <thead>
                         <tr>
                             <td>Host</td>
@@ -18,7 +44,7 @@ return (
                         </tr>
                     </thead>
                   
-                        {events.map((event) => {
+                        {events && events.map((event) => {
                             return (
                                 <tr key={event.id}>
                                     <td>{event.host}</td>
@@ -33,8 +59,5 @@ return (
                         })}
                        
 
-                    </table>
-                   
-                
-            </div>
+                    </table></>
 )}
