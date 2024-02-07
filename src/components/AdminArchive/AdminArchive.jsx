@@ -149,7 +149,7 @@ export default function AdminArchive() {
 
             <div className="EventsTable events-post-it">
                
-                    <table>
+                  <table>
                     <thead>
                         <tr>
                             <td>Host</td>
@@ -181,10 +181,12 @@ export default function AdminArchive() {
                 
             </div>
            
-            <div className="TagsTable events-post-it">
+            <div
+               
+             className="TagsTable events-post-it">
              
               
-                    <thead>
+                   <thead>
                         <tr>
                             <td>Tag Name</td>
                             <td>Delete/Edit</td>
@@ -208,6 +210,7 @@ export default function AdminArchive() {
                             );
                         })}
                     </table>
+                
             
               
                 
