@@ -4,11 +4,12 @@ const editTag = (state = {}, action) => {
     } else if (action.type === 'CHANGE_TAG_NAME') {
         const tagName = action.payload
         return { ...state, tag_name: tagName }
-    } else if (action.type === 'CHANGE_STATUS') {
-            const status = action.payload
-              return { ...state, status: status }
+    }
+    //  else if (action.type === 'CHANGE_STATUS') {
+    //         const status = action.payload
+    //           return { ...state, status: status }
       
-          }
+    //       }
     return state;
 }
 export default editTag
