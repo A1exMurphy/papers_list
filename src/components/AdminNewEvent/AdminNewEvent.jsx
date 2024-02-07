@@ -60,7 +60,6 @@ export default function AdminNewEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const eventForm = new FormData();
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
