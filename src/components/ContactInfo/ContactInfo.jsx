@@ -1,6 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Fragment } from "react";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { Button } from "@mui/material";
 
 export default function SubmitContactInfo() {
   const dispatch = useDispatch();
@@ -10,6 +17,8 @@ export default function SubmitContactInfo() {
   let [phone, setPhone] = useState("");
   let [linkedIn, setLinkedIn] = useState("");
   let [additionalInfo, SetadditionalInfo] = useState("");
+  
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,11 +42,22 @@ export default function SubmitContactInfo() {
   const handleDiscard = () => {
     console.log("Handling discard");
   };
+
+
+  const handleClickOpen = () => {
+
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <h1 id="pg-title-create">Contact Info for Admin</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleClickOpen}>
         <div>
           <label id="name-label" htmlFor="event-name-input">
             Email
@@ -85,6 +105,31 @@ export default function SubmitContactInfo() {
       <button onClick={handleDiscard} className="discard-btn">
         Discard
       </button>
+
+      <Fragment>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Are you sure you wanna submit this ?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText className="DialogText" id="alert-dialog-description">
+
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Disagree</Button>
+            <Button onClick={handleSubmit} autoFocus>
+              Agree
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Fragment>
     </>
   );
 }
