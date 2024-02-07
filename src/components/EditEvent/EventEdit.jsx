@@ -48,9 +48,9 @@ export default function EditEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const editEvent = useSelector((store) => store.editEvent);
-  const editTag = useSelector((store) => store.editTag)
+  const editTag = useSelector((store) => store.editTag);
   const eventForm = new FormData();
-console.log("edit event", editEvent);
+  console.log("edit event", editEvent);
 
   useEffect(() => {
     dispatch({
@@ -58,12 +58,12 @@ console.log("edit event", editEvent);
       payload: params.id,
     });
   }, []);
-const handleTagChange = (tag) => {
-  dispatch({
-    type: "CHANGE_TAG_NAME",
-    payload: tag
-  })
-}
+  const handleTagChange = (tag) => {
+    dispatch({
+      type: "CHANGE_TAG_NAME",
+      payload: tag,
+    });
+  };
   const handleHostNameChange = (host) => {
     dispatch({
       type: "CHANGE_HOST_NAME",
@@ -120,29 +120,31 @@ const handleTagChange = (tag) => {
     });
   };
 
-  const handleStatusChange = (admin_approved) => {
+  const handleStatusChange = (adminStatus) => {
     dispatch({
-      type: "CHANGE_STATUS",
-      payload: admin_approved,
+      type: "UPDATE_STATUS",
+      payload: adminStatus,
     });
   };
   const backToArchive = (e) => {
     history.push("/eventarchive");
   };
-const removeEvent = (e) => {
+  const removeEvent = (e) => {
     dispatch({
-    type: "SET_REMOVED_EVENTS"
-});
-}
+      type: "SET_REMOVED_EVENTS",
+    });
+  };
   const applyEdits = (e) => {
     e.preventDefault();
 
+    
     dispatch({
       type: "SUBMIT_EVENT_EDIT",
       payload: editEvent,
     });
-
+    
     history.push("/eventarchive");
+    setAdminStatus("");
   };
 
   return (
@@ -276,7 +278,14 @@ const removeEvent = (e) => {
                   </Select>
                 </FormControl>
               </Box> */}
+              
             </Stack>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
+            ></Stack>
             <Stack
               spacing={2}
               direction="row"
@@ -291,7 +300,6 @@ const removeEvent = (e) => {
                   <Select
                     label="Event Size"
                     id="event-size-input"
-
                     onChange={(e) => handleEventSizeChange(e.target.value)}
                     value={editEvent.event_size || ""}
                     sx={{ width: 230 }}
@@ -327,8 +335,8 @@ const removeEvent = (e) => {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-            <ThemeProvider theme={theme}>
-            <Button
+              <ThemeProvider theme={theme}>
+                <Button
                   variant="contained"
                   onClick={backToArchive}
                   className="discard-btn"
@@ -337,25 +345,32 @@ const removeEvent = (e) => {
                   <ArrowBackIcon />
                   Back
                 </Button>
+              <Box sx={{ midWidth: 155 }}>
+                <FormControl sx={{ width: 155 }}>
+                  <InputLabel id="event-approval-label">Status</InputLabel>
+                  <Select
+                    label="Status"
+                    id="event-approval"
+                    onChange={(e) => handleStatusChange(e.target.value)}
+                    value={editEvent.admin_approved || ""}
+                    sx={{ width: 155 }}
+                  >
+                    <MenuItem value={"approved"}>Approve</MenuItem>
+                    <MenuItem value={"delete"}>Delete</MenuItem>
+                    <MenuItem value={"pending"}>Pending</MenuItem>
+                    Apply Changes
+                  </Select>
+                </FormControl>
+              </Box>
                 <Button
-                variant="contained"
-                type="onSubmit"
-                onClick={applyEdits}
-                sx={{ width: 155 }}
-
-              >
-                delete
-              </Button>
-              <Button
-                variant="contained"
-                type="onClick"
-                onClick={handleStatusChange}
-                sx={{ width: 155 }}
-
-              >
-                Apply Changes
-              </Button>
-            </ThemeProvider>
+                  variant="contained"
+                  type="onClick"
+                  onClick={applyEdits}
+                  sx={{ width: 155 }}
+                >
+                  Save Changes
+                </Button>
+              </ThemeProvider>
             </Stack>
           </FormControl>
         </form>
