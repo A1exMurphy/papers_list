@@ -37,7 +37,9 @@ router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
     req.body.host,
     req.body.event_name,
     req.body.cost,
-    req.body.time,
+
+      req.body.time,
+
     req.body.location,
     req.body.description,
     req.body.event_size,
