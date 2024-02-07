@@ -8,7 +8,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Button } from "@mui/material";
+
 
 import {
   TextField,
@@ -96,61 +96,12 @@ export default function SubmitContactInfo() {
 
   return (
     <>
-      <h1 className="admin-event">Contact Info for Admin</h1>
-
-      <div className="event-form">
+    
        
 
 
-      <form onSubmit={handleClickOpen}>
-        <div>
-          <label id="name-label" htmlFor="event-name-input">
-            Email
-          </label>
-          <input
-            id="event-name-input"
-            type="text"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-          <label id="host-label" htmlFor="event-host-input">
-            Phone
-          </label>
-          <input
-            id="event-host-input"
-            type="text"
-            onChange={(e) => setPhone(e.target.value)}
-            value={phone}
-          />
-        </div>
-        <div>
-          <label id="location-label" htmlFor="event-location-input">
-            linkedIn
-          </label>
-          <input
-            id="event-location-input"
-            type="text"
-            onChange={(e) => setLinkedIn(e.target.value)}
-            value={linkedIn}
-          />
-        </div>
-        <div>
-          <label id="date-label" htmlFor="event-date-input">
-            Additional Info
-          </label>
-          <input
-            id="event-date-input"
-            type="text"
-            onChange={(e) => SetadditionalInfo(e.target.value)}
-            value={additionalInfo}
-          />
-        </div>
-        <button className="submit-btn">Submit</button>
-      </form>
-      <button onClick={handleDiscard} className="discard-btn">
-        Discard
-      </button>
-
+    
+       
       <Fragment>
         <Dialog
           open={open}
@@ -175,7 +126,40 @@ export default function SubmitContactInfo() {
           </DialogActions>
         </Dialog>
       </Fragment>
+      <h1 className="admin-event">Contact Info for Admin</h1>
 
+      <div className="event-form">
+          
+        <form onSubmit={handleClickOpen}>
+          <FormControl>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
+            >
+              <TextField
+                label="E-Mail"
+                id="email-label"
+                type="text"
+                variant="filled"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                helperText="Contact E-Mail"
+                sx={{ width: 230 }}
+                required
+              />
+              <TextField
+                label="Phone"
+                id="phone-label"
+                type="text"
+                variant="filled"
+                onChange={(e) => setPhone(e.target.value)}
+                value={phone}
+                helperText="Your Phone Number"
+                sx={{ width: 230 }}
+                required
+              />
               <TextField
                 label="LinkedIn"
                 id="location-label"
