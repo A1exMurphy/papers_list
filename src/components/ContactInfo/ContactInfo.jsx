@@ -114,7 +114,7 @@ export default function SubmitContactInfo() {
 
         >
           <DialogTitle id="alert-dialog-title">
-            {"Are you sure you wanna submit this ?"}
+            {"Are you sure you want submit this?"}
           </DialogTitle>
           <DialogContent>
             <DialogContentText className="DialogText" id="alert-dialog-description">
@@ -122,9 +122,9 @@ export default function SubmitContactInfo() {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
+            <Button onClick={handleClose}>No</Button>
             <Button onClick={handleSubmit} autoFocus>
-              Agree
+              Yes
             </Button>
           </DialogActions>
         </Dialog>
