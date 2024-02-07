@@ -8,9 +8,9 @@ import "./Modal.css";
 export default function Modal({ closeModal }) {
   const dispatch = useDispatch();
   const singleEvent = useSelector((store) => store.selectedEvent.selectedEvent);
-  const tags = useSelector((store) => store.tags);
-
-
+    const tags = useSelector((store) => store.tags);
+    
+  
     useEffect(() => {
         dispatch({type: 'FETCH_EVENTS'});
     }, [])
