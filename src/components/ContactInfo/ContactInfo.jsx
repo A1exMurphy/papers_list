@@ -1,6 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
+import { Fragment } from "react";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
+
 import {
   TextField,
   Stack,
@@ -40,6 +49,7 @@ const MenuProps = {
   },
 };
 
+
 export default function SubmitContactInfo() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -47,7 +57,12 @@ export default function SubmitContactInfo() {
   let [email, setEmail] = useState("");
   let [phone, setPhone] = useState("");
   let [linkedIn, setLinkedIn] = useState("");
+
   let [additionalInfo, setAdditionalInfo] = useState("");
+
+  
+  const [open, setOpen] = useState(false);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,12 +86,54 @@ export default function SubmitContactInfo() {
   const handleDiscard = () => {
     console.log("Handling discard");
   };
+
+
+  const handleClickOpen = () => {
+
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
+    
+       
+
+
+    
+       
+      <Fragment>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Are you sure you wanna submit this ?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText className="DialogText" id="alert-dialog-description">
+
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Disagree</Button>
+            <Button onClick={handleSubmit} autoFocus>
+              Agree
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Fragment>
       <h1 className="admin-event">Contact Info for Admin</h1>
 
       <div className="event-form">
-        <form onSubmit={handleSubmit}>
+          
+        <form onSubmit={handleClickOpen}>
           <FormControl>
             <Stack
               spacing={2}
@@ -106,7 +163,6 @@ export default function SubmitContactInfo() {
                 sx={{ width: 230 }}
                 required
               />
-
               <TextField
                 label="LinkedIn"
                 id="location-label"
@@ -169,6 +225,7 @@ export default function SubmitContactInfo() {
           </FormControl>
         </form>
       </div>
+
     </>
   );
 }
