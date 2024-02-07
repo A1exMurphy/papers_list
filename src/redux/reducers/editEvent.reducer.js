@@ -39,8 +39,7 @@ const editEvent = (state = {}, action) => {
     }
     else if (action.type === 'CHANGE_STATUS') {
         const Status = action.payload
-          return { ...state, admin_approved: Status }
-  
+        return { ...state, admin_approved: Status }
       }
       return state;
 

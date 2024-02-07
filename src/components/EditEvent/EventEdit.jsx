@@ -48,8 +48,9 @@ export default function EditEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const editEvent = useSelector((store) => store.editEvent);
+  const editTag = useSelector((store) => store.editTag)
   const eventForm = new FormData();
-
+console.log("edit event", editEvent);
 
   useEffect(() => {
     dispatch({
@@ -57,7 +58,12 @@ export default function EditEvent() {
       payload: params.id,
     });
   }, []);
-
+const handleTagChange = (tag) => {
+  dispatch({
+    type: "CHANGE_TAG_NAME",
+    payload: tag
+  })
+}
   const handleHostNameChange = (host) => {
     dispatch({
       type: "CHANGE_HOST_NAME",
@@ -219,13 +225,13 @@ const removeEvent = (e) => {
                 variant="filled"
                 size="small"
                 id="event-date-input"
-                onChange={(e) => handleLocationChange(e.target.value)}
-                value={editEvent.date || ""}
+                onChange={(e) => handleTimeChange(e.target.value)}
+                value={editEvent.time || ""}
                 sx={{ width: 230 }}
                 required
               />
             </Stack>
-            {/* <Stack
+            <Stack
               spacing={2}
               direction="row"
               sx={{ marginBottom: 4 }}
@@ -238,20 +244,20 @@ const removeEvent = (e) => {
                 label="Location"
                 size="small"
                 id="event-location-input"
-                onChange={(e) => setLocationInput(e.target.value)}
-                value={locationInput}
+                onChange={(e) => handleLocationChange(e.target.value)}
+                value={editEvent.location || ""}
                 sx={{ width: 230 }}
                 required
               />
-              <Box sx={{ midWidth: 120 }}>
+              {/* <Box sx={{ midWidth: 120 }}>
                 <FormControl sx={{ width: 200 }}>
                   <InputLabel id="tag-input-label">Tags</InputLabel>
                   <Select
                     multiple
                     input={<OutlinedInput label="Tag" />}
                     id="event-tag-input"
-                    onChange={(e) => setTagInput(e.target.value)}
-                    value={tagInput}
+                    onChange={(e) => handleTagChange(e.target.value)}
+                    value={editEvent.tag || ""}
                     sx={{ width: 230 }}
                     renderValue={(selected) => selected.join(', ')}
                     MenuProps={MenuProps}
@@ -261,7 +267,7 @@ const removeEvent = (e) => {
                         return (
                           <MenuItem key={tag.id} value={tag.tag_name}>
                             <Checkbox
-                              checked={tagInput.indexOf(tag.tag_name) > -1}
+                              checked={tag.indexOf(tag.tag_name) > -1}
                             />
                             <ListItemText primary={tag.tag_name} />
                           </MenuItem>
@@ -269,8 +275,8 @@ const removeEvent = (e) => {
                       })}
                   </Select>
                 </FormControl>
-              </Box>
-            </Stack> */}
+              </Box> */}
+            </Stack>
             <Stack
               spacing={2}
               direction="row"
@@ -315,14 +321,6 @@ const removeEvent = (e) => {
                 </FormControl>
               </Box>
             </Stack>
-            {/* <input
-              className="input"
-              id="outlined-controlled"
-              label="Budget"
-              type="text"
-              value={editEvent.image || ""}
-              onChange={(e) => handleImageChange(e.target.value)}
-            /> */}
             <Stack
               spacing={2}
               direction="row"
@@ -350,8 +348,8 @@ const removeEvent = (e) => {
               </Button>
               <Button
                 variant="contained"
-                type="onSubmit"
-                onClick={applyEdits}
+                type="onClick"
+                onClick={handleStatusChange}
                 sx={{ width: 155 }}
 
               >
