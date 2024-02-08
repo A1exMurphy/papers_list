@@ -301,15 +301,16 @@ const idToUpdate = req.params.id
   "time" = $4,
   "location" = $5,
 "description" = $6,
-"event_size" = $7,
-"image" = $8,
-"admin_approved" = $9
-  WHERE "id" = $10;
+"website" = $7,
+"event_size" = $8,
+"image" = $9,
+"admin_approved" = $10
+  WHERE "id" = $11;
   `;
 //not sure if the happy path is using req.body.id or req.params.id
   
 
-  pool.query(insertNewTag, [req.body.host, req.body.event_name, req.body.cost, req.body.time, req.body.location, req.body.description, req.body.event_size, req.body.image, req.body.admin_approved, idToUpdate])
+  pool.query(insertNewTag, [req.body.host, req.body.event_name, req.body.cost, req.body.time, req.body.location, req.body.description, req.body.website,  req.body.event_size, req.body.image, req.body.admin_approved, idToUpdate])
         
           .then((result) => {
             res.sendStatus(201)

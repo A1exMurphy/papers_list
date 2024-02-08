@@ -24,11 +24,12 @@ router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
             "time",
             "location",
             "description",
+            "website",
             "event_size",
             "image"
         )
 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
 
             RETURNING "id"
     `;
@@ -41,7 +42,8 @@ router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
       req.body.time,
 
     req.body.location,
-    req.body.description,
+      req.body.description,
+    req.body.website,
     req.body.event_size,
     fileUrl,
   ];

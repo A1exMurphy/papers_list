@@ -44,6 +44,7 @@ CREATE TABLE "posts" (
 	"cost" BOOLEAN,
 	"time" VARCHAR(120),
 	"description" TEXT NOT NULL,
+	"website" VARCHAR(120),
 	"event_size" SIZE,
 	"image" VARCHAR(120) NOT NULL,
 	"admin_approved" STATUS DEFAULT 'pending',

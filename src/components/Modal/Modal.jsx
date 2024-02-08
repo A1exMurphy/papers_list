@@ -50,6 +50,7 @@ export default function Modal({ closeModal }) {
                         <div className="modal-host">
                             <span>Hosted by {singleEvent.host}</span>
                         </div>
+                        {singleEvent.is_highlighted === true ? <span>Highlighted Event</span> : <></>}
                     </div>
                 </div>
             </div>
