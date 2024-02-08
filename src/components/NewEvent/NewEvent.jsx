@@ -33,6 +33,8 @@ const theme = createTheme({
     },
   },
 });
+
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -53,9 +55,11 @@ export default function NewEvent() {
   let [imageInput, setImageInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [costInput, setCostInput] = useState("");
-  let [tagInput, setTagInput] = useState([]);
+  const [tagInput, setTagInput] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
+  let [tagId, setTagId] = useState([]);
   let [websiteInput, setWebsiteInput] = useState("")
+
   const tagData = useSelector((store) => store.tags);
 
   useEffect(() => {
@@ -71,7 +75,9 @@ export default function NewEvent() {
   const [open, setOpen] = useState(false);
 
 
-
+  console.log("tagInput", tagInput);
+  console.log("tagid", tagId);
+  
   const handleClickOpen = () => {
    
     setOpen(true);
@@ -106,6 +112,11 @@ export default function NewEvent() {
     setTagInput("");
 
     console.log("Event form data:", eventForm);
+
+    // dispatch({
+    //   type: "SELECTED_TAGS",
+    //   payload: tagInput
+    // })
 
     dispatch({
       type: "ADD_EVENT",
@@ -238,7 +249,7 @@ export default function NewEvent() {
                   <InputLabel id="tag-input-label">Tags</InputLabel>
                   <Select
                     multiple
-                    label="Event Size"
+                    label="Tags"
                     id="event-size-input"
                     onChange={(e) => setTagInput(e.target.value)}
                     value={tagInput}
@@ -249,11 +260,12 @@ export default function NewEvent() {
                     {tagData &&
                       tagData.map((tag) => {
                         return (
-                          <MenuItem key={tag.id} value={tag.tag_name}>
+                          <MenuItem key={tag.id} value={tag.id}>
                             <Checkbox
-                              checked={tagInput.indexOf(tag.tag_name) > -1}
-                            />
-                            <ListItemText primary={tag.tag_name} />
+                              checked={tagInput.indexOf(tag.id) > -1}
+                              />
+                              {tag.tag_name}
+                            <ListItemText/>
                           </MenuItem>
                         );
                       })}
