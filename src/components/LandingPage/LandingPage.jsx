@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Modal from "../Modal/Modal";
-import Container from "postcss/lib/container";
 import { Button } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
+import { createTheme } from "@mui/material/styles";
 
 import "./LandingPage.css";
 
@@ -17,6 +14,7 @@ export default function LandingPage() {
   const dispatch = useDispatch();
   const eventData = useSelector((store) => store.events.events);
   console.log("eventData", eventData);
+
 
   useEffect(() => {
     dispatch({ type: "FETCH_EVENTS" });
@@ -40,10 +38,12 @@ export default function LandingPage() {
 
   return (
     <>
+    <div className="create-event-btn">
     <Button
         variant='contained'
         onClick={handleCreateEvent}
         >Create New Event</Button>
+      </div>
     <section className="highlights-section">
       <div className="titleContainer">
         <h1 className="landing-title">Highlighted Events</h1>
@@ -64,6 +64,7 @@ export default function LandingPage() {
                   <div className="card-content">
                     <h3>{event.event_name}</h3>
                     {event.cost === true ? <h5>Paid Event</h5> : <h5>Free Event</h5>}
+                    <span className="event-date-highlight">{event.time}</span>
                   </div>
                 </div>
                 : <></>}
@@ -89,6 +90,7 @@ export default function LandingPage() {
                 <div className="gallery-card-content">
                   <h3>{event.event_name}</h3>
                   {event.cost === true ? <h5>Paid Event</h5> : <h5>Free Event</h5>}
+                  <span className="date">{event.time}</span>
                 </div>
               </div>
               </div>
