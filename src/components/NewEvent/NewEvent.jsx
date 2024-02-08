@@ -19,11 +19,11 @@ import Checkbox from "@mui/material/Checkbox";
 import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 import { Fragment } from "react";
 
 const theme = createTheme({
@@ -69,17 +69,14 @@ export default function NewEvent() {
 
   const [open, setOpen] = useState(false);
 
-
-
   const handleClickOpen = () => {
-   
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -147,7 +144,7 @@ export default function NewEvent() {
                   marginBottom: 4,
                   width: 230,
                   overflow: "hidden",
-                  textOverflow: "ellipsis"
+                  textOverflow: "ellipsis",
                 }}
                 multiline
                 minRows={8}
@@ -314,36 +311,31 @@ export default function NewEvent() {
             </Stack>
           </FormControl>
         </form>
-      <Fragment>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-
-        >
-          <DialogTitle id="alert-dialog-title">
-            {"Are you sure you want to submit this?"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText className="DialogText" id="alert-dialog-description">
-
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>No</Button>
-            <Button onClick={handleSubmit} autoFocus>
-              Yes
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <Fragment>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Are you sure you want to submit this?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText
+                className="DialogText"
+                id="alert-dialog-description"
+              ></DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>No</Button>
+              <Button onClick={handleSubmit} autoFocus>
+                Yes
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Fragment>
-        
-       
       </div>
     </>
   );
 }
-
-
-
