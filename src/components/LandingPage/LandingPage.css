@@ -153,6 +153,7 @@ transform:skewX(25deg);
   align-items: center;
   overflow-y: auto;
   height: 100vh;
+  width: 100vw;
 }
 
 .gallery-card-content {
@@ -163,8 +164,15 @@ transform:skewX(25deg);
 .create-event-btn {
   display: flex;
   width: 200px;
+  position: absolute;
   justify-content: flex-start;
-  transform: translate(5px,-550px);
+  transform: translate(5px, -61px);
+  z-index: 0;
+}
+
+.event-date-highlight {
+  position: absolute;
+  transform: translate(200%, -20px);
 }
 
 /* General Selectors */

@@ -83,6 +83,7 @@ export default function NewEvent() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    eventForm.append("image", imageInput);
     eventForm.append("event_name", titleInput);
     eventForm.append("host", hostInput);
     eventForm.append("time", dateInput);
@@ -90,7 +91,6 @@ export default function NewEvent() {
     eventForm.append("location", locationInput);
     eventForm.append("description", descriptionInput);
     eventForm.append("event_size", eventSizeInput);
-    eventForm.append("image", imageInput);
 
     setHostInput("");
     setTitleInput("");
