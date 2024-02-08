@@ -144,12 +144,11 @@ export default function EditEvent() {
   const applyEdits = (e) => {
     e.preventDefault();
 
-    
     dispatch({
       type: "SUBMIT_EVENT_EDIT",
       payload: editEvent,
     });
-    
+
     history.push("/eventarchive");
     // setAdminStatus("");
   };
@@ -295,7 +294,6 @@ export default function EditEvent() {
                   </Select>
                 </FormControl>
               </Box> */}
-              
             </Stack>
             <Stack
               spacing={2}
@@ -362,23 +360,23 @@ export default function EditEvent() {
                   <ArrowBackIcon />
                   Back
                 </Button>
-              <Box sx={{ midWidth: 155 }}>
-                <FormControl sx={{ width: 155 }}>
-                  <InputLabel id="event-approval-label">Status</InputLabel>
-                  <Select
-                    label="Status"
-                    id="event-approval"
-                    onChange={(e) => handleStatusChange(e.target.value)}
-                    value={editEvent.admin_approved || ""}
-                    sx={{ width: 155 }}
-                  >
-                    <MenuItem value={"approved"}>Approve</MenuItem>
-                    <MenuItem value={"delete"}>Delete</MenuItem>
-                    <MenuItem value={"pending"}>Pending</MenuItem>
-                    Apply Changes
-                  </Select>
-                </FormControl>
-              </Box>
+                <Box sx={{ midWidth: 155 }}>
+                  <FormControl sx={{ width: 155 }}>
+                    <InputLabel id="event-approval-label">Status</InputLabel>
+                    <Select
+                      label="Status"
+                      id="event-approval"
+                      onChange={(e) => handleStatusChange(e.target.value)}
+                      value={editEvent.admin_approved || ""}
+                      sx={{ width: 155 }}
+                    >
+                      <MenuItem value={"approved"}>Approve</MenuItem>
+                      <MenuItem value={"delete"}>Delete</MenuItem>
+                      <MenuItem value={"pending"}>Pending</MenuItem>
+                      Apply Changes
+                    </Select>
+                  </FormControl>
+                </Box>
                 <Button
                   variant="contained"
                   type="onClick"

@@ -84,6 +84,7 @@ export default function NewEvent() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    eventForm.append("image", imageInput);
     eventForm.append("event_name", titleInput);
     eventForm.append("host", hostInput);
     eventForm.append("time", dateInput);
@@ -92,7 +93,6 @@ export default function NewEvent() {
     eventForm.append("description", descriptionInput);
     eventForm.append("website", websiteInput)
     eventForm.append("event_size", eventSizeInput);
-    eventForm.append("image", imageInput);
 
 
     setHostInput("");
@@ -336,7 +336,7 @@ export default function NewEvent() {
 
         >
           <DialogTitle id="alert-dialog-title">
-            {"Are you sure you wanna submit this ?"}
+            {"Are you sure you want to submit this?"}
           </DialogTitle>
           <DialogContent>
             <DialogContentText className="DialogText" id="alert-dialog-description">
@@ -344,9 +344,9 @@ export default function NewEvent() {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
+            <Button onClick={handleClose}>No</Button>
             <Button onClick={handleSubmit} autoFocus>
-              Agree
+              Yes
             </Button>
           </DialogActions>
         </Dialog>

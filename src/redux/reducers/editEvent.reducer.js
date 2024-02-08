@@ -1,10 +1,11 @@
 const editEvent = (state = {}, action) => {
-    if (action.type === 'SET_EVENT_TO_EDIT') {
-      return action.payload
-    } else if (action.type === 'CHANGE_HOST_NAME') {
-      const host = action.payload
-        return { ...state, host: host }
-
+  if (action.type === "SET_EVENT_TO_EDIT") {
+    return action.payload;
+    
+  } else if (action.type === "CHANGE_HOST_NAME") {
+    const host = action.payload;
+    return { ...state, host: host };
+    
     }else if (action.type === 'CHANGE_EVENT_NAME') {
         const EventName = action.payload
           return { ...state, event_name: EventName }
@@ -51,4 +52,7 @@ const editEvent = (state = {}, action) => {
 
 
 
-export default editEvent
+
+
+export default editEvent;
+

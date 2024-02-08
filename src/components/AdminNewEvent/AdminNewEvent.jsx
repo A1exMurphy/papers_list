@@ -21,11 +21,11 @@ import Checkbox from "@mui/material/Checkbox";
 import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 import { Fragment } from "react";
 
 const theme = createTheme({
@@ -101,10 +101,7 @@ export default function AdminNewEvent() {
 
   const [open, setOpen] = useState(false);
 
-
-
   const handleClickOpen = () => {
-
     setOpen(true);
   };
 
@@ -343,15 +340,15 @@ export default function AdminNewEvent() {
             onClose={handleClose}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
-
           >
             <DialogTitle id="alert-dialog-title">
               {"Are you sure you wanna submit this ?"}
             </DialogTitle>
             <DialogContent>
-              <DialogContentText className="DialogText" id="alert-dialog-description">
-
-              </DialogContentText>
+              <DialogContentText
+                className="DialogText"
+                id="alert-dialog-description"
+              ></DialogContentText>
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose}>Disagree</Button>

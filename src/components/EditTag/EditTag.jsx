@@ -1,109 +1,104 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
 const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
 };
 
 export default function EditTags() {
+  useEffect(() => {
+    setOpen(true);
+    window.scrollTo(0, 0);
+  }, []);
 
-    useEffect(() => {
-        setOpen(true)
-        window.scrollTo(0, 0);
-    }, []);
+  const EditTag = useSelector((store) => store.editTag);
+  console.log("EditTag", EditTag);
 
+  const dispatch = useDispatch();
 
-    const EditTag = useSelector((store) => store.editTag)
-    console.log('EditTag',EditTag);
+  const history = useHistory();
 
-    const dispatch = useDispatch()
+  const params = useParams();
 
-    const history = useHistory()
+  const [open, setOpen] = useState(false);
 
-    const params = useParams()
+  const handleOpen = () => setOpen(true);
 
-    const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
 
-    const handleOpen = () => setOpen(true);
+  console.log("params", params.id);
 
-    const handleClose = () => setOpen(false);
+  useEffect(() => {
+    dispatch({
+      type: "FETCH_TAG_TO_EDIT",
+      payload: params.id,
+    });
+    window.scrollTo(0, 0);
+  }, []);
 
-    console.log('params', params.id);
+  const handleTagNameChange = (tag_name) => {
+    dispatch({
+      type: "CHANGE_TAG_NAME",
+      payload: tag_name,
+    });
+  };
 
-    useEffect(() => {
-          dispatch({
-              type: "FETCH_TAG_TO_EDIT",
-              payload: params.id
-          });
-        window.scrollTo(0, 0);
-    }, []);
+  const applyEdits = (e) => {
+    e.preventDefault();
 
-    const handleTagNameChange = (tag_name) => {
-        dispatch({
-            type: 'CHANGE_TAG_NAME',
-            payload: tag_name
-        })
-    }
+    dispatch({
+      type: "SUBMIT_EDIT_TAG",
+      payload: EditTag,
+    });
+    history.push("/eventarchive");
+  };
 
-    const applyEdits = (e) => {
-        e.preventDefault()
+  return (
+    <div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Edit Tag
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <form>
+              <input
+                className="input"
+                id="outlined-controlled"
+                type="onSubmit"
+                value={EditTag.tag_name || ""}
+                onChange={(e) => handleTagNameChange(e.target.value)}
+              />
 
-        dispatch({
-            type: "SUBMIT_EDIT_TAG",
-            payload: EditTag
+              <br />
+              <br />
 
-        })
-history.push("/eventarchive")
-    }
-
-    return (
-        <div>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Edit Tag
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <form>
-                            <input
-                                className="input"
-                                id="outlined-controlled"
-                                type='onSubmit'
-                                value={EditTag.tag_name || ''}
-                                onChange={(e) => handleTagNameChange(e.target.value)}
-                            />
-                       
-                        <br />
-                        <br />
-
-                            <button onClick={applyEdits}>Submit</button>
-                        </form>
-                        
-                     
-                    </Typography>
-                </Box>
-            </Modal>
-        </div>
-    )
-
-
-
+              <button onClick={applyEdits}>Submit</button>
+            </form>
+          </Typography>
+        </Box>
+      </Modal>
+    </div>
+  );
 }

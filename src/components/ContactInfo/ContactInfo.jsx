@@ -3,12 +3,11 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import { Fragment } from "react";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 import {
   TextField,
@@ -49,7 +48,6 @@ const MenuProps = {
   },
 };
 
-
 export default function SubmitContactInfo() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -60,9 +58,7 @@ export default function SubmitContactInfo() {
 
   let [additionalInfo, setAdditionalInfo] = useState("");
 
-  
   const [open, setOpen] = useState(false);
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,9 +83,7 @@ export default function SubmitContactInfo() {
     console.log("Handling discard");
   };
 
-
   const handleClickOpen = () => {
-
     setOpen(true);
   };
 
@@ -99,32 +93,27 @@ export default function SubmitContactInfo() {
 
   return (
     <>
-    
-       
-
-
-    
-       
       <Fragment>
         <Dialog
           open={open}
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
-
         >
           <DialogTitle id="alert-dialog-title">
-            {"Are you sure you wanna submit this ?"}
+            {"Are you sure you want submit this?"}
+            {/* had to change some spelling */}
           </DialogTitle>
           <DialogContent>
-            <DialogContentText className="DialogText" id="alert-dialog-description">
-
-            </DialogContentText>
+            <DialogContentText
+              className="DialogText"
+              id="alert-dialog-description"
+            ></DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
+            <Button onClick={handleClose}>No</Button>
             <Button onClick={handleSubmit} autoFocus>
-              Agree
+              Yes
             </Button>
           </DialogActions>
         </Dialog>
@@ -132,7 +121,6 @@ export default function SubmitContactInfo() {
       <h1 className="admin-event">Contact Info for Admin</h1>
 
       <div className="event-form">
-          
         <form onSubmit={handleClickOpen}>
           <FormControl>
             <Stack
@@ -213,7 +201,7 @@ export default function SubmitContactInfo() {
                   Discard
                 </Button>
                 <Button
-                type="submit"
+                  type="submit"
                   className="submit-btn"
                   variant="contained"
                   sx={{ width: 240 }}
@@ -225,7 +213,6 @@ export default function SubmitContactInfo() {
           </FormControl>
         </form>
       </div>
-
     </>
   );
 }
