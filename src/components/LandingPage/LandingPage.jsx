@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import "./LandingPage.css";
 import { Add } from "@mui/icons-material";
+import { ThemeProvider } from "@emotion/react";
 
 const theme = createTheme({
   palette: {
@@ -46,9 +47,12 @@ export default function LandingPage() {
   return (
     <>
       <div className="create-event-btn">
-        <Button variant="contained" onClick={handleCreateEvent}>
-          Create New Event
-        </Button>
+        <ThemeProvider theme={theme}>
+          <Button variant="contained" onClick={handleCreateEvent}>
+            <Add />
+            Create New Event
+          </Button>
+        </ThemeProvider>
       </div>
       <section className="highlights-section">
         <div className="titleContainer">
