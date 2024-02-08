@@ -41,8 +41,7 @@ const theme = createTheme({
     primary: {
       main: "#ea733d",
     },
-  },
-});
+
 export default function AdminArchive() {
   useEffect(() => {
     dispatch({ type: "FETCH_ARCHIVED_EVENTS" });
@@ -233,4 +232,5 @@ export default function AdminArchive() {
       </div>
     </div>
   );
+
 }
