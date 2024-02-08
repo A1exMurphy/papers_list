@@ -14,13 +14,19 @@ import Button from "@mui/material/Button";
 import UploadButton from "../UploadButton/UploadButton";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from '@mui/material/OutlinedInput';
+import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { Fragment } from "react";
 
 const theme = createTheme({
   palette: {
@@ -60,7 +66,6 @@ export default function AdminNewEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const eventForm = new FormData();
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -91,6 +96,16 @@ export default function AdminNewEvent() {
     history.push("/eventarchive");
   };
 
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const backToArchive = (e) => {
     history.push("/eventarchive");
   };
@@ -106,7 +121,7 @@ export default function AdminNewEvent() {
     <>
       <h1 className="admin-event">Admin Create Event</h1>
       <div className="event-form">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleClickOpen}>
           <FormControl>
             <Stack
               spacing={2}
@@ -118,8 +133,9 @@ export default function AdminNewEvent() {
                 id="event-image-input"
                 type="file"
                 onChange={(e) => setImageInput(e.target.files[0])}
-                sx= {{ 
-                  width: 230 }}
+                sx={{
+                  width: 230,
+                }}
               />
               <TextField
                 id="event-description-input"
@@ -131,7 +147,7 @@ export default function AdminNewEvent() {
                 value={descriptionInput}
                 sx={{
                   marginBottom: 4,
-                  width: 230
+                  width: 230,
                 }}
                 multiline
                 minRows={8}
@@ -214,7 +230,7 @@ export default function AdminNewEvent() {
                     onChange={(e) => setTagInput(e.target.value)}
                     value={tagInput}
                     sx={{ width: 230 }}
-                    renderValue={(selected) => selected.join(', ')}
+                    renderValue={(selected) => selected.join(", ")}
                     MenuProps={MenuProps}
                   >
                     {tagData &&
@@ -226,10 +242,6 @@ export default function AdminNewEvent() {
                             />
                             <ListItemText primary={tag.tag_name} />
                           </MenuItem>
-                          // <MenuItem value={"medium"}>
-                          //   Medium (26 - 100 people)
-                          // </MenuItem>
-                          // <MenuItem value={"large"}>Large (100+ people)</MenuItem>
                         );
                       })}
                   </Select>
@@ -303,6 +315,30 @@ export default function AdminNewEvent() {
             </Stack>
           </FormControl>
         </form>
+        <Fragment>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Are you sure you wanna submit this ?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText
+                className="DialogText"
+                id="alert-dialog-description"
+              ></DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Disagree</Button>
+              <Button onClick={handleSubmit} autoFocus>
+                Agree
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </Fragment>
       </div>
     </>
   );

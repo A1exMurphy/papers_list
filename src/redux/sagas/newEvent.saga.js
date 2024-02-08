@@ -1,7 +1,9 @@
 import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
+
 function* addNewEvent(action) {
+
   try {
     const headers = {
       'content-type': 'multipart/form-data'
@@ -12,6 +14,10 @@ function* addNewEvent(action) {
       headers: headers,
       data: action.payload
     });
+    yield put({
+      type: "ADD_EVENT_ID",
+      payload: response.data.id
+    })
   } catch (error) {
     console.log("Unable to post new events to server", error);
   }
@@ -25,7 +31,7 @@ function* addNewContact(action) {
       data: action.payload
     });
   } catch (error) {
-    console.log("Unable to post new events to server", error);
+    console.log("Unable to post contact info to server", error);
   }
 }
 

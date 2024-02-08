@@ -4,8 +4,16 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Modal from "../Modal/Modal";
 import { Button } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-
 import "./LandingPage.css";
+import { Add } from "@mui/icons-material";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#ea733d",
+    },
+  },
+});
 
 export default function LandingPage() {
   const [openModal, setOpenModal] = useState(false);
@@ -67,11 +75,9 @@ export default function LandingPage() {
                     <span className="event-date-highlight">{event.time}</span>
                   </div>
                 </div>
-                : <></>}
-              </div>
-            );
-          })}
-      </div>
+              );
+            })}
+        </div>
       </section>
       <section className="gallery-section">
         <div className="section-events-title">
@@ -92,17 +98,14 @@ export default function LandingPage() {
                   {event.cost === true ? <h5>Paid Event</h5> : <h5>Free Event</h5>}
                   <span className="date">{event.time}</span>
                 </div>
-              </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </section>
-      <div className="create-event-btn">
-      
-      </div>
-      <main>{openModal === true ? <Modal closeModal={setOpenModal}/> : <></>}</main>
-
+      <div className="create-event-btn"></div>
+      <main>
+        {openModal === true ? <Modal closeModal={setOpenModal} /> : <></>}
+      </main>
     </>
   );
 }
