@@ -37,19 +37,21 @@ const style = {
 };
 
 const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#ea733d",
-    },
-  },
-});
+    palette: {
+        primary: {
+            main: "#ea733d",
+        },
+    }
+})
+
 export default function AdminArchive() {
   useEffect(() => {
     dispatch({ type: "FETCH_ARCHIVED_EVENTS" });
     dispatch({ type: "FETCH_TAGS" });
 
     window.scrollTo(0, 0);
-  }, []);
+}, []);
+  
   let [tagName, setTagName] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -233,4 +235,5 @@ export default function AdminArchive() {
       </div>
     </div>
   );
+
 }
