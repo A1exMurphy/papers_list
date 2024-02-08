@@ -118,37 +118,33 @@ export default function AdminArchive() {
 
     return (
         <div>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Add Tag
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <input
-                            type="text"
-                            value={tagName}
-                            placeholder="Tag"
-                            onChange={(event) => setTagName(event.target.value)}
-                        />
-                        <br />
-                        <br />
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={style}>
+                            <Typography id="modal-modal-title" variant="h6" component="h2">
+                                Add Tag
+                            </Typography>
+                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                <input
+                                    type="text"
+                                    value={tagName}
+                                    placeholder="Tag"
+                                    onChange={(event) => setTagName(event.target.value)}
+                                />
+                                <br />
+                                <br />
 
-                        <button id="ModalAddButton" onClick={newTag}>
-                            add
-                        </button>
-                    </Typography>
-                </Box>
-            </Modal>
-
-
-            <AdminTables />
-
-           
+                                <button id="ModalAddButton" onClick={newTag}>
+                                    add
+                                </button>
+                            </Typography>
+                        </Box>
+                    </Modal>
+                <AdminTables />{/* this component handles mapping events into status dependant tables */}
             <div className="TagsTable events-post-it">
              
               

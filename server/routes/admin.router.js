@@ -69,7 +69,7 @@ router.get('/removedevents', (req, res) => {
   const getRemovedEvents = 
   `
   SELECT * FROM "posts"
-      WHERE "remove_event" = true;
+      WHERE "admin_approved" = "delete";
   `
  
   pool.query(getRemovedEvents)
@@ -139,7 +139,7 @@ router.put('/remove/:id', (req, res) => {
   `
   UPDATE "posts" 
   	SET
-  	"remove_event"=true
+  	"admin_approved"="delete"
           
     WHERE "id" = $1;
   `
@@ -163,7 +163,7 @@ router.put('/restore/:id', (req, res) => {
   `
   UPDATE "posts" 
   	SET
-  	"remove_event"=false
+  	"admin_approved"="pending"
           
     WHERE "id" = $1;
   `
@@ -199,7 +199,7 @@ router.delete("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log("in POST query");
+  console.log("in POST tags query");
 
   const insertNewTag = `
     INSERT INTO "tags" (
@@ -226,7 +226,7 @@ router.post("/", (req, res) => {
 });
 
 router.put('/tags/:id', (req, res) => {
-    console.log('in PUTter query')
+    console.log('in PUT tags query')
 const idToUpdate = req.params.id
     const insertNewTag = 
     `
