@@ -8,6 +8,7 @@ import tags from "./adminTag.reducer";
 import removedEvents from "./removedEvents.reducer";
 import editTag from "./editTag.reducer";
 import editEvent from "./editEvent.reducer";
+import selectedTag from "./selectedTag.reducer";
 import newEvent from "./newEvent.reducer";
 
 
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user,
   removedEvents,
+  selectedTag, // for the selected tag
   tags,// will have an id and username if someone is logged in
   editTag,
   editEvent

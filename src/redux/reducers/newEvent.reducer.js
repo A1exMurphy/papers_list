@@ -16,7 +16,8 @@ const newEventId = (state = {}, action) => {
     }
 
     return state;
-    }
+}
+
 
 
 export default combineReducers ({
