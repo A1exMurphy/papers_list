@@ -55,6 +55,7 @@ export default function NewEvent() {
   let [costInput, setCostInput] = useState("");
   let [tagInput, setTagInput] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
+  let [websiteInput, setWebsiteInput] = useState("")
   const tagData = useSelector((store) => store.tags);
 
   useEffect(() => {
@@ -89,8 +90,10 @@ export default function NewEvent() {
     eventForm.append("cost", costInput);
     eventForm.append("location", locationInput);
     eventForm.append("description", descriptionInput);
+    eventForm.append("website", websiteInput)
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("image", imageInput);
+
 
     setHostInput("");
     setTitleInput("");
@@ -98,6 +101,7 @@ export default function NewEvent() {
     setCostInput("");
     setDateInput("");
     setDescriptionInput("");
+    setWebsiteInput("");
     setEventSizeInput("");
     setTagInput("");
 
@@ -152,6 +156,15 @@ export default function NewEvent() {
                 multiline
                 minRows={8}
                 required
+              />
+              <TextField
+                id="event-image-input"
+                type="text"
+                label="Website"
+                onChange={(e) => setWebsiteInput(e.target.value)}
+                sx={{
+                  width: 230,
+                }}
               />
             </Stack>
             <Stack

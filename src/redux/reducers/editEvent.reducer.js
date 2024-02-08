@@ -26,7 +26,11 @@ const editEvent = (state = {}, action) => {
         const description = action.payload
           return { ...state, description: description }
   
-    }
+    }  else if (action.type === 'CHANGE_WEBSITE') {
+      const website = action.payload
+        return { ...state, website: website}
+
+  }
     else if (action.type === 'CHANGE_EVENT_SIZE') {
         const EventSize = action.payload
           return { ...state, event_size: EventSize }

@@ -55,6 +55,7 @@ export default function AdminNewEvent() {
   let [descriptionInput, setDescriptionInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [imageInput, setImageInput] = useState("");
+  let [websiteInput, setWebsiteInput] = useState("");
   let [tagInput, setTagInput] = useState([]);
   const tagData = useSelector((store) => store.tags);
   console.log("tagdata", tagData);
@@ -76,6 +77,7 @@ export default function AdminNewEvent() {
     eventForm.append("cost", costInput);
     eventForm.append("location", locationInput);
     eventForm.append("description", descriptionInput);
+    eventForm.append("website", websiteInput )
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("image", imageInput);
 
@@ -85,6 +87,7 @@ export default function AdminNewEvent() {
     setCostInput("");
     setDateInput("");
     setDescriptionInput("");
+    setWebsiteInput("");
     setEventSizeInput("");
 
     dispatch({
@@ -154,6 +157,22 @@ export default function AdminNewEvent() {
                 }}
                 multiline
                 minRows={8}
+                required
+              />
+              <TextField
+                id="event-website-input"
+                helperText="Link to Event website "
+                type="text"
+                variant="filled"
+                label="Website"
+                onChange={(e) => setWebsiteInput(e.target.value)}
+                value={websiteInput}
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
+                multiline
+                minRows={2}
                 required
               />
             </Stack>

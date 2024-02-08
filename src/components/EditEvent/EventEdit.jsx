@@ -106,6 +106,13 @@ export default function EditEvent() {
     });
   };
 
+  const handleWebsiteChange = (website) => {
+    dispatch({
+      type: "CHANGE_WEBSITE",
+      payload: website,
+    });
+  };
+
   const handleEventSizeChange = (event_size) => {
     dispatch({
       type: "CHANGE_EVENT_SIZE",
@@ -144,7 +151,7 @@ export default function EditEvent() {
     });
     
     history.push("/eventarchive");
-    setAdminStatus("");
+    // setAdminStatus("");
   };
 
   return (
@@ -184,6 +191,7 @@ export default function EditEvent() {
                 minRows={8}
                 required
               />
+             
             </Stack>
             <Stack
               spacing={2}
@@ -220,6 +228,15 @@ export default function EditEvent() {
                 value={editEvent.host || ""}
                 sx={{ width: 230 }}
                 required
+              />
+              <TextField
+                id="event-website-input"
+                type="text"
+                value={editEvent.website || ""}
+                onChange={(e) => handleWebsiteChange(e.target.value)}
+                sx={{
+                  width: 230,
+                }}
               />
               <TextField
                 type="date"

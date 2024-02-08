@@ -43,7 +43,7 @@ const theme = createTheme({
         main: "#ea733d",
       },
     },
-  });
+});
 
 
     const [open, setOpen] = useState(false);
