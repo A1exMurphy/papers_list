@@ -361,4 +361,5 @@ export default function AdminNewEvent() {
       </div>
     </>
   );
+  
 }
