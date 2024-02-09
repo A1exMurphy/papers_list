@@ -41,11 +41,17 @@ const editEvent = (state = {}, action) => {
       const image = action.payload
         return { ...state, image: image}
 
-    }
+  }
+  else if (action.type === 'CHANGE_COMMENT') {
+    const comments = action.payload
+      return { ...state, comments: comments}
+
+  }
     else if (action.type === 'UPDATE_STATUS') {
         const adminStatus = action.payload
         return { ...state, admin_approved: adminStatus }
-      }
+  }
+ 
       return state;
 
  }

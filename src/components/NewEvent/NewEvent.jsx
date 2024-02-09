@@ -58,7 +58,8 @@ export default function NewEvent() {
   const [tagInput, setTagInput] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
   let [tagId, setTagId] = useState([]);
-  let [websiteInput, setWebsiteInput] = useState("")
+  let [websiteInput, setWebsiteInput] = useState("");
+  let [commentInput, setCommentInput] = useState("");
 
   const tagData = useSelector((store) => store.tags);
 
@@ -97,8 +98,11 @@ export default function NewEvent() {
     eventForm.append("cost", costInput);
     eventForm.append("location", locationInput);
     eventForm.append("description", descriptionInput);
-    eventForm.append("website", websiteInput)
+    eventForm.append("website", websiteInput);
     eventForm.append("event_size", eventSizeInput);
+    eventForm.append("comments", commentInput);
+
+
 
 
     setHostInput("");
@@ -110,6 +114,7 @@ export default function NewEvent() {
     setWebsiteInput("");
     setEventSizeInput("");
     setTagInput("");
+    setCommentInput("");
 
     console.log("Event form data:", eventForm);
 

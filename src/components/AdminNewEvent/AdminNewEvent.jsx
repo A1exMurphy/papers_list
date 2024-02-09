@@ -55,10 +55,11 @@ export default function AdminNewEvent() {
   let [descriptionInput, setDescriptionInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [imageInput, setImageInput] = useState("");
+  let [commentInput, setCommentInput] = useState("");
   let [websiteInput, setWebsiteInput] = useState("");
   let [tagInput, setTagInput] = useState([]);
   const tagData = useSelector((store) => store.tags);
-  console.log("tagdata", tagData);
+
 
   useEffect(() => {
     dispatch({ type: "FETCH_TAGS" });
@@ -80,6 +81,7 @@ export default function AdminNewEvent() {
     eventForm.append("website", websiteInput )
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("image", imageInput);
+    eventForm.append("comments", commentInput)
 
     setHostInput("");
     setTitleInput("");
@@ -89,6 +91,7 @@ export default function AdminNewEvent() {
     setDescriptionInput("");
     setWebsiteInput("");
     setEventSizeInput("");
+    setCommentInput("")
 
     dispatch({
       type: "ADD_EVENT",
@@ -98,6 +101,8 @@ export default function AdminNewEvent() {
 
     history.push("/eventarchive");
   };
+
+
 
   const [open, setOpen] = useState(false);
 
@@ -140,6 +145,24 @@ export default function AdminNewEvent() {
                   width: 230,
                 }}
               />
+              <TextField
+                id="event-comment-input"
+                helperText="Helpful comments "
+                type="text"
+                variant="filled"
+                label="Comment"
+                onChange={(e) => setCommentInput(e.target.value)}
+                value={commentInput}
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
+                multiline
+                minRows={2}
+             
+              />
+              
+         
               <TextField
                 id="event-description-input"
                 helperText="Brief description of event"
