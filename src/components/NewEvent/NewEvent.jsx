@@ -76,8 +76,8 @@ export default function NewEvent() {
 
   const [open, setOpen] = useState(false);
 
-  console.log("tagInput", tagInput);
-  console.log("tagid", tagId);
+  // console.log("tagInput", tagInput);
+  // console.log("tagid", tagId);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -114,16 +114,10 @@ export default function NewEvent() {
     setTagInput("");
     setCommentInput("");
 
-    console.log("Event form data:", [tagInput]);
 
     dispatch({
-      type: "SELECTED_TAGS",
-      payload: [tagInput]
-    })
-
-    dispatch({
-      type: "ADD_EVENT",
-      payload: eventForm,
+      type: "SAGA/ADD_EVENT",
+      payload: {titleInput, hostInput,locationInput, costInput, dateInput, descriptionInput, websiteInput, eventSizeInput, tagInput, commentInput}
     });
 
     history.push("/contactinfo");

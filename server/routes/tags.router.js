@@ -33,7 +33,40 @@ router.get('/:id', (req, res) => {
  * PUT route template
  */
 //submit POST request for a new tag
+router.post('/event', (req, res) => {
+  const submitEventTags =
+  `
+  INSERT INTO "post_tags" (
+    "post_id", "tag_id"
+    )
+    VALUES (
+    '$1', '$2'
+    )
+  `
 
+  eventTagValues = [tagIDs]
+  /**expected array
+   * tags = [
+   * {id:1, tagName: tech},
+   * {id:2, tagName: buisness}
+   * ]
+   **/
+  const tagIDs = () => {for( let i = 0; i < tagsArray.length; i++ ) {
+    //if the Array has more than one object, we need to add to the values of the query
+    if( i < tagsArray.length-1)  {
+      submitEventTags += 
+      `
+      (${post_id}, ${tagsArray[i].id}),
+      `;
+    } else if ( i  === tagsArray.length-1) {
+      submitEventTags += 
+      `
+      (${post_id}, ${tagsArray[i].id});
+      `
+    }
+  }
+  return submitEventTags}
+})
 
 
 //initiate DELETE query for selected id
