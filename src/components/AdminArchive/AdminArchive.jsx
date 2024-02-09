@@ -118,69 +118,69 @@ export default function AdminArchive() {
 
     return (
         <div>
-                    <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                    >
-                        <Box sx={style}>
-                            <Typography id="modal-modal-title" variant="h6" component="h2">
-                                Add Tag
-                            </Typography>
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                <input
-                                    type="text"
-                                    value={tagName}
-                                    placeholder="Tag"
-                                    onChange={(event) => setTagName(event.target.value)}
-                                />
-                                <br />
-                                <br />
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Add Tag
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        <input
+                            type="text"
+                            value={tagName}
+                            placeholder="Tag"
+                            onChange={(event) => setTagName(event.target.value)}
+                        />
+                        <br />
+                        <br />
 
-                                <button id="ModalAddButton" onClick={newTag}>
-                                    add
-                                </button>
-                            </Typography>
-                        </Box>
-                    </Modal>
-                <AdminTables />{/* this component handles mapping events into status dependant tables */}
+                        <button id="ModalAddButton" onClick={newTag}>
+                            add
+                        </button>
+                    </Typography>
+                </Box>
+            </Modal>
+            <AdminTables />{/* this component handles mapping events into status dependant tables */}
             <div className="TagsTable events-post-it">
-             
-              
-                    <thead>
+
+                <table>
+                    <thead className="EventsTable-header">
                         <tr>
                             <td>Tag Name</td>
                             <td>Delete/Edit</td>
                         </tr>
                     </thead>
-                    <table>
-                        {tags.map((tag) => {
-                            return (
-                              
-                                <tr key={tag.id}>
-                                    <td>{tag.tag_name}</td>
-                                    <td>
-                                           <Button onClick={() => deleteTag(tag)}><DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon></Button>
-                                       
-                                        
-                                         <Button onClick={() => { history.push(`/edit_tag/${tag.id}`) }}><EditOutlinedIcon></EditOutlinedIcon></Button> 
-                                    </td>
-                                    </tr>
-                                  
-                              
-                            );
-                        })}
-                    </table>
-            
-              
-                
+
+                    {tags.map((tag) => {
+                        return (
+
+                            <tr key={tag.id}>
+                                <td>{tag.tag_name}</td>
+                                <td>
+                                    <Button onClick={() => deleteTag(tag)}><DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon></Button>
+
+
+                                    <Button onClick={() => { history.push(`/edit_tag/${tag.id}`) }}><EditOutlinedIcon></EditOutlinedIcon></Button>
+                                </td>
+                            </tr>
+
+
+                        );
+                    })}
+                </table>
+
+
+
             </div>
-                 <div className="AddTag">
+            <div className="AddTag">
                 <Button variant="contained" sx={{ width: 315 }} onClick={handleOpen}> + Add Tag</Button>
             </div>
             <div className="CreateEvent">
-            <Button onClick={adminCreateEvent} variant = 'contained'> Create New Event</Button>
+                <Button onClick={adminCreateEvent} variant='contained'> Create New Event</Button>
             </div>
         </div>
     );

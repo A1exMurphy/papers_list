@@ -30,15 +30,29 @@ export default function AdminTables() {
     const deleteEvents = useSelector((store) => store.archived.deleted);
 
     const dispatch = useDispatch();
+    const history = useHistory();
+
     // console.log("archived reducer", approvedEvents)
 
 
+    const StatusChange = (id) => {
+
+        dispatch({
+            type: "STATUS_CHANGE",
+            payload: id
+        })
+    }
+
+    const adminCreateEvent = () => {
+        console.log("Creating new event");
+        history.push("/adminnewevent");
+    };
 
     return (
         <>
-                    <div className="EventsTable events-post-it">
-                        <table>
-                    <thead>
+            <div className="EventsTable events-post-it">
+                <table>
+                    <thead className="EventsTable-header">
                         <tr>
                             <td>Host</td>
                             <td>Event Name</td>
@@ -46,53 +60,26 @@ export default function AdminTables() {
                             <td>Featured / Review</td>
                         </tr>
                     </thead>
-                  
-                        {pendingEvents && pendingEvents.map((pending) => {
-                            return (
-                                <tr key={pending.id}>
-                                    <td>{pending.host}</td>
-                                    <td>{pending.event_name}</td>
-                                    <td>{pending.admin_approved}</td>
-                                    <td><Button onClick={() => StatusChange(pending.id)}>{pending.is_highlighted_event ? <StarOutlinedIcon className="star">
-                                    </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
-                                    </Button> <Button onClick={() => { history.push(`/edit_event/${pending.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
-                                </tr>
 
-                             );
-                        })}            
-                                </table>
-                    </div>
+                    {pendingEvents && pendingEvents.map((pending) => {
+                        return (
+                            <tr key={pending.id}>
+                                <td>{pending.host}</td>
+                                <td>{pending.event_name}</td>
+                                <td>{pending.admin_approved}</td>
+                                <td><Button onClick={() => StatusChange(pending.id)}>{pending.is_highlighted_event ? <StarOutlinedIcon className="star">
+                                </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
+                                </Button> <Button onClick={() => { history.push(`/edit_event/${pending.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
+                            </tr>
 
-<div className="EventsTable events-post-it">
-<table>
-<thead>
-<tr>
-    <td>Host</td>
-    <td>Event Name</td>
-    <td>Status</td>
-    <td>Featured / Review</td>
-</tr>
-</thead>
+                        );
+                    })}
+                </table>
+            </div>
 
-{approvedEvents && approvedEvents.map((event) => {
-    return (
-        <tr key={event.id}>
-            <td>{event.host}</td>
-            <td>{event.event_name}</td>
-            <td>{event.admin_approved}</td>
-            <td><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
-            </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
-            </Button> <Button onClick={() => { history.push(`/edit_event/${event.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
-        </tr>
-
-     );
-})}            
-        </table>
-</div>
-
-<div className="EventsTable events-post-it">
-                        <table>
-                    <thead>
+            <div className="EventsTable events-post-it">
+                <table>
+                    <thead className="EventsTable-header">
                         <tr>
                             <td>Host</td>
                             <td>Event Name</td>
@@ -100,22 +87,48 @@ export default function AdminTables() {
                             <td>Featured / Review</td>
                         </tr>
                     </thead>
-                  
-                        {deleteEvents && deleteEvents.map((event) => {
-                            return (
-                                <tr key={event.id}>
-                                    <td>{event.host}</td>
-                                    <td>{event.event_name}</td>
-                                    <td>{event.admin_approved}</td>
-                                    <td><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
-                                    </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
-                                    </Button> <Button onClick={() => { history.push(`/edit_event/${event.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
-                                </tr>
 
-                             );
-                        })}            
-                                </table>
-                    </div>
-</>
+                    {approvedEvents && approvedEvents.map((event) => {
+                        return (
+                            <tr key={event.id}>
+                                <td>{event.host}</td>
+                                <td>{event.event_name}</td>
+                                <td>{event.admin_approved}</td>
+                                <td><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
+                                </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
+                                </Button> <Button onClick={() => { history.push(`/edit_event/${event.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
+                            </tr>
+
+                        );
+                    })}
+                </table>
+            </div>
+
+            <div className="EventsTable events-post-it">
+                <table>
+                    <thead className="EventsTable-header">
+                        <tr>
+                            <td>Host</td>
+                            <td>Event Name</td>
+                            <td>Status</td>
+                            <td>Restore</td>
+                        </tr>
+                    </thead>
+
+                    {deleteEvents && deleteEvents.map((event) => {
+                        return (
+                            <tr key={event.id}>
+                                <td>{event.host}</td>
+                                <td>{event.event_name}</td>
+                                <td>{event.admin_approved}</td>
+                                <td><Button onClick={() => StatusChange(event.id)}>
+                                </Button> <Button onClick={() => { history.push(`/edit_event/${event.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
+                            </tr>
+
+                        );
+                    })}
+                </table>
+            </div>
+        </>
     )
 }
