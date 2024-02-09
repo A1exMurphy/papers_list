@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+
+.about-page{
+    font-family: var(--srcsansreg) ;
+    font-size: 22px;
+    width: 800px;
+}
+
