@@ -1,0 +1,13 @@
+.formPanel {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.login-head {
+    text-align: center;
+    color: white;
+    background-color: #004986;
+    height: 50px;
+    font-family: var(--bgrotreg);
+}

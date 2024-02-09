@@ -2,7 +2,24 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import {
+  TextField,
+  Stack,
+  Divider,
+  FormControl,
+  FormLabel,
+  ListItemText,
+} from "@mui/material";
+import "./LoginForm.css";
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#004986",
+    },
+  },
+});
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -28,39 +45,45 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
-      {errors.loginMessage && (
-        <h3 className="alert" role="alert">
-          {errors.loginMessage}
-        </h3>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
-      </div>
+       
+      <Stack
+        spacing={2}
+        direction="column"
+        sx={{ marginBottom: 4 }}
+        divider={<Divider orientation="vertical" flexItem />}
+      >
+          <h2 className="login-head">Admin Login</h2>
+       
+        {errors.loginMessage && (
+          <h3 className="alert" role="alert">
+            {errors.loginMessage}
+          </h3>
+        )}
+
+        <TextField
+          type="text"
+          label="username"
+          required
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
+
+        <TextField
+          type="password"
+          label="password"
+          required
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+<center>
+        <ThemeProvider theme={theme}>
+          <Button type="submit" name="submit" variant="contained"
+          sx={{ width: 100 }}>
+            Log In
+          </Button>
+        </ThemeProvider>
+        </center>
+      </Stack>
     </form>
   );
 }
