@@ -9,8 +9,14 @@ function* getArchivedEvents() {
       url: "/api/admin/events",
     });
     yield put({
-      type: "SET_ARCHIVED",
+      type: "SET_APPROVED",
       payload: response.data,
+    });
+    yield put({
+      type: "FETCH_PENDING_EVENTS"
+    });
+    yield put({
+      type: "FETCH_REMOVED_EVENTS"
     });
   } catch (error) {
     console.log("Unable to get archived events from server", error);
@@ -52,11 +58,25 @@ function* getRemovedEvents() {
       url: "/api/admin/removedevents"
     });
     yield put({
-      type: "SET_REMOVED_EVENTS",
+      type: "SET_DELETED",
       payload: response.data,
     });
   } catch (error) {
     console.log("Unable to get removed events from server", error);
+  }
+}
+function* getPendingEvents() {
+  try {
+    const response = yield axios({
+      method: "GET",
+      url: "/api/admin/pendingevents"
+    });
+    yield put({
+      type: "SET_PENDING",
+      payload: response.data,
+    });
+  } catch (error) {
+    console.log("Unable to get pending events from server", error);
   }
 }
 function* adminEditEvent(action) {
@@ -238,6 +258,7 @@ function* submitEventEdit(action) {
 
 }
 export default function* archivedEventSaga() {
+  yield takeLatest("FETCH_PENDING_EVENTS", getPendingEvents);
   yield takeLatest("FETCH_ARCHIVED_EVENTS", getArchivedEvents);
   yield takeLatest("DELETE_FROM_ARCHIVE", deleteFromArchive);
   yield takeLatest("RESTORE_FROM_DELETED", restoreFromDeleted);

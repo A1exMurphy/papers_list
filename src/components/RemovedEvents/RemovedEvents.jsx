@@ -12,7 +12,7 @@ export default function RemovedEvents() {
     dispatch({ type: "FETCH_REMOVED_EVENTS" });    
   }, []);
   
-  const removedEvents = useSelector((store) => store.removedEvents);
+  const removedEvents = useSelector((store) => store.archived.deleted);
   console.log(removedEvents, 'removed events reducer')
   return (
     <div>

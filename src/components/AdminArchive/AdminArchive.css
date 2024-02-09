@@ -19,7 +19,7 @@ td {
 }
 
 thead {
-    background: #7A7A7A;
+    background: #ea733d;
     color: #FCFCFC;
 }
 
@@ -28,7 +28,7 @@ thead {
 
 
 th {
-    background-color: black;
+    background-color: #ea733d;
     border-color: #EDEBEB;
    
 }
@@ -93,9 +93,13 @@ td {
 /* end of Stick-it visual */
 
 .EventsTable {
-   width: 55%;
+    width: 55%;
     margin-top: 5%;
     margin-left: 1%;
+}
+
+.EventsTable-header {
+    background-color: #ea733d;
 }
 
 .TagsTable {
