@@ -26,8 +26,7 @@ import AdminNewEvent from "../AdminNewEvent/AdminNewEvent";
 import RemovedEvents from "../RemovedEvents/RemovedEvents";
 import EditTags from "../EditTag/EditTag";
 import EditEvent from "../EditEvent/EventEdit";
-
-
+import SplashScreen from "../SplashScreen/SplashScreen";
 
 import "./App.css";
 

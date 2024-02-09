@@ -39,7 +39,7 @@ router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
     req.body.host,
     req.body.event_name,
     req.body.cost,
-     req.body.time,
+    req.body.time,
     req.body.location,
     req.body.description,
     req.body.website,
@@ -47,7 +47,6 @@ router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
      fileUrl,
     req.body.comments,
   ];
-console.log("new event values", newEventValues);
   pool
     .query(insertNewEvent, newEventValues)
     .then((result) => {
