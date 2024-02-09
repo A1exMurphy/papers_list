@@ -47,6 +47,7 @@ CREATE TABLE "posts" (
 	"website" VARCHAR(120),
 	"event_size" SIZE,
 	"image" VARCHAR(120) NOT NULL,
+	"comments" VARCHAR(300),
 	"admin_approved" STATUS DEFAULT 'pending',
 	"is_highlighted_event" BOOLEAN DEFAULT false,
 	"contact_id" int REFERENCES "user_details",
