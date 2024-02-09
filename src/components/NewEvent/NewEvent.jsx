@@ -114,16 +114,16 @@ export default function NewEvent() {
     setTagInput("");
     setCommentInput("");
 
-    console.log("Event form data:", eventForm);
+    console.log("Event form data:", {eventForm, tagInput});
+
+    // dispatch({
+    //   type: "SELECTED_TAGS",
+    //   payload: tagInput
+    // })
 
     dispatch({
-      type: "SELECTED_TAGS",
-      payload: tagInput
-    })
-
-    dispatch({
-      type: "ADD_EVENT",
-      payload: eventForm,
+      type: "SAGA/ADD_EVENT",
+      payload: {eventForm, tagInput}
     });
 
     history.push("/contactinfo");
@@ -263,7 +263,7 @@ export default function NewEvent() {
                     label="Tags"
                     id="event-size-input"
                     onChange={(e) => setTagInput(e.target.value)}
-                    value={[tagInput]}
+                    value={tagInput}
                     sx={{ width: 230 }}
                     renderValue={tagData.tag_name}
                     MenuProps={MenuProps}

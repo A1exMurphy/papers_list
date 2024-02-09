@@ -1,6 +1,6 @@
 let selectedTag = (state = [], action) => {
     if (action.type === 'SELECTED_TAGS') {
-        selectedTag = action.payload;
+        const selectedTag = action.payload;
         [...state, selectedTag];
     }
     
