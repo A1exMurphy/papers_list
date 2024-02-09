@@ -54,7 +54,7 @@ export default function NewEvent() {
   let [imageInput, setImageInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [costInput, setCostInput] = useState("");
-  const [tagInput, setTagInput] = useState([]);
+  let [tagInput, setTagInput] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
   let [tagId, setTagId] = useState([]);
   let [websiteInput, setWebsiteInput] = useState("");
@@ -62,7 +62,7 @@ export default function NewEvent() {
   
   let [commentInput, setCommentInput] = useState("");
 
-  const tagData = useSelector((store) => store.tags);
+  let tagData = useSelector((store) => store.tags);
 
   useEffect(() => {
     dispatch({ type: "FETCH_TAGS" });
@@ -263,7 +263,7 @@ export default function NewEvent() {
                     label="Tags"
                     id="event-size-input"
                     onChange={(e) => setTagInput(e.target.value)}
-                    value={tagInput}
+                    value={[tagInput]}
                     sx={{ width: 230 }}
                     renderValue={tagData.tag_name}
                     MenuProps={MenuProps}
