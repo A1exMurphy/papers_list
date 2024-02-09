@@ -4,14 +4,16 @@ const router = express.Router();
 
 router.get("/events", (req, res) => {
   // GET route code here
-  const sqlText = `
+  const sqlText = 
+    `
     SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."comments", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
     FROM "posts"
     LEFT JOIN "post_tags"
-    ON "post_tags"."post_id" = "posts"."id"
+        ON "post_tags"."post_id" = "posts"."id"
     LEFT JOIN "tags" 
-    ON "tags"."id" = "post_tags"."tag_id";
-    `;
+        ON "tags"."id" = "post_tags"."tag_id"
+    WHERE "posts"."admin_approved" = 'approved';
+    `
 
   pool
     .query(sqlText)
@@ -69,7 +71,7 @@ router.get('/removedevents', (req, res) => {
   const getRemovedEvents = 
   `
   SELECT * FROM "posts"
-      WHERE "remove_event" = true;
+      WHERE "admin_approved" = 'delete';
   `
  
   pool.query(getRemovedEvents)
@@ -81,6 +83,27 @@ router.get('/removedevents', (req, res) => {
     })
     .catch((err) => {
       console.log("GET /removedevents fail:", err);
+      res.sendStatus(500);
+    });
+});
+
+router.get('/pendingevents', (req, res) => {
+  console.log('running pending events GET')
+  const getPendingEvents = 
+  `
+  SELECT * FROM "posts"
+      WHERE "admin_approved" = 'pending';
+  `
+ 
+  pool.query(getPendingEvents)
+  .then((result) => {
+      console.log(result.rows, 'results of pending events query')
+      res.send(result.rows)
+      
+
+    })
+    .catch((err) => {
+      console.log("GET /pending events fail:", err);
       res.sendStatus(500);
     });
 });
@@ -141,7 +164,7 @@ router.put('/remove/:id', (req, res) => {
   `
   UPDATE "posts" 
   	SET
-  	"remove_event"=true
+  	"admin_approved"='delete'
           
     WHERE "id" = $1;
   `
@@ -165,7 +188,7 @@ router.put('/restore/:id', (req, res) => {
   `
   UPDATE "posts" 
   	SET
-  	"remove_event"=false
+  	"admin_approved"='pending'
           
     WHERE "id" = $1;
   `
@@ -201,7 +224,7 @@ router.delete("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log("in POST query");
+  console.log("in POST tags query");
 
   const insertNewTag = `
     INSERT INTO "tags" (
@@ -228,7 +251,7 @@ router.post("/", (req, res) => {
 });
 
 router.put('/tags/:id', (req, res) => {
-    console.log('in PUTter query')
+    console.log('in PUT tags query')
 const idToUpdate = req.params.id
     const insertNewTag = 
     `

@@ -98,10 +98,10 @@ function App() {
           </ProtectedRoute>
 
           <Route exact path="/edit_tag/:id">
-           <EditTags/>
+            <EditTags/>
           </Route>
           <Route exact path="/edit_event/:id">
-<EditEvent/>
+            <EditEvent/>
           </Route>
 
           <Route exact path="/removedevents">
@@ -122,7 +122,7 @@ function App() {
           <Route exact path="/registration">
             {user.id ? (
               // If the user is already logged in,
-              // redirect them to the /user page
+              // redirect them to the /eventarchive page
               <Redirect to="/eventarchive" />
             ) : (
               // Otherwise, show the registration page
@@ -131,14 +131,7 @@ function App() {
           </Route>
 
           <Route exact path="/home">
-            {user.id ? (
-              // If the user is already logged in,
-              // redirect them to the /user page
-              <Redirect to="/eventarchive" />
-            ) : (
-              // Otherwise, show the Landing page
               <LandingPage />
-            )}
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}

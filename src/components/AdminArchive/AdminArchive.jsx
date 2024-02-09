@@ -23,6 +23,8 @@ import { styled } from "@mui/material/styles";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import AddIcon from "@mui/icons-material/Add";
+import AdminTables from "./AdminTables";
+
 
 const style = {
   position: "absolute",
@@ -35,6 +37,7 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
 
 const theme = createTheme({
     palette: {
@@ -92,148 +95,104 @@ export default function AdminArchive() {
     });
   };
 
-  const adminCreateEvent = () => {
-    console.log("Creating new event");
-    history.push("/adminnewevent");
-  };
+  
+    const adminCreateEvent = () => {
+        console.log("Creating new event");
+        history.push("/adminnewevent");
+    };
 
-  // const td = styled(td)(({ theme }) => ({
-  //     [`&.${tableCellClasses.head}`]: {
-  //         backgroundColor: theme.palette.common.black,
-  //         color: theme.palette.common.white,
-  //     },
-  //     [`&.${tableCellClasses.body}`]: {
-  //         fontSize: 14,
-  //     },
-  // }));
-  // const StyledTableRow = styled(tr)(({ theme }) => ({
-  //     '&:nth-of-type(odd)': {
-  //         backgroundColor: theme.palette.action.hover,
-  //     },
-  //     // hide last border
-  //     '&:last-child td, &:last-child th': {
+    // const td = styled(td)(({ theme }) => ({
+    //     [`&.${tableCellClasses.head}`]: {
+    //         backgroundColor: theme.palette.common.black,
+    //         color: theme.palette.common.white,
+    //     },
+    //     [`&.${tableCellClasses.body}`]: {
+    //         fontSize: 14,
+    //     },
+    // }));
+    // const StyledTableRow = styled(tr)(({ theme }) => ({
+    //     '&:nth-of-type(odd)': {
+    //         backgroundColor: theme.palette.action.hover,
+    //     },
+    //     // hide last border
+    //     '&:last-child td, &:last-child th': {
 
-  //     },
-  // }));
+    //     },
+    // }));
 
-  return (
-    <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add Tag
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <input
-              type="text"
-              value={tagName}
-              placeholder="Tag"
-              onChange={(event) => setTagName(event.target.value)}
-            />
-            <br />
-            <br />
+    return (
+        <div>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Add Tag
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        <input
+                            type="text"
+                            value={tagName}
+                            placeholder="Tag"
+                            onChange={(event) => setTagName(event.target.value)}
+                        />
+                        <br />
+                        <br />
 
-            <button id="ModalAddButton" onClick={newTag}>
-              add
-            </button>
-          </Typography>
-        </Box>
-      </Modal>
+                        <button id="ModalAddButton" onClick={newTag}>
+                            add
+                        </button>
+                    </Typography>
+                </Box>
+            </Modal>
+            <AdminTables />{/* this component handles mapping events into status dependant tables */}
+            <div className="TagsTable events-post-it">
 
-      <div className="EventsTable events-post-it">
-        <table>
-          <thead>
-            <tr>
-              <td>Host</td>
-              <td>Event Name</td>
-              <td>Status</td>
-              <td>Featured / Review</td>
-            </tr>
-          </thead>
+                <table>
+                    <thead className="EventsTable-header">
+                        <tr>
+                            <td>Tag Name</td>
+                            <td>Delete/Edit</td>
+                        </tr>
+                    </thead>
 
-          {events.map((event) => {
-            return (
-              <tr key={event.id}>
-                <td>{event.host}</td>
-                <td>{event.event_name}</td>
-                <td>{event.admin_approved}</td>
-                <td>
-                  <Button onClick={() => StatusChange(event.id)}>
-                    {event.is_highlighted_event ? (
-                      <StarOutlinedIcon className="star"></StarOutlinedIcon>
-                    ) : (
-                      <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>
-                    )}
-                  </Button>{" "}
-                  <Button
-                    onClick={() => {
-                      history.push(`/edit_event/${event.id}`);
-                    }}
-                  >
-                    {" "}
-                    <RateReviewIcon></RateReviewIcon>
-                  </Button>
-                </td>
-              </tr>
-            );
-          })}
-        </table>
-      </div>
+                    {tags.map((tag) => {
+                        return (
 
-      <div className="TagsTable events-post-it">
-        <thead>
-          <tr>
-            <td>Tag Name</td>
-            <td>Delete/Edit</td>
-          </tr>
-        </thead>
-        <table>
-          {tags.map((tag) => {
-            return (
-              <tr key={tag.id}>
-                <td>{tag.tag_name}</td>
-                <td>
-                  <Button onClick={() => deleteTag(tag)}>
-                    <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>
-                  </Button>
-
-                  <Button
-                    onClick={() => {
-                      history.push(`/edit_tag/${tag.id}`);
-                    }}
-                  >
-                    <EditOutlinedIcon></EditOutlinedIcon>
-                  </Button>
-                </td>
-              </tr>
-            );
-          })}
-        </table>
-      </div>
-      <div className="AddTag">
-        <ThemeProvider theme={theme}>
-          <Button variant="contained" sx={{ width: 315 }} onClick={handleOpen}>
-            {" "}
-            <AddIcon />
-            Add Tag
-          </Button>
-        </ThemeProvider>
-      </div>
-      <div className="CreateEvent">
-        <ThemeProvider theme={theme}>
-          <Button onClick={adminCreateEvent} variant="contained">
-            {" "}
-            <AddIcon />
-            Create New Event
-          </Button>
-        </ThemeProvider>
-      </div>
-    </div>
-  );
-
+                            <tr key={tag.id}>
+                                <td>{tag.tag_name}</td>
+                                <td>
+                                    <Button onClick={() => deleteTag(tag)}>
+                                      <DeleteOutlineOutlinedIcon>
+                                      </DeleteOutlineOutlinedIcon>
+                                    </Button>
+                                    <Button onClick={() => { history.push(`/edit_tag/${tag.id}`) }}>
+                                      <EditOutlinedIcon>
+                                      </EditOutlinedIcon>
+                                    </Button>
+                                </td>
+                            </tr>
+                        );
+                    })}
+                </table>
+            </div>
+            <div className="AddTag">
+                <Button variant="contained" sx={{ width: 315 }} onClick={handleOpen}>
+                  {" "}
+                  <AddIcon />
+                  Add Tag
+                </Button>
+            </div>
+            <div className="CreateEvent">
+                <Button onClick={adminCreateEvent} variant='contained'>
+                  {" "}
+                  <AddIcon /> 
+                  Create New Event
+                 </Button>
+            </div>
+        </div>
+    );
 }
