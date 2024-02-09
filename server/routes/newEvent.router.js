@@ -13,7 +13,7 @@ const cloudinaryUpload = require("../modules/cloudinary.config");
 router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
   console.log("in POST query");
   const fileUrl = req.file.path;
-
+console.log('req.body.comments', req.body.comments);
   // const userId = req.user.id; < -- Logged in user?
 
   const insertNewEvent = `
@@ -26,10 +26,11 @@ router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
             "description",
             "website",
             "event_size",
-            "image"
+            "image",
+            "comments"
         )
 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
 
             RETURNING "id"
     `;
@@ -38,14 +39,13 @@ router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
     req.body.host,
     req.body.event_name,
     req.body.cost,
-
-      req.body.time,
-
+     req.body.time,
     req.body.location,
-      req.body.description,
+    req.body.description,
     req.body.website,
     req.body.event_size,
-    fileUrl,
+     fileUrl,
+    req.body.comments,
   ];
 console.log("new event values", newEventValues);
   pool
