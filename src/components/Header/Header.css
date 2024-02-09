@@ -11,5 +11,9 @@
   color: #004986;
   letter-spacing:  -1px;
   word-spacing: 10px;
+  opacity: 80%;
 }
 
+.icon {
+  color: #ea733d;
+}

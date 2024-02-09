@@ -101,19 +101,19 @@ export default function SubmitContactInfo() {
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">
-            {"Are you sure you want submit this?"}
+            {/* {"Are you sure you want submit this?"} */}
             {/* had to change some spelling */}
           </DialogTitle>
           <DialogContent>
             <DialogContentText
               className="DialogText"
               id="alert-dialog-description"
-            ></DialogContentText>
+            >Your event will be reviewed for approval, Thank You!</DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>No</Button>
+            <Button onClick={handleClose}>Back</Button>
             <Button onClick={handleSubmit} autoFocus>
-              Yes
+              Ok
             </Button>
           </DialogActions>
         </Dialog>

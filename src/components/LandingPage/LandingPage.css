@@ -62,6 +62,8 @@
   font-size: 40px;
   color: var(--navy);
   font-family: var(--bgrotbold);
+  margin-top: -35px;
+  margin-bottom: -65px;
 }
 
 .event-section-container {
@@ -172,7 +174,7 @@ transform:skewX(25deg);
 
 .event-date-highlight {
   position: absolute;
-  transform: translate(200%, -20px);
+  transform: translate(500%, -40px);
 }
 
 /* General Selectors */

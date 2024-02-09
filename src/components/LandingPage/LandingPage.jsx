@@ -50,7 +50,7 @@ export default function LandingPage() {
         <ThemeProvider theme={theme}>
           <Button variant="contained" onClick={handleCreateEvent}>
             <Add />
-            Create New Event
+            Create Event
           </Button>
         </ThemeProvider>
       </div>

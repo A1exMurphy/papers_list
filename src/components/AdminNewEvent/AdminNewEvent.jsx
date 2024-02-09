@@ -60,7 +60,6 @@ export default function AdminNewEvent() {
   let [tagInput, setTagInput] = useState([]);
   const tagData = useSelector((store) => store.tags);
 
-
   useEffect(() => {
     dispatch({ type: "FETCH_TAGS" });
   }, []);
@@ -81,7 +80,7 @@ export default function AdminNewEvent() {
     eventForm.append("website", websiteInput);
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("image", imageInput);
-    eventForm.append("comments", commentInput)
+    eventForm.append("comments", commentInput);
 
     setHostInput("");
     setTitleInput("");
@@ -91,7 +90,7 @@ export default function AdminNewEvent() {
     setDescriptionInput("");
     setWebsiteInput("");
     setEventSizeInput("");
-    setCommentInput("")
+    setCommentInput("");
 
     dispatch({
       type: "ADD_EVENT",
@@ -101,8 +100,6 @@ export default function AdminNewEvent() {
 
     history.push("/eventarchive");
   };
-
-
 
   const [open, setOpen] = useState(false);
 
@@ -145,32 +142,15 @@ export default function AdminNewEvent() {
                   width: 230,
                 }}
               />
+
               <TextField
                 id="event-comment-input"
-                helperText="Helpful comments "
+                helperText="Helpful comments (e.g. parking suggestions, things to bring, etc.) "
                 type="text"
                 variant="filled"
-                label="Comment"
+                label="Special Comments"
                 onChange={(e) => setCommentInput(e.target.value)}
                 value={commentInput}
-                sx={{
-                  marginBottom: 4,
-                  width: 230,
-                }}
-                multiline
-                minRows={2}
-             
-              />
-              
-         
-              <TextField
-                id="event-description-input"
-                helperText="Brief description of event"
-                type="text"
-                variant="filled"
-                label="Description"
-                onChange={(e) => setDescriptionInput(e.target.value)}
-                value={descriptionInput}
                 sx={{
                   marginBottom: 4,
                   width: 230,
@@ -180,6 +160,21 @@ export default function AdminNewEvent() {
                 required
               />
             </Stack>
+            <TextField
+              id="event-description-input"
+              helperText="Brief description of event"
+              type="text"
+              variant="filled"
+              label="Event Description"
+              onChange={(e) => setDescriptionInput(e.target.value)}
+              value={descriptionInput}
+              sx={{
+                marginBottom: 4,
+              }}
+              multiline
+              minRows={4}
+              required
+            />
             <Stack
               spacing={2}
               direction="row"

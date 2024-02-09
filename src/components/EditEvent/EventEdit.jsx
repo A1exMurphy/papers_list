@@ -182,26 +182,13 @@ export default function EditEvent() {
                 }}
               />
               <TextField
-                type="text"
-                helperText="Helpful Notes"
-                variant="filled"
-                label="comment"
-                size="small"
                 id="event-comment-input"
+                helperText="Helpful comments (e.g. parking suggestions, things to bring, etc.) "
+                type="text"
+                variant="filled"
+                label="Special Comments"
                 onChange={(e) => handleCommentChange(e.target.value)}
                 value={editEvent.comments || ""}
-                sx={{ width: 230 }}
-                required
-              />
-              
-              <TextField
-                id="event-description-input"
-                helperText="Brief description of event"
-                type="text"
-                variant="filled"
-                label="Description"
-                onChange={(e) => handleDescriptionChange(e.target.value)}
-                value={editEvent.description || ""}
                 sx={{
                   marginBottom: 4,
                   width: 230,
@@ -210,8 +197,22 @@ export default function EditEvent() {
                 minRows={8}
                 required
               />
-             
             </Stack>
+            <TextField
+              id="event-description-input"
+              helperText="Brief description of event"
+              type="text"
+              variant="filled"
+              label="Event Description"
+              onChange={(e) => setDescriptionInput(e.target.value)}
+              value={editEvent.description || ""}
+              sx={{
+                marginBottom: 4,
+              }}
+              multiline
+              minRows={4}
+              required
+            />
             <Stack
               spacing={2}
               direction="row"
@@ -257,17 +258,6 @@ export default function EditEvent() {
                   width: 230,
                 }}
               />
-              <TextField
-                type="date"
-                helperText="Date of event"
-                variant="filled"
-                size="small"
-                id="event-date-input"
-                onChange={(e) => handleTimeChange(e.target.value)}
-                value={editEvent.time || ""}
-                sx={{ width: 230 }}
-                required
-              />
             </Stack>
             <Stack
               spacing={2}
@@ -275,6 +265,7 @@ export default function EditEvent() {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
+          
               <TextField
                 helperText="Where the event will be held (e.g. Merriot Hotel Minneapolis, MN)"
                 type="text"
