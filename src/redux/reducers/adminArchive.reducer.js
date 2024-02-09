@@ -1,3 +1,5 @@
+import { combineReducers } from "redux";
+
 
 const archived = (state = [], action) => {
   switch (action.type) {
@@ -37,5 +39,9 @@ const deleted = (state = [], action) => {
 
 
 
-export default archived;
-
+export default combineReducers({
+  archived,
+  approved,
+  pending,
+  deleted
+});

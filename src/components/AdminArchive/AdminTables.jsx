@@ -22,29 +22,86 @@ import RateReviewIcon from '@mui/icons-material/RateReview';
 
 export default function AdminTables() {
     useEffect(() => {
-        dispatch({ type: "FETCH_ARCHIVED_EVENTS" });
+        dispatch({ type: "FETCH_ARCHIVED_EVENTS" })
     }, []);
 
-    const events = useSelector((store) => store.archived);
+    const approvedEvents = useSelector((store) => store.archived.approved);
+    const pendingEvents = useSelector((store) => store.archived.pending);
+    const deleteEvents = useSelector((store) => store.archived.deleted);
+
     const dispatch = useDispatch();
+    // console.log("archived reducer", approvedEvents)
 
 
 
-return (
-               <>
-                    <table className="EventsTable events-post-it">
+    return (
+        <>
+                    <div className="EventsTable events-post-it">
+                        <table>
                     <thead>
                         <tr>
                             <td>Host</td>
                             <td>Event Name</td>
                             <td>Status</td>
                             <td>Featured / Review</td>
-
-
                         </tr>
                     </thead>
                   
-                        {events && events.map((event) => {
+                        {pendingEvents && pendingEvents.map((pending) => {
+                            return (
+                                <tr key={pending.id}>
+                                    <td>{pending.host}</td>
+                                    <td>{pending.event_name}</td>
+                                    <td>{pending.admin_approved}</td>
+                                    <td><Button onClick={() => StatusChange(pending.id)}>{pending.is_highlighted_event ? <StarOutlinedIcon className="star">
+                                    </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
+                                    </Button> <Button onClick={() => { history.push(`/edit_event/${pending.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
+                                </tr>
+
+                             );
+                        })}            
+                                </table>
+                    </div>
+
+<div className="EventsTable events-post-it">
+<table>
+<thead>
+<tr>
+    <td>Host</td>
+    <td>Event Name</td>
+    <td>Status</td>
+    <td>Featured / Review</td>
+</tr>
+</thead>
+
+{approvedEvents && approvedEvents.map((event) => {
+    return (
+        <tr key={event.id}>
+            <td>{event.host}</td>
+            <td>{event.event_name}</td>
+            <td>{event.admin_approved}</td>
+            <td><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
+            </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
+            </Button> <Button onClick={() => { history.push(`/edit_event/${event.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
+        </tr>
+
+     );
+})}            
+        </table>
+</div>
+
+<div className="EventsTable events-post-it">
+                        <table>
+                    <thead>
+                        <tr>
+                            <td>Host</td>
+                            <td>Event Name</td>
+                            <td>Status</td>
+                            <td>Featured / Review</td>
+                        </tr>
+                    </thead>
+                  
+                        {deleteEvents && deleteEvents.map((event) => {
                             return (
                                 <tr key={event.id}>
                                     <td>{event.host}</td>
@@ -53,11 +110,12 @@ return (
                                     <td><Button onClick={() => StatusChange(event.id)}>{event.is_highlighted_event ? <StarOutlinedIcon className="star">
                                     </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
                                     </Button> <Button onClick={() => { history.push(`/edit_event/${event.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
-
                                 </tr>
-                            );
-                        })}
-                       
 
-                    </table></>
-)}
+                             );
+                        })}            
+                                </table>
+                    </div>
+</>
+    )
+}
