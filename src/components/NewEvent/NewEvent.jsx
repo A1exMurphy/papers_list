@@ -116,10 +116,10 @@ export default function NewEvent() {
 
     console.log("Event form data:", eventForm);
 
-    // dispatch({
-    //   type: "SELECTED_TAGS",
-    //   payload: tagInput
-    // })
+    dispatch({
+      type: "SELECTED_TAGS",
+      payload: tagInput
+    })
 
     dispatch({
       type: "ADD_EVENT",
@@ -265,7 +265,7 @@ export default function NewEvent() {
                     onChange={(e) => setTagInput(e.target.value)}
                     value={tagInput}
                     sx={{ width: 230 }}
-                    renderValue={(selected) => selected.join(", ")}
+                    renderValue={tagData.tag_name}
                     MenuProps={MenuProps}
                   >
                     {tagData &&
