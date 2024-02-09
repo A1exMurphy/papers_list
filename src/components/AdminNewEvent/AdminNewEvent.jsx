@@ -78,7 +78,7 @@ export default function AdminNewEvent() {
     eventForm.append("cost", costInput);
     eventForm.append("location", locationInput);
     eventForm.append("description", descriptionInput);
-    eventForm.append("website", websiteInput )
+    eventForm.append("website", websiteInput);
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("image", imageInput);
     eventForm.append("comments", commentInput)
@@ -179,22 +179,6 @@ export default function AdminNewEvent() {
                 minRows={8}
                 required
               />
-              <TextField
-                id="event-website-input"
-                helperText="Link to Event website "
-                type="text"
-                variant="filled"
-                label="Website"
-                onChange={(e) => setWebsiteInput(e.target.value)}
-                value={websiteInput}
-                sx={{
-                  marginBottom: 4,
-                  width: 230,
-                }}
-                multiline
-                minRows={2}
-                required
-              />
             </Stack>
             <Stack
               spacing={2}
@@ -210,7 +194,24 @@ export default function AdminNewEvent() {
                 label="Event Name"
                 onChange={(e) => setTitleInput(e.target.value)}
                 value={titleInput}
-                fullWidth
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
+                required
+              />
+              <TextField
+                id="event-website-input"
+                helperText="Link to Event/Registration "
+                type="text"
+                variant="filled"
+                label="Registration Link"
+                onChange={(e) => setWebsiteInput(e.target.value)}
+                value={websiteInput}
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
                 required
               />
             </Stack>
@@ -384,5 +385,4 @@ export default function AdminNewEvent() {
       </div>
     </>
   );
-  
 }

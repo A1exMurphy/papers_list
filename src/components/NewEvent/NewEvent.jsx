@@ -34,7 +34,6 @@ const theme = createTheme({
   },
 });
 
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -59,6 +58,8 @@ export default function NewEvent() {
   let [errorMessage, setErrorMessage] = useState("");
   let [tagId, setTagId] = useState([]);
   let [websiteInput, setWebsiteInput] = useState("");
+
+  
   let [commentInput, setCommentInput] = useState("");
 
   const tagData = useSelector((store) => store.tags);
@@ -75,10 +76,8 @@ export default function NewEvent() {
 
   const [open, setOpen] = useState(false);
 
-
   console.log("tagInput", tagInput);
   console.log("tagid", tagId);
-  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -101,7 +100,6 @@ export default function NewEvent() {
     eventForm.append("website", websiteInput);
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("comments", commentInput);
-
 
 
 
@@ -173,15 +171,6 @@ export default function NewEvent() {
                 minRows={8}
                 required
               />
-              <TextField
-                id="event-image-input"
-                type="text"
-                label="Website"
-                onChange={(e) => setWebsiteInput(e.target.value)}
-                sx={{
-                  width: 230,
-                }}
-              />
             </Stack>
             <Stack
               spacing={2}
@@ -197,7 +186,24 @@ export default function NewEvent() {
                 label="Event Name"
                 onChange={(e) => setTitleInput(e.target.value)}
                 value={titleInput}
-                fullWidth
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
+                required
+              />
+              <TextField
+                id="event-website-input"
+                helperText="Link to Event/Registration "
+                type="text"
+                variant="filled"
+                label="Registration Link"
+                onChange={(e) => setWebsiteInput(e.target.value)}
+                value={websiteInput}
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
                 required
               />
             </Stack>
@@ -266,11 +272,9 @@ export default function NewEvent() {
                       tagData.map((tag) => {
                         return (
                           <MenuItem key={tag.id} value={tag.id}>
-                            <Checkbox
-                              checked={tagInput.indexOf(tag.id) > -1}
-                              />
-                              {tag.tag_name}
-                            <ListItemText/>
+                            <Checkbox checked={tagInput.indexOf(tag.id) > -1} />
+                            {tag.tag_name}
+                            <ListItemText />
                           </MenuItem>
                         );
                       })}
