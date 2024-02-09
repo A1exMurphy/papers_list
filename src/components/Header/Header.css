@@ -10,10 +10,12 @@
   font-size: 55px;
   color: #004986;
   letter-spacing:  -1px;
-  word-spacing: 10px;
-  opacity: 80%;
+  word-spacing: -5px;
 }
 
 .icon {
   color: #ea733d;
+  size: 25px;
+  opacity: 65%;
+  padding-top: 10px;
 }
