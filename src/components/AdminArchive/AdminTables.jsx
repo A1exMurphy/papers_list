@@ -25,6 +25,7 @@ export default function AdminTables() {
         dispatch({ type: "FETCH_ARCHIVED_EVENTS" })
     }, []);
 
+    // these store reducers segregate events by "status" value
     const approvedEvents = useSelector((store) => store.archived.approved);
     const pendingEvents = useSelector((store) => store.archived.pending);
     const deleteEvents = useSelector((store) => store.archived.deleted);
@@ -34,7 +35,7 @@ export default function AdminTables() {
 
     // console.log("archived reducer", approvedEvents)
 
-
+    // this function controls whether an event is highlighted
     const StatusChange = (id) => {
 
         dispatch({
@@ -43,6 +44,7 @@ export default function AdminTables() {
         })
     }
 
+    // this function allows the submission of a new event from the admin portal
     const adminCreateEvent = () => {
         console.log("Creating new event");
         history.push("/adminnewevent");
