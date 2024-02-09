@@ -127,6 +127,13 @@ export default function EditEvent() {
     });
   };
 
+  const handleCommentChange = (comment) => {
+    dispatch({
+      type: "CHANGE_COMMENT",
+      payload: comment,
+    });
+  };
+
   const handleStatusChange = (adminStatus) => {
     dispatch({
       type: "UPDATE_STATUS",
@@ -174,6 +181,19 @@ export default function EditEvent() {
                   width: 230,
                 }}
               />
+              <TextField
+                type="text"
+                helperText="Helpful Notes"
+                variant="filled"
+                label="comment"
+                size="small"
+                id="event-comment-input"
+                onChange={(e) => handleCommentChange(e.target.value)}
+                value={editEvent.comments || ""}
+                sx={{ width: 230 }}
+                required
+              />
+              
               <TextField
                 id="event-description-input"
                 helperText="Brief description of event"

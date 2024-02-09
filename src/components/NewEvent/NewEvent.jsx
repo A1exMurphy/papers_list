@@ -59,6 +59,9 @@ export default function NewEvent() {
   let [tagId, setTagId] = useState([]);
   let [websiteInput, setWebsiteInput] = useState("");
 
+  
+  let [commentInput, setCommentInput] = useState("");
+
   const tagData = useSelector((store) => store.tags);
 
   useEffect(() => {
@@ -96,6 +99,9 @@ export default function NewEvent() {
     eventForm.append("description", descriptionInput);
     eventForm.append("website", websiteInput);
     eventForm.append("event_size", eventSizeInput);
+    eventForm.append("comments", commentInput);
+
+
 
     setHostInput("");
     setTitleInput("");
@@ -106,6 +112,7 @@ export default function NewEvent() {
     setWebsiteInput("");
     setEventSizeInput("");
     setTagInput("");
+    setCommentInput("");
 
     console.log("Event form data:", eventForm);
 
