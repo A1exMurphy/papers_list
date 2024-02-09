@@ -153,6 +153,7 @@ export default function NewEvent() {
                   width: 230,
                 }}
               />
+              
               <TextField
                 id="event-description-input"
                 helperText="Brief description of event"
