@@ -10,9 +10,11 @@ const cloudinaryUpload = require("../modules/cloudinary.config");
  * POST route template
  */
 //user submitted inputs POSTed to create new event with pending admin_approved
-router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
-  console.log("in POST query");
-  const fileUrl = req.file.path;
+  // router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
+    router.post("/event", (req, res) => {
+  
+  console.log("new event in POST query", req.body);
+
 
   // const userId = req.user.id; < -- Logged in user?
 
@@ -26,32 +28,30 @@ router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
             "description",
             "website",
             "event_size",
-            "image",
+
             "comments"
         )
 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
 
             RETURNING "id"
     `;
     
   newEventValues = [
-    req.body.eventForm.host,
-    req.body.eventForm.event_name,
-    req.body.eventForm.cost,
-     req.body.eventForm.time,
-    req.body.eventForm.location,
-    req.body.eventForm.description,
-    req.body.eventForm.website,
-    req.body.eventForm.event_size,
-     fileUrl,
-    req.body.eventForm.comments,
+    req.body.hostInput,
+    req.body.titleInput,
+    req.body.costInput,
+     req.body.dateInput,
+    req.body.locationInput,
+    req.body.descriptionInput,
+    req.body.websiteInput,
+    req.body.eventSizeInput,
+    req.body.commentInput,
   ];
 console.log("new event values", newEventValues);
   pool
     .query(insertNewEvent, newEventValues)
     .then((result) => {
-      res.send({id: result.rows[0].id});
       const postID = result.rows[0].id;
       const tagsArray = req.body.tagInput;
       const postTagsQuery = newPostTagsQuery (postID, tagsArray);
@@ -59,7 +59,8 @@ console.log("new event values", newEventValues);
       
       pool.query(postTagsQuery)
           .then((result) => {
-            res.sendStatus(201)
+            res.send({id:postID})
+
           })
           .catch((err) => {
             console.log('Error in postTagsQuery', err)
@@ -88,14 +89,14 @@ function newPostTagsQuery(postID, tagsArray) {
   `;
   for (let i = 0; i < tagsArray.length; i++) {
     // adds the appropriate ids
-    if (i < cardsArray.length - 1) {
+    if (i < tagsArray.length - 1) {
       postTagsQuery += `
-      (${postID}, ${tagsArray[i].post_id}),
+      (${postID}, ${tagsArray[i]}),
     `;
       // adds the appropriate ids and a semi colon
     } else if (i === tagsArray.length - 1) {
       postTagsQuery += `
-      (${postID}, ${tagsArray[i].tag_id});
+      (${postID}, ${tagsArray[i]});
       `;
     }
   }
