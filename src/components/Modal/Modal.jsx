@@ -2,15 +2,19 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import PaidIcon from '@mui/icons-material/Paid';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Link
+} from "react-router-dom";
 import "./Modal.css";
 
 export default function Modal({ closeModal }) {
-  const dispatch = useDispatch();
-  const singleEvent = useSelector((store) => store.selectedEvent.selectedEvent);
+    const dispatch = useDispatch();
+    const singleEvent = useSelector((store) => store.selectedEvent.selectedEvent);
     const tags = useSelector((store) => store.tags);
-    
   
+    console.log("singleEvent", singleEvent);
     useEffect(() => {
         dispatch({type: 'FETCH_EVENTS'});
     }, [])
@@ -50,8 +54,17 @@ export default function Modal({ closeModal }) {
                         <div className="modal-host">
                             <span>Hosted by {singleEvent.host}</span>
                         </div>
-                        {singleEvent.is_highlighted === true ? <span>Highlighted Event</span> : <></>}
+                        <div className="modal-location">
+                            <span>{singleEvent.location}</span>
+                        </div>
+                        <div className="modal-website">
+                            <a href={`http://www.${singleEvent.website}`} target="_blank">Event Website</a>
+                        </div>
                     </div>
+                        <div className="modal-comments">
+                            <h1>Cathy's Comments</h1>
+                            <span>{singleEvent.comments}</span>
+                        </div>
                 </div>
             </div>
         </>
