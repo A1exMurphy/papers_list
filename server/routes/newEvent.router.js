@@ -47,8 +47,8 @@ const cloudinaryUpload = require("../modules/cloudinary.config");
     req.body.websiteInput,
     req.body.eventSizeInput,
     req.body.commentInput,
+     //fileUrl,
   ];
-console.log("new event values", newEventValues);
   pool
     .query(insertNewEvent, newEventValues)
     .then((result) => {

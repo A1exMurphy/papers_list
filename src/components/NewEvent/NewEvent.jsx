@@ -57,7 +57,7 @@ export default function NewEvent() {
   let [tagInput, setTagInput] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
   let [tagId, setTagId] = useState([]);
-  let [websiteInput, setWebsiteInput] = useState("");
+  let [websiteInput, setWebsiteInput] = useState("http://");
 
   
   let [commentInput, setCommentInput] = useState("");
@@ -114,12 +114,6 @@ export default function NewEvent() {
     setTagInput("");
     setCommentInput("");
 
-    // console.log("Event form data:", {titleInput, hostInput,locationInput, costInput, dateInput, descriptionInput, websiteInput, eventSizeInput, tagInput, commentInput});
-
-    // dispatch({
-    //   type: "SELECTED_TAGS",
-    //   payload: tagInput
-    // })
 
     dispatch({
       type: "SAGA/ADD_EVENT",
@@ -153,12 +147,14 @@ export default function NewEvent() {
                   width: 230,
                 }}
               />
+              
               <TextField
                 id="event-description-input"
                 helperText="Brief description of event"
                 type="text"
                 variant="filled"
                 label="Description"
+                placeholder="Lorem ipsem dolor sit amet..."
                 onChange={(e) => setDescriptionInput(e.target.value)}
                 value={descriptionInput}
                 sx={{
@@ -184,6 +180,7 @@ export default function NewEvent() {
                 type="text"
                 variant="filled"
                 label="Event Name"
+                placeholder="Business Meetup"
                 onChange={(e) => setTitleInput(e.target.value)}
                 value={titleInput}
                 sx={{
@@ -198,6 +195,7 @@ export default function NewEvent() {
                 type="text"
                 variant="filled"
                 label="Registration Link"
+                placeholder="examplesite.com"
                 onChange={(e) => setWebsiteInput(e.target.value)}
                 value={websiteInput}
                 sx={{
@@ -218,6 +216,7 @@ export default function NewEvent() {
                 helperText="Organization / Person hosting"
                 variant="filled"
                 label="Hosted By"
+                placeholder="Jane Doe"
                 size="small"
                 id="event-host-input"
                 onChange={(e) => setHostInput(e.target.value)}
@@ -244,10 +243,11 @@ export default function NewEvent() {
               divider={<Divider orientation="vertical" flexItem />}
             >
               <TextField
-                helperText="Where the event will be held (e.g. Merriot Hotel Minneapolis, MN)"
+                helperText="Where the event will be held"
                 type="text"
                 variant="filled"
                 label="Location"
+                placeholder="Sleepy Hotel, Cresco IA"
                 size="small"
                 id="event-location-input"
                 onChange={(e) => setLocationInput(e.target.value)}

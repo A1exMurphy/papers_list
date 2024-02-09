@@ -25,7 +25,6 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 import AddIcon from "@mui/icons-material/Add";
 import AdminTables from "./AdminTables";
 
-
 const style = {
   position: "absolute",
   top: "50%",
@@ -38,14 +37,13 @@ const style = {
   p: 4,
 };
 
-
 const theme = createTheme({
-    palette: {
-        primary: {
-            main: "#ea733d",
-        },
-    }
-})
+  palette: {
+    primary: {
+      main: "#004986",
+    },
+  },
+});
 
 export default function AdminArchive() {
   useEffect(() => {
@@ -53,8 +51,8 @@ export default function AdminArchive() {
     dispatch({ type: "FETCH_TAGS" });
 
     window.scrollTo(0, 0);
-}, []);
-  
+  }, []);
+
   let [tagName, setTagName] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -95,104 +93,108 @@ export default function AdminArchive() {
     });
   };
 
-  
-    const adminCreateEvent = () => {
-        console.log("Creating new event");
-        history.push("/adminnewevent");
-    };
+  const adminCreateEvent = () => {
+    console.log("Creating new event");
+    history.push("/adminnewevent");
+  };
 
-    // const td = styled(td)(({ theme }) => ({
-    //     [`&.${tableCellClasses.head}`]: {
-    //         backgroundColor: theme.palette.common.black,
-    //         color: theme.palette.common.white,
-    //     },
-    //     [`&.${tableCellClasses.body}`]: {
-    //         fontSize: 14,
-    //     },
-    // }));
-    // const StyledTableRow = styled(tr)(({ theme }) => ({
-    //     '&:nth-of-type(odd)': {
-    //         backgroundColor: theme.palette.action.hover,
-    //     },
-    //     // hide last border
-    //     '&:last-child td, &:last-child th': {
+  // const td = styled(td)(({ theme }) => ({
+  //     [`&.${tableCellClasses.head}`]: {
+  //         backgroundColor: theme.palette.common.black,
+  //         color: theme.palette.common.white,
+  //     },
+  //     [`&.${tableCellClasses.body}`]: {
+  //         fontSize: 14,
+  //     },
+  // }));
+  // const StyledTableRow = styled(tr)(({ theme }) => ({
+  //     '&:nth-of-type(odd)': {
+  //         backgroundColor: theme.palette.action.hover,
+  //     },
+  //     // hide last border
+  //     '&:last-child td, &:last-child th': {
 
-    //     },
-    // }));
+  //     },
+  // }));
 
-    return (
-        <div>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Add Tag
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <input
-                            type="text"
-                            value={tagName}
-                            placeholder="Tag"
-                            onChange={(event) => setTagName(event.target.value)}
-                        />
-                        <br />
-                        <br />
+  return (
+    <div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Add Tag
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <input
+              type="text"
+              value={tagName}
+              placeholder="Tag"
+              onChange={(event) => setTagName(event.target.value)}
+            />
+            <br />
+            <br />
 
-                        <button id="ModalAddButton" onClick={newTag}>
-                            add
-                        </button>
-                    </Typography>
-                </Box>
-            </Modal>
-            <AdminTables />{/* this component handles mapping events into status dependant tables */}
-            <div className="TagsTable events-post-it">
+            <button id="ModalAddButton" onClick={newTag}>
+              add
+            </button>
+          </Typography>
+        </Box>
+      </Modal>
+      <AdminTables />
+      {/* this component handles mapping events into status dependant tables */}
+      <div className="TagsTable events-post-it">
+        <table>
+          <thead className="EventsTable-header">
+            <tr>
+              <td>Tag Name</td>
+              <td>Delete/Edit</td>
+            </tr>
+          </thead>
 
-                <table>
-                    <thead className="EventsTable-header">
-                        <tr>
-                            <td>Tag Name</td>
-                            <td>Delete/Edit</td>
-                        </tr>
-                    </thead>
-
-                    {tags.map((tag) => {
-                        return (
-
-                            <tr key={tag.id}>
-                                <td>{tag.tag_name}</td>
-                                <td>
-                                    <Button onClick={() => deleteTag(tag)}>
-                                      <DeleteOutlineOutlinedIcon>
-                                      </DeleteOutlineOutlinedIcon>
-                                    </Button>
-                                    <Button onClick={() => { history.push(`/edit_tag/${tag.id}`) }}>
-                                      <EditOutlinedIcon>
-                                      </EditOutlinedIcon>
-                                    </Button>
-                                </td>
-                            </tr>
-                        );
-                    })}
-                </table>
-            </div>
-            <div className="AddTag">
-                <Button variant="contained" sx={{ width: 315 }} onClick={handleOpen}>
-                  {" "}
-                  <AddIcon />
-                  Add Tag
-                </Button>
-            </div>
-            <div className="CreateEvent">
-                <Button onClick={adminCreateEvent} variant='contained'>
-                  {" "}
-                  <AddIcon /> 
-                  Create New Event
-                 </Button>
-            </div>
-        </div>
-    );
+          {tags.map((tag) => {
+            return (
+              <tr key={tag.id}>
+                <td>{tag.tag_name}</td>
+                <td>
+                  <Button onClick={() => deleteTag(tag)}>
+                    <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      history.push(`/edit_tag/${tag.id}`);
+                    }}
+                  >
+                    <EditOutlinedIcon></EditOutlinedIcon>
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
+        </table>
+      </div>
+      <div className="AddTag">
+        <ThemeProvider theme={theme}>
+          <Button variant="contained" sx={{ width: 150 }} onClick={handleOpen}>
+            {" "}
+            <AddIcon />
+            Add Tag
+          </Button>
+        </ThemeProvider>
+      </div>
+      <div className="CreateEvent">
+        <ThemeProvider theme={theme}>
+          <Button onClick={adminCreateEvent} variant="contained">
+            {" "}
+            <AddIcon />
+            Create New Event
+          </Button>
+        </ThemeProvider>
+      </div>
+    </div>
+  );
 }
