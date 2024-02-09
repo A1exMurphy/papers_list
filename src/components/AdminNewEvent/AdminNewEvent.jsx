@@ -59,7 +59,7 @@ export default function AdminNewEvent() {
   let [websiteInput, setWebsiteInput] = useState("");
   let [tagInput, setTagInput] = useState([]);
   const tagData = useSelector((store) => store.tags);
-  console.log("tagdata", tagData);
+
 
   useEffect(() => {
     dispatch({ type: "FETCH_TAGS" });
@@ -102,7 +102,7 @@ export default function AdminNewEvent() {
     history.push("/eventarchive");
   };
 
-  console.log("commentInput", commentInput);
+
 
   const [open, setOpen] = useState(false);
 

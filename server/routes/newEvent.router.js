@@ -13,7 +13,7 @@ const cloudinaryUpload = require("../modules/cloudinary.config");
 router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
   console.log("in POST query");
   const fileUrl = req.file.path;
-console.log('req.body.comments', req.body.comments);
+
   // const userId = req.user.id; < -- Logged in user?
 
   const insertNewEvent = `
