@@ -2,19 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Modal from "../Modal/Modal";
-import Container from "postcss/lib/container";
 import { Button } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import { createTheme } from "@mui/material/styles";
 import "./LandingPage.css";
+import { Add } from "@mui/icons-material";
+import { ThemeProvider } from "@emotion/react";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#004986",
+      main: "#ea733d",
     },
   },
 });
@@ -49,11 +46,14 @@ export default function LandingPage() {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Button variant="contained" onClick={handleCreateEvent}>
-          Create New Event
-        </Button>
-      </ThemeProvider>
+      <div className="create-event-btn">
+        <ThemeProvider theme={theme}>
+          <Button variant="contained" onClick={handleCreateEvent}>
+            <Add />
+            Create New Event
+          </Button>
+        </ThemeProvider>
+      </div>
       <section className="highlights-section">
         <div className="titleContainer">
           <h1 className="landing-title">Highlighted Events</h1>
@@ -69,7 +69,7 @@ export default function LandingPage() {
                   }}
                   key={event.id}
                 >
-                  {event.is_highlighted_event ? (
+                  {event.is_highlighted_event && (
                     <div className="card card-post-it">
                       <img
                         className="card-img"
@@ -83,14 +83,16 @@ export default function LandingPage() {
                         ) : (
                           <h5>Free Event</h5>
                         )}
+                        <span className="event-date-highlight">
+                          {event.time}
+                        </span>
                       </div>
                     </div>
-                  ) : (
-                    <></>
                   )}
                 </div>
               );
             })}
+          ;
         </div>
       </section>
       <section className="gallery-section">
@@ -120,6 +122,7 @@ export default function LandingPage() {
                       ) : (
                         <h5>Free Event</h5>
                       )}
+                      <span className="date">{event.time}</span>
                     </div>
                   </div>
                 </div>

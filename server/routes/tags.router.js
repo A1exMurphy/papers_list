@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
       .then((result) => {
         res.send(result.rows)
         
-  
+
       })
       .catch((err) => {
         console.log("error in GET query", err);

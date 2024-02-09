@@ -4,9 +4,10 @@ const router = express.Router();
 
 router.get("/events", (req, res) => {
   // GET route code here
-  const sqlText = `
-    SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
-        FROM "posts"
+  const sqlText = 
+    `
+    SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."comments", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
+    FROM "posts"
     LEFT JOIN "post_tags"
         ON "post_tags"."post_id" = "posts"."id"
     LEFT JOIN "tags" 
@@ -125,7 +126,8 @@ router.put('/event/:id', (req, res) => {
             "time"=$4,
             "description"=$5,
             "event_size"=$6,
-            "image"=$7
+            "image"=$7,
+            "comments"=$8
         
     WHERE "id" = $8;
     `;
@@ -138,6 +140,7 @@ router.put('/event/:id', (req, res) => {
     req.body.description,
     req.body.event_size,
     req.body.image,
+   req.body.comments,
     req.body.id,
   ];
 
@@ -323,15 +326,18 @@ const idToUpdate = req.params.id
   "time" = $4,
   "location" = $5,
 "description" = $6,
-"event_size" = $7,
-"image" = $8,
-"admin_approved" = $9
-  WHERE "id" = $10;
+"website" = $7,
+"event_size" = $8,
+"image" = $9,
+"comments" = $10,
+"admin_approved" = $11,
+"contact_id" = $12
+  WHERE "id" = $13;
   `;
 //not sure if the happy path is using req.body.id or req.params.id
   
 
-  pool.query(insertNewTag, [req.body.host, req.body.event_name, req.body.cost, req.body.time, req.body.location, req.body.description, req.body.event_size, req.body.image, req.body.admin_approved, idToUpdate])
+  pool.query(insertNewTag, [req.body.host, req.body.event_name, req.body.cost, req.body.time, req.body.location, req.body.description, req.body.website,  req.body.event_size, req.body.image, req.body.comments, req.body.admin_approved, req.body.contact_id, idToUpdate])
         
           .then((result) => {
             res.sendStatus(201)

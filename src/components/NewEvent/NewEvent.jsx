@@ -19,11 +19,11 @@ import Checkbox from "@mui/material/Checkbox";
 import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 import { Fragment } from "react";
 
 const theme = createTheme({
@@ -33,6 +33,7 @@ const theme = createTheme({
     },
   },
 });
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -53,8 +54,14 @@ export default function NewEvent() {
   let [imageInput, setImageInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [costInput, setCostInput] = useState("");
-  let [tagInput, setTagInput] = useState([]);
+  const [tagInput, setTagInput] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
+  let [tagId, setTagId] = useState([]);
+  let [websiteInput, setWebsiteInput] = useState("");
+
+  
+  let [commentInput, setCommentInput] = useState("");
+
   const tagData = useSelector((store) => store.tags);
 
   useEffect(() => {
@@ -69,28 +76,32 @@ export default function NewEvent() {
 
   const [open, setOpen] = useState(false);
 
-
+  console.log("tagInput", tagInput);
+  console.log("tagid", tagId);
 
   const handleClickOpen = () => {
-   
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    eventForm.append("image", imageInput);
     eventForm.append("event_name", titleInput);
     eventForm.append("host", hostInput);
     eventForm.append("time", dateInput);
     eventForm.append("cost", costInput);
     eventForm.append("location", locationInput);
     eventForm.append("description", descriptionInput);
+    eventForm.append("website", websiteInput);
     eventForm.append("event_size", eventSizeInput);
-    eventForm.append("image", imageInput);
+    eventForm.append("comments", commentInput);
+
+
 
     setHostInput("");
     setTitleInput("");
@@ -98,10 +109,17 @@ export default function NewEvent() {
     setCostInput("");
     setDateInput("");
     setDescriptionInput("");
+    setWebsiteInput("");
     setEventSizeInput("");
     setTagInput("");
+    setCommentInput("");
 
     console.log("Event form data:", eventForm);
+
+    dispatch({
+      type: "SELECTED_TAGS",
+      payload: tagInput
+    })
 
     dispatch({
       type: "ADD_EVENT",
@@ -146,6 +164,8 @@ export default function NewEvent() {
                 sx={{
                   marginBottom: 4,
                   width: 230,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
                 }}
                 multiline
                 minRows={8}
@@ -166,7 +186,24 @@ export default function NewEvent() {
                 label="Event Name"
                 onChange={(e) => setTitleInput(e.target.value)}
                 value={titleInput}
-                fullWidth
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
+                required
+              />
+              <TextField
+                id="event-website-input"
+                helperText="Link to Event/Registration "
+                type="text"
+                variant="filled"
+                label="Registration Link"
+                onChange={(e) => setWebsiteInput(e.target.value)}
+                value={websiteInput}
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
                 required
               />
             </Stack>
@@ -223,22 +260,21 @@ export default function NewEvent() {
                   <InputLabel id="tag-input-label">Tags</InputLabel>
                   <Select
                     multiple
-                    label="Event Size"
+                    label="Tags"
                     id="event-size-input"
                     onChange={(e) => setTagInput(e.target.value)}
                     value={tagInput}
                     sx={{ width: 230 }}
-                    renderValue={(selected) => selected.join(", ")}
+                    renderValue={tagData.tag_name}
                     MenuProps={MenuProps}
                   >
                     {tagData &&
                       tagData.map((tag) => {
                         return (
-                          <MenuItem key={tag.id} value={tag.tag_name}>
-                            <Checkbox
-                              checked={tagInput.indexOf(tag.tag_name) > -1}
-                            />
-                            <ListItemText primary={tag.tag_name} />
+                          <MenuItem key={tag.id} value={tag.id}>
+                            <Checkbox checked={tagInput.indexOf(tag.id) > -1} />
+                            {tag.tag_name}
+                            <ListItemText />
                           </MenuItem>
                         );
                       })}
@@ -312,32 +348,30 @@ export default function NewEvent() {
             </Stack>
           </FormControl>
         </form>
-      <Fragment>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-
-        >
-          <DialogTitle id="alert-dialog-title">
-            {"Are you sure you wanna submit this ?"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText className="DialogText" id="alert-dialog-description">
-
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
-            <Button onClick={handleSubmit} autoFocus>
-              Agree
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <Fragment>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Are you sure you want to submit this?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText
+                className="DialogText"
+                id="alert-dialog-description"
+              ></DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>No</Button>
+              <Button onClick={handleSubmit} autoFocus>
+                Yes
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Fragment>
-        
-       
       </div>
     </>
   );

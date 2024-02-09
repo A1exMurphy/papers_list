@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
   // GET route code here
 const eventsArry = []
   let sqlText = `
-  SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
+  SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image","posts"."comments", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
   FROM "posts"
   LEFT JOIN "post_tags"
   ON "post_tags"."post_id" = "posts"."id"
@@ -24,7 +24,7 @@ const eventsArry = []
       
       eventsArry.push(result.rows)
 
-      sqlText = `SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
+      sqlText = `SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."comments", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
       FROM "posts"
       INNER JOIN "post_tags"
       ON "post_tags"."post_id" = "posts"."id"

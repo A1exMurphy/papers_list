@@ -236,10 +236,14 @@ function* submitEventEdit(action) {
           cost: editedEvent.cost,
           time: editedEvent.time,
           location: editedEvent.location,
-          description: editedEvent.description,
+        description: editedEvent.description,
+          website: editedEvent.website,
           event_size: editedEvent.event_size,
-          image: editedEvent.image,
-          admin_approved: editedEvent.admin_approved,
+        image: editedEvent.image,
+          comments: editedEvent.comments, 
+        admin_approved: editedEvent.admin_approved,
+        
+          
       }
     })
       

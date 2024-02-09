@@ -106,19 +106,29 @@ td {
     width: 40%;
     float: right;
     margin: 20px;
-    margin-top: -8.8%;
+    margin-top: 0%;
+    
 }
+.TagsTable {
+    position: absolute;
+    top: 19.5%;
+    right: 1%
+}
+
+
 
 .AddTag {
     float: right;
-    margin-top: 0%;
-    margin-left: 50%;
-    margin-right: 19.6%;
+   position: absolute;
+   top: 13%;
+   right: 20%;
  
    
 }
 
 .CreateEvent {
-    margin-top: 1%;
-    margin-left: 1%;
+float: right;
+    position: absolute;
+    top: 13%;
+    left: 5%;
 }

@@ -21,6 +21,12 @@ import Checkbox from "@mui/material/Checkbox";
 import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { Fragment } from "react";
 
 const theme = createTheme({
   palette: {
@@ -49,9 +55,11 @@ export default function AdminNewEvent() {
   let [descriptionInput, setDescriptionInput] = useState("");
   let [eventSizeInput, setEventSizeInput] = useState("");
   let [imageInput, setImageInput] = useState("");
+  let [commentInput, setCommentInput] = useState("");
+  let [websiteInput, setWebsiteInput] = useState("");
   let [tagInput, setTagInput] = useState([]);
   const tagData = useSelector((store) => store.tags);
-  console.log("tagdata", tagData);
+
 
   useEffect(() => {
     dispatch({ type: "FETCH_TAGS" });
@@ -70,8 +78,10 @@ export default function AdminNewEvent() {
     eventForm.append("cost", costInput);
     eventForm.append("location", locationInput);
     eventForm.append("description", descriptionInput);
+    eventForm.append("website", websiteInput);
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("image", imageInput);
+    eventForm.append("comments", commentInput)
 
     setHostInput("");
     setTitleInput("");
@@ -79,7 +89,9 @@ export default function AdminNewEvent() {
     setCostInput("");
     setDateInput("");
     setDescriptionInput("");
+    setWebsiteInput("");
     setEventSizeInput("");
+    setCommentInput("")
 
     dispatch({
       type: "ADD_EVENT",
@@ -88,6 +100,18 @@ export default function AdminNewEvent() {
     console.log("Handling submit");
 
     history.push("/eventarchive");
+  };
+
+
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   const backToArchive = (e) => {
@@ -105,7 +129,7 @@ export default function AdminNewEvent() {
     <>
       <h1 className="admin-event">Admin Create Event</h1>
       <div className="event-form">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleClickOpen}>
           <FormControl>
             <Stack
               spacing={2}
@@ -121,6 +145,24 @@ export default function AdminNewEvent() {
                   width: 230,
                 }}
               />
+              <TextField
+                id="event-comment-input"
+                helperText="Helpful comments "
+                type="text"
+                variant="filled"
+                label="Comment"
+                onChange={(e) => setCommentInput(e.target.value)}
+                value={commentInput}
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
+                multiline
+                minRows={2}
+             
+              />
+              
+         
               <TextField
                 id="event-description-input"
                 helperText="Brief description of event"
@@ -152,7 +194,24 @@ export default function AdminNewEvent() {
                 label="Event Name"
                 onChange={(e) => setTitleInput(e.target.value)}
                 value={titleInput}
-                fullWidth
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
+                required
+              />
+              <TextField
+                id="event-website-input"
+                helperText="Link to Event/Registration "
+                type="text"
+                variant="filled"
+                label="Registration Link"
+                onChange={(e) => setWebsiteInput(e.target.value)}
+                value={websiteInput}
+                sx={{
+                  marginBottom: 4,
+                  width: 230,
+                }}
                 required
               />
             </Stack>
@@ -299,6 +358,30 @@ export default function AdminNewEvent() {
             </Stack>
           </FormControl>
         </form>
+        <Fragment>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Are you sure you wanna submit this ?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText
+                className="DialogText"
+                id="alert-dialog-description"
+              ></DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Disagree</Button>
+              <Button onClick={handleSubmit} autoFocus>
+                Agree
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </Fragment>
       </div>
     </>
   );

@@ -48,9 +48,9 @@ export default function EditEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const editEvent = useSelector((store) => store.editEvent);
-  const editTag = useSelector((store) => store.editTag)
+  const editTag = useSelector((store) => store.editTag);
   const eventForm = new FormData();
-console.log("edit event", editEvent);
+  console.log("edit event", editEvent);
 
   useEffect(() => {
     dispatch({
@@ -58,12 +58,12 @@ console.log("edit event", editEvent);
       payload: params.id,
     });
   }, []);
-const handleTagChange = (tag) => {
-  dispatch({
-    type: "CHANGE_TAG_NAME",
-    payload: tag
-  })
-}
+  const handleTagChange = (tag) => {
+    dispatch({
+      type: "CHANGE_TAG_NAME",
+      payload: tag,
+    });
+  };
   const handleHostNameChange = (host) => {
     dispatch({
       type: "CHANGE_HOST_NAME",
@@ -106,6 +106,13 @@ const handleTagChange = (tag) => {
     });
   };
 
+  const handleWebsiteChange = (website) => {
+    dispatch({
+      type: "CHANGE_WEBSITE",
+      payload: website,
+    });
+  };
+
   const handleEventSizeChange = (event_size) => {
     dispatch({
       type: "CHANGE_EVENT_SIZE",
@@ -120,20 +127,27 @@ const handleTagChange = (tag) => {
     });
   };
 
-  const handleStatusChange = (admin_approved) => {
+  const handleCommentChange = (comment) => {
     dispatch({
-      type: "CHANGE_STATUS",
-      payload: admin_approved,
+      type: "CHANGE_COMMENT",
+      payload: comment,
+    });
+  };
+
+  const handleStatusChange = (adminStatus) => {
+    dispatch({
+      type: "UPDATE_STATUS",
+      payload: adminStatus,
     });
   };
   const backToArchive = (e) => {
     history.push("/eventarchive");
   };
-const removeEvent = (e) => {
+  const removeEvent = (e) => {
     dispatch({
-    type: "SET_REMOVED_EVENTS"
-});
-}
+      type: "SET_REMOVED_EVENTS",
+    });
+  };
   const applyEdits = (e) => {
     e.preventDefault();
 
@@ -143,6 +157,7 @@ const removeEvent = (e) => {
     });
 
     history.push("/eventarchive");
+    // setAdminStatus("");
   };
 
   return (
@@ -167,6 +182,19 @@ const removeEvent = (e) => {
                 }}
               />
               <TextField
+                type="text"
+                helperText="Helpful Notes"
+                variant="filled"
+                label="comment"
+                size="small"
+                id="event-comment-input"
+                onChange={(e) => handleCommentChange(e.target.value)}
+                value={editEvent.comments || ""}
+                sx={{ width: 230 }}
+                required
+              />
+              
+              <TextField
                 id="event-description-input"
                 helperText="Brief description of event"
                 type="text"
@@ -182,6 +210,7 @@ const removeEvent = (e) => {
                 minRows={8}
                 required
               />
+             
             </Stack>
             <Stack
               spacing={2}
@@ -218,6 +247,15 @@ const removeEvent = (e) => {
                 value={editEvent.host || ""}
                 sx={{ width: 230 }}
                 required
+              />
+              <TextField
+                id="event-website-input"
+                type="text"
+                value={editEvent.website || ""}
+                onChange={(e) => handleWebsiteChange(e.target.value)}
+                sx={{
+                  width: 230,
+                }}
               />
               <TextField
                 type="date"
@@ -282,6 +320,12 @@ const removeEvent = (e) => {
               direction="row"
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
+            ></Stack>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ marginBottom: 4 }}
+              divider={<Divider orientation="vertical" flexItem />}
             >
               <Box sx={{ midWidth: 230 }}>
                 <FormControl sx={{ width: 230 }}>
@@ -291,7 +335,6 @@ const removeEvent = (e) => {
                   <Select
                     label="Event Size"
                     id="event-size-input"
-
                     onChange={(e) => handleEventSizeChange(e.target.value)}
                     value={editEvent.event_size || ""}
                     sx={{ width: 230 }}
@@ -327,8 +370,8 @@ const removeEvent = (e) => {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-            <ThemeProvider theme={theme}>
-            <Button
+              <ThemeProvider theme={theme}>
+                <Button
                   variant="contained"
                   onClick={backToArchive}
                   className="discard-btn"
@@ -337,25 +380,32 @@ const removeEvent = (e) => {
                   <ArrowBackIcon />
                   Back
                 </Button>
+                <Box sx={{ midWidth: 155 }}>
+                  <FormControl sx={{ width: 155 }}>
+                    <InputLabel id="event-approval-label">Status</InputLabel>
+                    <Select
+                      label="Status"
+                      id="event-approval"
+                      onChange={(e) => handleStatusChange(e.target.value)}
+                      value={editEvent.admin_approved || ""}
+                      sx={{ width: 155 }}
+                    >
+                      <MenuItem value={"approved"}>Approve</MenuItem>
+                      <MenuItem value={"delete"}>Delete</MenuItem>
+                      <MenuItem value={"pending"}>Pending</MenuItem>
+                      Apply Changes
+                    </Select>
+                  </FormControl>
+                </Box>
                 <Button
-                variant="contained"
-                type="onSubmit"
-                onClick={applyEdits}
-                sx={{ width: 155 }}
-
-              >
-                delete
-              </Button>
-              <Button
-                variant="contained"
-                type="onClick"
-                onClick={handleStatusChange}
-                sx={{ width: 155 }}
-
-              >
-                Apply Changes
-              </Button>
-            </ThemeProvider>
+                  variant="contained"
+                  type="onClick"
+                  onClick={applyEdits}
+                  sx={{ width: 155 }}
+                >
+                  Save Changes
+                </Button>
+              </ThemeProvider>
             </Stack>
           </FormControl>
         </form>

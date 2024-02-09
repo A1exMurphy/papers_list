@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "../LandingPage/LandingPage.css";
 // This is one of our simplest components
 // It doesn't have local state,
@@ -9,7 +9,24 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>This about page is for anyone to read!</p>
+        <p>
+          Papers List Web Copy Unsure where to go to meet new people and make
+          new quality connections to grow your career, your community or your
+          sales results? Paper’s list, think Yelp for events, is a crowd-sourced
+          collection of upcoming professional events for you. A bit of history:
+          Fifteen years ago when I was building my business and started
+          networking I went to more than 100 plus events without any plan or
+          insights into what would be a “worthwhile” event. After eventually
+          building a powerful community through time intensive trial and error
+          and a lot of phony conversations I want to share my experiences with
+          you and built a list of networking events to save you time and make
+          you money and connections to build an ALLSTAR network. I hope Paper’s
+          list works for you and you will add your comments or submit your
+          events and upcoming dates to be added to Papers List. If I’ve left out
+          a good event or I don’t know where to park at an event, because who
+          doesn’t love a good parking spot, please share your insights. Happy
+          Connecting.
+        </p>
       </div>
     </div>
   );
