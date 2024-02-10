@@ -5,13 +5,13 @@ import axios from "axios";
 function* addNewEvent(action) {
 console.log('action.payload', action.payload);
   try {
-    // const headers = {
-    //   'content-type': 'multipart/form-data'
-    // }
+    const headers = {
+      'content-type': 'multipart/form-data'
+    }
     const response = yield axios({
       method: "POST",
       url: "/api/newevent/event",
-      // headers: headers,
+      headers: headers,
       data: action.payload
     });
     yield put({

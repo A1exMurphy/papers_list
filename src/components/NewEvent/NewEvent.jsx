@@ -100,7 +100,7 @@ export default function NewEvent() {
     eventForm.append("website", websiteInput);
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("comments", commentInput);
-
+    eventForm.append("tags", tagInput);
 
 
     setHostInput("");
@@ -117,7 +117,7 @@ export default function NewEvent() {
 
     dispatch({
       type: "SAGA/ADD_EVENT",
-      payload: {titleInput, hostInput,locationInput, costInput, dateInput, descriptionInput, websiteInput, eventSizeInput, tagInput, commentInput}
+      payload: eventForm
     });
 
     history.push("/contactinfo");
