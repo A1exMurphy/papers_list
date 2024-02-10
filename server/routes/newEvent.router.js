@@ -41,11 +41,11 @@ const cloudinaryUpload = require("../modules/cloudinary.config");
     req.body.host,
     req.body.event_name,
     req.body.cost,
-     req.body.date,
+     req.body.time,
     req.body.location,
     req.body.description,
     req.body.website,
-    req.body.eventSize,
+    req.body.event_size,
     fileUrl,
     req.body.comments,
   ];
