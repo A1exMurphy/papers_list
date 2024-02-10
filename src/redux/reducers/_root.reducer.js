@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import errors from "./errors.reducer";
 import user from "./user.reducer";
 import events from "./landingpage.reducer";
-import selectedEvent from "./landingpage.reducer";
+import selectEvent from "./landingpage.reducer";
 import archived from "./adminArchive.reducer";
 import tags from "./adminTag.reducer";
 import removedEvents from "./removedEvents.reducer";
@@ -10,6 +10,7 @@ import editTag from "./editTag.reducer";
 import editEvent from "./editEvent.reducer";
 import selectedTag from "./selectedTag.reducer";
 import newEvent from "./newEvent.reducer";
+import selectedEvent from "./selectedEvent.reducer";
 
 
 // rootReducer is the primary reducer for our entire project
@@ -22,14 +23,15 @@ const rootReducer = combineReducers({
   newEvent,
   archived, // will show all events and tags that are in the archive
   events, // contains all events
-  selectedEvent, // gets info for a single event
+  selectEvent, // gets info for a single event
   errors, // contains registrationMessage and loginMessage
   user,
   removedEvents,
   selectedTag, // for the selected tag
   tags,// will have an id and username if someone is logged in
   editTag,
-  editEvent
+  editEvent,
+  selectedEvent
 });
 
 export default rootReducer;

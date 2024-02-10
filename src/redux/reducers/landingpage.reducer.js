@@ -9,7 +9,7 @@ const events = (state = [], action) => {
   }
 };
 
-const selectedEvent = (state = [], action) => {
+const selectEvent = (state = [], action) => {
   if (action.type === 'SELECT_EVENT') {
     console.log("Selected event is:", action.payload);
     return action.payload;
@@ -19,5 +19,5 @@ const selectedEvent = (state = [], action) => {
 
 export default combineReducers({
   events,
-  selectedEvent
+  selectEvent
 });

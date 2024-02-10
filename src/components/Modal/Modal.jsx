@@ -11,13 +11,21 @@ import "./Modal.css";
 
 export default function Modal({ closeModal }) {
     const dispatch = useDispatch();
-    const singleEvent = useSelector((store) => store.selectedEvent.selectedEvent);
+    const singleEvent = useSelector((store) => store.selectEvent.selectEvent);
     const tags = useSelector((store) => store.tags);
+
   
     console.log("singleEvent", singleEvent);
     useEffect(() => {
         dispatch({type: 'FETCH_EVENTS'});
     }, [])
+
+    const FetchSingleEvent = (id) => {
+        dispatch({
+            type: "FETCH_SELECTED_EVENT",
+            payload: id
+        });
+    }
     return (
         <>
             <div className="modal-background">
@@ -64,7 +72,7 @@ export default function Modal({ closeModal }) {
                         <div className="modal-comments">
                             <h1>Cathy's Comments</h1>
                             <span>{singleEvent.comments}</span>
-                        </div>
+                    </div>
                 </div>
             </div>
         </>
