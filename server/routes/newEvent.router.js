@@ -10,12 +10,12 @@ const cloudinaryUpload = require("../modules/cloudinary.config");
  * POST route template
  */
 //user submitted inputs POSTed to create new event with pending admin_approved
-  // router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
-    router.post("/event", (req, res) => {
+  router.post("/event", cloudinaryUpload.single("image"), async (req, res) => {
+    // router.post("/event", (req, res) => {
   
   console.log("new event in POST query", req.body);
 
-
+      const fileUrl = req.file.path;
   // const userId = req.user.id; < -- Logged in user?
 
   const insertNewEvent = `
@@ -28,39 +28,41 @@ const cloudinaryUpload = require("../modules/cloudinary.config");
             "description",
             "website",
             "event_size",
-
+            "image",
             "comments"
         )
 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
 
             RETURNING "id"
     `;
     
   newEventValues = [
-    req.body.hostInput,
-    req.body.titleInput,
-    req.body.costInput,
-     req.body.dateInput,
-    req.body.locationInput,
-    req.body.descriptionInput,
-    req.body.websiteInput,
-    req.body.eventSizeInput,
-    req.body.commentInput,
-     //fileUrl,
+    req.body.host,
+    req.body.event_name,
+    req.body.cost,
+     req.body.date,
+    req.body.location,
+    req.body.description,
+    req.body.website,
+    req.body.eventSize,
+    fileUrl,
+    req.body.comments,
   ];
   pool
     .query(insertNewEvent, newEventValues)
     .then((result) => {
       const postID = result.rows[0].id;
-      const tagsArray = req.body.tagInput;
-      const postTagsQuery = newPostTagsQuery (postID, tagsArray);
-      
-      
-      pool.query(postTagsQuery)
-          .then((result) => {
+        const tagsArray = req.body.tags.split(",");
+        // console.log("tagInput",req.body.tagInput);
+        const postTagsQuery = newPostTagsQuery(postID, tagsArray);
+        
+        
+        
+        pool.query(postTagsQuery)
+        .then((result) => {
             res.send({id:postID})
-
+            
           })
           .catch((err) => {
             console.log('Error in postTagsQuery', err)

@@ -81,6 +81,7 @@ export default function AdminNewEvent() {
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("image", imageInput);
     eventForm.append("comments", commentInput);
+    eventForm.append("tags", tagInput);
 
     setHostInput("");
     setTitleInput("");
@@ -91,10 +92,11 @@ export default function AdminNewEvent() {
     setWebsiteInput("");
     setEventSizeInput("");
     setCommentInput("");
+    setTagInput("");
 
     dispatch({
-      type: "ADD_EVENT",
-      payload: eventForm,
+      type: "SAGA/ADD_EVENT",
+      payload: eventForm
     });
     console.log("Handling submit");
 
