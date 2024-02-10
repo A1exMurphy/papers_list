@@ -60,3 +60,21 @@ router.post("/", (req, res) => {
 });
 
 module.exports = router;
+
+// `
+//   SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."location", "posts"."website", "posts"."event_size", "posts"."image","posts"."comments", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
+//   FROM "posts"
+//   LEFT JOIN "post_tags"
+//   ON "post_tags"."post_id" = "posts"."id"
+//   LEFT JOIN "tags" 
+//   ON "tags"."id" = "post_tags"."tag_id"
+//   WHERE "posts"."admin_approved" = 'approved'
+//   `
+
+// `SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."comments", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
+//       FROM "posts"
+//       INNER JOIN "post_tags"
+//       ON "post_tags"."post_id" = "posts"."id"
+//       INNER JOIN "tags" 
+//       ON "tags"."id" = "post_tags"."tag_id"
+//       WHERE "posts"."is_highlighted_event" = true;`
