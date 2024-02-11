@@ -52,7 +52,7 @@ export default function AdminTables() {
 
     return (
         <>
-            <div className="EventsTable events-post-it">
+            <div className="EventsTable pending-post-it">
                 <table>
                     <thead className="EventsTable-header">
                         <tr>
@@ -78,7 +78,7 @@ export default function AdminTables() {
                 </table>
             </div>
 
-            <div className="EventsTable events-post-it">
+            <div className="EventsTable approved-post-it">
                 <table>
                     <thead className="EventsTable-header">
                         <tr>
@@ -105,7 +105,7 @@ export default function AdminTables() {
                 </table>
             </div>
 
-            <div className="EventsTable events-post-it">
+            <div className="EventsTable deleted-post-it">
                 <table>
                     <thead className="EventsTable-header">
                         <tr>

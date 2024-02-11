@@ -228,6 +228,27 @@ router.put('/restore/:id', (req, res) => {
 });
 //initiate DELETE query for selected id
 
+router.delete('/event/:id', (req, res) => {
+  console.log('in DELETE query')
+
+
+  const permanentDelete = `
+    DELETE FROM "posts"    
+      WHERE "id" = $1;
+    `;
+    const postID = [req.params.id];
+
+    pool
+    .query(permanentDelete, postID)
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log("permanent DELETE from posts error", err);
+      res.sendStatus(500);
+    });
+});
+
 router.delete("/:id", (req, res) => {
   const query = `
       DELETE FROM "tags"

@@ -2,18 +2,26 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './RemovedEvents.css'
+import Button from "@mui/material/Button";
+
 
 
 
 export default function RemovedEvents() {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   
   useEffect (() => {
     dispatch({ type: "FETCH_REMOVED_EVENTS" });    
   }, []);
   
   const removedEvents = useSelector((store) => store.archived.deleted);
-  console.log(removedEvents, 'removed events reducer')
+  // console.log(removedEvents, 'removed events reducer')
+
+  const permanentDelete = () => {
+    console.log('button is buttoning')
+  }
   return (
     <div>
       <h2>Removed Events</h2>
@@ -36,7 +44,9 @@ export default function RemovedEvents() {
                     <td>{event.event_name}</td>
                     <td>{event.description}</td>
                     <td>{event.time}</td>
-                    <td><button>Delete</button></td>
+                    <td><Button onClick={permanentDelete}>Delete</Button></td>
+                    <td><Button onClick={() => { history.push(`/edit_event/${event.id}`) }}>Restore</Button></td>
+
                   </tr>
               )
             })
