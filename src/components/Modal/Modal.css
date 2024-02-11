@@ -210,6 +210,22 @@ main {
     overflow-y: hidden;
 }
 
+.module-tag-list{
+    
+    text-align:initial;
+        color: white;
+        font-family: var(--srcsansmed);
+        font-size: 20px;
+        transform: translate(100px, 650px);
+    
+        text-transform: capitalize;
+        overflow-y: hidden;
+      
+        
+
+
+}
+
 .modal-comments > span {
     font-family: var(--srcsanslight);
 }
@@ -224,6 +240,14 @@ main {
     height: 30px;
     width: 80px;
     font-size: 20px;
+}
+
+.tag-header{
+    position: absolute;
+    bottom: 140px;
+    left:100px;
+    color: white;
+
 }
 
 .modal-website > button:hover {

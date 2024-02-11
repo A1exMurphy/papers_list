@@ -1,6 +1,7 @@
 import { put, take, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
+
 function* getEvents() {
   try {
     const response = yield axios({
@@ -9,23 +10,23 @@ function* getEvents() {
     });
     yield put({
       type: "SET_EVENTS",
-      payload: response.data,
+      payload: response.data
     });
   } catch (error) {
     console.log("Unable to get events from server", error);
   }
 }
 
-function* SelectedEvent() {
-  console.log("response", response.data);
+function* SelectedEvent(action) {
+
   try {
     const response = yield axios({
       method: "GET",
-      url: `/api/eventfeed/${action.payload.id}`,
+      url: `/api/eventfeed/selected/${action.payload.id}`,
     });
     yield put({
-      type: "SELECTED_EVENT",
-      payload: response.data,
+      type: "SELECT_EVENT",
+      payload: response.data
     });
   } catch (error) {
     console.log("Unable to get events from server", error);

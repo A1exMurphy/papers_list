@@ -40,13 +40,13 @@ export default function LandingPage() {
   };
 
   const handleCreateEvent = () => {
-    console.log("Creating new event");
+    console.log("Creating new selected");
     history.push("/newevent");
   };
 
   return (
     <>
-      <div className="create-event-btn">
+      <div className="create-selected-btn">
         <ThemeProvider theme={theme}>
           <Button variant="contained" onClick={handleCreateEvent}>
             <Add />
@@ -60,31 +60,31 @@ export default function LandingPage() {
         </div>
         <div className="flex-those-events">
           {eventData &&
-            eventData.map((event) => {
+            eventData.map((selected) => {
               return (
                 <div
                   onClick={() => {
-                    handleEventClick(event);
+                    handleEventClick(selected);
                     setOpenModal(true);
                   }}
-                  key={event.id}
+                  key={selected.id}
                 >
-                  {event.is_highlighted_event && (
+                  {selected.is_highlighted_event && (
                     <div className="card card-post-it">
                       <img
                         className="card-img"
-                        src={event.image}
-                        alt={event.description}
+                        src={selected.image}
+                        alt={selected.description}
                       />
                       <div className="card-content">
-                        <h3>{event.event_name}</h3>
-                        {event.cost === true ? (
+                        <h3>{selected.event_name}</h3>
+                        {selected.cost === true ? (
                           <h5>Paid Event</h5>
                         ) : (
                           <h5>Free Event</h5>
                         )}
-                        <span className="event-date-highlight">
-                          {event.time}
+                        <span className="selected-date-highlight">
+                          {selected.time}
                         </span>
                       </div>
                     </div>
@@ -101,28 +101,28 @@ export default function LandingPage() {
         </div>
         <div className="event-section-container">
           {eventData &&
-            eventData.map((event) => {
+            eventData.map((selected) => {
               return (
                 <div
                   onClick={() => {
-                    handleEventClick(event);
+                    handleEventClick(selected);
                     setOpenModal(true);
                   }}
                 >
                   <div className="gallery-card card-post-it">
                     <img
                       className="gallery-card-img"
-                      src={event.image}
+                      src={selected.image}
                       alt=""
                     />
                     <div className="gallery-card-content">
-                      <h3>{event.event_name}</h3>
-                      {event.cost === true ? (
+                      <h3>{selected.event_name}</h3>
+                      {selected.cost === true ? (
                         <h5>Paid Event</h5>
                       ) : (
                         <h5>Free Event</h5>
                       )}
-                      <span className="date">{event.time}</span>
+                      <span className="date">{selected.time}</span>
                     </div>
                   </div>
                 </div>
@@ -130,7 +130,7 @@ export default function LandingPage() {
             })}
         </div>
       </section>
-      <div className="create-event-btn"></div>
+      <div className="create-selected-btn"></div>
       <main>
         {openModal === true ? <Modal closeModal={setOpenModal} /> : <></>}
       </main>
