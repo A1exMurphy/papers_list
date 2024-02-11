@@ -1,11 +1,9 @@
-let selectedEvent = (state = [], action) => {
-    if (action.type === 'SELECTED_EVENT') {
-        const singleEvent = action.payload;
-        // [...state, singleEvent];
-        return singleEvent
+const selectEvent = (state = {}, action) => {
+    if (action.type === 'SELECT_EVENT') {
+        console.log("Selected event is:", action.payload);
+      return  action.payload
     }
-    
     return state;
-}
+  }
 
-export default selectedEvent;
+export default selectEvent;

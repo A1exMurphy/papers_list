@@ -2,7 +2,6 @@ import { combineReducers } from "redux";
 import errors from "./errors.reducer";
 import user from "./user.reducer";
 import events from "./landingpage.reducer";
-import selectEvent from "./landingpage.reducer";
 import archived from "./adminArchive.reducer";
 import tags from "./adminTag.reducer";
 import removedEvents from "./removedEvents.reducer";
@@ -10,7 +9,8 @@ import editTag from "./editTag.reducer";
 import editEvent from "./editEvent.reducer";
 import selectedTag from "./selectedTag.reducer";
 import newEvent from "./newEvent.reducer";
-import selectedEvent from "./selectedEvent.reducer";
+import selectEvent from "./selectedEvent.reducer";
+
 
 
 // rootReducer is the primary reducer for our entire project
@@ -31,7 +31,7 @@ const rootReducer = combineReducers({
   tags,// will have an id and username if someone is logged in
   editTag,
   editEvent,
-  selectedEvent
+ 
 });
 
 export default rootReducer;
