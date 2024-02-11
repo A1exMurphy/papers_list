@@ -19,9 +19,16 @@ export default function RemovedEvents() {
   const removedEvents = useSelector((store) => store.archived.deleted);
   // console.log(removedEvents, 'removed events reducer')
 
-  const permanentDelete = () => {
-    console.log('button is buttoning')
-  }
+  const permanentDelete = (event) => {
+      console.log('event for delete', event)
+      dispatch({
+        type: "PERMANENT_DELETE_EVENT",
+        payload: event.id,
+
+      });
+    }
+  
+
   return (
     <div>
       <h2>Removed Events</h2>
@@ -44,7 +51,7 @@ export default function RemovedEvents() {
                     <td>{event.event_name}</td>
                     <td>{event.description}</td>
                     <td>{event.time}</td>
-                    <td><Button onClick={permanentDelete}>Delete</Button></td>
+                    <td><Button onClick={() => permanentDelete(event)}>Delete</Button></td>
                     <td><Button onClick={() => { history.push(`/edit_event/${event.id}`) }}>Restore</Button></td>
 
                   </tr>

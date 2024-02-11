@@ -6,6 +6,7 @@ import eventSaga from './landingPage.saga';
 import archivedEventSaga from './adminArchive.saga';
 import newEventSaga from './newEvent.saga';
 import contactSaga from './contactInfo.saga';
+import permanentDeleteSaga from './permanentDelete.saga'
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -16,6 +17,7 @@ import contactSaga from './contactInfo.saga';
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
+    permanentDeleteSaga(),
     contactSaga(),
     newEventSaga(),
     archivedEventSaga(),
