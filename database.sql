@@ -118,7 +118,7 @@ INSERT INTO "posts" (
 A $20 donation will be requested for each Jammin’ Session. All proceeds will be donated to the Prouty Project Stretch Fund of the Minneapolis Foundation.', 
 	'https://proutyproject.com/events/jammin-sessions/',
 	'medium', 
-	'some image'
+	'public/images/Jammin-Sessions.png'
 ),(
 	'Best Lunch Ever', 
 	'Best Lunch Ever for Business Owners', 
@@ -138,7 +138,7 @@ To laugh. To talk. To do business. To do life. To be.
 Hosted by Mick White of the 100 Year Manifesto',
 	'https://www.bestlunchever.co', 
 	'small', 
-	'some image'
+	'public/images/Best-Lunch-Ever.png'
 ),(
 	'Purpose Driven Coffee', 
 	'Purpose Driven Coffee', 
@@ -148,7 +148,7 @@ Hosted by Mick White of the 100 Year Manifesto',
 	'void',
 	'https://www.tickettailor.com/events/purposedrivencoffee', 
 	'small', 
-	'some image'
+	'public/images/Purpose-Driven-Coffee.jpeg'
 ),(
 	'OLD NATIONAL', 
 	'Good Leadership', 
@@ -166,7 +166,7 @@ Experience the opportunity to contribute to non-profits through The Bucket of Go
 Doors open at 7:15am, and the program begins at 7:45am and concludes around 9:15am at the Metropolitan Ballroom in Golden Valley, MN.', 
 'https://goodleadership.com/good-leadership-breakfast/',
 	'large', 
-	'some image'
+	'public/images/Good-Leadership-Breakfast.webp'
 ),(
 	'Bob Martens', 
 	'G7 Networking', 
@@ -188,7 +188,7 @@ Get: What is your "get"?
 Give: Who can you help via referral?', 
 'https://www.eventbrite.com/e/g7-networking-bloomington-mn-tickets-184712629447',
 	'large', 
-	'some image'
+	'public/images/G7-Networking.jpeg'
 ),(
 	'Accelerated Global Connections', 
 	'BUSINESS & BAGELS', 
@@ -209,7 +209,7 @@ Non-Members: $20 at the door
 Parking: FREE parking available at the event location', 
 	' https://www.joinagc.com/events',
 	'large', 
-	'some image'
+	'public/images/Business-Bagels.jpeg'
 ),(
 	'Twin Cities Collective', 
 	'One Liner Storybrand Workshop', 
@@ -219,7 +219,7 @@ Parking: FREE parking available at the event location',
 	'Learn to clarify your message!', 
 	'https://events.twincitiescollective.com/',
 	'large', 
-	'some image'
+	'public/images/One-Liner-Storybrand.webp'
 );
 
 -- SELECT * FROM "posts"

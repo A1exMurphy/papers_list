@@ -59,7 +59,7 @@ export default function AdminTables() {
                             <td>Host</td>
                             <td>Event Name</td>
                             <td>Status</td>
-                            <td>Featured / Review</td>
+                            <td>Review</td>
                         </tr>
                     </thead>
 
@@ -69,8 +69,7 @@ export default function AdminTables() {
                                 <td>{pending.host}</td>
                                 <td>{pending.event_name}</td>
                                 <td>{pending.admin_approved}</td>
-                                <td><Button onClick={() => StatusChange(pending.id)}>{pending.is_highlighted_event ? <StarOutlinedIcon className="star">
-                                </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
+                                <td><Button onClick={() => StatusChange(pending.id)}>
                                 </Button> <Button onClick={() => { history.push(`/edit_event/${pending.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
                             </tr>
 
