@@ -6,13 +6,35 @@ router.get("/events", (req, res) => {
   // GET route code here
   const sqlText = 
     `
-    SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."location", "posts"."website", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."comments", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
-    FROM "posts"
-    LEFT JOIN "post_tags"
-        ON "post_tags"."post_id" = "posts"."id"
-    LEFT JOIN "tags" 
-        ON "tags"."id" = "post_tags"."tag_id"
-    WHERE "posts"."admin_approved" = 'approved';
+    SELECT
+    p.id,
+    p.host,
+    p.event_name,
+    p.cost,
+    p.time,
+    p.location,
+    p.description,
+    p.website,
+    p.event_size,
+    p.image,
+    p.comments,
+   p.admin_approved,
+    p.is_highlighted_event,
+    p.contact_id,
+    json_agg(
+        json_build_object(
+            'tag_id',
+            tags.id,
+            'tag_name',
+            tags.tag_name
+        )
+    ) tags_array
+    FROM posts p
+    LEFT JOIN post_tags pt ON p.id = pt.post_id
+    LEFT JOIN tags ON pt.tag_id = tags.id
+    WHERE p.admin_approved = 'approved'
+  GROUP BY p.id
+  ORDER BY p.id;
     `
 
   pool
