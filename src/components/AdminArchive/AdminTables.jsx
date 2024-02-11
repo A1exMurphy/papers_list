@@ -52,14 +52,14 @@ export default function AdminTables() {
 
     return (
         <>
-            <div className="EventsTable events-post-it">
+            <div className="EventsTable pending-post-it">
                 <table>
                     <thead className="EventsTable-header">
                         <tr>
                             <td>Host</td>
                             <td>Event Name</td>
                             <td>Status</td>
-                            <td>Featured / Review</td>
+                            <td>Review</td>
                         </tr>
                     </thead>
 
@@ -69,8 +69,7 @@ export default function AdminTables() {
                                 <td>{pending.host}</td>
                                 <td>{pending.event_name}</td>
                                 <td>{pending.admin_approved}</td>
-                                <td><Button onClick={() => StatusChange(pending.id)}>{pending.is_highlighted_event ? <StarOutlinedIcon className="star">
-                                </StarOutlinedIcon> : <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>}
+                                <td><Button onClick={() => StatusChange(pending.id)}>
                                 </Button> <Button onClick={() => { history.push(`/edit_event/${pending.id}`) }}> <RateReviewIcon></RateReviewIcon></Button></td>
                             </tr>
 
@@ -79,7 +78,7 @@ export default function AdminTables() {
                 </table>
             </div>
 
-            <div className="EventsTable events-post-it">
+            <div className="EventsTable approved-post-it">
                 <table>
                     <thead className="EventsTable-header">
                         <tr>
@@ -106,7 +105,7 @@ export default function AdminTables() {
                 </table>
             </div>
 
-            <div className="EventsTable events-post-it">
+            <div className="EventsTable deleted-post-it">
                 <table>
                     <thead className="EventsTable-header">
                         <tr>

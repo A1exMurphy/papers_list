@@ -105,7 +105,6 @@ function* getTags() {
   }
 }
 function* addTags(action) {
-  console.log('action', action.payload);
   try {
     const response = yield axios({
       method: "POST",
@@ -137,8 +136,7 @@ function* deleteTag(action) {
 function* fetchTagDetails(action) {
   
   try {
-      const TagId = action.payload
-      console.log("TagId",TagId );
+    const TagId = action.payload
     const response = yield axios({
       method: 'GET',
       url: `/api/admin/tag/${TagId}`
@@ -156,7 +154,6 @@ function* fetchTagDetails(action) {
 }
 
 function* SubmitEditTag(action) {
-  console.log('action.payload',action.payload);
   try {
 const editedTag = action.payload
     const response = yield axios({
@@ -177,7 +174,6 @@ const editedTag = action.payload
 function* StatusChange(action) {
    
   try {
-    console.log(action.payload)
       const editedStatus = action.payload
       
 
@@ -198,7 +194,7 @@ function* StatusChange(action) {
 }
 
 function* fetchEventDetails(action) {
-  console.log('eventsssss',action.payload);
+  // console.log('events',action.payload);
   try {
       const EventId = action.payload
      
@@ -222,9 +218,8 @@ function* fetchEventDetails(action) {
 }
 
 function* submitEventEdit(action) {
-   console.log('sumbitted');
+  //  console.log('sumbited');
   try {
-    console.log("actionnnnnnn", action.payload)
     const editedEvent = action.payload
 
     const response = yield axios({
