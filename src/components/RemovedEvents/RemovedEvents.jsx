@@ -31,7 +31,7 @@ export default function RemovedEvents() {
 
   return (
     <div>
-      <h2>Removed Events</h2>
+      <h2 className='removed-header'>Removed Events</h2>
       <table className='removedTable removed-post-it'>
         <thead>
             <tr>
