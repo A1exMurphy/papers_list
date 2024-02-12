@@ -150,7 +150,7 @@ export default function AdminNewEvent() {
                 helperText="Helpful comments (e.g. parking suggestions, things to bring, etc.) "
                 type="text"
                 variant="filled"
-                label="Special Comments"
+                label="Cathy's Comments"
                 onChange={(e) => setCommentInput(e.target.value)}
                 value={commentInput}
                 sx={{
