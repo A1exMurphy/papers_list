@@ -10,6 +10,13 @@
 
 /* 👇 Class Selectors */
 
+.home-welcome {
+  text-align: center;
+  font-family: var(--srcsansreg);
+  /* position: absolute; */
+  /* width: 50%; */
+}
+
 .flex-those-events {
   display: flex;
   justify-content: center;

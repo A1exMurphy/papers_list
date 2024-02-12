@@ -59,6 +59,15 @@ export default function NewEvent() {
   let [tagId, setTagId] = useState([]);
   let [websiteInput, setWebsiteInput] = useState("http://");
 
+  const autoFillForm = () => {
+    setTitleInput("Tech For Interns")
+    setHostInput("Michael Scott")
+    setLocationInput("Government Center")
+    setDescriptionInput("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus et. Nunc eget lorem dolor sed viverra ipsum nunc. Libero volutpat sed cras ornare. Quis commodo odio aenean sed adipiscing diam donec. Risus sed vulputate odio ut enim. Ac turpis egestas integer eget. Sit amet cursus sit amet dictum sit amet justo donec. Malesuada bibendum arcu vitae elementum curabitur. Velit scelerisque in dictum non consectetur a erat. Enim facilisis gravida neque convallis a cras semper. Ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla. Sit amet nisl purus in. Id nibh tortor id aliquet lectus proin nibh. Pretium lectus quam id leo in. Donec ac odio tempor orci dapibus ultrices in iaculis nunc. Donec enim diam vulputate ut pharetra sit amet aliquam id. Consequat nisl vel pretium lectus quam id leo. Aliquam sem fringilla ut morbi tincidunt. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Commodo ullamcorper a lacus vestibulum sed arcu non. Adipiscing elit duis tristique sollicitudin nibh sit amet.")
+    setWebsiteInput("http://www.google.com")
+
+  }
+
   
   let [commentInput, setCommentInput] = useState("");
 
@@ -128,7 +137,7 @@ export default function NewEvent() {
   };
   return (
     <>
-      <h1 className="admin-event">Create Event</h1>
+      <h1 className="admin-event" onClick={autoFillForm}>Create Event</h1>
       <div className="event-form">
         <form onSubmit={handleClickOpen}>
           {errorMessage && <p className="error">{errorMessage}</p>}
@@ -319,7 +328,7 @@ export default function NewEvent() {
                     sx={{ width: 230 }}
                     required
                   >
-                    <MenuItem value={true}>Yes</MenuItem>
+                    <MenuItem value={true}>Paid</MenuItem>
                     <MenuItem value={false}>Free</MenuItem>
                   </Select>
                 </FormControl>

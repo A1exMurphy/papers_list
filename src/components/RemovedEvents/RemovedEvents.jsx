@@ -39,7 +39,9 @@ export default function RemovedEvents() {
               <th>Event Name</th>
               <th>Description</th>
               <th>Date</th>
-              <th></th>
+              <th>Delete</th>
+              <th>Restore</th>
+
             </tr>
           </thead>
         <tbody>
