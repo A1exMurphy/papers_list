@@ -124,6 +124,14 @@ td {
 thead {
     background: #7A7A7A;
     color: #FCFCFC;
+    text-align: center;
+}
+
+.removed-header {
+    text-align: center;
+    font-family: var(--srcsansreg);
+    margin-top: 15px;
+    margin-bottom: -20px;
 }
 
 

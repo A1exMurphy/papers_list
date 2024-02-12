@@ -172,15 +172,16 @@ export default function EditEvent() {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-              <Input
+              {/* <Input
                 id="event-image-input"
                 type="text"
                 value={editEvent.image || ""}
+                
                 onChange={(e) => handleImageChange(e.target.files[0])}
                 sx={{
                   width: 230,
-                }}
-              />
+                }} */}
+              <img src={editEvent.image} width={230} />
               <TextField
                 id="event-comment-input"
                 helperText="Helpful comments (e.g. parking suggestions, things to bring, etc.) "

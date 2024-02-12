@@ -61,7 +61,7 @@ export default function LandingPage() {
         <br></br>
       <section className="highlights-section">
         <div className="titleContainer">
-          <h1 className="landing-title">Highlighted Events</h1>
+          <h1 className="landing-title">Cathy's Choice</h1>
         </div>
         <div className="flex-those-events">
           {eventData &&

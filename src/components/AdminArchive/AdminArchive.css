@@ -54,7 +54,7 @@ td {
     width: 90%;
  height: fit-content;
  position:relative;
- background:#ffa;
+ background:#76c0d6;
  overflow:hidden;
  margin:30px auto;
  padding:20px;
@@ -81,7 +81,7 @@ td {
  position:absolute;
  width:20px;
  height:25px;
- background:#ffa;
+ background:#76c0d6;
  box-shadow:
    3px -2px 10px rgba(0,0,0,0.2),
    inset 15px -15px 15px rgba(0,0,0,0.3);
@@ -122,7 +122,7 @@ td {
  position:absolute;
  width:20px;
  height:25px;
- background:#ffa;
+ background:#fff68b;
  box-shadow:
    3px -2px 10px rgba(0,0,0,0.2),
    inset 15px -15px 15px rgba(0,0,0,0.3);
@@ -163,7 +163,7 @@ td {
  position:absolute;
  width:20px;
  height:25px;
- background:#ffa;
+ background:#cdfc93;
  box-shadow:
    3px -2px 10px rgba(0,0,0,0.2),
    inset 15px -15px 15px rgba(0,0,0,0.3);
@@ -204,7 +204,7 @@ td {
  position:absolute;
  width:20px;
  height:25px;
- background:#ffa;
+ background:#ff7ecd;
  box-shadow:
    3px -2px 10px rgba(0,0,0,0.2),
    inset 15px -15px 15px rgba(0,0,0,0.3);
