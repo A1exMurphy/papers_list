@@ -186,7 +186,7 @@ export default function EditEvent() {
                 helperText="Helpful comments (e.g. parking suggestions, things to bring, etc.) "
                 type="text"
                 variant="filled"
-                label="Special Comments"
+                label="Cathy's Comments"
                 onChange={(e) => handleCommentChange(e.target.value)}
                 value={editEvent.comments || ""}
                 sx={{
