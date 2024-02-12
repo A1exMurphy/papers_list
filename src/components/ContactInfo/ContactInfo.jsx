@@ -58,6 +58,13 @@ export default function SubmitContactInfo() {
 
   let [additionalInfo, setAdditionalInfo] = useState("");
 
+
+  const AutoFill = () => {
+    setAdditionalInfo("Lorem ipsem dolor sit amet");
+    setEmail("exampleemail@site.com");
+    setLinkedIn("www.linkedin.com/in/christian-carlson-62361b231");
+    setPhone(123);
+  }
   const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
@@ -118,7 +125,7 @@ export default function SubmitContactInfo() {
           </DialogActions>
         </Dialog>
       </Fragment>
-      <h1 className="admin-event">Contact Info for Admin</h1>
+      <h1 className="admin-event" onClick={AutoFill}>Contact Info for Admin</h1>
 
       <div className="event-form">
         <form onSubmit={handleClickOpen}>
