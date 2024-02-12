@@ -2,11 +2,11 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Link
-} from "react-router-dom";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import PersonIcon from '@mui/icons-material/Person';
+import PlaceIcon from '@mui/icons-material/Place';
+import PaidIcon from '@mui/icons-material/Paid';
+import LinkIcon from '@mui/icons-material/Link';
 import "./Modal.css";
 
 export default function Modal({ closeModal }) {
@@ -49,24 +49,33 @@ export default function Modal({ closeModal }) {
                         </div>
                         <div className="modal-event-size">
                             {singleEvent.event_size === "small" ? <span className="small-event">Small</span> : singleEvent.event_size === "medium" ? <span className="medium-event">Medium</span> : <span className="large-event">Large</span>}
-
-                            {/* Below is the code for the tooltips, the code above
-                            is for the display next to the icon on the modal */}
-
-
                         </div>
-
+                        <div className="paid-icon">
+                            <PaidIcon />
+                        </div>
                         <div className="modal-event-cost">
-                            {singleEvent.cost === true ? <span className="paid">$ Paid </span> : <span className="free">$ Free</span>}
+                            {singleEvent.cost === true ? <span className="paid">Paid</span> : <span className="free">Free</span>}
+                        </div>
+                        <div className="calendar-icon">
+                            <CalendarMonthIcon />
                         </div>
                         <div className="modal-date">
-                            <span>{singleEvent.time}</span>
+                            <span className="time-span">{singleEvent.time}</span>
+                        </div>
+                        <div className="person-icon">
+                            <PersonIcon />
                         </div>
                         <div className="modal-host">
                             <span>Hosted by {singleEvent.host}</span>
                         </div>
+                        <div className="map-icon">
+                            <PlaceIcon />
+                        </div>
                         <div className="modal-location">
                             <span>{singleEvent.location}</span>
+                        </div>
+                        <div className="link-icon">
+                            <LinkIcon />
                         </div>
                         <div className="modal-website">
                             <a href={`http://www.${singleEvent.website}`} target="_blank">Event Website</a>
@@ -84,7 +93,6 @@ export default function Modal({ closeModal }) {
                                         <span> {event.tag_name}</span>
                                     </div>
                                 )
-        
                             })}
                 </div>
             </div>

@@ -1,0 +1,25 @@
+.splash-b {
+    font-family: var(--srcsansmed);
+    background: white;
+    height: 100%;
+    z-index: 1;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: translateY(-10%);
+    overflow-y: hidden;
+}
+
+.splash-b button {
+    position: absolute;
+    transform: translateY(150%);
+    background: none;
+    border: none;
+    text-decoration: underline;
+}
+
+.splash-b button:hover {
+    cursor: pointer;
+}

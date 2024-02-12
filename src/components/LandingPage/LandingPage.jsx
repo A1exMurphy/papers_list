@@ -48,17 +48,12 @@ export default function LandingPage() {
     <>
       <div className="create-event-btn">
         <ThemeProvider theme={theme}>
-          <Button variant="contained" onClick={handleCreateEvent}>
+          <Button sx={{ width: 200 }} variant="contained" onClick={handleCreateEvent}>
             <Add />
-            Create Event
+            Submit Event
           </Button>
         </ThemeProvider>
       </div>
-        <br></br>
-        <h3 className="home-welcome">
-          Welcome to your curated list of homegrown networking events!
-        </h3>
-        <br></br>
       <section className="highlights-section">
         <div className="titleContainer">
           <h1 className="landing-title">Highlighted Events</h1>

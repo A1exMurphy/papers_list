@@ -81,6 +81,8 @@ main {
     width: 40px;
 }
 
+
+
 .close-btn:hover {
     color: var(--greenish);
 }
@@ -117,40 +119,36 @@ main {
     color: white;
     font-size: 20px;
     margin-left: .4rem;
-}
-
-/* .medium-event {
-    padding-right: 2rem;
-} */
-
-/* .small-event {
-    padding-right: 1.2rem;
-} */
-
-/* .large-event {
-    padding-right: 1.1rem;
-} */
-
-
-.modal-event-size .tooltip-text {
-    visibility: hidden;
-    width: 200px;
-    background-color: white;
-    color: black;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    transform: translate(-9rem, 26px);
-    position: relative;
-    z-index: 1;
-    opacity: 0;
-    font-size: medium;
-    transition: opacity 0.2s ease-in-out;
+    border-right: .5px solid white;
+    padding-right: 24px;
 }
 
 .people-alt-icon {
     position: relative;
     color: white;
+}
+
+.paid-icon {
+    padding-right: 3px;
+    transform: translateX(20px);
+}
+
+.calendar-icon {
+    padding-left: 24px;
+    padding-right: 5px;
+}
+
+.person-icon {
+    padding-right: 5px;
+    padding-left: 24px;
+}
+
+.map-icon {
+    padding-left: 21px;
+}
+
+.link-icon {
+    padding-left: 24px;
 }
 
 .modal-event-size:hover .tooltip-text {
@@ -162,29 +160,25 @@ main {
     color: white;
     height: 20px;
     position: relative;
-    width: 100px;
-    border-left: .5px solid white;
+    width: 85px;
     border-right: .5px solid white;
-    margin-left: 25px;
-    padding-left: 24px;
-    margin-right: 25px;
     transform: translateY(0px);
+    padding-left: 22px;
     height: 30px;
 }
 
 .modal-location {
     color: white;
     border-right: solid .5px white;
-    border-left: solid .5px white;
-    margin-left: 25px;
-    padding-left: 25px;
     padding-right: 25px;
-    margin-right: 25px;
+    padding-left: 3px;
 }
+
 .modal-info {
     display: flex;
     color: white;
-    transform: translate(40px, 110px);
+    transform: translateY(110px);
+    justify-content: center;
     flex-direction: row;
     font-family: var(--srcsansmed);
     font-size: 20px;
@@ -192,8 +186,12 @@ main {
 
 .modal-date {
     border-right: .5px solid white;
-    padding-right: 23px;
-    margin-right: 25px;
+    padding-right: 24px;
+}
+
+.modal-host {
+    padding-right: 24px;
+    border-right: .5px solid white;
 }
 
 .modal-comments {
@@ -211,7 +209,6 @@ main {
 }
 
 .module-tag-list{
-    
     text-align:initial;
         color: white;
         font-family: var(--srcsansmed);
@@ -220,16 +217,17 @@ main {
     
         text-transform: capitalize;
         overflow-y: hidden;
-      
-        
-
-
 }
 
 .modal-comments > span {
     font-family: var(--srcsanslight);
 }
 
+.tag-container {
+    border: .5px solid white;
+    height: 50px;
+    width: 50px;
+}
 
 .modal-website > button {
     text-decoration: underline;
@@ -242,17 +240,24 @@ main {
     font-size: 20px;
 }
 
+.modal-website {
+    padding-left: 7px;
+
+}
+
 .tag-header{
     position: absolute;
     bottom: 140px;
     left:100px;
     color: white;
-
+    font-family: var(--srcsansblack);
+    letter-spacing: 1.5px;
 }
 
 .modal-website > button:hover {
     cursor: pointer;
 }
+
 
 a:visited {
     color: white;
