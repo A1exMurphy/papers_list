@@ -81,6 +81,7 @@ export default function AdminNewEvent() {
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("image", imageInput);
     eventForm.append("comments", commentInput);
+    eventForm.append("tags", tagInput);
 
     setHostInput("");
     setTitleInput("");
@@ -91,10 +92,11 @@ export default function AdminNewEvent() {
     setWebsiteInput("");
     setEventSizeInput("");
     setCommentInput("");
+    setTagInput("");
 
     dispatch({
-      type: "ADD_EVENT",
-      payload: eventForm,
+      type: "SAGA/ADD_EVENT",
+      payload: eventForm
     });
     console.log("Handling submit");
 
@@ -268,17 +270,18 @@ export default function AdminNewEvent() {
                     onChange={(e) => setTagInput(e.target.value)}
                     value={tagInput}
                     sx={{ width: 230 }}
-                    renderValue={(selected) => selected.join(", ")}
+                    renderValue={tagData.tag_name}
                     MenuProps={MenuProps}
                   >
                     {tagData &&
                       tagData.map((tag) => {
                         return (
-                          <MenuItem key={tag.id} value={tag.tag_name}>
+                          <MenuItem key={tag.id} value={tag.id}>
                             <Checkbox
-                              checked={tagInput.indexOf(tag.tag_name) > -1}
+                              checked={tagInput.indexOf(tag.id) > -1}
                             />
-                            <ListItemText primary={tag.tag_name} />
+                            {tag.tag_name}
+                            <ListItemText/>
                           </MenuItem>
                         );
                       })}

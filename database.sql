@@ -103,6 +103,7 @@ INSERT INTO "posts" (
 	"time",
 	"location",
 	"description",
+	"website",
 	"event_size",
 	"image"
 )
@@ -115,8 +116,9 @@ INSERT INTO "posts" (
 	'Jammin’ Sessions are interactive sessions that are open to the public and held online the first Tuesday of each month (except for January, July, and September), from 8 – 9:30 a.m. via Zoom video conferencing. These interactive sessions feature keynote speakers and cover a range of topics that address virtually every aspect of business and life. Our Jammin’ topics draw in people of all ages— from 10-year-old children to 92-year-old grandparents—and from all walks of life. Everyone is encouraged to step outside their comfort zone and participate in energizing and thought-provoking discussions.
 
 A $20 donation will be requested for each Jammin’ Session. All proceeds will be donated to the Prouty Project Stretch Fund of the Minneapolis Foundation.', 
+	'https://proutyproject.com/events/jammin-sessions/',
 	'medium', 
-	'some image'
+	'public/images/Jammin-Sessions.png'
 ),(
 	'Best Lunch Ever', 
 	'Best Lunch Ever for Business Owners', 
@@ -133,18 +135,20 @@ A place you can go & just be yourself.
 
 To laugh. To talk. To do business. To do life. To be.
 
-Hosted by Mick White of the 100 Year Manifesto', 
+Hosted by Mick White of the 100 Year Manifesto',
+	'https://www.bestlunchever.co', 
 	'small', 
-	'some image'
+	'public/images/Best-Lunch-Ever.png'
 ),(
 	'Purpose Driven Coffee', 
 	'Purpose Driven Coffee', 
 	true, 
 	'03/01/2024', 
 	'The Gnome', 
-	'void', 
+	'void',
+	'https://www.tickettailor.com/events/purposedrivencoffee', 
 	'small', 
-	'some image'
+	'public/images/Purpose-Driven-Coffee.jpeg'
 ),(
 	'OLD NATIONAL', 
 	'Good Leadership', 
@@ -160,8 +164,9 @@ Meet like-minded professionals who believe in the power of spreading goodness
 Enjoy excellent live music by The Benny Weinbeck Trio and breakfast from D’Amico catering
 Experience the opportunity to contribute to non-profits through The Bucket of Goodwill
 Doors open at 7:15am, and the program begins at 7:45am and concludes around 9:15am at the Metropolitan Ballroom in Golden Valley, MN.', 
+'https://goodleadership.com/good-leadership-breakfast/',
 	'large', 
-	'some image'
+	'public/images/Good-Leadership-Breakfast.webp'
 ),(
 	'Bob Martens', 
 	'G7 Networking', 
@@ -181,8 +186,9 @@ God: Testimony / God-story from a member
 Grow: Informative content focused on helping you grow
 Get: What is your "get"?
 Give: Who can you help via referral?', 
+'https://www.eventbrite.com/e/g7-networking-bloomington-mn-tickets-184712629447',
 	'large', 
-	'some image'
+	'public/images/G7-Networking.jpeg'
 ),(
 	'Accelerated Global Connections', 
 	'BUSINESS & BAGELS', 
@@ -201,8 +207,9 @@ Event Details:
 AGC Members: Attend FREE
 Non-Members: $20 at the door
 Parking: FREE parking available at the event location', 
+	' https://www.joinagc.com/events',
 	'large', 
-	'some image'
+	'public/images/Business-Bagels.jpeg'
 ),(
 	'Twin Cities Collective', 
 	'One Liner Storybrand Workshop', 
@@ -210,6 +217,22 @@ Parking: FREE parking available at the event location',
 	'02/21/2024', 
 	'France Place Building fifth floor', 
 	'Learn to clarify your message!', 
+	'https://events.twincitiescollective.com/',
 	'large', 
-	'some image'
+	'public/images/One-Liner-Storybrand.webp'
 );
+
+-- SELECT * FROM "posts"
+--       WHERE "admin_approved" = 'delete';
+
+-- SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
+--         FROM "posts"
+--     LEFT JOIN "post_tags"
+--         ON "post_tags"."post_id" = "posts"."id"
+--     LEFT JOIN "tags" 
+--         ON "tags"."id" = "post_tags"."tag_id"
+--     WHERE "posts"."admin_approved" = 'approved';
+
+-- SELECT * FROM "posts"
+--       WHERE "admin_approved" = 'pending';
+

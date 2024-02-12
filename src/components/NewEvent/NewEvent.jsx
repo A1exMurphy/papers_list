@@ -57,7 +57,7 @@ export default function NewEvent() {
   let [tagInput, setTagInput] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
   let [tagId, setTagId] = useState([]);
-  let [websiteInput, setWebsiteInput] = useState("");
+  let [websiteInput, setWebsiteInput] = useState("http://");
 
   
   let [commentInput, setCommentInput] = useState("");
@@ -76,8 +76,8 @@ export default function NewEvent() {
 
   const [open, setOpen] = useState(false);
 
-  console.log("tagInput", tagInput);
-  console.log("tagid", tagId);
+  // console.log("tagInput", tagInput);
+  // console.log("tagid", tagId);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -100,7 +100,7 @@ export default function NewEvent() {
     eventForm.append("website", websiteInput);
     eventForm.append("event_size", eventSizeInput);
     eventForm.append("comments", commentInput);
-
+    eventForm.append("tags", tagInput);
 
 
     setHostInput("");
@@ -114,16 +114,10 @@ export default function NewEvent() {
     setTagInput("");
     setCommentInput("");
 
-    console.log("Event form data:", eventForm);
 
     dispatch({
-      type: "SELECTED_TAGS",
-      payload: tagInput
-    })
-
-    dispatch({
-      type: "ADD_EVENT",
-      payload: eventForm,
+      type: "SAGA/ADD_EVENT",
+      payload: eventForm
     });
 
     history.push("/contactinfo");
@@ -160,6 +154,7 @@ export default function NewEvent() {
                 type="text"
                 variant="filled"
                 label="Description"
+                placeholder="Lorem ipsem dolor sit amet..."
                 onChange={(e) => setDescriptionInput(e.target.value)}
                 value={descriptionInput}
                 sx={{
@@ -185,6 +180,7 @@ export default function NewEvent() {
                 type="text"
                 variant="filled"
                 label="Event Name"
+                placeholder="Business Meetup"
                 onChange={(e) => setTitleInput(e.target.value)}
                 value={titleInput}
                 sx={{
@@ -199,6 +195,7 @@ export default function NewEvent() {
                 type="text"
                 variant="filled"
                 label="Registration Link"
+                placeholder="examplesite.com"
                 onChange={(e) => setWebsiteInput(e.target.value)}
                 value={websiteInput}
                 sx={{
@@ -219,6 +216,7 @@ export default function NewEvent() {
                 helperText="Organization / Person hosting"
                 variant="filled"
                 label="Hosted By"
+                placeholder="Jane Doe"
                 size="small"
                 id="event-host-input"
                 onChange={(e) => setHostInput(e.target.value)}
@@ -245,10 +243,11 @@ export default function NewEvent() {
               divider={<Divider orientation="vertical" flexItem />}
             >
               <TextField
-                helperText="Where the event will be held (e.g. Merriot Hotel Minneapolis, MN)"
+                helperText="Where the event will be held"
                 type="text"
                 variant="filled"
                 label="Location"
+                placeholder="Sleepy Hotel, Cresco IA"
                 size="small"
                 id="event-location-input"
                 onChange={(e) => setLocationInput(e.target.value)}
@@ -264,7 +263,7 @@ export default function NewEvent() {
                     label="Tags"
                     id="event-size-input"
                     onChange={(e) => setTagInput(e.target.value)}
-                    value={[tagInput]}
+                    value={tagInput}
                     sx={{ width: 230 }}
                     renderValue={tagData.tag_name}
                     MenuProps={MenuProps}
