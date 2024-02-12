@@ -45,7 +45,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
-          <Redirect exact from="/" to="/home" />
+          <Redirect exact from="/" to="/welcome" />
 
           {/* Visiting localhost:5173/about will show the about page. */}
           <Route
@@ -56,12 +56,9 @@ function App() {
             <AboutPage />
           </Route>
 
-          {/* <Route
-            exact
-            path="/events/:id"
-          >
-            <Modal />
-          </Route> */}
+          <Route exact path="/welcome">
+            <SplashScreen />
+          </Route>
 
           <Route exact path="/newevent">
             <NewEvent />
