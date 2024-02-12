@@ -22,6 +22,7 @@
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
+  align-items: center;
   width: 100%;
 }
 
@@ -34,6 +35,14 @@
   font-size: 35px;
 }
 
+.landing-summary {
+  text-align: center;
+  font-family: var(--srcsansitvarfntwgt);
+  margin-bottom: 30px;
+  margin-top: -30px;
+  color: white;
+  font-size: 15px;
+}
 
 .card {
   width: 400px;
