@@ -46,7 +46,7 @@ export default function LandingPage() {
 
   return (
     <>
-      <div className="create-selected-btn">
+      <div className="create-event-btn">
         <ThemeProvider theme={theme}>
           <Button variant="contained" onClick={handleCreateEvent}>
             <Add />
