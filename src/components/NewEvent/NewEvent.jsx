@@ -59,6 +59,15 @@ export default function NewEvent() {
   let [tagId, setTagId] = useState([]);
   let [websiteInput, setWebsiteInput] = useState("http://");
 
+  const autoFillForm = () => {
+    setTitleInput("boo")
+    setHostInput("boo")
+    setLocationInput("boo")
+    setDescriptionInput("boo")
+    setWebsiteInput("boo")
+
+  }
+
   
   let [commentInput, setCommentInput] = useState("");
 
@@ -128,7 +137,7 @@ export default function NewEvent() {
   };
   return (
     <>
-      <h1 className="admin-event">Create Event</h1>
+      <h1 className="admin-event" onClick={autoFillForm}>Create Event</h1>
       <div className="event-form">
         <form onSubmit={handleClickOpen}>
           {errorMessage && <p className="error">{errorMessage}</p>}
