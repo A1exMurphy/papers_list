@@ -1,13 +1,36 @@
 .container {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 }
 
-.about-page{
-    font-family: var(--srcsansreg) ;
-    font-size: 22px;
-    width: 800px;
+.about-page {
+  font-family: var(--srcsansreg);
+  font-size: 22px;
+  width: 800px;
 }
-
+.christian {
+  object-fit: cover;
+}
+.cathy {
+  text-align: center;
+  font-style: italic;
+  float: left;
+  margin-right: 15px;
+  object-fit: cover;
+  border-radius: 55px;
+}
+.pictures {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.linkedin {
+  display: flex;
+  justify-content: space-evenly;
+}
+.contact-box {
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+}
