@@ -200,12 +200,12 @@ main {
     color: white;
     font-family: var(--srcsansmed);
     font-size: 20px;
-    transform: translate(600px, 580px);
+    transform: translate(600px, 570px);
     width: 55vw;
-    height: 100px;
+    height: 200px;
     padding-left: 10px;
-    text-transform: capitalize;
     overflow-y: hidden;
+    padding-right: 10px;
 }
 
 .module-tag-list{
