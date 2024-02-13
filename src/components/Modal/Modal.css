@@ -211,16 +211,20 @@ main {
 .module-tag-list{
     text-align:initial;
         color: white;
-        font-family: var(--srcsansmed);
+        font-family: var(--srcsansxlight);
+        letter-spacing: 2px;
         font-size: 20px;
         transform: translate(100px, 650px);
-    
         text-transform: capitalize;
         overflow-y: hidden;
 }
 
 .modal-comments > span {
     font-family: var(--srcsanslight);
+}
+
+.modal-comments > h1 {
+    letter-spacing: 1.5px;
 }
 
 .tag-container {
