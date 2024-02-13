@@ -63,35 +63,8 @@ export default function NewEvent() {
     setTitleInput("Tech For Interns")
     setHostInput("Michael Scott")
     setLocationInput("Government Center")
-    setDescriptionInput(`Join us for an evening of networking and collaboration at the BusinessConnect Meetup, where entrepreneurs, professionals, and business enthusiasts converge to forge meaningful connections and fuel collective growth. This event is designed to provide a dynamic platform for individuals from diverse industries to share insights, explore partnerships, and ignite new opportunities.
-    
-    Agenda:
-    
-    Welcome & Registration:
-    
-    Kickstart the evening with a warm welcome and registration to facilitate seamless networking.
-    Opening Keynote: "Navigating the Business Landscape in 2024"
-    
-    Gain valuable insights from an industry expert who will share trends, challenges, and strategies for success in the current business environment.
-    Interactive Networking Sessions:
-    
-    Engage in structured networking activities to meet fellow attendees, exchange ideas, and explore potential collaborations. Bring your business cards and be prepared to make meaningful connections.
-    Panel Discussion: "Innovation and Adaptability in Business"
-    
-    Hear from a panel of seasoned entrepreneurs and industry leaders as they discuss the importance of innovation and adaptability in staying ahead in today's competitive business landscape.
-    Breakout Workshops:
-    
-    Participate in hands-on workshops covering topics such as digital marketing, strategic partnerships, and effective leadership. These sessions are designed to provide actionable insights and tools to enhance your business.
-    Pitch Session:
-    
-    Elevate your business by participating in the pitch session. Selected entrepreneurs will have the opportunity to showcase their ventures and receive constructive feedback from a panel of experts.
-    Networking Reception:
-    
-    Unwind and continue networking over refreshments in a relaxed atmosphere. Build lasting connections and discuss potential collaborations in a more informal setting.
-    Closing Remarks:
-    
-    Reflect on the day's discussions and thank attendees for their active participation. Share information about upcoming events and resources for continued networking.
-    Don't miss this chance to be a part of a vibrant community dedicated to fostering collaboration and driving business success. Whether you're a startup founder, seasoned executive, or aspiring entrepreneur, the BusinessConnect Meetup is the place to be for meaningful connections and growth opportunities. Reserve your spot now and take your business to new heights!`);
+    setDescriptionInput(`Join us at 'Tech for Interns,' a dynamic and interactive meetup designed to empower and connect aspiring interns in the world of technology. This event is tailored to provide a unique platform for interns to engage with seasoned professionals, share experiences, and gain valuable insights into the rapidly evolving tech industry. From networking opportunities and skill-building workshops to panel discussions featuring industry experts, 'Tech for Interns' aims to foster a supportive community where interns can learn, grow, and navigate their way through the exciting challenges of a tech internship. Whether you're a coding enthusiast, UX designer, or aspiring project manager, this meetup is the perfect space to enhance your skills, build meaningful connections, and kickstart your journey towards a successful career in technology. Don't miss out on this chance to bridge the gap between academic learning and real-world tech experiences!
+    `);
     setWebsiteInput("http://www.google.com")
 
   }

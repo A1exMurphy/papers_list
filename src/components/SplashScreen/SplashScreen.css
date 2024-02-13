@@ -11,6 +11,16 @@
     position: absolute;
     transform: translateY(-10%);
     overflow-y: hidden;
+    background-image:linear-gradient(90deg,
+        transparent 79px,
+        #abced4 79px,
+        #abced4 81px,
+        transparent 81px
+        ),
+        linear-gradient(#eee .1em,
+            transparent .1em
+            );
+        background-size: 100% 2em;
 }
 
 .splash-b > h1 {
@@ -60,6 +70,7 @@
 .button {
     opacity: 0;
     transition: scale .4s;
+    transform: translateX(-30px);
     animation: pop-in 1s cubic-bezier(0, .9, .3, 1.2) .6s forwards;
 }
 

@@ -93,7 +93,6 @@ export default function LandingPage() {
                 </div>
               );
             })}
-          ;
         </div>
       </section>
       <section className="gallery-section">
