@@ -57,7 +57,7 @@ export default function NewEvent() {
   let [tagInput, setTagInput] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
   let [tagId, setTagId] = useState([]);
-  let [websiteInput, setWebsiteInput] = useState("http://");
+  let [websiteInput, setWebsiteInput] = useState("");
 
   const autoFillForm = () => {
     setTitleInput("Tech For Interns")

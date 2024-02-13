@@ -71,8 +71,8 @@
   font-size: 40px;
   color: var(--navy);
   font-family: var(--bgrotbold);
-  margin-top: -10px;
-  margin-bottom: -100px;
+  /* margin-top: -10px; */
+  margin-bottom: -105px;
   background-color: var(--orange);
   margin-left: 100px;
   margin-right: 100px;
@@ -160,6 +160,7 @@ transform:skewX(25deg);
   margin-right: 100px;
   padding: 50px;
   border-radius: 55px;
+  margin-top: 2.5rem;
 }
 
 .gallery-section {
@@ -169,7 +170,6 @@ transform:skewX(25deg);
   position: absolute;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
   height: 100vh;
   width: 100vw;
 }
