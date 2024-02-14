@@ -36,7 +36,7 @@
   "scripts": {
     "startnr": "node server/server.js | vite",
     "client": "vite",
-    "server": "nodemon --watch server server/server.js",
+    "server": "server/server.js",
     "build": "vite build",
     "test": "vitest"
   },
