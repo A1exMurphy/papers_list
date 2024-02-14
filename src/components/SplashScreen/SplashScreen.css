@@ -25,6 +25,8 @@
 
 .splash-b > h1 {
     position: absolute;
+    letter-spacing: 3px;
+    text-transform: capitalize;
 }
 
 .icon-container {
