@@ -11,7 +11,7 @@ export default function SplashScreen() {
     return (
         <>
             <div className="icon-container">
-                <img className="animate-pop-in" src="public/favicon.ico" />
+                <img className="animate-pop-in" src="/favicon.ico" />
             </div>
             <div className="splash-b">
                 <h1 className="header">Welcome to your curated list of local networking events</h1>
