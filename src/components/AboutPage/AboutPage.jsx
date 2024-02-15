@@ -43,6 +43,7 @@ function AboutPage() {
       </div>
       <div className="pictures">
         <figure>
+          {/* this is a link for linked in */}
           <a href="https://www.linkedin.com/in/joshuaduenow/">
             <img src="/images/Josh.jpg" width={150} height={200} />
           </a>
