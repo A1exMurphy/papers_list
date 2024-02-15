@@ -30,11 +30,14 @@
 }
 
 .icon-container {
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    /* position: absolute; */
     z-index: 2;
     transform: translate(475px, 10px);
-    height: 300px;
+    height: 500px;
     width: 500px;
+    margin-bottom: -100px;
     overflow: hidden;
     object-fit: cover;
     background: none;
@@ -64,7 +67,7 @@
     animation: pop-in 1s cubic-bezier(0, 1.2, .3, 1.2) .2s forwards;
 }
 
-.header {
+.title {
     opacity: 0;
     animation: pop-in 1s cubic-bezier(0, .9, .3, 1.2) .4s forwards;
 }

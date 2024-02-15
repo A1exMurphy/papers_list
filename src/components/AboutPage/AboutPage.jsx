@@ -1,9 +1,5 @@
 import React from "react";
 import "./AboutPage.css";
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
 
 function AboutPage() {
   return (
@@ -57,11 +53,7 @@ function AboutPage() {
       </div>
       <div className="linkedin">
         <img src="/images/LinkedIn.png" width={150} height={200} />
-        <img
-          src="/images/LinkedIn_Christian.png"
-          width={150}
-          height={200}
-        />
+        <img src="/images/LinkedIn_Christian.png" width={150} height={200} />
         <img src="/images/LinkedIn_Evan.png" width={150} height={200} />
         <img src="/images/LinkedIn_Braden.png" width={150} height={200} />
       </div>
