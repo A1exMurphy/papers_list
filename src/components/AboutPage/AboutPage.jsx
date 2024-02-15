@@ -9,12 +9,14 @@ function AboutPage() {
         <div className="container">
           <p className="about-page">
             <figure className="cathy">
+              <a href="https://www.linkedin.com/in/cathypaper/">
               <img
                 className="cathy"
                 src="/images/cathy.png"
                 width={150}
                 height={200}
               />
+              </a>
               <figcaption>Cathy Paper</figcaption>
             </figure>
             Unsure where to go to meet new people and make new quality
