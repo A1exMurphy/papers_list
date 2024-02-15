@@ -21,6 +21,7 @@ import RemovedEvents from "../RemovedEvents/RemovedEvents";
 import EditTags from "../EditTag/EditTag";
 import EditEvent from "../EditEvent/EventEdit";
 import SplashScreen from "../SplashScreen/SplashScreen";
+import DisplayContact from "../ContactInfo/DisplayContact";
 
 import "./App.css";
 
@@ -98,6 +99,10 @@ function App() {
               // Otherwise, show the login page
               <LoginPage />
             )}
+          </Route>
+
+          <Route exact path="/contactcard">
+            <DisplayContact />
           </Route>
 
           <Route exact path="/registration">

@@ -3,10 +3,13 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 
-
+//GET contact info for an existing event
+router.get("/", (req, res) => {
+  console.log("in GET for contact info with id:", req.body)
+})
 //user submitted inputs POSTed to create new event with pending admin_approved
 router.post("/", async (req, res) => {
-  console.log("in POST query for new contact:", req.body);
+  // console.log("in POST query for new contact:", req.body);
   let connection;
   try {
     connection = await pool.connect();

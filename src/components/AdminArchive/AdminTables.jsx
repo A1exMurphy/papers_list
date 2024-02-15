@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import RateReviewIcon from "@mui/icons-material/RateReview";
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import { HiveTwoTone } from "@mui/icons-material";
 
 export default function AdminTables() {
   useEffect(() => {
@@ -21,11 +23,16 @@ export default function AdminTables() {
   const history = useHistory();
 
   // this function controls whether an event is highlighted
-  const StatusChange = (id) => {
+  const statusChange = (id) => {
     dispatch({
       type: "STATUS_CHANGE",
       payload: id,
     });
+  };
+
+  const contactInfo = (eventContact) => {
+
+    history.push('/contactcard')
   };
 
   return (
@@ -37,6 +44,7 @@ export default function AdminTables() {
               <td>Host</td>
               <td>Event Name</td>
               <td>Status</td>
+              <td>Contact</td>
               <td>Review</td>
             </tr>
           </thead>
@@ -49,8 +57,14 @@ export default function AdminTables() {
                   <td>{pending.event_name}</td>
                   <td>{pending.admin_approved}</td>
                   <td>
-                    <Button onClick={() => StatusChange(pending.id)}></Button>{" "}
-                    <Button
+                    <Button 
+                      onClick={() => contactInfo(pending)}>
+                      <ContactMailIcon />
+                    </Button>
+                    </td>
+
+                    <td>
+                      <Button
                       onClick={() => {
                         history.push(`/edit_event/${pending.id}`);
                       }}
@@ -84,7 +98,7 @@ export default function AdminTables() {
                   <td>{event.event_name}</td>
                   <td>{event.admin_approved}</td>
                   <td>
-                    <Button onClick={() => StatusChange(event.id)}>
+                    <Button onClick={() => statusChange(event.id)}>
                       {event.is_highlighted_event ? (
                         <StarOutlinedIcon className="star"></StarOutlinedIcon>
                       ) : (
@@ -125,7 +139,6 @@ export default function AdminTables() {
                   <td>{event.event_name}</td>
                   <td>{event.admin_approved}</td>
                   <td>
-                    <Button onClick={() => StatusChange(event.id)}></Button>{" "}
                     <Button
                       onClick={() => {
                         history.push(`/edit_event/${event.id}`);

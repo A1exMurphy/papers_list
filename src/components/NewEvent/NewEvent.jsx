@@ -85,9 +85,6 @@ export default function NewEvent() {
 
   const [open, setOpen] = useState(false);
 
-  // console.log("tagInput", tagInput);
-  // console.log("tagid", tagId);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
