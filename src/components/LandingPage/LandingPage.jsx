@@ -18,29 +18,22 @@ const theme = createTheme({
 
 export default function LandingPage() {
   const [openModal, setOpenModal] = useState(false);
-
   const history = useHistory();
   const dispatch = useDispatch();
   const eventData = useSelector((store) => store.events);
-  console.log("eventData", eventData);
 
   useEffect(() => {
     dispatch({ type: "FETCH_EVENTS" });
   }, []);
 
   const handleEventClick = (selectedEvent) => {
-    console.log("handleEventClick selected");
-
     dispatch({
       type: "SELECT_EVENT",
       payload: selectedEvent,
     });
-
-    console.log("Payload:", selectedEvent);
   };
 
   const handleCreateEvent = () => {
-    console.log("Creating new selected");
     history.push("/newevent");
   };
 
@@ -48,7 +41,11 @@ export default function LandingPage() {
     <>
       <div className="create-event-btn">
         <ThemeProvider theme={theme}>
-          <Button sx={{ width: 200 }} variant="contained" onClick={handleCreateEvent}>
+          <Button
+            sx={{ width: 200 }}
+            variant="contained"
+            onClick={handleCreateEvent}
+          >
             <Add />
             Submit Event
           </Button>
@@ -57,7 +54,7 @@ export default function LandingPage() {
       <section className="highlights-section">
         <div className="titleContainer">
           <h1 className="landing-title">Cathy's Choice</h1>
-            <h4 className="landing-summary">my pick of the hot events!</h4>
+          <h4 className="landing-summary">my pick of the hot events!</h4>
         </div>
         <div className="flex-those-events">
           {eventData &&

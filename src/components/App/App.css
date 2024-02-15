@@ -1,204 +1,210 @@
 :root {
-    --bgrotblack: BrandonGrotesqueBlack;
-    --bgrotblitalic: BrandonGrotesqueBlackItalic;
-    --bgrotbold: BrandonGrotesqueBold;
-    --bgrotboldit: BrandonGrotesqueBoldItalic;
-    --bgrotlight: BrandonGrotesqueLight;
-    --bgrotlightit: BrandonGrotesqueLightItalic;
-    --bgrotmed: BrandonGrotesqueMedium;
-    --bgrotmedit: BrandonGrotesqueMediumItalic;
-    --bgrotthin: BrandonGrotesqueThin;
-    --bgrotthinit: BrandonGrotesqueThinItalic;
-    --bgrotreg: BrandonGrotesqueRegular;
-    --bgrotregit: BrandonGrotesqueRegularItalic;
-    --parademibold: Paralucent W00 Demi Bold;
-    --srcsansblack: SourceSans3Black;
-    --srcsansboldit: SourceSans3BoldItalic;
-    --srcsansbold: SourceSans3Bold;
-    --srcsansxbold: SourceSans3ExtraBold;
-    --srcsansxboldit: SourceSans3ExtraBoldItalic;
-    --srcsansxlight: SourceSans3ExtraLight;
-    --srcsansxlightit: SourceSans3ExtraLightItalic;
-    --srcsansitvarfntwgt: SourceSans3ItalicVariableFontWeight;
-    --srcsansit: SourceSans3Italic;
-    --srcsanslight: SourceSans3Light;
-    --srcsanslightit: SourceSans3LightItalic;
-    --srcsansmed: SourceSans3Medium;
-    --srcsansmedit: SourceSans3MediumItalic;
-    --srcsansreg: SourceSans3Regular;
-    --srcsanssemibold: SourceSans3SemiBold;
-    --srcsanssemiboldit: SourceSans3SemiBoldItalic;
-    --srcsansvarfntwgt: SourceSans3VariableFontWeight;
+  --bgrotblack: BrandonGrotesqueBlack;
+  --bgrotblitalic: BrandonGrotesqueBlackItalic;
+  --bgrotbold: BrandonGrotesqueBold;
+  --bgrotboldit: BrandonGrotesqueBoldItalic;
+  --bgrotlight: BrandonGrotesqueLight;
+  --bgrotlightit: BrandonGrotesqueLightItalic;
+  --bgrotmed: BrandonGrotesqueMedium;
+  --bgrotmedit: BrandonGrotesqueMediumItalic;
+  --bgrotthin: BrandonGrotesqueThin;
+  --bgrotthinit: BrandonGrotesqueThinItalic;
+  --bgrotreg: BrandonGrotesqueRegular;
+  --bgrotregit: BrandonGrotesqueRegularItalic;
+  --parademibold: Paralucent W00 Demi Bold;
+  --srcsansblack: SourceSans3Black;
+  --srcsansboldit: SourceSans3BoldItalic;
+  --srcsansbold: SourceSans3Bold;
+  --srcsansxbold: SourceSans3ExtraBold;
+  --srcsansxboldit: SourceSans3ExtraBoldItalic;
+  --srcsansxlight: SourceSans3ExtraLight;
+  --srcsansxlightit: SourceSans3ExtraLightItalic;
+  --srcsansitvarfntwgt: SourceSans3ItalicVariableFontWeight;
+  --srcsansit: SourceSans3Italic;
+  --srcsanslight: SourceSans3Light;
+  --srcsanslightit: SourceSans3LightItalic;
+  --srcsansmed: SourceSans3Medium;
+  --srcsansmedit: SourceSans3MediumItalic;
+  --srcsansreg: SourceSans3Regular;
+  --srcsanssemibold: SourceSans3SemiBold;
+  --srcsanssemiboldit: SourceSans3SemiBoldItalic;
+  --srcsansvarfntwgt: SourceSans3VariableFontWeight;
 }
 
-*, *::after, *::before { 
-    margin: 0; 
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 /* Fonts go below, other code goes above */
 
 @font-face {
-    font-family: BrandonGrotesqueBlack;
-    src: url("/public/fonts/HvDTrial_Brandon_Grotesque_black-BF64a625c944b08.otf");
-    
+  font-family: BrandonGrotesqueBlack;
+  src: url("/public/fonts/HvDTrial_Brandon_Grotesque_black-BF64a625c944b08.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueBlackItalic;
-    src: url("/public/fonts/HvDTrial_Brandon_Grotesque_black_italic-BF64a625c93406c.otf");
+  font-family: BrandonGrotesqueBlackItalic;
+  src: url("/public/fonts/HvDTrial_Brandon_Grotesque_black_italic-BF64a625c93406c.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueBold;
-    src: url("/public/fonts/HvDTrial_Brandon_Grotesque_bold-BF64a625c9151d5.otf");
+  font-family: BrandonGrotesqueBold;
+  src: url("/public/fonts/HvDTrial_Brandon_Grotesque_bold-BF64a625c9151d5.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueBoldItalic;
-    src: url("/public/fonts/HvDTrial_Brandon_Grotesque_bold_italic-BF64a625c93b0ce.otf");
+  font-family: BrandonGrotesqueBoldItalic;
+  src: url("/public/fonts/HvDTrial_Brandon_Grotesque_bold_italic-BF64a625c93b0ce.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueLight;
-    src: url("/public/fonts/HvDTrial_Brandon_Grotesque_light-BF64a625c93e709.otf");
+  font-family: BrandonGrotesqueLight;
+  src: url("/public/fonts/HvDTrial_Brandon_Grotesque_light-BF64a625c93e709.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueLightItalic;
-    src: url("/public/fonts/HvDTrial_Brandon_Grotesque_light_italic-BF64a625c93ac64.otf");
+  font-family: BrandonGrotesqueLightItalic;
+  src: url("/public/fonts/HvDTrial_Brandon_Grotesque_light_italic-BF64a625c93ac64.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueMedium;
-    src: url("/public/fonts/HvDTrial_Brandon_Grotesque_medium-BF64a625c84a521.otf");
+  font-family: BrandonGrotesqueMedium;
+  src: url("/public/fonts/HvDTrial_Brandon_Grotesque_medium-BF64a625c84a521.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueMediumItalic;
-    src: url("/public/fonts/HvDTrial_Brandon_Grotesque_medium_italic-BF64a625c928c55.otf");
+  font-family: BrandonGrotesqueMediumItalic;
+  src: url("/public/fonts/HvDTrial_Brandon_Grotesque_medium_italic-BF64a625c928c55.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueThin;
-    src: url("/public/fonts/HvDTrial_Brandon_Grotesque_thin-BF64a625c9034b9.otf");
+  font-family: BrandonGrotesqueThin;
+  src: url("/public/fonts/HvDTrial_Brandon_Grotesque_thin-BF64a625c9034b9.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueThinItalic;
-    src: url("/public/fonts/HvDTrial_Brandon_Grotesque_thin_italic-BF64a625c918a96.otf");
+  font-family: BrandonGrotesqueThinItalic;
+  src: url("/public/fonts/HvDTrial_Brandon_Grotesque_thin_italic-BF64a625c918a96.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueRegular;
-    src: url("/public/fonts/myFont.otf");
+  font-family: BrandonGrotesqueRegular;
+  src: url("/public/fonts/myFont.otf");
 }
 
 @font-face {
-    font-family: BrandonGrotesqueRegularItalic;
-    src: url("/public/fonts/b.otf");
+  font-family: BrandonGrotesqueRegularItalic;
+  src: url("/public/fonts/b.otf");
 }
 
 @font-face {
-    font-family: "Paralucent W00 Demi Bold";
-    src: url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.eot");
-    src: url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.svg#Paralucent W00 Demi Bold")format("svg");
+  font-family: "Paralucent W00 Demi Bold";
+  src: url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.eot");
+  src: url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/4cf5af941f7c70b2c0b7c36c78612735.svg#Paralucent W00 Demi Bold")
+      format("svg");
 }
 
 @font-face {
-    font-family: SourceSans3Black;
-    src: url("/public/fonts/SourceSans3-Black.ttf");
+  font-family: SourceSans3Black;
+  src: url("/public/fonts/SourceSans3-Black.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3BoldItalic;
-    src: url("/public/fonts/SourceSans3-BlackItalic.ttf");
+  font-family: SourceSans3BoldItalic;
+  src: url("/public/fonts/SourceSans3-BlackItalic.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3Bold;
-    src: url("/public/fonts/SourceSans3-Bold.ttf");
+  font-family: SourceSans3Bold;
+  src: url("/public/fonts/SourceSans3-Bold.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3ExtraBold;
-    src: url("/public/fonts/SourceSans3-ExtraBold.ttf");
+  font-family: SourceSans3ExtraBold;
+  src: url("/public/fonts/SourceSans3-ExtraBold.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3ExtraBold;
-    src: url("/public/fonts/SourceSans3-ExtraBoldItalic.ttf");
+  font-family: SourceSans3ExtraBold;
+  src: url("/public/fonts/SourceSans3-ExtraBoldItalic.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3ExtraBoldItalic;
-    src: url("/public/fonts/SourceSans3-ExtraBoldItalic.ttf");
+  font-family: SourceSans3ExtraBoldItalic;
+  src: url("/public/fonts/SourceSans3-ExtraBoldItalic.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3ExtraLight;
-    src: url("/public/fonts/SourceSans3-ExtraLight.ttf");
+  font-family: SourceSans3ExtraLight;
+  src: url("/public/fonts/SourceSans3-ExtraLight.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3ExtraLightItalic;
-    src: url("/public/fonts/SourceSans3-ExtraLightItalic.ttf");
+  font-family: SourceSans3ExtraLightItalic;
+  src: url("/public/fonts/SourceSans3-ExtraLightItalic.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3ItalicVariableFontWeight;
-    src: url("/public/fonts/SourceSans3-Italic-VariableFont_wght.ttf");
+  font-family: SourceSans3ItalicVariableFontWeight;
+  src: url("/public/fonts/SourceSans3-Italic-VariableFont_wght.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3Italic;
-    src: url("/public/fonts/SourceSans3-Italic.ttf");
+  font-family: SourceSans3Italic;
+  src: url("/public/fonts/SourceSans3-Italic.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3Light;
-    src: url("/public/fonts/SourceSans3-Light.ttf");
+  font-family: SourceSans3Light;
+  src: url("/public/fonts/SourceSans3-Light.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3LightItalic;
-    src: url("/public/fonts/SourceSans3-LightItalic.ttf");
+  font-family: SourceSans3LightItalic;
+  src: url("/public/fonts/SourceSans3-LightItalic.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3Medium;
-    src: url("/public/fonts/SourceSans3-Medium.ttf");
+  font-family: SourceSans3Medium;
+  src: url("/public/fonts/SourceSans3-Medium.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3MediumItalic;
-    src: url("/public/fonts/SourceSans3-MediumItalic.ttf");
+  font-family: SourceSans3MediumItalic;
+  src: url("/public/fonts/SourceSans3-MediumItalic.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3Regular;
-    src: url("/public/fonts/SourceSans3-Regular.ttf");
+  font-family: SourceSans3Regular;
+  src: url("/public/fonts/SourceSans3-Regular.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3SemiBold;
-    src: url("/public/fonts/SourceSans3-SemiBold.ttf");
+  font-family: SourceSans3SemiBold;
+  src: url("/public/fonts/SourceSans3-SemiBold.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3SemiBoldItalic;
-    src: url("/public/fonts/SourceSans3-SemiBoldItalic.ttf");
+  font-family: SourceSans3SemiBoldItalic;
+  src: url("/public/fonts/SourceSans3-SemiBoldItalic.ttf");
 }
 
 @font-face {
-    font-family: SourceSans3VariableFontWeight;
-    src: url("/public/fonts/SourceSans3-VariableFont_wght.ttf");
+  font-family: SourceSans3VariableFontWeight;
+  src: url("/public/fonts/SourceSans3-VariableFont_wght.ttf");
 }
