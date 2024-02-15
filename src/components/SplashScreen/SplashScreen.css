@@ -27,14 +27,14 @@
     position: absolute;
     letter-spacing: 3px;
     text-transform: capitalize;
+    transform: translateX(15px);
 }
 
 .icon-container {
     display: flex;
-    justify-content: center;
-    /* position: absolute; */
+    position: absolute;
     z-index: 2;
-    transform: translate(300px, 10px);
+    transform: translate(270px, 10px);
     height: 300px;
     width: 950px;
     overflow: hidden;
@@ -82,7 +82,7 @@
     animation: pop-in 1s cubic-bezier(0, .9, .3, 1.2) .6s forwards;
 }
 
-.splash-b button:hover {
+.button:hover {
     cursor: pointer;
     transform: scale(1.3);
 }
