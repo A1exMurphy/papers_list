@@ -7,11 +7,9 @@ import {
   Stack,
   Divider,
   FormControl,
-  FormLabel,
   ListItemText,
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import UploadButton from "../UploadButton/UploadButton";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -96,9 +94,8 @@ export default function AdminNewEvent() {
 
     dispatch({
       type: "SAGA/ADD_EVENT",
-      payload: eventForm
+      payload: eventForm,
     });
-    console.log("Handling submit");
 
     history.push("/eventarchive");
   };
@@ -114,14 +111,6 @@ export default function AdminNewEvent() {
   };
 
   const backToArchive = (e) => {
-    history.push("/eventarchive");
-  };
-
-  const removeEventFromActive = () => {
-    dispatch({
-      type: "REMOVE_EVENT",
-    });
-
     history.push("/eventarchive");
   };
   return (
@@ -277,11 +266,9 @@ export default function AdminNewEvent() {
                       tagData.map((tag) => {
                         return (
                           <MenuItem key={tag.id} value={tag.id}>
-                            <Checkbox
-                              checked={tagInput.indexOf(tag.id) > -1}
-                            />
+                            <Checkbox checked={tagInput.indexOf(tag.id) > -1} />
                             {tag.tag_name}
-                            <ListItemText/>
+                            <ListItemText />
                           </MenuItem>
                         );
                       })}

@@ -1,9 +1,5 @@
 import React from "react";
 import "./AboutPage.css";
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
 
 function AboutPage() {
   return (
@@ -14,7 +10,7 @@ function AboutPage() {
             <figure className="cathy">
               <img
                 className="cathy"
-                src="public/images/cathy.png"
+                src="/images/cathy.png"
                 width={150}
                 height={200}
               />
@@ -45,25 +41,21 @@ function AboutPage() {
         <h2>This website created at Prime Academy by:</h2>
       </div>
       <div className="pictures">
-        <img src="public/images/Josh.jpg" width={150} height={200} />
+        <img src="/images/Josh.jpg" width={150} height={200} />
         <img
           className="christian"
-          src="public/images/Christian.jpg"
+          src="/images/Christian.jpg"
           width={150}
           height={200}
         />
-        <img src="public/images/Evan.jpg" width={150} height={200} />
-        <img src="public/images/braden.jpg" width={150} height={200} />
+        <img src="/images/Evan.jpg" width={150} height={200} />
+        <img src="/images/braden.jpg" width={150} height={200} />
       </div>
       <div className="linkedin">
-        <img src="public/images/LinkedIn.png" width={150} height={200} />
-        <img
-          src="public/images/LinkedIn_Christian.png"
-          width={150}
-          height={200}
-        />
-        <img src="public/images/LinkedIn_Evan.png" width={150} height={200} />
-        <img src="public/images/LinkedIn_Braden.png" width={150} height={200} />
+        <img src="/images/LinkedIn.png" width={150} height={200} />
+        <img src="/images/LinkedIn_Christian.png" width={150} height={200} />
+        <img src="/images/LinkedIn_Evan.png" width={150} height={200} />
+        <img src="/images/LinkedIn_Braden.png" width={150} height={200} />
       </div>
     </>
   );

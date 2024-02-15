@@ -18,7 +18,7 @@ router.get("/events", (req, res) => {
     p.event_size,
     p.image,
     p.comments,
-   p.admin_approved,
+    p.admin_approved,
     p.is_highlighted_event,
     p.contact_id,
     json_agg(
@@ -66,9 +66,6 @@ router.get("/tags", (req, res) => {
     });
 });
 
-/**
- * GET route template
- */
 
 router.get('/event/:id', (req, res) => {
     const getSelectedEvent = 
@@ -131,9 +128,7 @@ router.get('/pendingevents', (req, res) => {
     });
 });
 
-/**
- * PUT route template
- */
+
 //submit PUT request for selected event with new or existing values
 
 router.put('/event/:id', (req, res) => {
@@ -154,7 +149,7 @@ router.put('/event/:id', (req, res) => {
         
     WHERE "id" = $8;
     `;
-  //not sur if the happy path is using req.body.id or req.params.id
+  //not sure if the happy path is using req.body.id or req.params.id
   newEventValues = [
     req.body.host,
     req.body.event_name,
@@ -163,7 +158,7 @@ router.put('/event/:id', (req, res) => {
     req.body.description,
     req.body.event_size,
     req.body.image,
-   req.body.comments,
+    req.body.comments,
     req.body.id,
   ];
 
@@ -325,7 +320,6 @@ router.get('/tag/:id', (req, res) => {
         WHERE "id" = $1
     `
     TagID = [req.params.id]
-    console.log('params',req.params.id);
    
   
     pool.query(getSelectedTag, TagID)
@@ -358,34 +352,47 @@ router.put('/status/:id', (req, res) => {
   
 
 router.put('/events/:id', (req, res) => {
-  console.log('in PUTttttttttte query')
+  console.log('in PUT query')
 const idToUpdate = req.params.id
   let insertNewTag =
-    `
-  UPDATE "posts" 
+`
+UPDATE "posts" 
  SET
-  "host" = $1,
-  "event_name" = $2,
-  "cost" = $3,
-  "time" = $4,
-  "location" = $5,
-"description" = $6,
-"website" = $7,
-"event_size" = $8,
-"image" = $9,
-"comments" = $10,
-"admin_approved" = $11,
-"contact_id" = $12
+    "host" = $1,
+    "event_name" = $2,
+    "cost" = $3,
+    "time" = $4,
+    "location" = $5,
+    "description" = $6,
+    "website" = $7,
+    "event_size" = $8,
+    "image" = $9,
+    "comments" = $10,
+    "admin_approved" = $11,
+    "contact_id" = $12
   WHERE "id" = $13;
-  `;
+`;
 //not sure if the happy path is using req.body.id or req.params.id
   
 
-  pool.query(insertNewTag, [req.body.host, req.body.event_name, req.body.cost, req.body.time, req.body.location, req.body.description, req.body.website,  req.body.event_size, req.body.image, req.body.comments, req.body.admin_approved, req.body.contact_id, idToUpdate])
+  pool.query(insertNewTag, [
+                            req.body.host, 
+                            req.body.event_name, 
+                            req.body.cost, 
+                            req.body.time, 
+                            req.body.location, 
+                            req.body.description, 
+                            req.body.website,  
+                            req.body.event_size, 
+                            req.body.image, 
+                            req.body.comments, 
+                            req.body.admin_approved, 
+                            req.body.contact_id, 
+                            idToUpdate
+                          ])
         
           .then((result) => {
             res.sendStatus(201)
-            console.log("body", req.body);
           })
           .catch((err) => {
               console.log(err, 'error in PUT query')

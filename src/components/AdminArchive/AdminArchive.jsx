@@ -1,27 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  useHistory,
-  useParams,
-} from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./AdminArchive.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
-import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import Paper from "@mui/material/Paper";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import { styled } from "@mui/material/styles";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import RateReviewIcon from "@mui/icons-material/RateReview";
 import AddIcon from "@mui/icons-material/Add";
 import AdminTables from "./AdminTables";
 
@@ -49,20 +36,14 @@ export default function AdminArchive() {
   useEffect(() => {
     dispatch({ type: "FETCH_ARCHIVED_EVENTS" });
     dispatch({ type: "FETCH_TAGS" });
-
     window.scrollTo(0, 0);
   }, []);
 
   let [tagName, setTagName] = useState("");
   const [open, setOpen] = useState(false);
-
   const handleOpen = () => setOpen(true);
-
   const handleClose = () => setOpen(false);
-
-  const events = useSelector((store) => store.archived);
   const tags = useSelector((store) => store.tags);
-
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -86,37 +67,9 @@ export default function AdminArchive() {
     setOpen(false);
   };
 
-  const StatusChange = (id) => {
-    dispatch({
-      type: "STATUS_CHANGE",
-      payload: id,
-    });
-  };
-
   const adminCreateEvent = () => {
-    console.log("Creating new event");
     history.push("/adminnewevent");
   };
-
-  // const td = styled(td)(({ theme }) => ({
-  //     [`&.${tableCellClasses.head}`]: {
-  //         backgroundColor: theme.palette.common.black,
-  //         color: theme.palette.common.white,
-  //     },
-  //     [`&.${tableCellClasses.body}`]: {
-  //         fontSize: 14,
-  //     },
-  // }));
-  // const StyledTableRow = styled(tr)(({ theme }) => ({
-  //     '&:nth-of-type(odd)': {
-  //         backgroundColor: theme.palette.action.hover,
-  //     },
-  //     // hide last border
-  //     '&:last-child td, &:last-child th': {
-
-  //     },
-  // }));
-
   return (
     <div>
       <Modal

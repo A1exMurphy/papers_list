@@ -1,32 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
 import { Fragment } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-
-import {
-  TextField,
-  Stack,
-  Divider,
-  FormControl,
-  FormLabel,
-  ListItemText,
-  Input,
-} from "@mui/material";
+import { TextField, Stack, Divider, FormControl } from "@mui/material";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
-import AddIcon from "@mui/icons-material/Add";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -55,16 +37,7 @@ export default function SubmitContactInfo() {
   let [email, setEmail] = useState("");
   let [phone, setPhone] = useState("");
   let [linkedIn, setLinkedIn] = useState("");
-
   let [additionalInfo, setAdditionalInfo] = useState("");
-
-
-  const AutoFill = () => {
-    setAdditionalInfo("Lorem ipsem dolor sit amet");
-    setEmail("exampleemail@site.com");
-    setLinkedIn("www.linkedin.com/in/christian-carlson-62361b231");
-    setPhone(123);
-  }
   const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
@@ -76,19 +49,15 @@ export default function SubmitContactInfo() {
       additional_info: additionalInfo,
       eventId: eventId,
     };
-    console.log("button is buttoning", newContact);
 
     dispatch({
       type: "ADD_CONTACT_INFO",
       payload: newContact,
     });
     history.push("/home");
-    console.log("Handling submit");
   };
 
-  const handleDiscard = () => {
-    console.log("Handling discard");
-  };
+  const handleDiscard = () => {};
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -107,15 +76,14 @@ export default function SubmitContactInfo() {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">
-            {/* {"Are you sure you want submit this?"} */}
-            {/* had to change some spelling */}
-          </DialogTitle>
+          <DialogTitle id="alert-dialog-title"></DialogTitle>
           <DialogContent>
             <DialogContentText
               className="DialogText"
               id="alert-dialog-description"
-            >Your event will be reviewed for approval, Thank You!</DialogContentText>
+            >
+              Your event will be reviewed for approval, Thank You!
+            </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Back</Button>
@@ -125,7 +93,7 @@ export default function SubmitContactInfo() {
           </DialogActions>
         </Dialog>
       </Fragment>
-      <h1 className="admin-event" onClick={AutoFill}>Contact Info for Admin</h1>
+      <h1 className="admin-event">Contact Info for Admin</h1>
 
       <div className="event-form">
         <form onSubmit={handleClickOpen}>

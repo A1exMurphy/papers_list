@@ -4,13 +4,13 @@ import axios from "axios";
 function* adminAddEvent(action) {
   try {
     const headers = {
-      'content-type': 'multipart/form-data'
-    }
+      "content-type": "multipart/form-data",
+    };
     const response = yield axios({
       method: "POST",
       url: "/api/adminevent/event",
       headers: headers,
-      data: action.payload
+      data: action.payload,
     });
   } catch (error) {
     console.log("Unable to post new events to server", error);

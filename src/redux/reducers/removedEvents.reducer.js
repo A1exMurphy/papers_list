@@ -1,4 +1,3 @@
-
 const removedEvents = (state = [], action) => {
   switch (action.type) {
     case "SET_REMOVED_EVENTS":
@@ -6,8 +5,6 @@ const removedEvents = (state = [], action) => {
     default:
       return state;
   }
-}
-
-
+};
 
 export default removedEvents;

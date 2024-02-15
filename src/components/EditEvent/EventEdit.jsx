@@ -1,26 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  useHistory,
-  useParams,
-} from "react-router-dom/cjs/react-router-dom.min";
-import {
-  TextField,
-  Stack,
-  Divider,
-  FormControl,
-  FormLabel,
-  ListItemText,
-  Input,
-} from "@mui/material";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { TextField, Stack, Divider, FormControl } from "@mui/material";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
-import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -157,7 +143,6 @@ export default function EditEvent() {
     });
 
     history.push("/eventarchive");
-    // setAdminStatus("");
   };
 
   return (
@@ -266,7 +251,6 @@ export default function EditEvent() {
               sx={{ marginBottom: 4 }}
               divider={<Divider orientation="vertical" flexItem />}
             >
-          
               <TextField
                 helperText="Where the event will be held (e.g. Merriot Hotel Minneapolis, MN)"
                 type="text"

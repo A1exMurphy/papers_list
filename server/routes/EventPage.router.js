@@ -2,12 +2,8 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 
-/**
- * GET route template
- */
+
 router.get("/", (req, res) => {
-  // GET route code here
-  console.log("blahhhh");
  
   const eventsArry = []
   
@@ -80,8 +76,6 @@ ORDER BY p.id;
     GROUP BY p.id
     ORDER BY p.id;
      `
-      // console.log('eventarray', eventsArry);
-    
       
       pool.query(sqlText)
         .then((result) => {
@@ -101,70 +95,5 @@ ORDER BY p.id;
      
 })
 
-// router.get('/selected/:id', (req, res) => {
-//   console.log("blahhhh");
-
-//   const SelectedEventArry = [];
-//   let getSelectedEvent = 
-//   `
-//   SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
-//   FROM "posts"
-//   WHERE "posts"."id" = $1;
-//   `;
-
-//  const postId = [req.params.id];
-
-// pool
-//   .query(getSelectedEvent, postId)
-//   .then((result) => {
-//     SelectedEventArry.push(result.rows[0])
-//     console.log('result', result.rows[0]);
-      
-//       getSelectedEvent = 
-//       `SELECT "tags"."tag_name" 
-//       FROM "tags"
-//       INNER JOIN "post_tags"
-//       ON "post_tags"."tag_id" = "tags"."id"
-//       WHERE "post_tags"."post_id" = $1;`
-     
-//     pool.query(getSelectedEvent, postId)
-//       .then((result) => {
-//         SelectedEventArry.push(result.rows)
-//         res.send(SelectedEventArry)
-//       })
-//       .catch((err) => {
-//         console.log("GET /api/eventfeed fail:", err);
-//         res.sendStatus(500);
-//       });
-//   })
-//   .catch((err) => {
-//     console.log("GET /api/eventfeed fail:", err);
-//     res.sendStatus(500);
-//   });
-// });
-
-
-// /**
-//  * POST route template
-//  */
-
 
 module.exports = router;
-
-// `
-//   SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."location", "posts"."website", "posts"."event_size", "posts"."image","posts"."comments", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
-//   FROM "posts"
-//   LEFT JOIN "post_tags"
-//   ON "post_tags"."post_id" = "posts"."id"
-//   LEFT JOIN "tags" 
-//   ON "tags"."id" = "post_tags"."tag_id"
-//   WHERE "posts"."admin_approved" = 'approved'
-//   `
-
-// `SELECT "posts"."id", "posts"."host", "posts"."event_name", "posts"."cost" , "posts"."time", "posts"."description", "posts"."event_size", "posts"."image", "posts"."comments", "posts"."is_highlighted_event", "posts"."contact_id", "tags"."tag_name", "posts"."admin_approved"
-//       FROM "posts"
-//       INNER JOIN "post_tags"
-//       ON "post_tags"."post_id" = "posts"."id"
-//       INNER JOIN "tags" 
-//       ON "tags"."id" = "post_tags"."tag_id"
-//       WHERE "posts"."is_highlighted_event" = true;`
