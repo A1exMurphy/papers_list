@@ -20,7 +20,8 @@ export default function LandingPage() {
   const [openModal, setOpenModal] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
-  const eventData = useSelector((store) => store.events.events);
+  const eventData = useSelector((store) => store.events);
+
   useEffect(() => {
     dispatch({ type: "FETCH_EVENTS" });
   }, []);

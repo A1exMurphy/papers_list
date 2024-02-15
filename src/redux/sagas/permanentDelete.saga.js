@@ -1,9 +1,8 @@
-import { put, take, takeLatest } from "redux-saga/effects";
+import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
 
 function* permanentDeleteEvent(action) {
-  // console.log(action.payload, 'action for delete')
   try {
     const response = yield axios({
       method: "DELETE",
