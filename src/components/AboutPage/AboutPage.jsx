@@ -1,5 +1,6 @@
 import React from "react";
 import "./AboutPage.css";
+import Link from "@mui/icons-material/Link";
 
 function AboutPage() {
   return (
@@ -41,18 +42,29 @@ function AboutPage() {
         <h2>This website created at Prime Academy by:</h2>
       </div>
       <div className="pictures">
+        <a href="https://www.linkedin.com/in/joshuaduenow/">
         <img src="/images/Josh.jpg" width={150} height={200} />
+        </a>
+        <a href="https://www.linkedin.com/in/christian-carlson-62361b231/">
+
         <img
           className="christian"
           src="/images/Christian.jpg"
           width={150}
           height={200}
         />
+        </a>
+        <a href="https://www.linkedin.com/in/langer-evan/">
         <img src="/images/Evan.jpg" width={150} height={200} />
+        </a>
+        <a href="https://www.linkedin.com/in/braden-soller/">
+
         <img src="/images/braden.jpg" width={150} height={200} />
+        </a>
       </div>
       <div className="linkedin">
-        <img src="/images/LinkedIn.png" width={150} height={200} />
+        <img src="/images/LinkedIn.png" width={150} height={200} 
+        />
         <img src="/images/LinkedIn_Christian.png" width={150} height={200} />
         <img src="/images/LinkedIn_Evan.png" width={150} height={200} />
         <img src="/images/LinkedIn_Braden.png" width={150} height={200} />
