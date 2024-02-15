@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import Input from "@mui/material/Input";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 

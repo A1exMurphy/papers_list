@@ -1,4 +1,3 @@
-import react, { useEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./SplashScreen.css";
 
@@ -11,7 +10,7 @@ export default function SplashScreen() {
     return (
         <>
             <div className="icon-container">
-                <img className="animate-pop-in" src="public/favicon.ico" />
+                <img className="animate-pop-in" src="./images/icon.png" />
             </div>
             <div className="splash-b">
                 <h1 className="header">Welcome to your curated list of local networking events</h1>
