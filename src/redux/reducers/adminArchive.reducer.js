@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 
-
 const archived = (state = [], action) => {
   switch (action.type) {
     case "SET_ARCHIVED":
@@ -37,11 +36,9 @@ const deleted = (state = [], action) => {
   }
 };
 
-
-
 export default combineReducers({
   archived,
   approved,
   pending,
-  deleted
+  deleted,
 });

@@ -21,7 +21,7 @@ export default function LandingPage() {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const eventData = useSelector((store) => store.events.events);
+  const eventData = useSelector((store) => store.events);
   console.log("eventData", eventData);
 
   useEffect(() => {
