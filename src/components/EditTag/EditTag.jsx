@@ -5,7 +5,6 @@ import {
   useParams,
 } from "react-router-dom/cjs/react-router-dom.min";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
@@ -28,22 +27,12 @@ export default function EditTags() {
   }, []);
 
   const EditTag = useSelector((store) => store.editTag);
-  console.log("EditTag", EditTag);
-
   const dispatch = useDispatch();
-
   const history = useHistory();
-
   const params = useParams();
-
   const [open, setOpen] = useState(false);
-
   const handleOpen = () => setOpen(true);
-
   const handleClose = () => setOpen(false);
-
-  console.log("params", params.id);
-
   useEffect(() => {
     dispatch({
       type: "FETCH_TAG_TO_EDIT",

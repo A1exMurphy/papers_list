@@ -5,23 +5,17 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "@mui/base/Button";
 import Nav from "../Nav/Nav";
 // import Footer from "../Footer/Footer";
-
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-
-import AboutPage from '../AboutPage/AboutPage';
-import EventFeed from '../EventFeed/EventFeed';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
-import NewEvent from '../NewEvent/NewEvent';
-import SubmitContactInfo from '../ContactInfo/ContactInfo';
-import AdminArchive from '../AdminArchive/AdminArchive';
+import AboutPage from "../AboutPage/AboutPage";
+import LandingPage from "../LandingPage/LandingPage";
+import LoginPage from "../LoginPage/LoginPage";
+import RegisterPage from "../RegisterPage/RegisterPage";
+import NewEvent from "../NewEvent/NewEvent";
+import SubmitContactInfo from "../ContactInfo/ContactInfo";
+import AdminArchive from "../AdminArchive/AdminArchive";
 import AdminNewEvent from "../AdminNewEvent/AdminNewEvent";
 import RemovedEvents from "../RemovedEvents/RemovedEvents";
 import EditTags from "../EditTag/EditTag";
@@ -72,15 +66,6 @@ function App() {
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:5173/user */}
 
-
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/info"
-          >
-            <InfoPage />
-          </ProtectedRoute>
-
           <ProtectedRoute
             // admin created event
             exact
@@ -94,10 +79,10 @@ function App() {
           </ProtectedRoute>
 
           <Route exact path="/edit_tag/:id">
-            <EditTags/>
+            <EditTags />
           </Route>
           <Route exact path="/edit_event/:id">
-            <EditEvent/>
+            <EditEvent />
           </Route>
 
           <Route exact path="/removedevents">
@@ -127,7 +112,7 @@ function App() {
           </Route>
 
           <Route exact path="/home">
-              <LandingPage />
+            <LandingPage />
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
