@@ -1,5 +1,3 @@
-
-
 const events = (state = [], action) => {
   switch (action.type) {
     case "SET_EVENTS":
@@ -9,7 +7,4 @@ const events = (state = [], action) => {
   }
 };
 
-
-
-export default events
-  
+export default events;
