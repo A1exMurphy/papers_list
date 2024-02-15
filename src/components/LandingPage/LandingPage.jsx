@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Modal from "../Modal/Modal";
@@ -18,6 +18,7 @@ const theme = createTheme({
 
 export default function LandingPage() {
   const [openModal, setOpenModal] = useState(false);
+  const highlightsRef = useRef(null);
   const history = useHistory();
   const dispatch = useDispatch();
   const eventData = useSelector((store) => store.events);
@@ -37,6 +38,15 @@ export default function LandingPage() {
     history.push("/newevent");
   };
 
+  const scrollToTop = () => {
+    console.log("scrollToTop is WORKING");
+
+    window.scrollTo({
+      top: highlightsRef.current.offsetTop,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <>
       <div className="create-event-btn">
@@ -51,7 +61,7 @@ export default function LandingPage() {
           </Button>
         </ThemeProvider>
       </div>
-      <section className="highlights-section">
+      <section ref={highlightsRef} className="highlights-section">
         <div className="titleContainer">
           <h1 className="landing-title">Cathy's Choice</h1>
           <h4 className="landing-summary">my pick of the hot events!</h4>
@@ -131,6 +141,7 @@ export default function LandingPage() {
       <main>
         {openModal === true ? <Modal closeModal={setOpenModal} /> : <></>}
       </main>
+      <button onClick={scrollToTop} className="left-side-of-screen">Back to Top</button>
     </>
   );
 }
