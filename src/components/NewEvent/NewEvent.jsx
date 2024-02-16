@@ -57,17 +57,7 @@ export default function NewEvent() {
   let [errorMessage, setErrorMessage] = useState("");
   let [tagId, setTagId] = useState([]);
   let [websiteInput, setWebsiteInput] = useState("");
-
-  const autoFillForm = () => {
-    setTitleInput("Tech For Interns")
-    setHostInput("Michael Scott")
-    setLocationInput("Government Center")
-    setDescriptionInput(`Join us at 'Tech for Interns,' a dynamic and interactive meetup designed to empower and connect aspiring interns in the world of technology. This event is tailored to provide a unique platform for interns to engage with seasoned professionals, share experiences, and gain valuable insights into the rapidly evolving tech industry. From networking opportunities and skill-building workshops to panel discussions featuring industry experts, 'Tech for Interns' aims to foster a supportive community where interns can learn, grow, and navigate their way through the exciting challenges of a tech internship. Whether you're a coding enthusiast, UX designer, or aspiring project manager, this meetup is the perfect space to enhance your skills, build meaningful connections, and kickstart your journey towards a successful career in technology. Don't miss out on this chance to bridge the gap between academic learning and real-world tech experiences!
-    `);
-    setWebsiteInput("http://www.google.com")
-
-  }
-
+ 
   
   let [commentInput, setCommentInput] = useState("");
 
@@ -137,7 +127,7 @@ export default function NewEvent() {
   };
   return (
     <>
-      <h1 className="admin-event" onClick={autoFillForm}>Create Event</h1>
+      <h1 className="admin-event">Create Event</h1>
       <div className="event-form">
         <form onSubmit={handleClickOpen}>
           {errorMessage && <p className="error">{errorMessage}</p>}
@@ -163,7 +153,6 @@ export default function NewEvent() {
                 type="text"
                 variant="filled"
                 label="Description"
-                placeholder="Lorem ipsem dolor sit amet..."
                 onChange={(e) => setDescriptionInput(e.target.value)}
                 value={descriptionInput}
                 sx={{
