@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./SplashScreen.css";
+import { Button } from "@mui/material";
 
 export default function SplashScreen() {
     const history = useHistory();
