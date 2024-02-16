@@ -10,6 +10,7 @@ import editEvent from "./editEvent.reducer";
 import selectedTag from "./selectedTag.reducer";
 import newEvent from "./newEvent.reducer";
 import selectEvent from "./selectedEvent.reducer";
+import selectedContact from "./selectedContact.reducer"
 
 
 
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   tags,// will have an id and username if someone is logged in
   editTag,
   editEvent,
+  selectedContact,
  
 });
 

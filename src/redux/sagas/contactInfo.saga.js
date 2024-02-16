@@ -17,8 +17,7 @@ function* fetchContactInfo(action) {
   try {
     const response = yield axios({
       method: "GET",
-      url: "/api/contact",
-      data: action.payload,
+      url: `/api/contact/${action.payload}`,
     });
   } catch (error) {
     console.log("Unable to GET contact info from server", error)

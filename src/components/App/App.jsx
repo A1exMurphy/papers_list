@@ -101,7 +101,7 @@ function App() {
             )}
           </Route>
 
-          <Route exact path="/contactcard">
+          <Route exact path="/contactcard/:id">
             <DisplayContact />
           </Route>
 

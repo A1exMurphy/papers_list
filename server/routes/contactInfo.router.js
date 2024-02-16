@@ -4,8 +4,32 @@ const router = express.Router();
 
 
 //GET contact info for an existing event
-router.get("/", (req, res) => {
-  console.log("in GET for contact info with id:", req.body)
+router.get("/:id", (req, res) => {
+  console.log("in GET for contact info with id:")
+
+  const getEventContact = 
+  `
+  SELECT 
+      "user_details"."email", 
+      "user_details"."linkedIn",
+      "user_details"."phone",
+      "user_details"."additional_info"
+    FROM "user_details"
+    INNER JOIN "posts"
+      ON "posts"."contact_id"="user_details"."id"
+    WHERE "user_details"."id" = $1;
+  `
+  const sqlValues = [req.params.id]
+  pool
+    .query(getEventContact, sqlValues)
+    .then((result) => {
+      res.send(result.rows);
+    })
+
+  .catch((err) => {
+    console.log("error in GET contact query", err)
+    res.sendStatus(500)
+  })
 })
 //user submitted inputs POSTed to create new event with pending admin_approved
 router.post("/", async (req, res) => {
