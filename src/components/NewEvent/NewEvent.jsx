@@ -149,20 +149,18 @@ export default function NewEvent() {
               
               <TextField
                 id="event-description-input"
+                label="Description"
                 helperText="Brief description of event"
                 type="text"
                 variant="filled"
-                label="Description"
                 onChange={(e) => setDescriptionInput(e.target.value)}
                 value={descriptionInput}
                 sx={{
                   marginBottom: 4,
                   width: 230,
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
                 }}
                 multiline
-                minRows={8}
+                rows={8}
                 required
               />
             </Stack>
