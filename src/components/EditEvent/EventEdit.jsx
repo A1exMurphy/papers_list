@@ -263,6 +263,17 @@ export default function EditEvent() {
                 sx={{ width: 230 }}
                 required
               />
+              <TextField
+                type="date"
+                helperText="Date of event"
+                variant="filled"
+                size="small"
+                id="event-date-input"
+                    onChange={(e) =>  handleTimeChange(e.target.value)}
+                    value={editEvent.time || ""}
+                    sx={{ width: 230 }}
+                  />
+
               {/* <Box sx={{ midWidth: 120 }}>
                 <FormControl sx={{ width: 200 }}>
                   <InputLabel id="tag-input-label">Tags</InputLabel>
