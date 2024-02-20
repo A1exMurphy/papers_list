@@ -113,8 +113,8 @@
 }
 
 .gallery-card-img {
-  width: auto;
-  height: 80%;
+  width: 300px;
+  height: 250px;
   overflow-y: hidden;
   max-width: 100%;
   object-fit: cover;
@@ -142,7 +142,8 @@
 
 .gallery-card-content {
   padding-left: 8px;
-  padding-top: 1px;
+  padding-top: 10px;
+  
 }
 
 .create-event-btn {

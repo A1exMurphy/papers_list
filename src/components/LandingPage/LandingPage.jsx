@@ -121,6 +121,7 @@ export default function LandingPage() {
                       className="gallery-card-img"
                       src={selected.image}
                       alt=""
+
                     />
                     <div className="gallery-card-content">
                       <h3>{selected.event_name}</h3>
