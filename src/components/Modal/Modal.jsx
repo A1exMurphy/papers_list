@@ -79,6 +79,7 @@ export default function Modal({ closeModal }) {
                         </div>
                         <div className="modal-website">
                             <a href={`${singleEvent.website}`} target="_blank">Event Link</a>
+                            {/* fixed to allow the hyperlink to work */}
                         </div>
                     </div>
                     <div className="modal-comments">
