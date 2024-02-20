@@ -351,7 +351,7 @@ export default function AdminNewEvent() {
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title">
-              {"Are you sure you wanna submit this ?"}
+              {"Are you sure you want to submit this?"}
             </DialogTitle>
             <DialogContent>
               <DialogContentText
