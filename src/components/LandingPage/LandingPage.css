@@ -95,7 +95,7 @@
 
 .gallery-card {
   width: 300px;
-  height: 500px;
+  height: 350px;
   background-color: var(--greenish);
   font-family: var(--srcsansreg);
   overflow: hidden;
@@ -117,7 +117,7 @@
   height: 250px;
   overflow-y: hidden;
   max-width: 100%;
-  object-fit: cover;
+
 }
 
 .highlights-section {
