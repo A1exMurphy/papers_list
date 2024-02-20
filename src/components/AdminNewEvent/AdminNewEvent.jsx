@@ -147,7 +147,7 @@ export default function AdminNewEvent() {
                   width: 230,
                 }}
                 multiline
-                minRows={8}
+                rows={8}
                 required
               />
             </Stack>
@@ -163,7 +163,7 @@ export default function AdminNewEvent() {
                 marginBottom: 4,
               }}
               multiline
-              minRows={4}
+              rows={4}
               required
             />
             <Stack

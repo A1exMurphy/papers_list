@@ -180,7 +180,7 @@ export default function EditEvent() {
                   width: 230,
                 }}
                 multiline
-                minRows={8}
+                rows={8}
                 required
               />
             </Stack>
@@ -196,7 +196,7 @@ export default function EditEvent() {
                 marginBottom: 4,
               }}
               multiline
-              minRows={4}
+              rows={4}
               required
             />
             <Stack
