@@ -78,7 +78,7 @@ export default function Modal({ closeModal }) {
                             <LinkIcon />
                         </div>
                         <div className="modal-website">
-                            <a href={`http://www.${singleEvent.website}`} target="_blank">Event Website</a>
+                            <a href={`${singleEvent.website}`} target="_blank">Event Website</a>
                         </div>
                     </div>
                     <div className="modal-comments">
