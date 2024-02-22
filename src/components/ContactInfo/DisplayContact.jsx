@@ -7,7 +7,7 @@ export default function DisplayContact(eventContact)  {
     const history = useHistory();
     const params = useParams();
     const contact = useSelector((store) => store.selectedContact);
- 
+    console.log(contact, "Display contact's info")
 
     
 
@@ -22,7 +22,9 @@ export default function DisplayContact(eventContact)  {
     return (
         <div>
         <h1>Contact Info</h1>
-        <h3>{contact.email}</h3>
+        <h3>{contact[0].email}</h3>
+        <h3>{contact[0].phone}</h3>
+
         </div>
     )
 }

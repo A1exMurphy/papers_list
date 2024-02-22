@@ -5,7 +5,7 @@ const router = express.Router();
 
 //GET contact info for an existing event
 router.get("/:id", (req, res) => {
-  console.log("in GET for contact info with id:")
+  console.log("in GET for contact info with id:", req.params.id)
 
   const getEventContact = 
   `
@@ -17,7 +17,7 @@ router.get("/:id", (req, res) => {
     FROM "user_details"
     INNER JOIN "posts"
       ON "posts"."contact_id"="user_details"."id"
-    WHERE "user_details"."id" = $1;
+    WHERE "posts"."id" = $1;
   `
   const sqlValues = [req.params.id]
   pool

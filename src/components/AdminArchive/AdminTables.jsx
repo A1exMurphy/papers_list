@@ -18,7 +18,6 @@ export default function AdminTables() {
   const approvedEvents = useSelector((store) => store.archived.approved);
   const pendingEvents = useSelector((store) => store.archived.pending);
   const deleteEvents = useSelector((store) => store.archived.deleted);
-console.log(pendingEvents, "store of pending events")
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -31,7 +30,7 @@ console.log(pendingEvents, "store of pending events")
   };
 
   const contactInfo = (eventContact) => {
-    console.log(eventContact, "id for params")
+    // console.log(eventContact, "id for params")
     history.push(`/contactcard/${eventContact}`)
   };
 
@@ -58,7 +57,7 @@ console.log(pendingEvents, "store of pending events")
                   <td>{pending.admin_approved}</td>
                   <td>
                     <Button 
-                      onClick={() => contactInfo(pending.contact_id)}>
+                      onClick={() => contactInfo(pending.id)}>
                       <ContactMailIcon />
                     </Button>
                     </td>
