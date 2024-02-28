@@ -49,9 +49,9 @@ main {
     text-align: center;
     font-family: var(--bgrotblack);
     color: white;
-    letter-spacing: 2px;
     font-size: 22px;
-    position: absolute;
+     width: 3000px; 
+
 }
 
 .modal-img {
@@ -253,7 +253,7 @@ main {
 
 .tag-header{
     position: absolute;
-    bottom: 140px;
+    bottom: 100px;
     left:100px;
     color: white;
     font-family: var(--srcsansblack);
