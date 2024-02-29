@@ -18,17 +18,25 @@
 
 .grid-item1 {
     text-align: right;
+    height: 40px;
 }
 
 .grid-item2 {
     text-align: center;
     width: 15px;
+    height: 40px;
     padding: 0%;
     margin: 0%;
 }
 
 .grid-item3 {
     text-align: left;
+    height: 40px;
+}
+
+.grid-item4 {
+    text-align:left;
+
 }
 
 /* create Stick-it note visualization */

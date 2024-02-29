@@ -21,7 +21,7 @@ export default function DisplayContact(eventContact)  {
     return (
         <div className="contact-post-it">
         <h1 className="contact-header">Contact Info</h1>
-            <div className="grid-container">
+            <div className="grid-container contact-content">
                 
                     <div className="grid-item1">EMAIL</div>
                     <div className="grid-item2">:</div>
@@ -35,12 +35,12 @@ export default function DisplayContact(eventContact)  {
                 
                     <div className="grid-item1">LINKEDIN</div>
                     <div className="grid-item2">:</div>
-                    <div className="grid-item"> {contact[0]?.linkedIn}</div>
+                    <div className="grid-item3"> {contact[0]?.linkedIn}</div>
                 
                 
                     <div className="grid-item1">INFO</div>
                     <div className="grid-item2">:</div>
-                    <div className="grid-item3"> {contact[0]?.additional_info}</div>
+                    <div className="grid-item4"> {contact[0]?.additional_info}</div>
                 
             </div>
         </div>
