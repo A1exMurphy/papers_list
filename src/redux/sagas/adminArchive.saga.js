@@ -197,7 +197,7 @@ function* fetchEventDetails(action) {
     });
 
     const eventToEdit = response.data;
-    console.log("response.data", response.data);
+    // console.log("response.data", response.data);
 
     yield put({
       type: "SET_EVENT_TO_EDIT",

@@ -224,3 +224,10 @@ td {
   top: 13%;
   left: 5%;
 }
+
+.contact-icon {
+  position: absolute;
+  color: var(--orange);
+  width: fit-content;
+  background-color: #130d6b;
+}

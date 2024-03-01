@@ -39,7 +39,6 @@ export default function LandingPage() {
   };
 
   const scrollToTop = () => {
-    console.log("scrollToTop is WORKING");
 
     window.scrollTo({
       top: highlightsRef.current.offsetTop,

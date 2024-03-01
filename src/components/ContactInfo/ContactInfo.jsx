@@ -57,7 +57,9 @@ export default function SubmitContactInfo() {
     history.push("/home");
   };
 
-  const handleDiscard = () => {};
+  const handleDiscard = () => {
+    history.push("/home")
+  };
 
   const handleClickOpen = () => {
     setOpen(true);

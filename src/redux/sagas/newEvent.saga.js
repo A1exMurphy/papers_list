@@ -3,7 +3,6 @@ import axios from "axios";
 
 
 function* addNewEvent(action) {
-console.log('action.payload', action.payload);
   try {
     const headers = {
       'content-type': 'multipart/form-data'
