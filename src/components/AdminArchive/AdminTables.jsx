@@ -86,6 +86,7 @@ export default function AdminTables() {
               <td>Host</td>
               <td>Event Name</td>
               <td>Status</td>
+              <td>Contact</td>
               <td>Featured / Review</td>
             </tr>
           </thead>
@@ -97,6 +98,12 @@ export default function AdminTables() {
                   <td>{event.host}</td>
                   <td>{event.event_name}</td>
                   <td>{event.admin_approved}</td>
+                  <td>
+                    <Button 
+                      onClick={() => contactInfo(event.id)}>
+                      <ContactMailIcon />
+                    </Button>
+                    </td>
                   <td>
                     <Button onClick={() => statusChange(event.id)}>
                       {event.is_highlighted_event ? (
@@ -127,6 +134,7 @@ export default function AdminTables() {
               <td>Host</td>
               <td>Event Name</td>
               <td>Status</td>
+              <td>Contact</td>
               <td>Restore</td>
             </tr>
           </thead>
@@ -138,6 +146,12 @@ export default function AdminTables() {
                   <td>{event.host}</td>
                   <td>{event.event_name}</td>
                   <td>{event.admin_approved}</td>
+                  <td>
+                    <Button 
+                      onClick={() => contactInfo(event.id)}>
+                      <ContactMailIcon />
+                    </Button>
+                    </td>
                   <td>
                     <Button
                       onClick={() => {
